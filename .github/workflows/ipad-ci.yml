@@ -1,0 +1,30 @@
+name: Air-OS iPad - source and offline package
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ipad:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify iPad model and regression tests
+        run: npm test
+      - name: Build verified offline iPad package
+        run: npm run build
+      - name: Verify package integrity
+        run: npm run check
+      - name: Upload package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-iPad-build
+          path: dist/*.zip
+          if-no-files-found: warn
+          retention-days: 7
