@@ -61,7 +61,7 @@ def main():
         "name": "air-os-ipad", "version": "1.0.0", "private": True,
         "description": "Air-OS iPad PWA (no Electron)",
         "scripts": {
-            "test": "node --test tests",
+            "test": "node --test",
             "build": "node scripts/package-ipad-security.cjs",
             "check": "node scripts/check-ipad-parity-package.cjs",
             "test:browser": "node scripts/test-ipad-security.cjs"
