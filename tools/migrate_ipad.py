@@ -6,7 +6,7 @@ import shutil
 import subprocess
 import sys
 
-SOURCE_SHA = "d1fba0e45076ba3028eac6efdeb37c4576be515b"
+SOURCE_SHA = "053a0a27fd51d883202bb89ebcc694b876245d27"
 SOURCE_BRANCH = "feat/air-os-ipad-ultra-security-hardening"
 
 def copy_file(src, dst):
