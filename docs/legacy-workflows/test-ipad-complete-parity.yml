@@ -1,0 +1,94 @@
+name: Private iPad Desktop Parity · build and browsers (no deployment)
+on:
+  push:
+    branches: [feat/ipad-complete-desktop-parity]
+    paths-ignore: ['docs/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: private-ipad-parity
+  cancel-in-progress: false
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, webkit]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Frozen browser test tools and mandatory audit
+        run: |
+          npm ci --prefix build/ipad-parity-tests --ignore-scripts --no-audit --no-fund
+          npm audit --prefix build/ipad-parity-tests --audit-level=high
+      - name: All existing desktop and new browser model regressions
+        run: node --test --test-reporter=tap tests/*.test.cjs
+      - name: Build exact private PWA archive and verify bytes, CSP and licenses
+        run: |
+          node scripts/package-ipad-parity.cjs
+          node scripts/check-ipad-parity-package.cjs
+          node scripts/build-ipad-recovery.cjs
+      - name: Install actual test engine and dependencies
+        run: node build/ipad-parity-tests/node_modules/playwright/cli.js install --with-deps ${{ matrix.engine }}
+      - name: Actual browser GUI, legacy library, touch and offline data
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_PAD_OUTPUT: dist/parity-evidence/${{ matrix.engine }}
+        run: node scripts/test-ipad-parity.cjs
+      - name: Same browser under private Serve-like subpath
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_PAD_PREFIX: /Air-OS/
+          AIR_PAD_OUTPUT: dist/parity-evidence/subpath-${{ matrix.engine }}
+        run: node scripts/test-ipad-parity.cjs
+      - name: Original v4 to v5, protected multitab activation and compatible recovery
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_PAD_OUTPUT: dist/parity-evidence/update-${{ matrix.engine }}
+        run: node scripts/test-ipad-updates.cjs
+      - name: Preserve synthetic browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Private-iPad-Parity-${{ matrix.engine }}-${{ github.sha }}
+          path: dist/parity-evidence/
+          retention-days: 30
+      - name: Versioned PWA ZIP only · never deploy or change Tailscale
+        if: success() && matrix.engine == 'chromium'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-iPad-Parity-Build-${{ github.sha }}
+          path: |
+            dist/Air-OS-Ultimate-iPad-Parity-*.zip
+            dist/Air-OS-Ultimate-iPad-Parity-*.sha256
+            dist/Air-OS-iPad-Compatible-Recovery-*.zip
+            dist/Air-OS-iPad-Compatible-Recovery-*.sha256
+            dist/Air-OS-iPad-ReadOnly-Preflight-*.zip
+            dist/Air-OS-iPad-ReadOnly-Preflight-*.sha256
+          retention-days: 30
+  save-synthetic-evidence:
+    needs: browser
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: Private-iPad-Parity-*
+          path: dist/browser-evidence
+      - name: Save only isolated synthetic screenshots to this feature branch
+        run: node scripts/publish-ipad-parity-evidence.cjs

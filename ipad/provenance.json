@@ -1,0 +1,535 @@
+{
+  "macshell": {
+    "repository": "https://github.com/0-ss/MacShell",
+    "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+    "license": "MIT",
+    "existingPort": true
+  },
+  "gtk": {
+    "repository": "https://github.com/vinceliuice/MacTahoe-gtk-theme",
+    "commit": "1e45e19f510edb8cde18fa84d6cd5319f60b086b",
+    "license": "MIT",
+    "files": [
+      "_variables.scss",
+      "_colors.scss",
+      "_colors-palette.scss",
+      "_gtk-base.scss",
+      "gtk/_common-3.0.scss",
+      "gtk/_common-4.0.scss"
+    ]
+  },
+  "icons": {
+    "repository": "https://github.com/vinceliuice/MacTahoe-icon-theme",
+    "commit": "839848b9a8a38a92a6936e30c4abe35cc6f2546d",
+    "license": "GPL-3.0",
+    "assets": [
+      {
+        "key": "finder",
+        "source": "src/places/scalable/folder.svg",
+        "asset": "third_party/tahoe/icons/source/places/scalable/folder.svg",
+        "sha256": "271858210d1482efdf989a7a4fc4ea09410c5b50247949054b68179f5f964c42",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "browser",
+        "source": "src/categories/32/applications-internet.svg",
+        "asset": "third_party/tahoe/icons/source/categories/32/applications-internet.svg",
+        "sha256": "615354705ca42ad4d97a6a6591a5af5b3c57ed294a9a64f9b5254b9e66f5fc7c",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "notes",
+        "source": "src/apps/scalable/accessories-text-editor.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/accessories-text-editor.svg",
+        "sha256": "b09c8146a6d358c481503edc3caa8bb135cbc97420bbb0d00cbf39413dccee19",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "reminders",
+        "source": "src/apps/scalable/evolution-tasks.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/evolution-tasks.svg",
+        "sha256": "8725dbc1a62194f6ca996fdcfcca539bffbe73678556a0adee110213967c9c1c",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "calendar",
+        "source": "src/apps/scalable/calendar.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/calendar.svg",
+        "sha256": "c767f07a84992e28a5bf81c95e9e7020acbb6cc27d2424145b65304a11f23789",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "settings",
+        "source": "src/apps/scalable/preferences-system.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/preferences-system.svg",
+        "sha256": "8ff99c6c70c0a33282aa351e3de4f0fc29bb4437d3cfe6c6ae6cfda4a7b97632",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "music",
+        "source": "src/apps/scalable/gnome-music.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/gnome-music.svg",
+        "sha256": "dc8f1e4942cf4d3adb155b2dcd9c9a600448cd629d961cef26d96462b0e118fd",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "photos",
+        "source": "src/apps/scalable/accessories-camera.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/accessories-camera.svg",
+        "sha256": "40d8ec9854d5c01a380d8e1b4c9d05485dc11c590d1ab14bc38456939717f2ce",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "mail",
+        "source": "src/apps/scalable/internet-mail.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/internet-mail.svg",
+        "sha256": "a55db5fe761f3b5dadbeea41cbd9575a23d75952117cd49b24cb586a717465b0",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "downloads",
+        "source": "src/places/scalable/folder-download.svg",
+        "asset": "third_party/tahoe/icons/source/places/scalable/folder-download.svg",
+        "sha256": "64714924e6d005faf00e1ef5befcde3372c5b636946a89311dafe005d59fa28f",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "trash",
+        "source": "src/places/scalable/user-trash.svg",
+        "asset": "third_party/tahoe/icons/source/places/scalable/user-trash.svg",
+        "sha256": "4ca95dd5934d278e37d281dd8d97d32542412f054b752d50e1301f687f1f9f8b",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "calculator",
+        "source": "src/apps/scalable/calc.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/calc.svg",
+        "sha256": "2e35d5e0074fa24fff4e94d00da8a729265aaed875657435cf9693c2d5424597",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "airwrite",
+        "source": "src/apps/scalable/text-editor.svg",
+        "asset": "third_party/tahoe/icons/source/apps/scalable/text-editor.svg",
+        "sha256": "3756a88005181fb71f434b01b956cb3ef70185d1e24c11e33e90f96b3df8bedf",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "folder",
+        "source": "src/places/scalable/folder.svg",
+        "asset": "third_party/tahoe/icons/source/places/scalable/folder.svg",
+        "sha256": "271858210d1482efdf989a7a4fc4ea09410c5b50247949054b68179f5f964c42",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "pictures",
+        "source": "src/places/scalable/folder-images.svg",
+        "asset": "third_party/tahoe/icons/source/places/scalable/folder-images.svg",
+        "sha256": "ad497498c88e9d1a9f995f78b3e3a2deebbfe6aafc5ef96b0a4f82c969e0fe7d",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.edit-copy",
+        "source": "src/actions/16/edit-copy.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/edit-copy.svg",
+        "sha256": "c6aa0a28cf5f9c40825693183b18f54665ba4038480035440a68f84014de51fc",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.edit-paste",
+        "source": "src/actions/16/edit-paste.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/edit-paste.svg",
+        "sha256": "8cba5a0f1c3dbea52471718b0fe7ce7f1c88605de78c4cb51b43e45edac1369d",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.edit-cut",
+        "source": "src/actions/16/edit-cut.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/edit-cut.svg",
+        "sha256": "0742b1fd999a8bd17b46d971e1993b76fbafc805a0eba40d586215f59ae963c5",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.edit-undo",
+        "source": "src/actions/16/edit-undo.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/edit-undo.svg",
+        "sha256": "a6d5f813150044abed14b3986e087be5380d50f08ad0f4dae06058776a860248",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.edit-redo",
+        "source": "src/actions/16/edit-redo.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/edit-redo.svg",
+        "sha256": "69047217feff7150aaa9c60266fa435cc7c5ae83191d5d369f91361d21f01bab",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.edit-delete",
+        "source": "src/actions/16/edit-delete.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/edit-delete.svg",
+        "sha256": "ad5a540592565ffe3c364aeb8bcb1c81a88eecd7e456a602fa8264c1e959fe70",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.document-save",
+        "source": "src/actions/16/document-save.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/document-save.svg",
+        "sha256": "3d8202ff33b9504377e0fb2282939b73d378c15dde91c2d3667e20bba933df1f",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.document-open",
+        "source": "src/actions/16/document-open.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/document-open.svg",
+        "sha256": "a18fb039f732b718b52bac6a909eef0f4a6f15fae1dec15b86db775991609735",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.document-new",
+        "source": "src/actions/16/document-new.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/document-new.svg",
+        "sha256": "4101b7841503909e12f34235af45f6cddb223f8656819e927b76cbf30dc07a21",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.list-add",
+        "source": "src/actions/16/list-add.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/list-add.svg",
+        "sha256": "6c467889d7772b15ea452085a1c40094d33f14f9f92919ba6518a43c35e4bd64",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.list-remove",
+        "source": "src/actions/16/list-remove.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/list-remove.svg",
+        "sha256": "3a548f5a2098dfc8e1065dc6648b0836832d20a2655a50b9bf33ad2203a5b85f",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.view-refresh",
+        "source": "src/actions/16/view-refresh.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/view-refresh.svg",
+        "sha256": "14674c5ca5aeb8b12c28cd46e653169db74b345e095e2e48d1ca8fcb1bfb66b5",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.go-next",
+        "source": "src/actions/16/go-next.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/go-next.svg",
+        "sha256": "35320c3778a24175c95520592a7aa54445884b6b74ccb2ea05235916f024b521",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.go-previous",
+        "source": "src/actions/16/go-previous.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/go-previous.svg",
+        "sha256": "ebc90c2a3f82a32d34237918bab0e2bd9d3b8537b4c8f415c1ee96de2150eed2",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.go-up",
+        "source": "src/actions/16/go-up.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/go-up.svg",
+        "sha256": "667d2514dee5a6b6f0758e2eb85774a7c528f1cc82aab6c718ffcefaaf2512e2",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.go-home",
+        "source": "src/actions/16/go-home.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/go-home.svg",
+        "sha256": "189fe72afdd88419013e4fdc6b627ca83ad5f2209a6ba7d803ef1fcb04104ca3",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.system-search",
+        "source": "src/actions/32/system-search.svg",
+        "asset": "third_party/tahoe/icons/source/actions/32/system-search.svg",
+        "sha256": "4f5efcf819088997d874ab5f1cab03ee723a434d44b92a2c7d1847a0423b5878",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.window-close",
+        "source": "src/actions/16/window-close.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/window-close.svg",
+        "sha256": "392ad27405c6df5c47a4ca66c13b2699a9069fbd1f5ee5b4c14e04d5795f12c4",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.media-playback-start",
+        "source": "src/actions/16/media-playback-start.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/media-playback-start.svg",
+        "sha256": "2c6bb8b901d22bdcb3386dcf8364e1d2cb6074a72c017fa1f4aa0c023ef33dc7",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.media-playback-pause",
+        "source": "src/actions/16/media-playback-pause.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/media-playback-pause.svg",
+        "sha256": "eefd7dcaf8cb17bda026ac9b761feb4de17b7cdf89f21d4efb79b7ad6fde1993",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.media-skip-forward",
+        "source": "src/actions/16/media-skip-forward.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/media-skip-forward.svg",
+        "sha256": "675a75288b8be39dda5f637217a9feb677de91d9caff7f4793a25bf9dacc33d5",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.media-skip-backward",
+        "source": "src/actions/16/media-skip-backward.svg",
+        "asset": "third_party/tahoe/icons/source/actions/16/media-skip-backward.svg",
+        "sha256": "e98bebfad9ba7dc29a3ac070c1814900aef6a53b866a689d92b21ae481a9e4b4",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "places.folder-documents",
+        "source": "src/places/scalable/folder-documents.svg",
+        "asset": "third_party/tahoe/icons/source/places/scalable/folder-documents.svg",
+        "sha256": "d7f158c034c3bf0833ccc2815b763b75a98650e8b7e50f7097792fa7df020945",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "places.folder-music",
+        "source": "src/places/scalable/folder-music.svg",
+        "asset": "third_party/tahoe/icons/source/places/scalable/folder-music.svg",
+        "sha256": "977d877fec3ed5905008eece75970c8af463eaf890e1feb32dfe097786fc4005",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "places.folder-videos",
+        "source": "src/places/scalable/folder-videos.svg",
+        "asset": "third_party/tahoe/icons/source/places/scalable/folder-videos.svg",
+        "sha256": "9630e494029000c8d24c7700798d996b6fb7b53470239a2baff08ff0a5e36c88",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "places.user-home",
+        "source": "src/places/scalable/user-home.svg",
+        "asset": "third_party/tahoe/icons/source/places/scalable/user-home.svg",
+        "sha256": "a8730e4b9ef966dbe65914e9ee49221fe773e6ce8a43ea2e632e9278164357bc",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "devices.computer",
+        "source": "src/devices/scalable/computer.svg",
+        "asset": "third_party/tahoe/icons/source/devices/scalable/computer.svg",
+        "sha256": "bf880726a52106e1ecca56f0ef1b98a7fd1ba7a82e5481aa9086156c2ec94ac2",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "devices.drive-harddisk",
+        "source": "src/devices/scalable/drive-harddisk.svg",
+        "asset": "third_party/tahoe/icons/source/devices/scalable/drive-harddisk.svg",
+        "sha256": "3291026ecc5e8dfddf46fba13cbb788749c192182cb5cf755c51f37039d654d2",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "devices.drive-removable-media",
+        "source": "src/devices/scalable/drive-removable-media.svg",
+        "asset": "third_party/tahoe/icons/source/devices/scalable/drive-removable-media.svg",
+        "sha256": "b8da177ebd0fe0194464eb97b80ad5598d09d3222a8df7a4664971bc3d6c1fed",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "devices.audio-headphones",
+        "source": "src/devices/scalable/audio-headphones.svg",
+        "asset": "third_party/tahoe/icons/source/devices/scalable/audio-headphones.svg",
+        "sha256": "1a93ec5ad5ded6eb49dd516391e640d2fdf7254194df27df3196152d8679712e",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "devices.input-keyboard",
+        "source": "src/devices/scalable/input-keyboard.svg",
+        "asset": "third_party/tahoe/icons/source/devices/scalable/input-keyboard.svg",
+        "sha256": "69c5f2b9138cc40e3b124c56f9a5c799f74b7b83a44c2cf9eb45ad906f580b17",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "status.dialog-warning",
+        "source": "src/status/32/dialog-warning.svg",
+        "asset": "third_party/tahoe/icons/source/status/32/dialog-warning.svg",
+        "sha256": "aa7a62094a250141c8e3c4f098175aba0cab96f8d35ccd65479a91eb45602af2",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "status.task-complete",
+        "source": "src/status/16/task-complete.svg",
+        "asset": "third_party/tahoe/icons/source/status/16/task-complete.svg",
+        "sha256": "5c2323c1599b438ce39614cd677a87334f9de97319f5db95f7745277c2e80767",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "symbolic.edit-copy",
+        "source": "src/actions/symbolic/edit-copy-symbolic.svg",
+        "asset": "third_party/tahoe/icons/source/actions/symbolic/edit-copy-symbolic.svg",
+        "sha256": "c79081c78b683eaacdb9a55477c5f70243c41c9a1c138c55f71fd3359460523b",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "symbolic.edit-paste",
+        "source": "src/actions/symbolic/edit-paste-symbolic.svg",
+        "asset": "third_party/tahoe/icons/source/actions/symbolic/edit-paste-symbolic.svg",
+        "sha256": "eb13c0a89c2ed9f17fa4fab17529e600837b28499a0352bbdc911f160446a657",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "symbolic.edit-delete",
+        "source": "src/actions/symbolic/edit-delete-symbolic.svg",
+        "asset": "third_party/tahoe/icons/source/actions/symbolic/edit-delete-symbolic.svg",
+        "sha256": "53f5b0800bfdec87c58a85ef1a6e6e26330b1b52dc21e8bb601e96b38cacf024",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "symbolic.go-next",
+        "source": "src/actions/symbolic/go-next-symbolic.svg",
+        "asset": "third_party/tahoe/icons/source/actions/symbolic/go-next-symbolic.svg",
+        "sha256": "76c7b4307d44ef426b775be7b9a664abb96bbea0c7c19d17b0ca503abc37cfa2",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "symbolic.go-previous",
+        "source": "src/actions/symbolic/go-previous-symbolic.svg",
+        "asset": "third_party/tahoe/icons/source/actions/symbolic/go-previous-symbolic.svg",
+        "sha256": "f843248fd4569bea7e096b64218aa098ff6d5f7788db1aa04ebfe7d469112c47",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "symbolic.go-up",
+        "source": "src/actions/symbolic/go-up-symbolic.svg",
+        "asset": "third_party/tahoe/icons/source/actions/symbolic/go-up-symbolic.svg",
+        "sha256": "564a4a7779dd88e1ac4ab74159ac9fb51a49ae6e0b240dd6c3f7ec2d8c330672",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "symbolic.document-save",
+        "source": "src/actions/symbolic/document-save-symbolic.svg",
+        "asset": "third_party/tahoe/icons/source/actions/symbolic/document-save-symbolic.svg",
+        "sha256": "6a18a538e3375909a961247379f9fc404e4d5c5f918a8143b904596222ac7b6e",
+        "license": "GPL-3.0",
+        "modified": false
+      },
+      {
+        "key": "actions.view-grid",
+        "source": "src/actions/22/view-grid.svg",
+        "asset": "third_party/tahoe/icons/source/actions/22/view-grid.svg",
+        "sha256": "f60427d7c17117443fd4ca7d559c216da7432c87e444c46888b99f33b3ad2dd7",
+        "license": "GPL-3.0",
+        "adaptation": "Original bytes; neutral CSS white filter in status bar only",
+        "modified": false
+      }
+    ],
+    "browserExports": [
+      {
+        "key": "symbolic.edit-copy",
+        "source": "third_party/tahoe/icons/source/actions/symbolic/edit-copy-symbolic.svg",
+        "asset": "third_party/tahoe/icons/browser/edit-copy-symbolic.svg",
+        "sha256": "c79081c78b683eaacdb9a55477c5f70243c41c9a1c138c55f71fd3359460523b",
+        "license": "GPL-3.0",
+        "adaptation": "SVG xmlns only; paths, colors and dimensions unchanged"
+      },
+      {
+        "key": "symbolic.edit-paste",
+        "source": "third_party/tahoe/icons/source/actions/symbolic/edit-paste-symbolic.svg",
+        "asset": "third_party/tahoe/icons/browser/edit-paste-symbolic.svg",
+        "sha256": "eb13c0a89c2ed9f17fa4fab17529e600837b28499a0352bbdc911f160446a657",
+        "license": "GPL-3.0",
+        "adaptation": "SVG xmlns only; paths, colors and dimensions unchanged"
+      },
+      {
+        "key": "symbolic.edit-delete",
+        "source": "third_party/tahoe/icons/source/actions/symbolic/edit-delete-symbolic.svg",
+        "asset": "third_party/tahoe/icons/browser/edit-delete-symbolic.svg",
+        "sha256": "53f5b0800bfdec87c58a85ef1a6e6e26330b1b52dc21e8bb601e96b38cacf024",
+        "license": "GPL-3.0",
+        "adaptation": "SVG xmlns only; paths, colors and dimensions unchanged"
+      },
+      {
+        "key": "symbolic.go-next",
+        "source": "third_party/tahoe/icons/source/actions/symbolic/go-next-symbolic.svg",
+        "asset": "third_party/tahoe/icons/browser/go-next-symbolic.svg",
+        "sha256": "c806e87b53f966fb10c8c2c7635f7bfaf7d58ad5d435963359f4b649dbc6c71b",
+        "license": "GPL-3.0",
+        "adaptation": "SVG xmlns only; paths, colors and dimensions unchanged"
+      },
+      {
+        "key": "symbolic.go-previous",
+        "source": "third_party/tahoe/icons/source/actions/symbolic/go-previous-symbolic.svg",
+        "asset": "third_party/tahoe/icons/browser/go-previous-symbolic.svg",
+        "sha256": "d17fb08acb6e6e0047b46ac4d07adbefe7a3a9f0737db37e76012cdde4194c2c",
+        "license": "GPL-3.0",
+        "adaptation": "SVG xmlns only; paths, colors and dimensions unchanged"
+      },
+      {
+        "key": "symbolic.go-up",
+        "source": "third_party/tahoe/icons/source/actions/symbolic/go-up-symbolic.svg",
+        "asset": "third_party/tahoe/icons/browser/go-up-symbolic.svg",
+        "sha256": "823eeee19573587ffa19118d7cd176ced8ab3d5ea74c8da1fd958d26d901a41a",
+        "license": "GPL-3.0",
+        "adaptation": "SVG xmlns only; paths, colors and dimensions unchanged"
+      },
+      {
+        "key": "symbolic.document-save",
+        "source": "third_party/tahoe/icons/source/actions/symbolic/document-save-symbolic.svg",
+        "asset": "third_party/tahoe/icons/browser/document-save-symbolic.svg",
+        "sha256": "6a18a538e3375909a961247379f9fc404e4d5c5f918a8143b904596222ac7b6e",
+        "license": "GPL-3.0",
+        "adaptation": "SVG xmlns only; paths, colors and dimensions unchanged"
+      }
+    ]
+  }
+}

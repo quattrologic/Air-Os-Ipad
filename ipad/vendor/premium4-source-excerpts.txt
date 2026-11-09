@@ -1,0 +1,169 @@
+Original source excerpts used for Premium 4 review. Existing full license texts in ipad/licenses/.
+
+MacShell 1bdb51870b621100fd2709f66c8f8e00ab17b9c4 MacShell/MacBar.qml
+        { id: "nightshift", label: I18n.tr("Night Shift"),   glyph: "nightshift", w: 1, h: 1 },
+        { id: "keepawake",  label: I18n.tr("Keep Awake"),    glyph: "coffee",     w: 1, h: 1 },
+        { id: "darkmode",   label: I18n.tr("Dark Mode"),     glyph: "contrast",   w: 1, h: 1 },
+        { id: "gaming",     label: I18n.tr("Game Mode"),     glyph: "gamepad",    w: 2, h: 1 },
+        { id: "record",     label: I18n.tr("Screen Recording"), glyph: "record",  w: 2, h: 1 },
+        { id: "nowplaying", label: I18n.tr("Now Playing"),   glyph: "note",       w: 2, h: 2 },
+        { id: "display",    label: I18n.tr("Display"),       glyph: "sun",        w: 4, h: 1 },
+        { id: "sound",      label: I18n.tr("Sound"),         glyph: "speaker",    w: 4, h: 1 }
+    ]
+    readonly property var ccDefault: ["wifi", "nowplaying", "bluetooth", "airplane", "focus", "record", "nightshift", "keepawake", "display", "sound"]
+    function ccDef(id) {
+        for (var i = 0; i < ccCatalog.length; i++) if (ccCatalog[i].id === id) return ccCatalog[i];
+        return null;
+    }
+    function ccLayout(ids) {
+        var cols = 4, occ = [], out = [], seen = {}, rows = 0;
+        function isFree(r, c, w, h) {
+            for (var y = r; y < r + h; y++) for (var x = c; x < c + w; x++) if (occ[y] && occ[y][x]) return false;
+            return true;
+        }
+        function mark(r, c, w, h) {
+            for (var y = r; y < r + h; y++) { if (!occ[y]) occ[y] = []; for (var x = c; x < c + w; x++) occ[y][x] = true; }
+        }
+        for (var i = 0; i < ids.length; i++) {
+            var d = ccDef(ids[i]);
+            if (!d || seen[d.id]) continue;
+            seen[d.id] = true;
+            var placed = false;
+            for (var r = 0; !placed; r++) {
+                for (var c = 0; c + d.w <= cols; c++) {
+                    if (isFree(r, c, d.w, d.h)) {
+                        mark(r, c, d.w, d.h);
+                        out.push({ id: d.id, col: c, row: r, w: d.w, h: d.h });
+                        rows = Math.max(rows, r + d.h);
+                        placed = true;
+                        break;
+                    }
+                }
+            }
+        }
+        // pixel layout: tiles sit ccGap apart; the two slider tiles (Display, Sound) keep the wider ccSliderGap around them
+        var sliderRow = [], ys = [];
+        for (var k = 0; k < out.length; k++) {
+            if (out[k].id === "display" || out[k].id === "sound")
+                for (var rr = out[k].row; rr < out[k].row + out[k].h; rr++) sliderRow[rr] = true;
+        }
+        for (var r2 = 0; r2 < rows; r2++)
+            ys[r2] = r2 === 0 ? 0 : ys[r2 - 1] + ccCellH + ((sliderRow[r2] || sliderRow[r2 - 1]) ? ccSliderGap : ccGap);
+        for (var m = 0; m < out.length; m++) {
+            out[m].y = ys[out[m].row];
+            out[m].hpx = ys[out[m].row + out[m].h - 1] + ccCellH - ys[out[m].row];
+        }
+        return { items: out, rows: rows, total: rows > 0 ? ys[rows - 1] + ccCellH : 0 };
+    }
+    readonly property real ccCellH: 66
+    readonly property real ccGap: 6
+    readonly property real ccSliderGap: 10
+    readonly property var ccPlan: ccLayout(ccControls)
+    function ccAdd(id) {
+        if (ccControls.indexOf(id) < 0) ccControls = ccControls.concat([id]);
+    component CCTile: Item {
+        id: tile
+        required property var t
+        required property var gx
+        property real radius: 34
+        // the whole tile is the button: a click anywhere fires clicked(); the round icon inside only shows the on / off state
+        property bool on: false
+        property string onTint: ""
+        property bool clickable: false
+        // small icon-only tiles (the "circle buttons"): when on, the whole tile turns white. Wide tiles keep their glass
+        // (only the round icon inside them turns white), so their text colours stay as they are.
+        readonly property bool whole: on && width <= 110
+        readonly property color fg: whole ? Qt.rgba(0.07, 0.07, 0.09, 1) : t.fg
+        readonly property color fg2: whole ? Qt.rgba(0.07, 0.07, 0.09, 0.55) : t.fg2
+        signal clicked()
+        scale: (clickable && tma.pressed) ? 0.97 : 1
+        Behavior on scale { NumberAnimation { duration: 200; easing.type: Easing.OutBack; easing.overshoot: 2.4 } }
+        GGlass { anchors.fill: parent; gx: tile.gx; cornerR: tile.radius; thickness: 22; shadowAmt: 0; flatInner: 1 }
+        Rectangle {     // enabled (small tiles only): the whole tile background is solid white
+            anchors.fill: parent
+            radius: tile.radius
+            color: "white"
+            opacity: tile.whole ? 1 : 0
+            Behavior on opacity { NumberAnimation { duration: 320; easing.type: Easing.OutCubic } }
+        }
+        Rectangle {
+            anchors.fill: parent
+            radius: tile.radius
+            color: (tile.clickable && tma.containsMouse) ? (tile.t.dark ? Qt.rgba(1, 1, 1, 0.025) : Qt.rgba(1, 1, 1, 0.07)) : Qt.rgba(1, 1, 1, 0)
+            Behavior on color { ColorAnimation { duration: 320; easing.type: Easing.OutCubic } }
+        }
+        CornerBorder { z: 2; anchors.fill: parent; cornerR: tile.radius; dark: tile.gx.dark; tint: tile.gx.borderTint; amount: tile.gx.borderAmount; lineW: 0.8 }
+        MouseArea { id: tma; anchors.fill: parent; enabled: tile.clickable; hoverEnabled: true; onClicked: tile.clicked() }
+    }
+
+    // small glass pill button ("Edit Controls", "Done", "Reset")
+    component CCPill: Item {
+        id: pl
+        required property var t
+        required property var gx
+        property string text: ""
+        property bool strong: false
+        signal clicked()
+        width: plText.implicitWidth + 32; height: 28
+
+MacTahoe GTK 1e45e19f510edb8cde18fa84d6cd5319f60b086b src/sass/gtk/_common-4.0.scss
+$side_style_shadow: linear-gradient(to left, rgba(black, if($variant == 'light', 0.02, 0.06)), transparent 6px);
+$sidebar_bg_color: if($blur =='true', transparent, $dark_sidebar_bg);
+
+%side_style_left {
+  background-image: $side_style_shadow;
+  background-color: $sidebar_bg_color;
+  box-shadow: none;
+  border: none;
+}
+
+%side_headerbar_left {
+  &, &:backdrop {
+    background-image: $side_style_shadow;
+    background-color: $sidebar_bg_color;
+    border: none;
+  }
+
+  button:not(.close):not(.maximize):not(.minimize) { @extend %headerbar_buttons_flat; }
+}
+
+%side_headerbar_right {
+  &, &:backdrop {
+    background-image: none;
+    background-color: $base_color;
+    border: none;
+  }
+}
+
+%headerbar_buttons_flat {
+  @include button(header-flat);
+
+  &:backdrop {
+    opacity: 0.65;
+    @include button(header-flat-backdrop);
+  }
+
+  &:hover {
+    @include button(header-flat-hover);
+  }
+
+  &:active {
+    @include button(header-flat-active);
+  }
+
+  &:checked {
+    @include button(header-flat-checked);
+  }
+
+  &:disabled {
+    @include button(header-flat-insensitive);
+
+    &:checked { @include button(header-flat-insensitive-checked); }
+  }
+}
+
+headerbar {
+  min-height: $headerbar_size;
+  padding: 0;
+  margin: 0;
+

@@ -1,0 +1,125 @@
+{
+  "desktopSourceCommit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+  "adaptations": [
+    "Existing GLASS-3 engine adapted to iPad selectors and quality settings",
+    "MacShell family only, existing GPU guards retained",
+    "BFCache lifecycle and browser quality events",
+    "No capture; licensed wallpaper or owned authorized artwork scene",
+    "Standard quality does not initialize WebGL",
+    "Opt-in high: source <=2 million pixels, texture dimensions <=2048, max width1920",
+    "MacShell GLSL families retained; no Hyprland family UI or runtime",
+    "Portable CSS fallback: one existing renderer aligns bounded pseudo surfaces to the known 2560x1600 licensed photo; one CSS blur, no capture or second GL engine",
+    "MacLock source shader ES300 translation in the same renderer; bounded shared CSS preblur and luminance-modulated rim, no native capture",
+    "MacLock only: cached SDF/Snell fallback in the existing owner; bilinear per-channel samples from the same allowed preblurred scene, not the GLSL24-tap disk. Other CSS surfaces retain their prior fallback.",
+    "MacLock original grain/tap rotation uses full-frame physical coordinates in the ES adapter, matching Qt gl_FragCoord conventions.",
+    "Cover blurMax64 is not sigma64: a separately rendered native MultiEffect reference gives about24 CSS-pixel Gaussian-equivalent blur for the fixture; the brighter existing .84 multiplicative browser grade remains an explicit deviation from additive Qt brightness-.16."
+  ],
+  "sources": [
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacShell/ClockWidget.qml",
+      "license": "MIT",
+      "sha256": "9ebb5b06bcd8446713ec161de6221f680dc2ef4d1b50aef618728a542519694f"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacShell/CalendarWidget.qml",
+      "license": "MIT",
+      "sha256": "9ff0b52dce54fa6f2a6271d07cc18e0fd6a253d63b40d6434a92735233e9fac9"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacShell/PlayerWidget.qml",
+      "license": "MIT",
+      "sha256": "14fcb922a9348cc85702b6371164e4c502b2ec3109ed64f805942281f2999d8a"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacShell/WidgetVisual.qml",
+      "license": "MIT",
+      "sha256": "7d819e686470ba0ad1fec573a4ba4669bb2d09308931f09eeb0e524330bd14d8"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacShell/GlassSlab.qml",
+      "license": "MIT",
+      "sha256": "91365c979a7ae5c0d712f7161d198e32245ea99f1a579094d57a434449eb55ca"
+    },
+    {
+      "project": "KDE plasma-workspace-wallpapers",
+      "commit": "0643e9404da07d204014549d9f734424fdf961ed",
+      "path": "Path/contents/images/2560x1600.jpg",
+      "license": "LGPL-3.0",
+      "author": "Risto Saukonp\u00e4\u00e4",
+      "sha256": "7477457d7f17b736259f1b021864778ad4ba802cf3214e6728181ff29126bba8",
+      "modified": false
+    },
+    {
+      "project": "Open Runde bundled by Air-OS/MacShell",
+      "repositoryCommit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+      "path": "third_party/maclock/fonts/OpenRunde-Regular.otf",
+      "license": "OFL-1.1",
+      "sha256": "8398c8adfc2b41a21cd1c0e00dbbd81c2ce3877cc5c9843bebd3e0b7b43cfbcc"
+    },
+    {
+      "project": "Open Runde bundled by Air-OS/MacShell",
+      "repositoryCommit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+      "path": "third_party/maclock/fonts/OpenRunde-Semibold.otf",
+      "license": "OFL-1.1",
+      "sha256": "39d6c706cfbb9cad2a7ea2bfdbe12c4384185d8625a21208a39cbdfe1ea1790c"
+    },
+    {
+      "project": "Air-OS R7 / MacShell port",
+      "commit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+      "path": "air-desktop-glass.js",
+      "sha256": "7ee8c661b5ba5ef5a6ada474e17123f790985d32037de1020f48757229be7a6d",
+      "target": "ipad/vendor/glass/renderer.js",
+      "license": "MIT"
+    },
+    {
+      "project": "Air-OS R7 / MacShell port",
+      "commit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+      "path": "macshell-glass2-shaders.js",
+      "sha256": "b00430feca27cfc686c564102451cc03a4c9b7d351f5555eb07b40ba9a7699b6",
+      "target": "ipad/vendor/glass/shaders.js",
+      "license": "MIT"
+    },
+    {
+      "project": "Air-OS R7 / MacShell port",
+      "commit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+      "path": "src/core/glass-geometry.js",
+      "sha256": "3660b884e70570b9951655302fe94220184059b6d8a190b1c950ef3f30c4e355",
+      "target": "ipad/vendor/glass/geometry.js",
+      "license": "MIT"
+    },
+    {
+      "project": "MacTahoe GTK",
+      "commit": "1e45e19f510edb8cde18fa84d6cd5319f60b086b",
+      "path": "src/sass/_colors.scss",
+      "sha256": "b1de81a22c64d71c6b195b528a72f9fb37eab6a89c1fe70e437b55b023d4d83d",
+      "license": "MIT",
+      "target": "ipad/desktop.css (neutral palette adaptation)"
+    },
+    {
+      "project": "InfinityOS web",
+      "commit": "a6584135cbcad837d57484211119451bbb2d8fb2",
+      "path": "styles.css",
+      "sha256": "2f375c1241ab1ab499cd2e67da667add7cce993d40680683fcc87a44c55b43e3",
+      "license": "AGPL-3.0",
+      "target": "ipad/core/visual-motion.js (winOpen curve adaptation)"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacLock/liquidglass.frag",
+      "sha256": "2d271780c560d4eab742b4906f503d524d2a00c7f4f2570d0c1e2b96a7888f35",
+      "license": "MIT",
+      "target": "ipad/vendor/glass/shaders.js \u00b7 scripts/build-maclock-shader.cjs"
+    }
+  ]
+}

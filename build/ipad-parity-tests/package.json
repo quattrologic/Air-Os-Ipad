@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "playwright": "1.62.1"
+  },
+  "name": "air-os-ipad-test-toolchain",
+  "version": "1.0.0",
+  "private": true
+}

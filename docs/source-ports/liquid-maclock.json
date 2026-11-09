@@ -1,0 +1,65 @@
+{
+  "sourceFiles": [
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "LICENSE",
+      "sha256": "e023310b5aa260140a29cec3d887268cde3fa13a9e9cd2fca6cb7c7cfa13ce8d",
+      "license": "MIT"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacShell/MacDock.qml",
+      "sha256": "89ff98bfa058659abdc0924bb8287a8c0e0cea0197446cc5cf159bee4785bacc",
+      "license": "MIT"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacShell/MacBar.qml",
+      "sha256": "6bf2925e367059b4cf0cb14c8e553c64a73079a9ae2693927338bc27ba972500",
+      "license": "MIT"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacShell/GlassSlab.qml",
+      "sha256": "91365c979a7ae5c0d712f7161d198e32245ea99f1a579094d57a434449eb55ca",
+      "license": "MIT"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacLock/Glass.qml",
+      "sha256": "ab3df4cb73b2acea141abef259309c59b45c529bc3b2749961c8eb869373671a",
+      "license": "MIT"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacLock/LockScreen.qml",
+      "sha256": "b7eedef45418996cb36ffe8b58261ca19aa98e1d6b3e6236ca5e1f2791ccb006",
+      "license": "MIT"
+    }
+  ],
+  "runtimeTargets": [
+    "ipad/vendor/macshell/shell7.js",
+    "ipad/vendor/glass/geometry.js",
+    "ipad/dock-material.js",
+    "ipad/maclock.js",
+    "ipad/liquid-maclock.css"
+  ],
+  "nativeDependenciesNotPorted": [
+    "Quickshell per-window captures",
+    "PAM authentication",
+    "MPRIS native system player",
+    "native compositor scene texture"
+  ],
+  "independentAdaptations": [
+    "Touch hold/scrub/cancel and existing Dock actions",
+    "responsive MacLock layout and real notices",
+    "last-played metadata reducer and optional Spotify PKCE"
+  ],
+  "notch": "All four implementation files byte-identical to732bb798bfe2bc9ed614610eaeee5d60296ad3e6"
+}

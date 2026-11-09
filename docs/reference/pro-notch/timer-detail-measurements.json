@@ -1,0 +1,38 @@
+{
+  "sourceSHA256": "9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74",
+  "sourceFrame": 208,
+  "timeText": "13:11",
+  "method": "RGB orange mask R>110,R>1.2G,G>1.8B; crop restricted x>=280,y>=110; end-exclusive bounding box. One filmed pixel equals one CSS pixel in this comparison. Native point/DPR unknown.",
+  "reference": [
+    330,
+    122,
+    412,
+    150
+  ],
+  "firstPWA": [
+    354,
+    125,
+    415,
+    147
+  ],
+  "correctedPWA": [
+    332,
+    122,
+    413,
+    151
+  ],
+  "referenceColoredButton": [
+    21,
+    112,
+    93,
+    148
+  ],
+  "firstPWAColoredButton": [
+    20,
+    120,
+    87,
+    152
+  ],
+  "controls": "36px high,72px toggle,38px close,50px +1,7px gaps; timer font40px. Mobile font34px.",
+  "uncertainty": "filmed colors/thresholds/perspective \u00b13px; not native font recovery"
+}

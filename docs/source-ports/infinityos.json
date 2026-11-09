@@ -1,0 +1,177 @@
+{
+  "isoAssociation": "unresolved: both Drive URLs blocked HTTP 403; no local ISO",
+  "ports": [
+    {
+      "project": "Infinity-Systems-UA/InfinityOS",
+      "commit": "a6584135cbcad837d57484211119451bbb2d8fb2",
+      "path": "script.js",
+      "lines": [
+        3275,
+        3284
+      ],
+      "function": "getExt",
+      "license": "AGPL-3.0",
+      "sourceFileSHA256": "51b84535b8d8bc988969b11c3cf4440daf939e452cbe591940052f0909ea1f61",
+      "excerptSHA256": "81dcd51ef47d17efdfb69e421c0d3f27f7ef92e266a0b0ed20c999731996f31b",
+      "target": "ipad/core/infinity-web.js",
+      "adaptation": "wrapper limits and File feature guard; otherwise original function"
+    },
+    {
+      "project": "Infinity-Systems-UA/InfinityOS",
+      "commit": "a6584135cbcad837d57484211119451bbb2d8fb2",
+      "path": "script.js",
+      "lines": [
+        6891,
+        6899
+      ],
+      "function": "getColLabel",
+      "license": "AGPL-3.0",
+      "sourceFileSHA256": "51b84535b8d8bc988969b11c3cf4440daf939e452cbe591940052f0909ea1f61",
+      "excerptSHA256": "1c107aa76f44f20416ccd0768350e9021ba5f471ba58faacbd52353e5d00bce9",
+      "target": "ipad/core/infinity-web.js",
+      "adaptation": "wrapper limits and File feature guard; otherwise original function"
+    },
+    {
+      "project": "Infinity-Systems-UA/InfinityOS",
+      "commit": "a6584135cbcad837d57484211119451bbb2d8fb2",
+      "path": "script.js",
+      "lines": [
+        6901,
+        6918
+      ],
+      "function": "parseCsv",
+      "license": "AGPL-3.0",
+      "sourceFileSHA256": "51b84535b8d8bc988969b11c3cf4440daf939e452cbe591940052f0909ea1f61",
+      "excerptSHA256": "00eea298bb59cfdb2c707395abd26f0d06e155ad2b36c501c5db631c6e850c40",
+      "target": "ipad/core/infinity-web.js",
+      "adaptation": "wrapper limits and File feature guard; otherwise original function"
+    },
+    {
+      "project": "Infinity-Systems-UA/InfinityOS",
+      "commit": "a6584135cbcad837d57484211119451bbb2d8fb2",
+      "path": "script.js",
+      "lines": [
+        8381,
+        8387
+      ],
+      "function": "formatBytes",
+      "license": "AGPL-3.0",
+      "sourceFileSHA256": "51b84535b8d8bc988969b11c3cf4440daf939e452cbe591940052f0909ea1f61",
+      "excerptSHA256": "a920c7341526faf5a61d142c58335590df72a4f6ffc8dc386fb81098f7dd7332",
+      "target": "ipad/core/infinity-web.js",
+      "adaptation": "wrapper limits and File feature guard; otherwise original function"
+    },
+    {
+      "project": "Infinity-Systems-UA/InfinityOS",
+      "commit": "a6584135cbcad837d57484211119451bbb2d8fb2",
+      "path": "script.js",
+      "lines": [
+        9126,
+        9139
+      ],
+      "function": "getObjectSize",
+      "license": "AGPL-3.0",
+      "sourceFileSHA256": "51b84535b8d8bc988969b11c3cf4440daf939e452cbe591940052f0909ea1f61",
+      "excerptSHA256": "6b7e512e68bbc4405816f1ca2856df66c1c8a309825bcc513426804091616154",
+      "target": "ipad/core/infinity-web.js",
+      "adaptation": "wrapper limits and File feature guard; otherwise original function"
+    },
+    {
+      "project": "InfinityOS-linux/infinityos",
+      "commit": "fbcdaff53bdc6e9d76836e9fb70f6a19a403fdb3",
+      "path": "root/usr/share/gnome-shell/extensions/dash2dock-animated@infinityos.org/utils.js",
+      "lines": [
+        56,
+        60
+      ],
+      "function": "get_distance_sqr",
+      "license": "GPL-3.0",
+      "sourceFileSHA256": "925fac9ade38ccfb3ba720fde5fa8bdb5c5ddf206272988620ca30d6c72b9f77",
+      "excerptSHA256": "5f59bea7c9d6ef15f09ffb9b2f69848b36a179a342524ce3f0b1d01b5ec4ada4",
+      "target": "ipad/core/infinity-dock.js",
+      "adaptation": "ES export wrapper only, no GI/Gio/GLib or commands",
+      "runtime": "desktop.js touch hold movement cancellation"
+    },
+    {
+      "project": "InfinityOS-linux/infinityos",
+      "commit": "fbcdaff53bdc6e9d76836e9fb70f6a19a403fdb3",
+      "path": "root/usr/share/gnome-shell/extensions/dash2dock-animated@infinityos.org/utils.js",
+      "lines": [
+        62,
+        64
+      ],
+      "function": "get_distance",
+      "license": "GPL-3.0",
+      "sourceFileSHA256": "925fac9ade38ccfb3ba720fde5fa8bdb5c5ddf206272988620ca30d6c72b9f77",
+      "excerptSHA256": "2bd019b8f7b41957a18d400315a98e6b309fbab9fea984efbadb3e7577a890c1",
+      "target": "ipad/core/infinity-dock.js",
+      "adaptation": "ES export wrapper only, no GI/Gio/GLib or commands",
+      "runtime": "model tested only, not claimed as extra live feature"
+    },
+    {
+      "project": "InfinityOS-linux/infinityos",
+      "commit": "fbcdaff53bdc6e9d76836e9fb70f6a19a403fdb3",
+      "path": "root/usr/share/gnome-shell/extensions/dash2dock-animated@infinityos.org/utils.js",
+      "lines": [
+        66,
+        80
+      ],
+      "function": "isOverlapRect",
+      "license": "GPL-3.0",
+      "sourceFileSHA256": "925fac9ade38ccfb3ba720fde5fa8bdb5c5ddf206272988620ca30d6c72b9f77",
+      "excerptSHA256": "2f4b4107dab91fd31d753bf0ba8c96d108d4be64dda78674fd410555daba3072",
+      "target": "ipad/core/infinity-dock.js",
+      "adaptation": "ES export wrapper only, no GI/Gio/GLib or commands",
+      "runtime": "dock-material.js optional intellihide on actual own window DOMRects"
+    },
+    {
+      "project": "InfinityOS-linux/infinityos",
+      "commit": "fbcdaff53bdc6e9d76836e9fb70f6a19a403fdb3",
+      "path": "root/usr/share/gnome-shell/extensions/dash2dock-animated@infinityos.org/utils.js",
+      "lines": [
+        82,
+        88
+      ],
+      "function": "isInRect",
+      "license": "GPL-3.0",
+      "sourceFileSHA256": "925fac9ade38ccfb3ba720fde5fa8bdb5c5ddf206272988620ca30d6c72b9f77",
+      "excerptSHA256": "98d9e622ba9efc8e76d86c93e03a0f95797b52a3d6e3e579397ca5dc0c87bf59",
+      "target": "ipad/core/infinity-dock.js",
+      "adaptation": "ES export wrapper only, no GI/Gio/GLib or commands",
+      "runtime": "model tested only, not claimed as extra live feature"
+    },
+    {
+      "project": "Infinity-Systems-UA/InfinityOS",
+      "commit": "a6584135cbcad837d57484211119451bbb2d8fb2",
+      "path": "adapt.js",
+      "lines": [
+        1785,
+        1934
+      ],
+      "function": "OSNotification lifecycle",
+      "license": "AGPL-3.0",
+      "sourceFileSHA256": "75e5e2c06f193524f577b857c5e82e1bb937cae63aa668e7b26d369c1a42919e",
+      "target": "ipad/core/infinity-notification.js",
+      "adaptation": "one existing host; original idempotent close/timeout/click lifecycle; no native global class, no permissions bypass/sounds/parent document injection",
+      "runtime": "app.js presentNotice and desktop.js history/banner events"
+    },
+    {
+      "project": "MacShell via existing Air-OS R7 port",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacDock.qml / Spring.qml",
+      "license": "MIT",
+      "airOsSourceCommit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+      "airOsSourcePath": "src/core/macshell-shell7.js",
+      "target": "ipad/vendor/macshell/shell7.js",
+      "sourceFileSHA256": "493275153232357fdf9400d1bbeb34a49b1d92e47c69d4e8e00ee4b3e3e0c644",
+      "runtime": "dock-material.js uses dock coupled geometry and step integrator; no idle loop; scroll adapts capacity"
+    }
+  ],
+  "excluded": [
+    "WinBox replacement",
+    "eval/node/app autoload",
+    "OSNotification permission bypass for localhost",
+    "GNOME commands and GI bindings",
+    "Penner easing without separate upstream provenance"
+  ]
+}

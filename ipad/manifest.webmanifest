@@ -1,0 +1,21 @@
+{
+  "name": "Air-OS Ultimate",
+  "short_name": "Air-OS",
+  "description": "Offlinefähige private Air-OS-Oberfläche für iPad",
+  "lang": "de",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#111827",
+  "theme_color": "#111827",
+  "icons": [
+    {
+      "src": "./air-os-official.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "id": "./"
+}

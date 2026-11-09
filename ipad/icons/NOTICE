@@ -1,0 +1,7 @@
+MacTahoe Icon Theme — Vince Liuice. Sources/customizer: see AUTHORS.
+Original SVG source files unmodified, separately distributed under GPL-3.0; see COPYING.
+Not reclassified as MIT assets. Source paths, hashes and fixed commit: ../provenance.json.
+No Apple-logo, Finder-face, Safari-compass, Spotify or other vendor-brand SVGs imported. Generic functional symbols selected.
+The theme license does not grant trademark rights. No upstream endorsement claimed.
+
+Tahoe7 adds40 generic original SVGs (54 unique originals total). Browser exports of7 symbolic SVGs add only the required SVG XML namespace. Originals remain unmodified in source/; GPL-3.0 also applies to browser/ exports. Reproduce via scripts/export-tahoe-symbolic.cjs.

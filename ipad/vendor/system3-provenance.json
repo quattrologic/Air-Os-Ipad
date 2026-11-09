@@ -1,0 +1,84 @@
+{
+  "sources": [
+    {
+      "project": "InfinityOS",
+      "commit": "a6584135cbcad837d57484211119451bbb2d8fb2",
+      "paths": [
+        "script.js::openMenu",
+        "styles.css::winOpen"
+      ],
+      "license": "AGPL-3.0",
+      "target": [
+        "ipad/vendor/infinityos/launcher-model.js",
+        "ipad/core/visual-motion.js"
+      ],
+      "kind": "adapted registry algorithm and motion curve; category-card UI and FLIP lifecycle are Air-OS integration"
+    },
+    {
+      "project": "MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "paths": [
+        "MacShell/SPopUp.qml",
+        "MacShell/GlassSlab.qml",
+        "MacShell/WidgetVisual.qml"
+      ],
+      "license": "MIT",
+      "target": [
+        "ipad/core/visual-motion.js",
+        "ipad/system3.css",
+        "ipad/desktop.js"
+      ],
+      "kind": "adapted motion timings and composition; existing shader/dial/Dock ports retained"
+    },
+    {
+      "project": "MacTahoe GTK",
+      "commit": "1e45e19f510edb8cde18fa84d6cd5319f60b086b",
+      "paths": [
+        "src/sass/gtk/_common-4.0.scss",
+        "src/sass/_colors.scss"
+      ],
+      "sourceSHA256": "731c72dac198c910885ddd0e212a07faf78efd9ed4dae485f597b2062635761a",
+      "license": "MIT",
+      "copyright": "Copyright (c) 2021 WhiteSur Developers",
+      "target": [
+        "ipad/system3.css",
+        "ipad/apps.js"
+      ],
+      "kind": "adapted 6px sidebar shadow/neutral palette/flat toolbar hierarchy; browser DOM composition is Air-OS"
+    },
+    {
+      "project": "KDE plasma-workspace-wallpapers",
+      "commit": "0643e9404da07d204014549d9f734424fdf961ed",
+      "paths": [
+        "EveningGlow/contents/images/2560x1600.jpg"
+      ],
+      "license": "LGPLv3",
+      "copyright": "Ian Hex",
+      "target": [
+        "ipad/assets/lake-evening.jpg"
+      ],
+      "targetSHA256": "586682dcb362b9f620068f10138f87d0d3649939aef238adc5807cb951976a7a",
+      "kind": "unmodified photograph and original metadata"
+    }
+  ],
+  "notNewPorts": [
+    "Existing Ultra GLASS-3 WebGL2 renderer and CSS fallback",
+    "Existing MacShell dial/Spring/Dock coupling",
+    "Existing curated MacTahoe icons and local Open Runde fonts"
+  ],
+  "runtimeLimits": [
+    "Wallpaper-only source; no foreign window capture",
+    "No Qt, GTK, GNOME or Electron runtime in PWA",
+    "No native iPadOS launcher/system gesture control"
+  ],
+  "userReferences": {
+    "availableInConversation": [
+      "Category launcher",
+      "MacShell lock",
+      "MacShell desktop"
+    ],
+    "unavailable": [
+      "Separate File Received reference A"
+    ]
+  }
+}

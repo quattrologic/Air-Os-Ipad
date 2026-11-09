@@ -1,0 +1,33 @@
+{
+  "firstPartyDesktopBase": "7de1635c0207b8604c5409ef62c466585b4d5f04",
+  "files": [
+    {
+      "source": "airwrite.js",
+      "sha256": "0fb0eb4129132e006ed5b0e19d5e77d725dd4a4dfeb25369585b6e48ff830e47",
+      "target": "ipad/vendor/airwrite.js"
+    },
+    {
+      "source": "airwrite.css",
+      "sha256": "5160e7794af28be3861adc1a086288ff5e9a192558e980cff1490716f27e3fcc",
+      "target": "ipad/vendor/airwrite.css"
+    },
+    {
+      "source": "air-arcade-games.js",
+      "sha256": "631e7aa164e9df23a3e679bc012e56d668256f3da533421f7439e2e35c5682d4",
+      "target": "ipad/vendor/air-arcade-games.js"
+    },
+    {
+      "source": "air-arcade-games.css",
+      "sha256": "0ee9398c08f767899bccf688d302d6328e353e3423ba469af8c76d9fff5f2c4e",
+      "target": "ipad/vendor/air-arcade-games.css"
+    }
+  ],
+  "musicMetadataSource": {
+    "commit": "02ccaf88724731cf685d2221f88e959020aff3f0",
+    "path": "src/core/music-metadata.js",
+    "target": "ipad/core/music-metadata.js",
+    "sha256": "b4e8d5e588a5c766fc1d22eabf1621b809a895a41b5897ed2e1b52505e53164b",
+    "adaptation": "unchanged browser-only parser"
+  },
+  "adaptations": "Source hashes describe original desktop files; vendor JS targets adapt pointer cancellation, bounded canvases and visibility-dependent timer cleanup."
+}

@@ -1,0 +1,44 @@
+{
+  "principlesOnly": true,
+  "references": [
+    {
+      "repository": "https://github.com/GrapheneOS/Vanadium",
+      "commit": "99a6c8285bf88edf55d7614e8ceb247350620d52",
+      "license": "GPL-2.0-only for patches, exceptions in LICENSE; no code copied",
+      "reviewedFilesSha256": {
+        "LICENSE": "24273c8b0441bd7a9635ddd92bf4578d4d2fcea03d490d16615a41fcde42992e",
+        "README.md": "0c390c97966bfa35661303f32172cbf54f745ddff0afca581cdaaec9e8986c26",
+        "patches/0078-disable-network-prediction-by-default.patch": "de2f0fa42a249955f817eeeb1cae7285e1ef36162c40553406366bd3604ca18d",
+        "patches/0133-enable-strict-site-isolation-by-default-on-Android.patch": "4036221b0f1d07c74386855e385ef785c60b9eb4251febe2a1f0270b85318de9",
+        "patches/0134-Enable-strict-origin-isolation-by-default.patch": "77bdbc9e05688fe08e057993f929278dc2a45951d05a31deb712901119edd979",
+        "patches/0175-make-cross-origin-referrer-behavior-configurable.patch": "46ad59d9de498f584c10f13ef1be586042bba7b11e23df69d9c91d03150f5048",
+        "patches/0252-Enable-origin-keyed-process-isolation-by-default.patch": "2421724ee1fe0a8b739b9b78f4b36a84854449c9f3f6601eab2fb483abeababf"
+      },
+      "copiedCode": false
+    },
+    {
+      "repository": "https://github.com/GrapheneOS/Auditor",
+      "commit": "cfcd2450ae6fb1ef601ac531e3c7c2e4326dc7f8",
+      "license": "MIT; no code copied",
+      "reviewedFilesSha256": {
+        "LICENSE": "256beb553a8e1125dd2b399d18562a7598d01045b48f67d78c776fb5d3bc60f1",
+        "README.md": "dc477116c14ea233ef51eb257508fe7a8ff99bc1992da363fd225e38d92e7b90",
+        "app/src/main/java/app/attestation/auditor/AttestationProtocol.java": "f9d2530123cb17c133724ebb18832b5accaf694fee3418852cf7014948994903",
+        "app/src/main/java/app/attestation/auditor/RemoteVerifyJob.java": "b75fea6d91c32943348865c9f54b48193b83b294ae23be9787bfd90b413ede81",
+        "app/src/main/res/xml/network_security_config.xml": "4b198137a752fe7f33ef796067a1f8136e8ef571d24ea9e3eedc85e26ab8a7df"
+      },
+      "copiedCode": false
+    },
+    {
+      "repository": "https://github.com/GrapheneOS/grapheneos.org",
+      "commit": "aa9a49f4d93393d7d4582d5cf675bdf80559a23d",
+      "license": "MIT; no code copied",
+      "reviewedFilesSha256": {
+        "LICENSE": "ebf5d207579bf927cb4100e9377bfae81d1bc3d352693e31fc2618bd3d7b4cd2",
+        "static/features.html": "9d5558d5379bd94b7569f4a3cba64983f66a884d48728d709ecd50c78d579bd2"
+      },
+      "copiedCode": false
+    }
+  ],
+  "websiteAccess": "grapheneos.org/features blocked by environment proxy HTTP 403; official pinned website source reviewed instead"
+}

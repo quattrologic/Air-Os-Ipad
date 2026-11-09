@@ -1,0 +1,161 @@
+/* Premium 4. MacTahoe GTK light sidebar/headerbar construction; MacShell CCTile
+   independent 34px slabs; ester category composition. See vendor/premium4-provenance.json.
+   Presentation only: the original windows, stores, media and update owners remain. */
+:root{--app-sidebar:#eeedef;--app-border:#22222216;--chrome-sidebar:180px;--p4-secondary:#75747b;--p4-accent:#2878dc;--system-wallpaper:url('./assets/yosemite-morning.png');--wallpaper-ratio:1.7768331562}
+.p4-photo-credit{position:fixed;right:12px;bottom:102px;z-index:10;font-size:9px;color:#fff9;text-decoration:none;text-shadow:0 1px 3px #000;background:#15202b30;padding:3px 7px;border-radius:8px}.s3-launcher-open .p4-photo-credit{visibility:hidden}
+.pad-window{border-radius:14px;border-color:#ffffffb0;box-shadow:0 22px 65px #08121f55,0 0 0 1px #0002}
+.pad-titlebar{color:#55545b;background:#f3f2f4;border-bottom:1px solid #00000012;box-shadow:none;height:48px;flex-basis:48px}
+.pad-titlebar strong{font-size:12px;font-weight:600}.pad-title-icon{opacity:.9}
+.pad-window-content.s3-app{--chrome-sidebar:180px;letter-spacing:-.015em}
+.s3-app .s3-app-sidebar,.s3-app .pad-split>aside,.p4-notes-rail{background:linear-gradient(to left,#00000005,transparent 6px),var(--app-sidebar);color:#48474f;padding:24px 12px;align-self:stretch}
+.s3-app .s3-app-sidebar h3,.s3-app .pad-split>aside h3,.p4-notes-rail h3{color:#8a8991;font-size:10px;letter-spacing:.01em;margin:0 10px 10px}
+.s3-app .s3-app-sidebar button{color:#53525a;font-size:13px;gap:10px;border-radius:7px}
+.s3-app .s3-app-sidebar button:hover{background:#00000006;color:#292830}
+.s3-app .s3-app-sidebar button.selected{background:#d9d7dc;color:#292830}
+.s3-app-sidebar .pad-glyph,.p4-notes-rail .pad-glyph{width:18px;height:18px;color:#73717c;flex-shrink:0}
+.s3-app .pad-toolbar{background:#fbfafb;padding:8px 14px;gap:4px;min-height:54px}
+.s3-app .pad-toolbar input:not([type=range]),.s3-app .pad-split>aside input:not([type=checkbox]){background:#e9e8ec;border:0;min-height:34px;border-radius:8px;box-shadow:none;font-size:13px;color:#48474f}
+.s3-app .pad-toolbar input::placeholder,.s3-app .pad-split>aside input::placeholder{color:#8b8993}
+.s3-app .pad-toolbar select,.s3-app .pad-split>aside select{font-size:12px;min-height:32px;background:transparent;border:0;color:#77747f;padding:5px}
+/* WebKit's platform select bezel otherwise survives the flat GTK-style toolbar.
+   Keep the native accessible select and picker; paint only its resting affordance. */
+.s3-app .pad-toolbar select,.s3-app .pad-split>aside select,.s3-settings-main select,.s3-launcher-tools select{appearance:none;-webkit-appearance:none;box-shadow:none;border:0;padding-right:23px;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 12px) 52%,calc(100% - 8px) 52%;background-size:4px 4px;background-repeat:no-repeat}
+.s3-app .pad-toolbar button{color:#686570;font-size:12px;border-radius:7px;min-width:38px}
+.s3-app .pad-toolbar button img{opacity:.75}
+.pad-window-content.s3-files,.pad-window-content.s3-music,.pad-window-content.s3-settings,.pad-window-content.s3-calendar{align-content:stretch;padding-bottom:0;min-height:0}
+.s3-file-main{display:flex;flex-direction:column;min-height:100%}
+.s3-file-main>.pad-toolbar:first-child{flex-wrap:wrap;gap:3px;position:static;padding:9px 14px}
+.s3-file-main .pad-breadcrumb{min-height:22px;flex-basis:100%;order:-1;margin:0 0 3px}
+.s3-file-main .pad-breadcrumb button{font-size:15px;color:#34323b}
+.s3-file-main .pad-toolbar input{max-width:230px;flex:1 1 110px}
+.s3-file-main .p4-file-view{padding:0;margin-left:auto;min-height:36px;border:0;background:transparent;flex-wrap:nowrap}
+.s3-file-main .p4-file-view select{max-width:80px;font-size:11px}
+.s3-file-main .p4-file-view button{min-width:32px;font-size:0}
+.p4-file-columns{display:flex;justify-content:space-between;padding:8px 22px;color:#8c8991;font-size:10px;background:#f6f5f7;border-bottom:1px solid #0001}
+.s3-file-main>*{flex-shrink:0}.s3-file-main .pad-file-list{padding:8px 12px;flex:1 0 auto;min-height:130px}
+.s3-file-main .pad-file-row{min-height:48px;border-radius:7px;padding:3px 8px}
+.s3-file-main .pad-file-row>button:first-of-type{font-size:13px;color:#45434d}
+.s3-file-main .pad-file-row>img{width:28px;height:28px;flex-basis:28px;margin-right:9px}
+.s3-file-main .pad-file-row>small{width:72px;font-size:11px}
+.s3-file-main>p{border-top:1px solid #0001;padding:9px 16px;margin:0;background:#f8f7f9;font-size:10px}
+.p4-file-selection{flex:1 0 100%;display:flex;align-items:center;padding:3px 0;border-top:1px solid #00000008}.p4-file-selection button{font-size:11px!important;color:#4775ac!important}
+/* Three real Notes panes. The title and body are still editable inputs. */
+.s3-app:has(>.pad-split){padding:0;min-height:0}
+.s3-app .pad-split{display:grid;grid-template-columns:145px 205px minmax(0,1fr);min-height:100%;gap:0;align-items:stretch}
+.p4-notes-rail{padding:25px 10px;border-right:1px solid #00000009}
+.p4-notes-rail button{display:flex;align-items:center;gap:8px;width:100%;border:0;padding:9px 8px;min-height:44px;font-size:12px;border-radius:7px;color:#6a5836;background:#e5d6ae}
+.p4-notes-rail .pad-glyph{color:#a28132;width:16px;height:16px}
+.s3-app .pad-split>aside{padding:14px 10px;background:#f7f6f8;border-right:1px solid #00000010}
+.p4-notes-heading{padding:8px 5px 18px;font-size:16px;color:#4c4854}
+.s3-app .pad-list{gap:5px;margin-top:10px}
+.s3-app .pad-list button{color:#49454f;padding:13px 11px;border-radius:8px;background:transparent;min-height:80px;gap:6px}
+.s3-app .pad-list button.selected{background:#e9e4d6;color:#39332a}
+.s3-app .pad-list strong{font-size:12px;line-height:1.4}
+.s3-app .pad-list small{color:#8d8790;font-size:10px;line-height:1.6}
+.s3-app .pad-editor{display:flex;flex-direction:column;background:#fffefa;padding:0 27px 16px;min-width:0;gap:12px}
+.s3-app .pad-editor>.pad-toolbar{order:0;margin:0 -27px;padding:6px 12px;background:#fffefa;border-bottom:1px solid #0000000a;min-height:52px;flex-shrink:0}
+.s3-app .pad-editor>input[aria-label=Titel]{font-size:24px;color:#36323a;margin:12px 0 0;line-height:1.3;letter-spacing:-.035em}
+.s3-app .pad-text-editor{resize:none;border:0;box-shadow:none;padding:0;background:transparent;flex:1;min-height:210px;font-size:14px;line-height:1.9;color:#514b56}
+.s3-app .pad-editor>[role=status]{border-top:0;font-size:10px;color:#aaa1a8;margin:0}
+/* The library owns the scene; imports are secondary, the actual player stays intact. */
+.s3-music-main{padding:0 0 16px;min-height:100%;background:#fff}
+.p4-library-heading{display:flex;align-items:center;flex-wrap:wrap;gap:5px 12px;padding:22px 25px 18px}
+.p4-library-heading>small{flex:1 0 100%;font-size:9px;letter-spacing:.1em;color:#96919a}
+.p4-library-heading h1{font-size:27px;letter-spacing:-.045em;margin:0;color:#37333e}
+.p4-library-heading .file-actions{margin:0 0 0 auto;display:flex;gap:6px;padding:0}
+.p4-library-heading .file-actions label{font-size:10px;background:#f4f1f5;border:0;border-radius:7px;padding:7px 9px;min-height:34px;color:#827585;display:flex;align-items:center;cursor:pointer}
+.s3-music-now{margin:0 22px 16px;padding:20px;grid-template-columns:140px minmax(0,1fr);min-height:180px;gap:8px 20px;border:1px solid #00000006;border-radius:13px;background:#f5f2f5}
+.s3-music-now .medium-art{width:140px;height:140px;grid-row:1/4;border-radius:9px;box-shadow:0 8px 19px #31203823}
+.s3-music-now .music-now strong{font-size:23px;color:#3a333f;letter-spacing:-.035em}
+.s3-music-now .music-now small{font-size:11px;color:#9a8d9a;margin-top:7px}
+.s3-music-now>.transport{justify-content:center;gap:18px}
+.s3-music-main>.pad-toolbar{margin:0 22px;padding:7px 0;border-bottom:1px solid #0001;background:transparent}
+.s3-music-main>.s3-import-hint{margin:0 25px;padding:0;color:#aaa;font-size:9px}
+.s3-music-main>h3{font-size:17px;margin:18px 25px 10px}
+.s3-music-main>.song-list{padding:0 22px 12px}
+.s3-music-main .song-row{padding:4px 7px}.s3-music-main .song-row.selected{background:#f1e9ef}
+.s3-music-main .s3-music-sliders{border:0;margin-top:10px;padding-top:12px}
+.p4-library-heading>.file-actions label.outline{background:#f2eef4;border:0;box-shadow:none;font-size:10px;border-radius:7px;min-height:34px;padding:7px 10px;flex:0 1 auto;white-space:nowrap}
+.p4-library-heading{padding-top:18px;padding-bottom:14px}.s3-music-now{min-height:158px;padding:15px 18px;grid-template-columns:124px minmax(0,1fr)}.s3-music-now .medium-art{width:124px;height:124px}
+.s3-music-main>.s3-music-sliders{margin-top:0;padding-top:5px;padding-bottom:5px}.s3-music-main>h3{margin-top:12px}
+/* Month cells and an inspector, using real stored events. */
+.pad-window-content.s3-calendar{grid-template-columns:minmax(0,1fr) 220px}
+.s3-calendar-main{padding:15px 18px;display:flex;flex-direction:column}
+.s3-calendar-main>.pad-toolbar{padding:3px 0;border:0;background:transparent;min-height:40px}
+.s3-calendar-main .pad-month{order:1;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0;padding:0;margin:0;flex:1;align-content:start}
+.s3-calendar-main .pad-month h3{font-size:26px;color:#e85850;margin:16px 0 20px;grid-column:1/-1}
+.s3-calendar-main .pad-month>strong{text-align:right;padding:7px 9px;color:#999;font-size:10px}
+.s3-calendar-main .pad-month>.p4-calendar-day{border-top:1px solid #e9e7eb;border-radius:0;min-height:68px;padding:7px 4px;display:flex;flex-direction:column;align-items:stretch;justify-content:start;gap:4px;min-width:0}
+.p4-day-number{font-size:13px;align-self:end;min-width:24px;height:24px;display:grid;place-items:center}
+.p4-today .p4-day-number{color:#fff;background:#ee605b;border-radius:50%}
+.p4-day-event{font-size:8px;padding:3px;background:#e9edf9;border-left:2px solid #7888cc;border-radius:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left}
+.s3-calendar-main .pad-month>.p4-calendar-day{min-height:53px}.s3-calendar-agenda .event-row{display:flex;flex-wrap:wrap;gap:6px;font-size:11px}.s3-calendar-agenda .event-row>div{flex:1 0 100%;order:-1}.s3-calendar-agenda .event-row button{border:0;background:#e9e6ed;border-radius:6px;font-size:10px}
+.s3-calendar-agenda{padding:23px 16px;background:#f6f5f7;border-color:#0000000d}
+.s3-calendar-agenda>h3{font-size:16px;color:#48434e}.s3-calendar-agenda .event-form{gap:13px}
+.s3-calendar-agenda .event-form input{border:0;border-bottom:1px solid #ddd7df;border-radius:0;background:transparent!important;font-size:13px;padding:6px 0;min-height:34px}
+.s3-calendar-agenda .event-form label{color:#a19ba5;font-size:10px}
+.s3-calendar-agenda .event-form button{border:0;background:#e6e3e9;color:#655b71;font-size:12px;border-radius:7px;min-height:38px}
+/* Grouped settings, each row contains its actual associated control. */
+.s3-settings-main{padding:26px 30px;gap:22px;background:#f5f4f6}
+.p4-settings-heading h1{font-size:26px;letter-spacing:-.045em;margin:0 0 5px;color:#3f3849}.p4-settings-heading p{font-size:11px;color:#a29aa8;margin:0}
+.s3-settings-main>section,.s3-settings-main>details{border:1px solid #0000000c;border-radius:11px;padding:0 16px 6px;gap:0;flex-shrink:0}
+.s3-settings-main h2{font-size:14px;margin:0;padding:16px 0 12px;color:#5a5065}
+.s3-settings-main label{padding:8px 0;min-height:48px;border-top:1px solid #f1eef4;font-size:12px;color:#6a6174}
+.s3-settings-main select{width:auto;max-width:52%;background:#f2eff5;border:0;padding:6px 8px;font-size:12px}
+.s3-settings-main input[type=checkbox]{appearance:none;-webkit-appearance:none;width:30px;height:18px;min-height:18px;border-radius:12px;background:#cbc7d0;position:relative;cursor:pointer}
+.s3-settings-main input[type=checkbox]:before{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;background:white;border-radius:50%;box-shadow:0 1px 3px #0002}
+.s3-settings-main input[type=checkbox]:checked{background:#588ad2}.s3-settings-main input[type=checkbox]:checked:before{left:14px}
+.s3-settings-main>section>button{display:flex;align-items:center;gap:10px;background:transparent;border:0;border-top:1px solid #f1eef4;border-radius:0;padding:10px 0;color:#70637c;font-size:12px;min-height:46px}
+.s3-settings-main>section>button .pad-glyph{width:16px;height:16px;color:#a295ac}.p4-chevron{margin-left:auto;color:#b7aebe}
+.s3-settings-main>details{padding:15px 16px}.s3-settings-main .settings-row{padding:10px 0;font-size:11px;color:#887f91}
+/* MacShell CCTile: independent, pill-shaped slabs, clear outside space. */
+.pad-popover.s3-control-center,.pad-retiring-popover.s3-control-center{width:min(334px,calc(100vw - 24px));display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0;background:transparent!important;border:0;box-shadow:none;overflow:visible;isolation:isolate}
+.s3-control-center:before,.s3-control-center:after{display:none!important}
+.s3-control-center>header{grid-column:1/-1;margin:0;padding:0 8px;min-height:28px;font-size:11px;text-shadow:0 1px 3px #0008}
+.s3-control-center>header h2{font-size:12px}.s3-control-center>header button{font-size:10px;background:#25272a55;border:1px solid #fff2;border-radius:20px;padding:5px 10px}
+.s3-control-connect{grid-column:1;grid-row:2;display:flex;flex-direction:column;gap:10px;margin:0}
+.s3-connectivity,.s3-control-connect>button,.s3-control-center .pad-control-player,.s3-control-center .pad-control-volume,.s3-control-center .pad-control-tile{background:linear-gradient(130deg,#ffffff23,#080d133b),#252b3759;border:1px solid #ffffff54;box-shadow:inset 0 1px 1px #ffffff35,0 4px 14px #0002;backdrop-filter:blur(12px) saturate(1.25);-webkit-backdrop-filter:blur(12px) saturate(1.25);border-radius:32px}
+.s3-connectivity,.s3-control-connect>button{padding:12px 10px;min-height:66px;gap:2px 7px;grid-template-columns:34px minmax(0,1fr);font-size:12px}
+.s3-connectivity strong{font-size:11px}.s3-connectivity>span:last-child{font-size:9px;color:#ddd}.s3-connectivity>span:first-child{width:34px;height:34px;background:#f4faff;color:#3b9bff}
+.s3-control-connect>button>span{padding:8px;border-radius:50%;background:#fff2}
+.s3-control-center .pad-control-player{grid-column:2;grid-row:2;display:flex;flex-direction:column;gap:8px;padding:13px 10px;margin:0;min-width:0}
+.s3-control-center .pad-control-art{width:40px;height:40px;border-radius:10px;align-self:flex-start}
+.s3-control-center .pad-control-player p{margin:0;gap:3px;width:100%;min-width:0}.s3-control-center .pad-control-player strong{font-size:10px}.s3-control-center .pad-control-player small{font-size:8px}
+.s3-control-center .pad-control-transport{gap:0;width:100%;justify-content:space-between}.s3-control-center .pad-control-transport button{min-width:36px;min-height:36px;padding:8px}.s3-control-center .pad-control-transport img{width:16px;height:16px}
+.s3-control-center .pad-control-player progress{width:100%;height:2px;display:none}
+.s3-control-center .pad-control-volume{grid-column:1/-1;padding:12px 18px 4px;margin:0;font-size:10px;min-height:70px;display:flex;flex-direction:column;gap:2px}
+.s3-control-center .pad-control-volume input{appearance:none;-webkit-appearance:none;background:transparent;min-height:34px;width:100%}
+.pad-control-volume input::-webkit-slider-runnable-track{height:4px;border-radius:3px;background:#ffffff54}.pad-control-volume input::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;border-radius:50%;background:#fff;margin-top:-4px}
+.s3-control-center .pad-control-grid{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0}
+.s3-control-center .pad-control-tile{min-height:58px;border-radius:29px;font-size:10px;gap:8px;padding:10px}
+.s3-control-center .pad-control-tools{grid-column:1/-1;display:flex;justify-content:center;gap:5px;margin:0}.s3-control-center .pad-control-tools button{font-size:9px;background:#171b2355;border-radius:18px;border:1px solid #ffffff33;padding:6px 9px;min-height:34px}
+/* Island and MacLock share the calm art/metadata/transport hierarchy. */
+.notch-pill{background:#171d268f;border-color:#ffffff30;box-shadow:inset 0 -1px #ffffff17,0 5px 18px #0003}
+.notch-panel{background:#171d26c9;border:1px solid #ffffff32;border-top:0;padding:18px 20px 16px;gap:15px;box-shadow:0 18px 45px #0004}
+.notch-panel .tiny-art{width:68px;height:68px;border-radius:13px}.notch-panel .song-inline{grid-template-columns:68px minmax(0,1fr);align-items:center}.notch-panel .song-inline strong{font-size:15px}.notch-panel .song-inline small{font-size:10px;display:block;margin-top:5px}
+.notch-timer{border:0;border-top:1px solid #ffffff17;border-radius:0;background:transparent;padding:12px 0 0}.notch-timer span{font-size:18px}
+.lock-clock{top:8%}.lock-clock time{font-weight:400;font-size:clamp(64px,9vh,98px);color:#ffffffdb}.lock-clock div{font-size:17px;color:#ffffffbd}
+.big-art{border-radius:22px;box-shadow:0 20px 50px #0003}.lock-player{border-radius:24px;border:1px solid #ffffff35;background:#ffffff12;padding:14px 18px}.lock-player strong{font-weight:400}.lock-bottom .primary{border-radius:22px;background:#ffffff16;border:1px solid #ffffff3b;min-height:36px;font-weight:400}.lock-bottom small{font-size:9px;color:#ffffff9a}
+.s3-launcher>header{position:static}.s3-launcher>header>.s3-segmented{position:fixed;bottom:calc(94px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);border-radius:24px;padding:3px;background:#23242a60;z-index:2;border:1px solid #fff6}.s3-launcher .s3-segmented button{border-radius:22px!important;min-height:30px;font-size:11px;min-width:112px}.s3-launcher .s3-segmented button[aria-selected=true]{background:#f5f5f5!important;color:#3f3d44}
+.s3-category-tile [data-original-glyph] .pad-glyph,.pad-launch-grid [data-original-glyph] .pad-glyph{background:linear-gradient(155deg,#9babc3,#4b648b);color:#fff;border:1px solid #ffffff25;border-radius:12px;padding:9px;box-shadow:inset 0 1px #ffffff3a,0 3px 6px #0002}
+.s3-category-tile [data-original-glyph=spotify] .pad-glyph,.pad-launch-grid [data-original-glyph=spotify] .pad-glyph{background:linear-gradient(155deg,#48bd90,#217b65)}
+.s3-category-tile [data-original-glyph=arcade] .pad-glyph,.pad-launch-grid [data-original-glyph=arcade] .pad-glyph{background:linear-gradient(155deg,#c194e3,#755ba9)}
+.s3-category-tile [data-original-glyph=home] .pad-glyph,.pad-launch-grid [data-original-glyph=home] .pad-glyph{background:linear-gradient(155deg,#e9b07f,#ba7b51)}
+.s3-category-tile [data-original-glyph=weather] .pad-glyph,.pad-launch-grid [data-original-glyph=weather] .pad-glyph{background:linear-gradient(155deg,#68b4e0,#4076a8)}
+.s3-category-tile [data-original-glyph=ai] .pad-glyph,.pad-launch-grid [data-original-glyph=ai] .pad-glyph{background:linear-gradient(155deg,#94b2cb,#536882)}
+.s3-category-more [data-original-glyph] .pad-glyph{padding:4px;width:23px;height:23px;border-radius:5px}
+/* Touch fields stay 16px to avoid Safari focus zoom. Coarse controls retain 44px targets. */
+@media(pointer:coarse){.s3-app .pad-toolbar input:not([type=range]),.s3-app .pad-toolbar select,.s3-app .pad-split>aside input,.s3-app .pad-split>aside select,.s3-calendar-agenda .event-form input,.s3-settings-main select{font-size:16px}.s3-launcher .s3-segmented button{min-height:44px}.s3-control-center .pad-control-transport button{min-width:44px;min-height:44px}.s3-control-center .pad-control-tools button{min-height:44px}}
+.s3-launcher .s3-launcher-tools{margin:8px auto 28px}.s3-category-grid{gap:28px 30px}.s3-category-tile{background:linear-gradient(130deg,#ffffff38,#ffffff13);border-color:#ffffff50;box-shadow:inset 0 1px #fff4,0 8px 18px #0001}.s3-launcher.pad-popover{padding-bottom:160px}
+.s3-launcher.pad-popover{overflow:hidden}.s3-launcher .pad-launch-grid{grid-template-columns:repeat(7,minmax(0,1fr));width:min(980px,100%);gap:18px 14px;grid-auto-rows:104px;overflow:auto;min-height:0;flex:1 1 auto;align-content:start;padding:0 12px 16px}.s3-category-grid{overflow:auto;min-height:0;flex:0 1 auto;padding:0 8px 16px}
+.notch-panel{top:4px;z-index:5000;border-radius:26px;border-top:1px solid #ffffff32}
+@media(max-width:900px){.s3-launcher .pad-launch-grid{grid-template-columns:repeat(6,minmax(0,1fr))}}
+@media(max-width:680px){.s3-launcher .pad-launch-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:510px){.s3-launcher .pad-launch-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 7px}}
+@media(max-width:850px){.s3-app .pad-split{grid-template-columns:185px minmax(0,1fr)}.p4-notes-rail{display:none}.pad-window-content.s3-calendar{grid-template-columns:minmax(0,1fr) 195px}.p4-library-heading{padding:18px}.s3-music-now{grid-template-columns:110px minmax(0,1fr);margin:0 15px 12px}.s3-music-now .medium-art{width:110px;height:110px}.s3-music-now .music-now strong{font-size:21px}.p4-library-heading .file-actions{gap:3px}.p4-library-heading .file-actions label{font-size:9px}}
+@media(max-width:600px){.pad-window-content.s3-app{--chrome-sidebar:135px}.s3-app .s3-app-sidebar{padding:17px 8px}.s3-app .s3-app-sidebar button{font-size:11px;padding:6px}.s3-settings-main{padding:18px 14px}.pad-window-content.s3-calendar{grid-template-columns:1fr}.s3-calendar-main .pad-month>.p4-calendar-day{min-height:60px}.s3-calendar-agenda .event-form{display:grid;grid-template-columns:1fr 1fr}.p4-day-event{font-size:7px}.s3-file-main .pad-toolbar input{max-width:100%;flex-basis:100px}.s3-file-main .p4-file-view{margin-left:0}.s3-music-now{padding:14px;grid-template-columns:85px minmax(0,1fr)}.s3-music-now .medium-art{width:85px;height:85px}.p4-library-heading h1{font-size:23px}}
+@media(max-width:520px){.s3-app .s3-app-sidebar{padding:8px;min-height:60px}.s3-app .pad-split{grid-template-columns:1fr}.s3-app .pad-split>aside{max-height:190px}.s3-app .pad-list{max-height:95px}.s3-app .pad-editor{padding:0 18px 18px}.s3-app .pad-editor>.pad-toolbar{margin:0 -18px}.p4-notes-heading{display:none}.s3-app .pad-editor>input[aria-label=Titel]{font-size:22px}.s3-music-main>.pad-toolbar{margin:0 14px}.s3-music-main .s3-music-sliders{flex-wrap:wrap}.s3-launcher .s3-launcher-tools{margin-top:0}.s3-launcher>header>.s3-segmented{bottom:87px}.s3-category-grid{gap:20px 24px}.s3-calendar-agenda .event-form{grid-template-columns:1fr}}
+html[data-quality="Reduzierte Transparenz"] .s3-control-center :is(.s3-connectivity,.s3-control-connect>button,.pad-control-player,.pad-control-volume,.pad-control-tile){background:#303540;backdrop-filter:none;-webkit-backdrop-filter:none}
+.pad-window[data-mode=maximized]>.s3-app,.pad-window[data-mode=left]>.s3-app,.pad-window[data-mode=right]>.s3-app{padding-bottom:calc(80px + env(safe-area-inset-bottom))}
+@media(max-width:520px){.pad-window>.s3-app{padding-bottom:calc(80px + env(safe-area-inset-bottom))}}
+@media(prefers-reduced-transparency:reduce){.s3-control-center :is(.s3-connectivity,.s3-control-connect>button,.pad-control-player,.pad-control-volume,.pad-control-tile){background:#303540;backdrop-filter:none;-webkit-backdrop-filter:none}}

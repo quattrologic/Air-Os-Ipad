@@ -1,0 +1,60 @@
+{
+  "sources": [
+    {
+      "project": "MacShell",
+      "repo": "0-ss/MacShell",
+      "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+      "path": "MacShell/MacBar.qml",
+      "ranges": [
+        [
+          435,
+          495
+        ],
+        [
+          1304,
+          1348
+        ]
+      ],
+      "license": "MIT",
+      "integration": "Independent pill-shaped slabs, 66px cell rhythm, grouped media. Browser CSS; no native OS controls."
+    },
+    {
+      "project": "MacTahoe GTK",
+      "repo": "vinceliuice/MacTahoe-gtk-theme",
+      "commit": "1e45e19f510edb8cde18fa84d6cd5319f60b086b",
+      "path": "src/sass/gtk/_common-4.0.scss",
+      "ranges": [
+        [
+          6,
+          34
+        ],
+        [
+          1976,
+          2007
+        ]
+      ],
+      "license": "MIT",
+      "integration": "Neutral light sidebar with 6px edge gradient; flat toolbar; three-pane editor and grouped settings are Air-OS DOM integration."
+    },
+    {
+      "project": "InfinityOS",
+      "repo": "Infinity-Systems-UA/InfinityOS",
+      "commit": "a6584135cbcad837d57484211119451bbb2d8fb2",
+      "path": "styles.css",
+      "ranges": [],
+      "license": "AGPL-3.0",
+      "integration": "Existing registry partition and motion port retained. Bottom mode selector and 2x2 category composition follow supplied ester image; no claim that ester is InfinityOS source."
+    }
+  ],
+  "userReferences": {
+    "category": "IMG_0044.jpeg, local attachment recovered from referenced chat; visual reference only, no pixels distributed",
+    "received": "IMG_0045.jpeg, local attachment recovered; no network transfer emulation",
+    "macshell": [
+      "https://github.com/user-attachments/assets/600f75bc-b4d1-442d-bec5-41ee7dfa5023",
+      "https://github.com/user-attachments/assets/cb6c5708-5786-4328-89bd-24737d39e482",
+      "https://github.com/user-attachments/assets/0d15dc6f-8def-47dc-8e42-fa2959e7e5eb"
+    ]
+  },
+  "wallpaper": "assets/yosemite-morning.metadata.json; exact user-supplied PNG, no inferred third-party license",
+  "data": "No schema, storage, backup, origin, host or service-worker protocol changes"
+}

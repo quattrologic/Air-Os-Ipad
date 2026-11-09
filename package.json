@@ -1,0 +1,15 @@
+{
+  "name": "air-os-ipad",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Air-OS iPad PWA (no Electron)",
+  "scripts": {
+    "test": "node --test tests",
+    "build": "node scripts/package-ipad-security.cjs",
+    "check": "node scripts/check-ipad-parity-package.cjs",
+    "test:browser": "node scripts/test-ipad-security.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

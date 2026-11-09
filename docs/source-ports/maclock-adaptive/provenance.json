@@ -1,0 +1,40 @@
+{
+  "project": "0-ss/MacShell",
+  "commit": "1bdb51870b621100fd2709f66c8f8e00ab17b9c4",
+  "license": "MIT",
+  "files": [
+    {
+      "path": "MacLock/Glass.qml",
+      "sha256": "ab3df4cb73b2acea141abef259309c59b45c529bc3b2749961c8eb869373671a"
+    },
+    {
+      "path": "MacLock/LockScreen.qml",
+      "sha256": "b7eedef45418996cb36ffe8b58261ca19aa98e1d6b3e6236ca5e1f2791ccb006"
+    },
+    {
+      "path": "MacLock/liquidglass.frag",
+      "sha256": "2d271780c560d4eab742b4906f503d524d2a00c7f4f2570d0c1e2b96a7888f35"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "e023310b5aa260140a29cec3d887268cde3fa13a9e9cd2fca6cb7c7cfa13ce8d"
+    }
+  ],
+  "shader": {
+    "path": "MacLock/liquidglass.frag",
+    "sha256": "2d271780c560d4eab742b4906f503d524d2a00c7f4f2570d0c1e2b96a7888f35"
+  },
+  "ports": [
+    "Original GLSL rounded SDF, Snell refraction,24-tap dispersed Gaussian disk,top-left rim,meniscus and grain; only Qt uniform/layout translated to ES300.",
+    "LockScreen.qml artBg scale1.25,blurMax64,brightness-.16,saturation+.25;650ms OutCubic handover.",
+    "Actual media26/.48/.55 and notice20/.40/.30 thickness/tint/shadow callsites."
+  ],
+  "browserAdaptations": [
+    "Existing WebGL2 engine samples the owned artwork scene; no capture.",
+    "Pre-parity fallback used bounded CSS preblur and a luminance-modulated rim only; it is superseded on this branch by the documented cached SDF/Snell fallback.",
+    "Only authenticated allowlisted Spotify artwork gets a bounded thumbnail in the existing history record.",
+    "Parity branch extends the existing fallback owner with the original SDF, convex normal, Snell shift, absorption, directional rim, meniscus and grain; its bilinear sampling is a bounded approximation to the original24-tap disk.",
+    "Actual original Glass.qml is rendered in a test-only QtQuick/OpenGL harness against the same permitted source texture and geometry; this does not start the full native MacShell lockscreen.",
+    "Native MultiEffect blurMax64 is calibrated to approximately sigma24 CSS pixels for this reference; the existing multiplicative browser brightness .84 deliberately preserves dark cover colour instead of claiming Qt additive-.16 equivalence."
+  ]
+}

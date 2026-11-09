@@ -1,0 +1,93 @@
+Air-OS iPad Ultimate 2.0 — combined browser edition
+
+Direct adapted InfinityOS web components: AGPL-3.0, upstream
+https://github.com/Infinity-Systems-UA/InfinityOS
+commit a6584135cbcad837d57484211119451bbb2d8fb2.
+Copyright remains with the upstream contributors; modifications (c) 2026 quattrologic.
+Exact paths, excerpt hashes and adaptation details: vendor/infinityos/provenance.json.
+
+InfinityOS-linux dock geometry excerpts: GPL-3.0, upstream
+https://github.com/InfinityOS-linux/infinityos
+commit fbcdaff53bdc6e9d76836e9fb70f6a19a403fdb3.
+The GNOME dock metadata credits original author icedman (Dash2Dock Animated v92); Infinity OS carries a distinct fork UUID.
+No claim that either public repository is the source of the inaccessible user ISO.
+
+The combined iPad edition is conveyed under AGPL-3.0. Existing first-party MIT
+notices remain in licenses/Air-OS-MIT.txt. GPLv3 components retain GPLv3 terms;
+combination follows GPLv3/AGPLv3 section 13. Root desktop MIT license is unchanged.
+MacTahoe icon notices and GPL-3.0 source assets remain under icons/.
+MacShell algorithms, when included, retain their separate MIT notices.
+
+Corresponding Source, including modified browser source, build/test scripts and
+notices, is offered locally at ./source/source.zip in every built package.
+Open Settings > Licenses and Source or the persistent Source link.
+No third-party binaries, proprietary logos or InfinityOS ISO are bundled.
+
+Ultra design additions:
+- MacShell ClockWidget.qml tickGeo (MIT, Rickky2026 / 0-ss) at fixed commit
+  1bdb51870b621100fd2709f66c8f8e00ab17b9c4: vendor/macshell/clock-dial.js.
+- Existing Air-OS R7 GLASS-3 renderer, geometry and MacShell GLSL adaptations
+  from 02ccaf88724731cf685d2221f88e959020aff3f0, adapted to browser selectors
+  and quality/lifecycle settings in vendor/glass/. MacShell MIT retained in licenses/.
+- MacTahoe GTK neutral palette (#242424/#282828/#f5f5f5/#363636), MIT,
+  commit 1e45e19f510edb8cde18fa84d6cd5319f60b086b; CSS adaptation, no GTK runtime.
+- InfinityOS web winOpen curve adapted for bounded browser presentation; AGPL-3.0,
+  commit a6584135cbcad837d57484211119451bbb2d8fb2. Existing source offer applies.
+- Photograph "Path", Risto Saukonpää, LGPLv3, unmodified original from KDE
+  plasma-workspace-wallpapers commit 0643e9404da07d204014549d9f734424fdf961ed,
+  Path/contents/images/2560x1600.jpg. Original metadata and license are bundled
+  in assets/forest-path.metadata.json and licenses/KDE-wallpaper-LGPL-3.0.txt.
+  The image itself is also included unmodified in the corresponding source archive.
+  LGPL supplement requires the accompanying GPLv3 text: licenses/InfinityOS-Linux-GPL-3.0.txt.
+- Open Runde Regular/Semibold: existing MacShell/Air-OS original font assets,
+  copyright The Inter Project Authors, SIL OFL-1.1. Full license bundled in
+  licenses/OpenRunde-OFL-1.1.txt; fonts unmodified, no CDN.
+MacTahoe GTK palette/chrome adaptation: Copyright (c) 2021 WhiteSur Developers.
+The unmodified MIT copyright/permission/disclaimer text is bundled in
+licenses/MacTahoe-GTK-MIT.txt. No GTK processes or installer scripts are included.
+
+System Experience 3 additions:
+- InfinityOS script.js::openMenu registry partition model, AGPL-3.0,
+  commit a6584135cbcad837d57484211119451bbb2d8fb2, adapted in
+  vendor/infinityos/launcher-model.js. Tablet category cards are Air-OS UI
+  composed against the supplied user reference, not an upstream component.
+- Photograph EveningGlow, Ian Hex, LGPLv3, KDE plasma-workspace-wallpapers
+  commit 0643e9404da07d204014549d9f734424fdf961ed,
+  EveningGlow/contents/images/2560x1600.jpg. Unmodified in assets/lake-evening.jpg
+  with original metadata. Existing LGPLv3 and GPLv3 texts accompany the image.
+
+Premium 4 wallpaper: Yosemite-Tal im warmen Morgenlicht.png, supplied by the user
+in this development chat on 2026-11-06 for the requested Air-OS visual update.
+Unmodified PNG bytes in assets/yosemite-morning.png (1672 x 941).
+No third-party authorship or public license is asserted for this supplied asset.
+Provenance and SHA-256: assets/yosemite-morning.metadata.json.
+CSS cover framing only. No image generation or local pixel modification.
+The image is separate from the AGPL combined-code license and existing notices.
+
+Pro Notch presentation: independently implemented Air-OS browser UI and motion
+math, based on the user's visible MOV reference (SHA-256
+9f129a886e4781fd4fa17a9f1f45e740e352e71e45ce5e150cc341184c390b74).
+No native macOS executable, decompiled implementation, proprietary app resource,
+reference cover image or song lyric is included in the PWA. The reference is not
+an open-source license grant. Existing Air-OS combined-PWA/source license applies
+to the new implementation. Own line glyphs are independently drawn.
+
+MacShell MacLock/Dock port additions (MIT): 0-ss/MacShell commit
+1bdb51870b621100fd2709f66c8f8e00ab17b9c4, MacShell/MacDock.qml, MacBar.qml,
+GlassSlab.qml, MacLock/Glass.qml, MacLock/LockScreen.qml. Original cosine kernel,
+coupled cell geometry and glass uniform mapping adapted in vendor/macshell/shell7.js,
+vendor/glass/geometry.js, dock-material.js. Responsive lock composition is a browser
+adaptation in maclock.js and liquid-maclock.css; no PAM/MPRIS/native scene capture.
+Full copyright/license: licenses/MacShell-MacLock-MIT.txt. Provenance hashes and
+source paths: docs/source-ports/liquid-maclock.json in the source offer.
+
+MacLock adaptive artwork / original material addition (MIT Rickky):
+MacLock/liquidglass.frag at the same pinned MacShell commit is mechanically
+translated to GLSL ES300 by scripts/build-maclock-shader.cjs, using the existing
+WebGL2 renderer. Original fragment: vendor/glass/maclock-original.frag.
+Actual media/notice material callsites and artBg handover are ported in
+vendor/glass/geometry.js and maclock.js. Bounded shared preblur and CSS directional
+rim are browser approximations; no screen/window capture. Additional source hashes:
+docs/source-ports/maclock-adaptive/provenance.json (included in source offer).
+
+MacLock Glass Parity: the existing fallback maps in vendor/glass/geometry.js adapt the same MIT MacShell SDF, convex normal, Snell refraction, inner absorption, directional rim, meniscus and grain. The fallback uses cached bilinear channel samples; the WebGL path retains the original24-tap fragment. Full-frame noise coordinate adaptation is in the ES generator. Qt/PySide6 and Xvfb are test tools only and are not bundled in this PWA.

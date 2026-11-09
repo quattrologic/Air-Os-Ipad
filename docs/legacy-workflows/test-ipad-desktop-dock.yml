@@ -1,0 +1,209 @@
+name: Air-OS Desktop and Dock Correction · full private PWA gate (no deployment)
+on:
+  push:
+    branches: [feat/air-os-ipad-desktop-dock-correction]
+    paths-ignore: ['docs/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ipad-desktop-dock-correction
+  cancel-in-progress: true
+env:
+  AIR_PAD_EDITION2: '1'
+  AIR_LG_POLISH: '1'
+  AIR_PAD_EVIDENCE_BRANCH: feat/air-os-ipad-desktop-dock-correction
+jobs:
+  browser:
+    if: github.ref == 'refs/heads/feat/air-os-ipad-desktop-dock-correction'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, webkit]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Frozen browser test tools and mandatory audit
+        run: |
+          npm ci --prefix build/ipad-parity-tests --ignore-scripts --no-audit --no-fund
+          npm audit --prefix build/ipad-parity-tests --audit-level=high
+      - name: All existing desktop and new browser model regressions
+        run: node --test --test-reporter=tap tests/*.test.cjs
+      - name: Build exact private PWA archive and verify bytes, CSP and licenses
+        run: |
+          node scripts/package-ipad-desktop-dock.cjs
+          node scripts/check-ipad-parity-package.cjs
+          node scripts/build-ipad-recovery.cjs
+      - name: Install actual test engine and dependencies
+        run: node build/ipad-parity-tests/node_modules/playwright/cli.js install --with-deps ${{ matrix.engine }}
+      - name: Spotify widget, live Dock compositing, workarea and input regression
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_DOCK_DPR: '1'
+          AIR_DOCK_OUTPUT: dist/parity-evidence/desktop-dock-${{ matrix.engine }}-dpr1
+        run: node scripts/test-ipad-desktop-dock.cjs
+      - name: Retina, portrait, Safe Area and same live material pixel checks
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_DOCK_DPR: '2'
+          AIR_DOCK_OUTPUT: dist/parity-evidence/desktop-dock-${{ matrix.engine }}-dpr2
+        run: node scripts/test-ipad-desktop-dock.cjs
+      - name: Actual browser GUI, legacy library, touch and offline data
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_PAD_OUTPUT: dist/parity-evidence/${{ matrix.engine }}
+        run: node scripts/test-ipad-parity.cjs
+      - name: Same browser under private Serve-like subpath
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_PAD_PREFIX: /Air-OS/
+          AIR_PAD_OUTPUT: dist/parity-evidence/subpath-${{ matrix.engine }}
+        run: node scripts/test-ipad-parity.cjs
+      - name: Pinned compact baseline, full viewport only
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_LG_OUTPUT: dist/parity-evidence/before-liquid-${{ matrix.engine }}
+        run: node scripts/capture-ipad-liquid-baseline.cjs
+      - name: MacLock, coupled Dock, offline metadata and responsive scenes
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_LG_OUTPUT: dist/parity-evidence/liquid-${{ matrix.engine }}
+        run: node scripts/test-ipad-liquid-maclock.cjs
+      - name: Retina DPR2 and same touch and offline checks
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_LG_DPR: '2'
+          AIR_LG_TOUCH: '0'
+          AIR_LG_OUTPUT: dist/parity-evidence/liquid-dpr2-${{ matrix.engine }}
+        run: node scripts/test-ipad-liquid-maclock.cjs
+      - name: Mocked Spotify PKCE, permissions and source lifecycle (no account)
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_SPOTIFY_OUTPUT: dist/parity-evidence/spotify-${{ matrix.engine }}
+        run: node scripts/test-ipad-spotify.cjs
+      - name: Original MacLock material, adaptive covers and offline lifecycle
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_ART_OUTPUT: dist/parity-evidence/art-${{ matrix.engine }}
+        run: node scripts/test-ipad-maclock-art.cjs
+      - name: Controlled MacLock SDF, native-comparison inputs and full-frame scenes
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_PARITY_OUTPUT: dist/parity-evidence/parity-${{ matrix.engine }}-dpr1
+        run: node scripts/test-ipad-maclock-parity.cjs
+      - name: Same material and foreground geometry at DPR2
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_PARITY_DPR: '2'
+          AIR_PARITY_OUTPUT: dist/parity-evidence/parity-${{ matrix.engine }}-dpr2
+        run: node scripts/test-ipad-maclock-parity.cjs
+      - name: Actual visual product, controls, accessibility and six viewports
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_VISUAL_AFTER: '1'
+          AIR_VISUAL_OUTPUT: dist/parity-evidence/after-${{ matrix.engine }}
+        run: node scripts/test-ipad-system3.cjs
+      - name: DPR2 real touch scenes and layout invariants
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_VISUAL_AFTER: '1'
+          AIR_VISUAL_DPR: '2'
+          AIR_VISUAL_OUTPUT: dist/parity-evidence/after-dpr2-${{ matrix.engine }}
+        run: node scripts/test-ipad-system3.cjs
+      - name: Actual black Notch states, sampled motion, interruption and data owners
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_NOTCH_OUTPUT: dist/parity-evidence/notch-${{ matrix.engine }}
+        run: node scripts/test-ipad-pro-notch.cjs
+      - name: Retina Notch, real viewports and the same resource checks
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_NOTCH_DPR: '2'
+          AIR_NOTCH_OUTPUT: dist/parity-evidence/notch-dpr2-${{ matrix.engine }}
+        run: node scripts/test-ipad-pro-notch.cjs
+      - name: Normal product GPU guards and isolated original shader pixel/cost/lifecycle evidence
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_MATERIAL_OUTPUT: dist/parity-evidence/material-${{ matrix.engine }}
+        run: node scripts/test-ipad-system3-material.cjs
+      - name: Original v4 to v5, protected multitab activation and compatible recovery
+        env:
+          AIR_PAD_ENGINE: ${{ matrix.engine }}
+          AIR_PAD_OUTPUT: dist/parity-evidence/update-${{ matrix.engine }}
+        run: node scripts/test-ipad-updates.cjs
+      - name: Preserve synthetic browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Private-iPad-MacLock-Parity-${{ matrix.engine }}-${{ github.sha }}
+          path: dist/parity-evidence/
+          retention-days: 30
+      - name: Versioned PWA ZIP only · never deploy or change Tailscale
+        if: success() && matrix.engine == 'chromium'
+        uses: actions/upload-artifact@v4
+        with:
+          name: Air-OS-iPad-Desktop-Dock-Build-${{ github.sha }}
+          path: |
+            dist/Air-OS-iPad-Desktop-Dock-Correction-*.zip
+            dist/Air-OS-iPad-Desktop-Dock-Correction-*.sha256
+            dist/Air-OS-iPad-Compatible-Recovery-*.zip
+            dist/Air-OS-iPad-Compatible-Recovery-*.sha256
+            dist/Air-OS-iPad-ReadOnly-Preflight-*.zip
+            dist/Air-OS-iPad-ReadOnly-Preflight-*.sha256
+          retention-days: 30
+  native-reference:
+    needs: browser
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: Private-iPad-MacLock-Parity-*
+          path: dist/native-input
+      - name: Isolated Qt test tools only · never product dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends xvfb xauth libgl1-mesa-dri libegl1 libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-keysyms1 libxcb-render-util0 libxcb-shape0 libxcb-xkb1 libxcb-xinerama0
+          python3 -m venv build/maclock-qt-tests
+          build/maclock-qt-tests/bin/python -m pip install --disable-pip-version-check 'PySide6-Essentials==6.8.2.1' 'PySide6-Addons==6.8.2.1'
+      - name: Actual original Glass.qml and Qt shader under identical controlled conditions
+        env:
+          QSG_RHI_BACKEND: opengl
+          AIR_QT_EXPECTED: '4'
+        run: xvfb-run -a -s '-screen 0 4096x3000x24 -nolisten tcp' node scripts/reference/run-maclock-comparisons.cjs dist/native-input dist/parity-native-evidence
+      - name: Preserve unmodified native full frames and measured differences
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Private-iPad-MacLock-Parity-native-${{ github.sha }}
+          path: dist/parity-native-evidence/
+          retention-days: 30
+  save-synthetic-evidence:
+    needs: [browser, native-reference]
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: Private-iPad-MacLock-Parity-*
+          path: dist/browser-evidence
+      - name: Save only isolated synthetic screenshots to this feature branch
+        run: node scripts/publish-ipad-parity-evidence.cjs
