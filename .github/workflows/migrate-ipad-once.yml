@@ -1,9 +1,6 @@
 name: Air-OS iPad - migration and validation (no deployment)
 # iPad-only import: the new CI workflow exists before the migration commit.
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
 permissions:
   contents: write
