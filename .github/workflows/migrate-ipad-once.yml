@@ -21,7 +21,7 @@ jobs:
           git clone --depth 1 --filter=blob:none --no-checkout --branch feat/air-os-ipad-ultra-security-hardening https://github.com/quattrologic/Air-Os-Clean.git "$RUNNER_TEMP/air-os-source"
           git -C "$RUNNER_TEMP/air-os-source" sparse-checkout set --no-cone 'ipad/**' 'scripts/**' 'tests/ipad*.test.cjs' 'build/ipad-parity-tests/**' 'build/ipad-runtime-assets.json' 'docs/AIR_OS_IPAD_*.md' 'docs/source-ports/**' 'docs/reference/pro-notch/**' 'docs/security/protected-surfaces.json' 'docs/security/source-references.json' 'docs/validation/test-maclock-material.cjs' '.github/workflows/test-ipad-*.yml' 'LICENSE' 'SECURITY.md'
           git -C "$RUNNER_TEMP/air-os-source" checkout HEAD
-          test "$(git -C "$RUNNER_TEMP/air-os-source" rev-parse HEAD)" = "d1fba0e45076ba3028eac6efdeb37c4576be515b"
+          test "$(git -C "$RUNNER_TEMP/air-os-source" rev-parse HEAD)" = "053a0a27fd51d883202bb89ebcc694b876245d27"
       - name: Extract only the complete iPad PWA and its dependencies
         run: python3 tools/migrate_ipad.py "$RUNNER_TEMP/air-os-source" "$GITHUB_WORKSPACE"
       - name: Validate source tree and required runtime assets
