@@ -1,4 +1,5 @@
 name: One-time import of Air-OS iPad (pinned, no deployment)
+# iPad-only import: the new CI workflow exists before the migration commit.
 on:
   push:
     branches: [main]
