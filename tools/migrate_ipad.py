@@ -93,7 +93,7 @@ Diese Repository-Migration veröffentlicht **keine** neue Web-App und ändert di
 Auf einem Windows-PC Git installieren und das private Repository klonen:
 1. git clone https://github.com/quattrologic/Air-Os-Ipad.git
 2. cd Air-Os-Ipad
-3. In PowerShell nach Prüfung der Einstellungen: powershell -NoProfile -ExecutionPolicy Bypass -File .\ipad\setup-windows.ps1
+3. In PowerShell nach Prüfung der Einstellungen: powershell -NoProfile -ExecutionPolicy Bypass -File .\\ipad\\setup-windows.ps1
 4. Die private HTTPS-URL von Tailscale Serve auf dem iPad in Safari aufrufen und über Teilen zum Home-Bildschirm hinzufügen.
 
 Tailscale Serve benutzen, **niemals Funnel oder öffentliche Pages**. Die Air-OS-Sperransicht ersetzt keinen Geräteschutz. Die genaue Anleitung steht in [ipad/README.md](ipad/README.md).
@@ -124,40 +124,6 @@ Die Originale sehr großer, generierter Screenshot- und Test-Evidenzarchive verb
         "- Excluded: Windows/macOS Electron files and tests, unrelated monorepo content, and multi-gigabyte generated visual evidence. The original repository retains that evidence.\n"
         "- Neither original repo nor existing Tailscale/Spotify/installed PWA were changed.\n",
         encoding="utf8")
-    ci = """name: Air-OS iPad - source and offline package
-on:
-  push:
-    branches: [main]
-  pull_request:
-  workflow_dispatch:
-permissions:
-  contents: read
-jobs:
-  ipad:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-      - name: Verify iPad model and regression tests
-        run: npm test
-      - name: Build verified offline iPad package
-        run: npm run build
-      - name: Verify package integrity
-        run: npm run check
-      - name: Upload package artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: Air-OS-iPad-build
-          path: dist/*.zip
-          if-no-files-found: warn
-          retention-days: 7
-"""
-    path = dst / ".github/workflows/ipad-ci.yml"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(ci, encoding="utf8")
     result = subprocess.check_output(["git", "-C", str(dst), "status", "--porcelain"], text=True)
     print(json.dumps({"source": head, "change_count": len(result.splitlines())}))
 
