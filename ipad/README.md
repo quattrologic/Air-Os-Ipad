@@ -2,23 +2,23 @@
 
 Diese separate, kostenlose **Air-OS-iPad-Web-App** läuft nach der ersten Installation so weit wie möglich offline. Sie ist **keine native iPadOS-App** und verwendet nicht Electron. Sie bietet eine eigenständige Air-OS-Oberfläche mit Lockscreen-Musik, Notch, lokaler Musikbibliothek, Timer und lokalem Kalender. Die Desktop-Apps und Desktop-Konten werden nicht automatisch übernommen.
 
-**Sicherheit:** Der Bereitstellungsserver ist ausschließlich über **Tailscale Serve** erreichbar. **Nie** Tailscale Funnel, GitHub Pages oder einen öffentlichen Webhost verwenden. Das GitHub-Repository ist derzeit öffentlich (Quelltext sichtbar), aber die per Tailscale ausgelieferte Web-App ist nicht öffentlich erreichbar. Die rein optische Air-OS-Sperransicht stellt **keine zusätzliche Authentifizierung** dar; das iPad muss mit Gerätecode/Face ID geschützt werden. Konten in einem freigegebenen Tailnet können gemäß Zugriffsrichtlinien den Webserver erreichen. Verwende deshalb ein persönliches Tailnet mit restriktiven Zugriffsregeln.
+**Sicherheit:** Der Bereitstellungsserver ist ausschließlich über **Tailscale Serve** erreichbar. **Nie** Tailscale Funnel, GitHub Pages oder einen öffentlichen Webhost verwenden. Dieses iPad-Repository ist privat. Die per Tailscale ausgelieferte Web-App ist ebenfalls nicht öffentlich erreichbar, solange ausschließlich Tailscale Serve mit passenden ACLs verwendet wird. Die rein optische Air-OS-Sperransicht stellt **keine zusätzliche Authentifizierung** dar; das iPad muss mit Gerätecode/Face ID geschützt werden. Konten in einem freigegebenen Tailnet können gemäß Zugriffsrichtlinien den Webserver erreichen. Verwende deshalb ein persönliches Tailnet mit restriktiven Zugriffsregeln.
 
 ## 1. Windows-PC vorbereiten (einmalig)
 
 Voraussetzungen: Tailscale auf Windows und iPad mit demselben Konto verbunden, [Git for Windows](https://git-scm.com/downloads/win), iPad Safari.
 
-Solange der Pull Request noch offen ist, in **PowerShell**:
+Für eine **neue, ausdrücklich freigegebene Installation** in **PowerShell**:
 
 ```powershell
 cd $HOME
-git clone --branch feature/private-ipad-pwa https://github.com/quattrologic/Air-Os-Clean.git
-cd Air-Os-Clean
+git clone https://github.com/quattrologic/Air-Os-Ipad.git
+cd Air-Os-Ipad
 ```
 
-Falls die iPad-Änderungen inzwischen in `main` übernommen wurden, stattdessen `git clone https://github.com/quattrologic/Air-Os-Clean.git` ausführen.
+Für die bereits installierte iPad-PWA ist **keine Migration erforderlich**. Die bisherige Tailscale-Installation bleibt unverändert.
 
-**PowerShell als Administrator** öffnen, zum Projektordner navigieren (bei Standardinstallation `cd "$HOME\Air-Os-Clean"`) und ausführen:
+**PowerShell als Administrator** öffnen, zum Projektordner navigieren (bei Standardinstallation `cd "$HOME\Air-Os-Ipad"`) und ausführen:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\ipad\setup-windows.ps1
@@ -59,7 +59,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\ipad\enable-updates-window
 
 Diese Windows-Aufgabe braucht Git, Netzverbindung und einen sauberen lokalen Branch. Bei ausgeschaltetem PC erhält das iPad **keine neuen Updates**, kann aber die **bereits zwischengespeicherte** App offline öffnen.
 
-Nach dem Merge des PRs in `main` kann Windows auf `main` wechseln:
+Für das neue Repository wird der Branch `main` verwendet. Nach einer ausdrücklich freigegebenen Umstellung kann Windows neue Quellen so abrufen:
 
 ```powershell
 git fetch origin
@@ -77,7 +77,7 @@ Die Windows-Aufgabe zieht anschließend Updates aus dem aktuell ausgecheckten Br
 - **Kein vollwertiger Zugriffsschutz durch die Air-OS-Sperransicht:** iPad-Gerätesperre und Tailscale-Konto/ACL schützen den Zugriff. Lokale Daten werden nicht nochmals mit einem eigenen Passwort verschlüsselt.
 - **Offline nicht unbegrenzt garantiert:** Browser-/iPadOS-Speicher kann bereinigt werden. Offline-Updates funktionieren nicht, sondern erst wieder bei Verbindung.
 - **Bildschirmsperre/Background-Audio:** Safari/iPadOS können Wiedergabe und Timer im Hintergrund unterbrechen; der Timer berechnet beim nächsten Öffnen aus der tatsächlichen Endzeit.
-- **Audioformate:** Werden durch Safari/iPadOS bestimmt, typischerweise MP3/M4A/WAV. Kein DRM-Streaming und keine Spotify-/Apple-Music-Steuerung.
+- **Audioformate:** Werden durch Safari/iPadOS bestimmt, typischerweise MP3/M4A/WAV. Eine separate Spotify-Verbindung zeigt mit Erlaubnis Wiedergabemetadaten; keine systemweite Apple-Music-Steuerung und kein eigenes DRM-Streaming.
 
 ## 5. Service deaktivieren
 
@@ -95,7 +95,7 @@ Das tritt auf, wenn ein statischer Dateiserver `index.html` nach `/` umleitet un
 
 **Für bereits betroffene iPads:**
 
-1. Auf Windows im vorhandenen Ordner `Air-OS-iPad`: `git pull --ff-only origin feature/private-ipad-pwa` (solange der PR offen ist). Tailscale Serve muss nicht neu eingerichtet werden.
+1. Auf Windows nur nach einer freigegebenen Umstellung auf dieses neue Repository: `git pull --ff-only origin main`. Für die bereits installierte PWA nichts an der bisherigen Quelle ändern, bevor ein geprüfter Build und ein Backup vorliegen.
 2. Auf dem iPad die Safari-Seitendaten **nur** für die private `.ts.net`-Adresse löschen: **Einstellungen → Apps → Safari → Erweitert → Website-Daten** und den betreffenden Domain-Eintrag suchen. Je nach iPadOS-Version ist Safari direkt in den Einstellungen. **Achtung:** Dadurch können lokal importierte Musikdateien, Termine und App-Einstellungen unter dieser Domain verloren gehen. Vorher sichern!
 3. Safari neu öffnen, Tailscale einschalten und die private `https://…ts.net/`-Adresse aufrufen, anschließend erst zum Home-Bildschirm hinzufügen.
 4. Wenn die Seite weiterhin fehlschlägt, zunächst in Safari ohne vorhandene Home-Bildschirm-Verknüpfung öffnen und prüfen, ob die richtige Branch-Version auf Windows liegt (`git branch --show-current`).
