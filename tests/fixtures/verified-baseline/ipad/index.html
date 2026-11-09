@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data: https://i.scdn.co https://mosaic.scdn.co; media-src 'self' blob:; connect-src 'self' https://accounts.spotify.com https://api.spotify.com; object-src 'none'; base-uri 'none'; form-action 'self'">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0e1725">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Air-OS">
+  <meta name="description" content="Privates, offlinefähiges Air-OS für dein iPad.">
+  <link rel="apple-touch-icon" href="./air-os-official.png">
+  <link rel="icon" href="./air-os-official.png" type="image/png">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Air-OS iPad</title>
+  <link rel="stylesheet" href="./vendor/airwrite.css"><link rel="stylesheet" href="./vendor/air-arcade-games.css"><link rel="stylesheet" href="./desktop.css">
+  <script defer src="./core/visual-icons.js"></script><script defer src="./registry.js"></script><script defer src="./core/infinity-web.js"></script><script defer src="./core/infinity-notification.js"></script><script defer src="./core/infinity-dock.js"></script><script defer src="./core/desktop-sessions.js"></script><script defer src="./core/window-model.js"></script><script defer src="./core/music-metadata.js"></script><script defer src="./storage.js"></script><script defer src="./vendor/airwrite.js"></script><script defer src="./vendor/air-arcade-games.js"></script><script defer src="./core/transfers.js"></script><script defer src="./app.js"></script><script defer src="./apps.js"></script><script defer src="./backup.js"></script><script defer src="./vendor/macshell/shell7.js"></script><script defer src="./dock-material.js"></script><script defer src="./vendor/infinityos/launcher-model.js"></script><script defer src="./core/visual-motion.js"></script><script defer src="./desktop.js"></script><script defer src="./vendor/macshell/clock-dial.js"></script><script defer src="./widgets.js"></script><script defer src="./core/playback-history.js"></script><script defer src="./playback-history.js"></script><script defer src="./spotify.js"></script><script defer src="./vendor/glass/geometry.js"></script><script defer src="./maclock.js"></script><script defer src="./notch/motion-data.js"></script><script defer src="./notch/model.js"></script><script defer src="./notch/pro-notch.js"></script><script defer src="./vendor/glass/shaders.js"></script><script defer src="./vendor/glass/renderer.js"></script>
+<link rel="stylesheet" href="./system3.css"><link rel="stylesheet" href="./premium4.css"><link rel="stylesheet" href="./liquid-maclock.css"><link rel="stylesheet" href="./notch/pro-notch.css"></head>
+<body>
+  <div class="wallpaper" aria-hidden="true"></div>
+  <div class="shell">
+    <header class="topbar">
+      <span class="brand"><img src="./air-os-official.png" alt="Air-OS"><strong class="brand-app">Schreibtisch</strong><span class="brand-menu">Air-OS Ultimate</span></span>
+      <span id="network-state" class="network-state">Lokal</span>
+    </header>
+
+    <section id="lockscreen" class="lockscreen"><div class="lg-lock-wallpaper" aria-hidden="true"></div><div class="lg-lock-notices" aria-label="Air-OS-Mitteilungen"></div>
+      <div class="lock-clock"><div id="lock-date">Dienstag, 3. November</div><time id="lock-time">--:--</time></div>
+      <div id="lock-music" class="lock-music" hidden>
+        <div id="lock-cover" class="big-art">♫</div>
+        <div class="lock-player glass">
+          <div class="grip"></div>
+          <strong id="lock-title">Keine Musik</strong>
+          <span id="lock-artist">Air Music</span>
+          <div class="progress"><span id="lock-elapsed">0:00</span><div class="track"><i id="lock-fill"></i></div><span id="lock-total">0:00</span></div>
+          <div class="transport lock-transport" aria-label="Air-OS-Musiksteuerung">
+            <button type="button" disabled data-lock-control="prev" aria-label="Vorheriger Titel">⏮</button>
+            <button type="button" disabled data-lock-control="toggle" aria-label="Wiedergabe / Pause">▶</button>
+            <button type="button" disabled data-lock-control="next" aria-label="Nächster Titel">⏭</button>
+          </div>
+        </div>
+      </div>
+      <div class="lock-bottom">
+        <div class="avatar" aria-hidden="true">A</div>
+        <strong>Air-OS</strong>
+        <button id="unlock" type="button">Air-OS öffnen</button>
+      </div>
+    </section>
+
+    <main id="desktop" class="desktop" hidden>
+      <div class="home-heading"><div><span class="eyebrow">DEIN AIR-OS</span><h1>Willkommen zurück</h1></div><button id="lock-again" type="button" class="outline">Sperransicht</button></div>
+      <nav class="app-grid" aria-label="Air-OS Apps">
+        <button type="button" data-panel="music" class="app-tile"><span>♫</span>Air Music</button>
+        <button type="button" data-panel="timer" class="app-tile"><span>◷</span>Timer</button>
+        <button type="button" data-panel="calendar" class="app-tile"><span>▦</span>Kalender</button>
+        <button type="button" data-panel="settings" class="app-tile"><span>⚙</span>Einstellungen</button>
+      </nav>
+      <section id="music-panel" class="app-panel glass" hidden>
+        <div class="panel-heading"><h2>Air Music</h2><button type="button" data-close aria-label="Schließen">×</button></div>
+        <div class="music-now">
+          <div id="player-cover" class="medium-art">♫</div>
+          <div><strong id="player-title">Noch keine Musik</strong><small id="player-artist">Füge lokale Musikdateien hinzu</small></div>
+        </div>
+        <div class="progress"><span id="player-elapsed">0:00</span><div class="track"><i id="player-fill"></i></div><span id="player-total">0:00</span></div>
+        <div class="transport"><button type="button" data-control="prev" aria-label="Vorheriger Titel">⏮</button><button type="button" data-control="toggle" aria-label="Wiedergabe umschalten">▶</button><button type="button" data-control="next" aria-label="Nächster Titel">⏭</button></div>
+        <div class="file-actions">
+          <label class="outline">Musik importieren<input id="import-audio" type="file" multiple accept="audio/*,.mp3,.m4a,.wav,.ogg" hidden></label>
+          <label class="outline">Cover auswählen<input id="import-cover" type="file" accept="image/png,image/jpeg,image/webp" hidden></label>
+        </div>
+        <p class="hint">Dateien bleiben auf deinem iPad. Der Import nutzt lokalen App-Speicher; große Sammlungen können die Speichergrenze erreichen.</p>
+        <h3>Meine Titel</h3><div id="song-list" class="song-list"><p class="hint">Noch keine Titel importiert.</p></div>
+      </section>
+      <section id="timer-panel" class="app-panel glass" hidden>
+        <div class="panel-heading"><h2>Timer</h2><button type="button" data-close aria-label="Schließen">×</button></div>
+        <div id="timer-display" class="countdown">05:00</div>
+        <div class="presets"><button data-minutes="5" type="button">5 Min.</button><button data-minutes="10" type="button">10 Min.</button><button data-minutes="25" type="button">25 Min.</button></div>
+        <div class="file-actions"><button id="timer-toggle" class="primary" type="button">Starten</button><button id="timer-reset" class="outline" type="button">Zurücksetzen</button></div>
+        <p id="timer-status" class="hint" aria-live="polite">Bereit</p>
+      </section>
+      <section id="calendar-panel" class="app-panel glass" hidden>
+        <div class="panel-heading"><h2>Kalender</h2><button type="button" data-close aria-label="Schließen">×</button></div>
+        <form id="event-form" class="event-form">
+          <label>Titel<input name="title" required maxlength="100" placeholder="Dein Termin"></label>
+          <label>Datum<input name="date" type="date" required></label>
+          <label>Uhrzeit<input name="time" type="time" required></label>
+          <button class="primary" type="submit">Hinzufügen</button>
+        </form>
+        <div id="event-list" class="event-list"></div>
+      </section>
+      <section id="settings-panel" class="app-panel glass" hidden>
+        <div class="panel-heading"><h2>Einstellungen</h2><button type="button" data-close aria-label="Schließen">×</button></div>
+        <p>Air-OS iPad speichert Musik, Cover, Termine und den letzten Titel auf diesem Gerät. Deine Inhalte werden nicht an GitHub oder den Windows-PC hochgeladen.</p>
+        <div class="settings-row"><span>Netzwerkstatus</span><strong id="settings-network">–</strong></div>
+        <div class="settings-row"><span>Offline-App</span><strong id="settings-offline">Prüfung läuft</strong></div>
+        <button id="check-update" class="primary" type="button">Auf Updates prüfen</button>
+        <p id="update-state" class="hint" aria-live="polite">Updates werden geprüft, sobald die private Verbindung verfügbar ist.</p>
+        <p class="hint">Die Sperransicht ist eine Oberfläche von Air-OS, keine zusätzliche Gerätesperre. Schütze dein iPad mit einem Gerätecode und aktiviere Tailscale nur für deine Geräte.</p>
+      </section>
+    </main>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  </div>
+  <a class="pad-source-link" href="./source/source.zip" download="Air-OS-iPad-2-Source.zip">Quellcode · AGPL-3.0</a>
+  <div id="pro-notch" class="pn-island" data-state="closed">
+    <button id="notch-toggle" class="pn-toggle" type="button" aria-label="Pro Notch öffnen" aria-expanded="false" aria-controls="notch-panel"><span class="pulse" hidden></span><span id="notch-label" class="pn-sr">Air-OS</span><span class="pn-mini-art" aria-hidden="true">♫</span><span class="pn-mini-line" aria-hidden="true"></span><span class="pn-mini-timer" aria-hidden="true"></span><span class="pn-mini-bars" aria-hidden="true">▂▅▃▆</span></button>
+    <section id="notch-panel" class="pn-content" hidden role="dialog" aria-label="Pro Notch" aria-modal="false">
+      <header class="pn-header"><span class="pn-mark" aria-hidden="true">⌘</span><nav class="pn-tabs" role="tablist" aria-label="Notch-Ansichten"></nav><button id="notch-close" type="button" aria-label="Notch schließen">×</button></header>
+      <div class="pn-page pn-music" data-pn-view="music"><span id="notch-cover" class="pn-art">♫</span><div class="pn-track"><strong id="notch-title">Keine Musik</strong><small id="notch-artist">Air Music</small></div><button class="pn-lyrics-button" type="button" aria-label="Songtext erweitern" aria-expanded="false">▤</button><input class="pn-seek" type="range" aria-label="Notch-Wiedergabeposition" min="0" max="1000" step="1"><div class="pn-times"><span class="pn-elapsed">0:00</span><span class="pn-remaining">−0:00</span></div><div class="pn-transport"><button type="button" data-pn-control="prev" aria-label="Vorheriger Titel"></button><button type="button" data-pn-control="toggle" aria-label="Wiedergabe / Pause"></button><button type="button" data-pn-control="next" aria-label="Nächster Titel"></button></div><button class="pn-open-music" type="button" aria-label="Air Music öffnen">▱</button><div class="pn-lyrics" aria-live="off"></div></div>
+      <div class="pn-page pn-timer" data-pn-view="timer" hidden><div class="pn-ruler" aria-hidden="true"></div><input class="pn-duration" type="range" aria-label="Timerdauer in Minuten" min="1" max="30" value="5"><div class="pn-timer-actions"><button type="button" class="pn-timer-toggle">Starten</button><button type="button" class="pn-add-minute" aria-label="Eine Minute hinzufügen">+1</button><button type="button" class="pn-timer-reset" aria-label="Timer zurücksetzen">×</button></div><strong id="notch-timer">05:00</strong></div>
+      <div class="pn-page pn-calendar" data-pn-view="calendar" hidden><div class="pn-calendar-title"></div><div class="pn-calendar-scope" role="group" aria-label="Kalenderansicht"><button type="button" data-calendar-scope="day" aria-pressed="true">Tag</button><button type="button" data-calendar-scope="week" aria-pressed="false">Woche</button></div><div class="pn-agenda"></div><nav class="pn-week" aria-label="Kalenderwoche"></nav></div>
+      <div class="pn-page pn-shelf" data-pn-view="shelf" hidden><div class="pn-dropzones"><button type="button" class="pn-shelf-open"><span>♧</span><strong>Shelf</strong><small>Dateien ablegen</small></button><button type="button" class="pn-import"><span>↓</span><strong>Importieren</strong><small>Aus Dateien auswählen</small></button></div><div class="pn-files" hidden></div><input class="pn-file-input" type="file" multiple hidden><p class="pn-file-status" role="status"></p></div>
+    </section>
+  </div>
+  <audio id="audio" preload="metadata"></audio>
+</body>
+</html>
