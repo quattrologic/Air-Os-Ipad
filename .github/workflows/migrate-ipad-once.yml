@@ -1,0 +1,58 @@
+name: One-time import of Air-OS iPad (pinned, no deployment)
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/migrate-ipad-once.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Retrieve pinned public source without modifying the original
+        run: |
+          git clone --depth 1 --branch feat/air-os-ipad-ultra-security-hardening https://github.com/quattrologic/Air-Os-Clean.git "$RUNNER_TEMP/air-os-source"
+          test "$(git -C "$RUNNER_TEMP/air-os-source" rev-parse HEAD)" = "d1fba0e45076ba3028eac6efdeb37c4576be515b"
+      - name: Extract only the complete iPad PWA and its dependencies
+        run: python3 tools/migrate_ipad.py "$RUNNER_TEMP/air-os-source" "$GITHUB_WORKSPACE"
+      - name: Validate source tree and required runtime assets
+        run: |
+          test -f ipad/index.html
+          test -f ipad/sw.js
+          test -f ipad/spotify.js
+          test -f ipad/maclock.js
+          test -f ipad/notch/pro-notch.js || test -d ipad/notch
+          test -f scripts/package-ipad-security.cjs
+          test -f build/ipad-runtime-assets.json
+          test -f tests/ipad-security.test.cjs
+          node -e "const p=require('./build/ipad-runtime-assets.json'); if(!Array.isArray(p.runtime)||!p.runtime.length) process.exit(1);"
+      - name: Commit iPad-only sources to the new private repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "feat(ipad): migrate complete PWA, assets, tests, docs and CI"
+            git push origin HEAD:main
+          fi
+      - name: Verify migrated iPad tests
+        run: npm test
+      - name: Build and verify the offline iPad package
+        run: |
+          npm run build
+          npm run check
+      - name: Upload current iPad ZIP
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: Air-OS-iPad-initial-migration
+          path: dist/*.zip
+          if-no-files-found: warn
+          retention-days: 7
