@@ -48,3 +48,11 @@ test('optional loopback adapter enforces build inventory, headers, host and file
  const raw=async(p,host)=>new Promise((resolve,reject)=>{const req=http.get({hostname:'127.0.0.1',port:server.address().port,path:p,headers:host?{host}:{}},r=>{r.resume();r.on('end',()=>resolve(r.statusCode));});req.on('error',reject);});assert.equal(await raw('/%2e%2e/secret.txt'),404);assert.equal(await raw('/','rebind.example'),421);fs.appendFileSync(path.join(dir,'index.html'),'changed');assert.equal((await fetch(base+'/')).status,503);
  }finally{server?.closeAllConnections?.();if(server)await new Promise(r=>server.close(r));fs.rmSync(dir,{recursive:true,force:true});}
 });
+
+test('browser async polling rejects resolved false, repeats to actual truth, times out and propagates errors',async()=>{
+ const {waitForAsync}=require('../scripts/lib/wait-for-async.cjs');let calls=0;const page={evaluate:async f=>{calls++;return f();},waitForTimeout:ms=>new Promise(r=>setTimeout(r,ms))};
+ await waitForAsync(page,async()=>calls===3,undefined,{timeout:1000,interval:1});assert.equal(calls,3);
+ await assert.rejects(waitForAsync(page,async()=>false,undefined,{timeout:15,interval:1}),/remained false/);
+ await assert.rejects(waitForAsync(page,async()=>{throw Error('actual browser error');}),/actual browser error/);
+ await assert.rejects(waitForAsync({...page,evaluate:()=>new Promise(()=>{})},async()=>true,undefined,{timeout:15}),/did not resolve/);
+});

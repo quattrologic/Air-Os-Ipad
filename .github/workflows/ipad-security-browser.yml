@@ -1,0 +1,151 @@
+name: Air-OS iPad security browser regressions
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [chromium, webkit]
+    env:
+      AIR_PAD_ENGINE: ${{ matrix.engine }}
+      AIR_PAD_EDITION2: '1'
+      AIR_LG_POLISH: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Fetch pinned public test fixtures into an isolated repository
+        run: |
+          AIR_PAD_TEST_HISTORY="$RUNNER_TEMP/air-os-test-history"
+          echo "AIR_PAD_TEST_HISTORY=$AIR_PAD_TEST_HISTORY" >> "$GITHUB_ENV"
+          git init "$AIR_PAD_TEST_HISTORY"
+          git -C "$AIR_PAD_TEST_HISTORY" remote add origin https://github.com/quattrologic/Air-Os-Clean.git
+          git -C "$AIR_PAD_TEST_HISTORY" config remote.origin.promisor true
+          git -C "$AIR_PAD_TEST_HISTORY" config remote.origin.partialclonefilter blob:none
+          git -C "$AIR_PAD_TEST_HISTORY" fetch --no-tags --depth=1 --filter=blob:none origin \
+            0cc6f31d5f810d72cf695c5579b40eca7ec5e717 \
+            7de1635c0207b8604c5409ef62c466585b4d5f04 \
+            a228d895939861bf5379917d6d69849aaadc2f84 \
+            732bb798bfe2bc9ed614610eaeee5d60296ad3e6
+          # Batch-fetch the legacy iPad blobs before the recovery builder reads them individually.
+          git -C "$AIR_PAD_TEST_HISTORY" archive 7de1635c0207b8604c5409ef62c466585b4d5f04 ipad > /dev/null
+          git -C "$AIR_PAD_TEST_HISTORY" archive a228d895939861bf5379917d6d69849aaadc2f84 \
+            ipad/app.js ipad/storage.js ipad/backup.js ipad/apps.js ipad/core/music-metadata.js > /dev/null
+      - name: Install locked browser test tools and engine
+        run: |
+          npm ci --prefix build/ipad-parity-tests --ignore-scripts --no-audit --no-fund
+          npm audit --prefix build/ipad-parity-tests --audit-level=high
+          node build/ipad-parity-tests/node_modules/playwright/cli.js install --with-deps "$AIR_PAD_ENGINE"
+      - name: Build and verify the test package
+        run: |
+          npm run build
+          npm run check
+      - name: Original v4 to v5, protected multitab activation and compatible recovery
+        env:
+          AIR_PAD_OUTPUT: dist/parity-evidence/update-${{ matrix.engine }}
+        run: node scripts/test-ipad-updates.cjs
+      - name: Same original Legacy handoff, data, backup and recovery at private subpath
+        env:
+          AIR_PAD_PREFIX: /Air-OS/
+          AIR_PAD_OUTPUT: dist/parity-evidence/update-subpath-${{ matrix.engine }}
+        run: node scripts/test-ipad-updates.cjs
+      - name: Security attacks, actual OAuth navigation, exact UI, upgrade, rollback and cold offline restart
+        env:
+          AIR_SECURITY_OUTPUT: dist/parity-evidence/security-${{ matrix.engine }}
+        run: node scripts/test-ipad-security.cjs
+      - name: Same security boundaries at private Serve-like subpath
+        env:
+          AIR_SECURITY_PREFIX: /Air-OS/
+          AIR_SECURITY_OUTPUT: dist/parity-evidence/security-subpath-${{ matrix.engine }}
+        run: node scripts/test-ipad-security.cjs
+      - name: Spotify widget, live Dock compositing, workarea and input regression
+        env:
+          AIR_DOCK_DPR: '1'
+          AIR_DOCK_OUTPUT: dist/parity-evidence/desktop-dock-${{ matrix.engine }}-dpr1
+        run: node scripts/test-ipad-desktop-dock.cjs
+      - name: Retina, portrait, Safe Area and same live material pixel checks
+        env:
+          AIR_DOCK_DPR: '2'
+          AIR_DOCK_OUTPUT: dist/parity-evidence/desktop-dock-${{ matrix.engine }}-dpr2
+        run: node scripts/test-ipad-desktop-dock.cjs
+      - name: Actual browser GUI, legacy library, touch and offline data
+        env:
+          AIR_PAD_OUTPUT: dist/parity-evidence/${{ matrix.engine }}
+        run: node scripts/test-ipad-parity.cjs
+      - name: Same browser under private Serve-like subpath
+        env:
+          AIR_PAD_PREFIX: /Air-OS/
+          AIR_PAD_OUTPUT: dist/parity-evidence/subpath-${{ matrix.engine }}
+        run: node scripts/test-ipad-parity.cjs
+      - name: Pinned compact baseline, full viewport only
+        env:
+          AIR_LG_OUTPUT: dist/parity-evidence/before-liquid-${{ matrix.engine }}
+        run: node scripts/capture-ipad-liquid-baseline.cjs
+      - name: MacLock, coupled Dock, offline metadata and responsive scenes
+        env:
+          AIR_LG_OUTPUT: dist/parity-evidence/liquid-${{ matrix.engine }}
+        run: node scripts/test-ipad-liquid-maclock.cjs
+      - name: Retina DPR2 and same touch and offline checks
+        env:
+          AIR_LG_DPR: '2'
+          AIR_LG_TOUCH: '0'
+          AIR_LG_OUTPUT: dist/parity-evidence/liquid-dpr2-${{ matrix.engine }}
+        run: node scripts/test-ipad-liquid-maclock.cjs
+      - name: Mocked Spotify PKCE, permissions and source lifecycle (no account)
+        env:
+          AIR_SPOTIFY_OUTPUT: dist/parity-evidence/spotify-${{ matrix.engine }}
+        run: node scripts/test-ipad-spotify.cjs
+      - name: Original MacLock material, adaptive covers and offline lifecycle
+        env:
+          AIR_ART_OUTPUT: dist/parity-evidence/art-${{ matrix.engine }}
+        run: node scripts/test-ipad-maclock-art.cjs
+      - name: Controlled MacLock SDF, native-comparison inputs and full-frame scenes
+        env:
+          AIR_PARITY_OUTPUT: dist/parity-evidence/parity-${{ matrix.engine }}-dpr1
+        run: node scripts/test-ipad-maclock-parity.cjs
+      - name: Same material and foreground geometry at DPR2
+        env:
+          AIR_PARITY_DPR: '2'
+          AIR_PARITY_OUTPUT: dist/parity-evidence/parity-${{ matrix.engine }}-dpr2
+        run: node scripts/test-ipad-maclock-parity.cjs
+      - name: Actual visual product, controls, accessibility and six viewports
+        env:
+          AIR_VISUAL_AFTER: '1'
+          AIR_VISUAL_OUTPUT: dist/parity-evidence/after-${{ matrix.engine }}
+        run: node scripts/test-ipad-system3.cjs
+      - name: DPR2 real touch scenes and layout invariants
+        env:
+          AIR_VISUAL_AFTER: '1'
+          AIR_VISUAL_DPR: '2'
+          AIR_VISUAL_OUTPUT: dist/parity-evidence/after-dpr2-${{ matrix.engine }}
+        run: node scripts/test-ipad-system3.cjs
+      - name: Actual black Notch states, sampled motion, interruption and data owners
+        env:
+          AIR_NOTCH_OUTPUT: dist/parity-evidence/notch-${{ matrix.engine }}
+        run: node scripts/test-ipad-pro-notch.cjs
+      - name: Retina Notch, real viewports and the same resource checks
+        env:
+          AIR_NOTCH_DPR: '2'
+          AIR_NOTCH_OUTPUT: dist/parity-evidence/notch-dpr2-${{ matrix.engine }}
+        run: node scripts/test-ipad-pro-notch.cjs
+      - name: Normal product GPU guards and isolated original shader pixel/cost/lifecycle evidence
+        env:
+          AIR_MATERIAL_OUTPUT: dist/parity-evidence/material-${{ matrix.engine }}
+        run: node scripts/test-ipad-system3-material.cjs
+      - name: Upload synthetic regression reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ipad-security-reports-${{ matrix.engine }}
+          path: dist/parity-evidence/**/*.json
+          retention-days: 7

@@ -31,7 +31,7 @@ Tailscale Serve benutzen, **niemals Funnel oder öffentliche Pages**. Die Air-OS
 - npm test: iPad-Modell- und Regressionstests
 - npm run build: überprüftes Offline-PWA-Paket
 - npm run check: Paketintegritätsprüfung
-- Für Browsertests: npm ci --prefix build/ipad-parity-tests, anschließend Playwright-Browser installieren; npm run test:browser
+- Die [eigenständige Sicherheitsprüfung](docs/security/standalone-verification.md) beschreibt die Chromium- und WebKit-Regressionen und die historischen Testdaten.
 
 Wichtige Verzeichnisse: ipad/ (App), scripts/ (iPad-Tools), tests/ (Tests), build/ipad-parity-tests/ (Test-Dependencies), docs/ (iPad-Dokumentation), .github/workflows/ (CI).
 
