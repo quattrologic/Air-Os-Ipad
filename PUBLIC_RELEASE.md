@@ -18,7 +18,7 @@ Bei einer öffentlichen Quellcode- oder Binärfreigabe müssen die jeweiligen Li
 
 ### KI-generiertes Wallpaper
 
-Der Repository-Inhaber hat am 10.11.2026 erklärt, dass `ipad/assets/yosemite-morning.png` **mit KI erstellt** wurde und Air-OS iPad öffentlich werden soll. Diese Angabe ist in [ipad/NOTICE](ipad/NOTICE) und der [Asset-Metadatei](ipad/assets/yosemite-morning.metadata.json) dokumentiert. Es wird weder exklusive Urheberschaft noch eine unabhängig geprüfte Lizenz des Bildgenerators behauptet. Wurden urheberrechtlich geschützte Vorlagen verwendet oder schränken die Bedingungen des Bildgenerators die Weiterverbreitung ein, muss das Bild vor der Freigabe rechtmäßig ersetzt werden – einschließlich seiner Git-Historie, nicht nur im neuesten Commit.
+Der Repository-Inhaber hat am 10.11.2026 erklärt, dass `ipad/assets/yosemite-morning.png` **mit KI erstellt** wurde und Air-OS iPad öffentlich werden soll. Diese zusätzliche Angabe ist in der [KI-Wallpaper-Provenienz](docs/AI_WALLPAPER_PROVENANCE.md) dokumentiert; die geschützte Original-Metadatei und `ipad/NOTICE` bleiben für die Integritätsprüfung unverändert. Es wird weder exklusive Urheberschaft noch eine unabhängig geprüfte Lizenz des Bildgenerators behauptet. Wurden urheberrechtlich geschützte Vorlagen verwendet oder schränken die Bedingungen des Bildgenerators die Weiterverbreitung ein, muss das Bild vor der Freigabe rechtmäßig ersetzt werden – einschließlich seiner Git-Historie, nicht nur im neuesten Commit.
 
 Zusätzlich verwendete Referenzvideos, Screenshots und Marken sollten darauf geprüft werden, ob sie im öffentlichen Repository enthalten sind und unter welchen Bedingungen sie gezeigt werden dürfen. Original-Apple-Systemdateien sind nicht Teil der eigenen Browserimplementierung.
 
