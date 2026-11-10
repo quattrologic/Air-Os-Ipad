@@ -56,15 +56,13 @@ System Experience 3 additions:
   EveningGlow/contents/images/2560x1600.jpg. Unmodified in assets/lake-evening.jpg
   with original metadata. Existing LGPLv3 and GPLv3 texts accompany the image.
 
-Premium 4 wallpaper: Yosemite-Tal im warmen Morgenlicht.png, supplied by the
-repository owner in this development chat on 2026-11-06. On 2026-11-10 the
-owner confirmed the artwork was generated with AI and requested a public
-source release. Unmodified PNG bytes in assets/yosemite-morning.png
-(1672 x 941). This statement does not independently establish authorship,
-exclusive rights or the terms of the image-generation provider. The artwork
-is separate from the AGPL combined-code license; no open-content license is
-claimed for the image. Provenance and SHA-256 are in
-assets/yosemite-morning.metadata.json. CSS cover framing only; no pixel edits.
+Premium 4 wallpaper: Yosemite-Tal im warmen Morgenlicht.png, supplied by the user
+in this development chat on 2026-11-06 for the requested Air-OS visual update.
+Unmodified PNG bytes in assets/yosemite-morning.png (1672 x 941).
+No third-party authorship or public license is asserted for this supplied asset.
+Provenance and SHA-256: assets/yosemite-morning.metadata.json.
+CSS cover framing only. No image generation or local pixel modification.
+The image is separate from the AGPL combined-code license and existing notices.
 
 Pro Notch presentation: independently implemented Air-OS browser UI and motion
 math, based on the user's visible MOV reference (SHA-256
