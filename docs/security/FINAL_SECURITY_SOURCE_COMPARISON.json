@@ -872,10 +872,25 @@
       "identical": true
     }
   ],
-  "securitySourceCommit": "1c8f69394ec2b8dc1359fac94c69313f24cc3e69",
+  "securitySourceCommit": "ccba678b53fd2936f621fc4c1422d29c01b2c3ec",
   "originalRepository": "quattrologic/Air-Os-Clean",
   "comparedFiles": 145,
   "identicalFiles": 145,
   "reviewOnly": true,
-  "qaPatchSha256": "e311932149949b22bde52ce130736f9821570b23007ec4fd701f61df406a3901"
+  "qaPatchSha256": "9f77eefc151cef04be320136516d881524a0136ab12d50312bb8d9d913232a3d",
+  "qaPatchFiles": [
+    "scripts/test-ipad-security.cjs",
+    "scripts/test-ipad-updates.cjs",
+    "scripts/publish-ipad-security-evidence.cjs",
+    "scripts/test-ipad-liquid-maclock.cjs",
+    "scripts/test-ipad-parity.cjs",
+    "scripts/test-ipad-pro-notch.cjs",
+    "scripts/test-ipad-system3.cjs",
+    "scripts/test-ipad-workflows.cjs",
+    "scripts/test-ipad2-system.cjs",
+    "scripts/test-ipad2-workflows.cjs",
+    "scripts/write-ipad-source.cjs",
+    "scripts/lib/wait-for-async.cjs",
+    "tests/ipad-security.test.cjs"
+  ]
 }

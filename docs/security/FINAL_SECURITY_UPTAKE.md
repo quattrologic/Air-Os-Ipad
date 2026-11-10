@@ -20,7 +20,8 @@ Der beigefügte Patch `patches/final-security-qa.patch` ist eine **Reviewvorlage
 
 1. `scripts/test-ipad-updates.cjs`: echte Retirement-Prüfung der Legacy-Clients mit neutralem zweitem Loopback-Origin; kein erzwungenes `skipWaiting`, keine Datenlöschung, kein Schließen des letzten WebKit-Fensters.
 2. `scripts/test-ipad-security.cjs`: gespeicherte öffentliche Spotify-Konfiguration, zulässige Metadaten und echte gecachte Bildbytes durch Upgrade/Backup/Restore/Rollback/Offline-Neustart prüfen; vorhandene MacLock-/Notch-Owner nach Update ausüben; vollständig erhaltene erste Frames und stabiler kontrollierter Aufnahmeablauf mit strenger Null-Pixelgrenze.
-3. `scripts/publish-ipad-security-evidence.cjs`: zusätzliche rohe Vollbild-Zwischenaufnahmen archivieren. Der bestehende Publisher bleibt auf den alten Repo-/Branchpfad beschränkt; vor einer Nutzung hier muss diese Zuordnung ausdrücklich passend geändert und geprüft werden.
+3. `scripts/lib/wait-for-async.cjs` und acht vorhandene Browser-Regressionsskripte: Aufgelöste asynchrone Ergebnisse tatsächlich pollen; Playwright 1.62 behandelt ein Promise sonst vor dessen booleschem Ergebnis als wahr. Ein begrenzter Timeout erfasst auch niemals aufgelöste Promises. Die neue Modellprüfung wird an die hier bereits angepasste Testdatei **angehängt**, deren lokale Baseline-Fixtures bleiben erhalten. `scripts/write-ipad-source.cjs` nimmt nur den neuen Testhelfer in das Sourceangebot auf.
+4. `scripts/publish-ipad-security-evidence.cjs`: zusätzliche rohe Vollbild-Zwischenaufnahmen archivieren. Der bestehende Publisher bleibt auf den alten Repo-/Branchpfad beschränkt; vor einer Nutzung hier muss diese Zuordnung ausdrücklich passend geändert und geprüft werden.
 
 ## Wichtige Voraussetzung vor Anwendung des Testpatchs
 
@@ -41,4 +42,8 @@ Ein isolierter temporärer Worktree des genannten `main` bestand **52/52 Modellp
 
 ## Original-Repository: laufende Schlussabnahme
 
-Quellstand `1c8f69394ec2b8dc1359fac94c69313f24cc3e69`, [CI 42769856974](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42769856974). Diese erste Reviewvorbereitung behauptet keinen abgeschlossenen CI-Endstatus; bestätigte Abschlusszahlen werden nachgetragen. Der Patch lässt sich gegen den oben genannten eigenständigen `main` mit `git apply --check docs/security/patches/final-security-qa.patch` erfolgreich prüfen, wird hier aber aus den genannten Fixture-/Publishergründen bewusst nicht blind angewandt.
+Quellstand `ccba678b53fd2936f621fc4c1422d29c01b2c3ec`, [CI 42772216350](https://github.com/quattrologic/Air-Os-Clean/actions/runs/42772216350). Diese erste Reviewvorbereitung behauptet keinen abgeschlossenen CI-Endstatus; bestätigte Abschlusszahlen werden nachgetragen. Der Patch lässt sich gegen den oben genannten eigenständigen `main` mit `git apply --check docs/security/patches/final-security-qa.patch` erfolgreich prüfen, wird hier aber aus den genannten Fixture-/Publishergründen bewusst nicht blind angewandt.
+
+## Anwendbarkeit des konkreten QA-Vorschlags
+
+Der erweiterte Patch umfasst 13 Dateien und besteht `git apply --check` gegen den oben genannten iPad-Stand. Er wurde ausschließlich in einem separaten temporären Worktree angewandt: **53/53 Modelltests**, vollständiger Build und **142/142 Paketdateien** bestanden dort. Die 52 bisherigen eigenständigen Modellgruppen bleiben erhalten und werden um den Timeout-/Falsch-/Wahr-/Fehlernachweis ergänzt. Der Review-Branch selbst enthält weiterhin nur Dokumentation und den überprüfbaren Patch. Noch kein Standalone-Browsergate behauptet. Das finale ursprüngliche Gate ergänzt zudem Root- und Unterpfad-Legacy-Berichte und erwartet damit 44 Berichte; der branchgebundene alte Workflow wird hier weiterhin nicht blind aktiviert.
