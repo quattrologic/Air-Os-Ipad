@@ -42,7 +42,7 @@ Die Sicherheitsübernahme ist in `main` integriert. Die Veröffentlichung des Qu
 
 **Lizenzhinweis:** Die kombinierte Browser-PWA wird gemäß [ipad/NOTICE](ipad/NOTICE) unter **AGPL-3.0** weitergegeben und enthält Komponenten unter GPL-3.0, MIT, LGPL-3.0 und OFL-1.1. [LICENSE](LICENSE) erklärt den Geltungsbereich; die vollständigen Drittanbieterhinweise gelten weiterhin.
 
-Der Repository-Inhaber hat am 10.11.2026 bestätigt, dass das bereitgestellte Yosemite-Wallpaper **mit KI erstellt** wurde und die Veröffentlichung von Air-OS iPad gewünscht ist. Eine unabhängige Prüfung der Nutzungsbedingungen des Bildgenerators ist damit nicht ersetzt; [Provenienz](ipad/assets/yosemite-morning.metadata.json). Ein öffentliches Repository veröffentlicht nicht automatisch die Tailscale-gehostete App.
+Der Repository-Inhaber hat am 10.11.2026 bestätigt, dass das bereitgestellte Yosemite-Wallpaper **mit KI erstellt** wurde und die Veröffentlichung von Air-OS iPad gewünscht ist. Eine unabhängige Prüfung der Nutzungsbedingungen des Bildgenerators ist damit nicht ersetzt; [ergänzende KI-Provenienz](docs/AI_WALLPAPER_PROVENANCE.md). Ein öffentliches Repository veröffentlicht nicht automatisch die Tailscale-gehostete App.
 
 ## Sicherheit, Privatsphäre, Lizenzen
 Keine Spotify-Tokens, Passwörter, Zertifikate oder Gerätedaten in Git speichern. Daten in IndexedDB und auf dem bisher verbundenen iPad bleiben beim Anlegen dieses Repos unverändert. Vor einer späteren Umstellung Sicherungen erstellen und die neue Quelle testen. Siehe [SECURITY.md](SECURITY.md), [MIGRATION.md](MIGRATION.md), [ipad/NOTICE](ipad/NOTICE) und ipad/licenses/ für Open-Source-Pflichten.
