@@ -1,21 +1,24 @@
-MIT License
+Air-OS iPad — license overview
 
-Copyright (c) 2026 quattrologic
+The combined Air-OS iPad browser PWA is conveyed under GNU Affero General
+Public License version 3 (AGPL-3.0-only), as documented in ipad/NOTICE.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Full AGPL-3.0 text: ipad/licenses/InfinityOS-AGPL-3.0.txt
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Bundled third-party components and separate source/assets retain their own
+notices and applicable terms (including GPL-3.0, MIT, LGPL-3.0 and OFL-1.1).
+Their applicable licenses and provenance are recorded in:
+- ipad/NOTICE
+- ipad/licenses/
+- ipad/icons/NOTICE
+- docs/source-ports/
+- ipad/vendor/
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+The pre-existing MIT notice for Air-OS first-party material is preserved in
+ipad/licenses/Air-OS-MIT.txt. It does not override copyleft obligations
+for the combined PWA or for third-party components.
+
+The separately supplied AI-generated wallpaper is not automatically covered
+by the combined application's AGPL grant; see ipad/NOTICE and its metadata.
+
+Consult the component-specific notices for exact rights and obligations.
