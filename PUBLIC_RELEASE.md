@@ -1,6 +1,6 @@
 # Öffentliche GitHub-Freigabe von Air-OS iPad
 
-**Status:** Vorbereitet, aber bis zur Rechteprüfung weiterhin **privat**. Die Veröffentlichung des Quellcodes ist etwas anderes als die Bereitstellung der iPad-Web-App.
+**Status:** Veröffentlichung des Quellcodes vorbereitet. Ob das Repository tatsächlich öffentlich ist, entscheidet ausschließlich die GitHub-Sichtbarkeitseinstellung. Die Veröffentlichung des Quellcodes ist etwas anderes als die Bereitstellung der iPad-Web-App.
 
 ## Technische Vorabkontrolle
 
@@ -12,15 +12,13 @@
 
 ## Lizenzgrenzen
 
-Der **kombinierte iPad-PWA-Code** ist laut [ipad/NOTICE](ipad/NOTICE) unter **AGPL-3.0** herausgegeben. Darin werden zudem adaptierte GPL-3.0-Komponenten und einzelne MIT-, LGPL-3.0- sowie OFL-1.1-Bestandteile genannt. Die MIT-Lizenz unter [LICENSE](LICENSE) gilt nicht pauschal für sämtliche integrierten Fremdkomponenten. Die jeweiligen Attributionen und vollständigen Texte stehen in [ipad/NOTICE](ipad/NOTICE), [ipad/licenses](ipad/licenses/) und [ipad/icons/NOTICE](ipad/icons/NOTICE).
+Der **kombinierte iPad-PWA-Code** ist laut [ipad/NOTICE](ipad/NOTICE) unter **AGPL-3.0** herausgegeben. Darin werden zudem adaptierte GPL-3.0-Komponenten und einzelne MIT-, LGPL-3.0- sowie OFL-1.1-Bestandteile genannt. Die Lizenzübersicht unter [LICENSE](LICENSE) unterscheidet die AGPL-3.0-Gesamtausgabe von separat lizenzierten Komponenten. Die jeweiligen Attributionen und vollständigen Texte stehen in [ipad/NOTICE](ipad/NOTICE), [ipad/licenses](ipad/licenses/) und [ipad/icons/NOTICE](ipad/icons/NOTICE).
 
 Bei einer öffentlichen Quellcode- oder Binärfreigabe müssen die jeweiligen Lizenzbedingungen einschließlich der Bereitstellung des korrespondierenden Quellcodes eingehalten werden. Die konkrete Vereinbarkeit und etwaige Pflichten für die gesamte Verteilung sollten vor der Freigabe geprüft werden.
 
-### Noch erforderliche Entscheidung: bereitgestelltes Wallpaper
+### KI-generiertes Wallpaper
 
-[ipad/NOTICE](ipad/NOTICE) bezeichnet `ipad/assets/yosemite-morning.png` als vom Nutzer bereitgestelltes Bild, **ohne bestätigte öffentliche Verbreitungslizenz**. Der Besitz einer Bilddatei oder eine private Chat-Übermittlung beweisen nicht automatisch, dass das Bild auf GitHub an alle weitergegeben werden darf.
-
-Vor einer öffentlichen Umstellung muss der Rechteinhaber die **Weiterverbreitung dieses Bildes** gestatten, oder das Bild durch eine nachweislich veröffentlichbare Alternative ersetzt werden. Bei einer Ersatzdatei ist zu beachten, dass frühere Git-Commits dieselbe PNG weiter enthalten können: Ein einfaches Löschen im letzten Commit reicht für die öffentliche Freigabe nicht aus. Eine historische Bereinigung muss separat und mit besonderer Vorsicht erfolgen.
+Der Repository-Inhaber hat am 10.11.2026 erklärt, dass `ipad/assets/yosemite-morning.png` **mit KI erstellt** wurde und Air-OS iPad öffentlich werden soll. Diese zusätzliche Angabe ist in der [KI-Wallpaper-Provenienz](docs/AI_WALLPAPER_PROVENANCE.md) dokumentiert; die geschützte Original-Metadatei und `ipad/NOTICE` bleiben für die Integritätsprüfung unverändert. Es wird weder exklusive Urheberschaft noch eine unabhängig geprüfte Lizenz des Bildgenerators behauptet. Wurden urheberrechtlich geschützte Vorlagen verwendet oder schränken die Bedingungen des Bildgenerators die Weiterverbreitung ein, muss das Bild vor der Freigabe rechtmäßig ersetzt werden – einschließlich seiner Git-Historie, nicht nur im neuesten Commit.
 
 Zusätzlich verwendete Referenzvideos, Screenshots und Marken sollten darauf geprüft werden, ob sie im öffentlichen Repository enthalten sind und unter welchen Bedingungen sie gezeigt werden dürfen. Original-Apple-Systemdateien sind nicht Teil der eigenen Browserimplementierung.
 
@@ -32,9 +30,9 @@ Die Anleitung zur privaten Installation im **Root-README** ist maßgeblich. `ipa
 
 ## Freigabe erst nach
 
-1. Sicherheits-/Historien-Audit ohne ungeklärte Treffer
-2. Lizenz- und Wallpaper-Rechteprüfung
-3. Vollständigen CI-Prüfungen auf dem endgültigen Commit
-4. Expliziter Entscheidung des Repository-Inhabers zur öffentlichen Sichtbarkeit
+1. Sicherheits-/Historien-Audit ohne ungeklärte Treffer und Prüfung früherer Artefakte/Logs
+2. Bestätigung des Inhabers zu KI-Bildherkunft, Weiterverbreitungsbedingungen und Lizenzgrenzen
+3. Vollständige CI-Prüfungen auf dem endgültigen Commit
+4. Sichtbarkeitsumstellung durch den Repository-Inhaber in GitHub
 
 Der GitHub-Repository-Status wird durch diese Datei **nicht** geändert.
