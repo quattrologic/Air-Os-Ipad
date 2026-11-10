@@ -1,7 +1,6 @@
 name: Air-OS iPad security browser regressions
 on:
-  pull_request:
-  workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read

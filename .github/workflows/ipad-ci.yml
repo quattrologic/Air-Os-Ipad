@@ -28,3 +28,6 @@ jobs:
           path: dist/*.zip
           if-no-files-found: warn
           retention-days: 7
+
+  browser-security:
+    uses: ./.github/workflows/ipad-security-browser.yml
