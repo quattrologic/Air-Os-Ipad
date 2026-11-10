@@ -35,6 +35,15 @@ Tailscale Serve benutzen, **niemals Funnel oder öffentliche Pages**. Die Air-OS
 
 Wichtige Verzeichnisse: ipad/ (App), scripts/ (iPad-Tools), tests/ (Tests), build/ipad-parity-tests/ (Test-Dependencies), docs/ (iPad-Dokumentation), .github/workflows/ (CI).
 
+
+## Öffentliche Quellcode-Freigabe
+
+**Derzeit ist dieses GitHub-Repository privat.** Die Sicherheitsübernahme ist in `main` integriert. Eine spätere öffentliche Freigabe muss gesondert vorbereitet werden; siehe [PUBLIC_RELEASE.md](PUBLIC_RELEASE.md) und `npm run audit:public` für die Überprüfung von Dateien und erreichbarer Git-Historie.
+
+**Lizenzhinweis:** Die kombinierte Browser-PWA wird gemäß [ipad/NOTICE](ipad/NOTICE) unter **AGPL-3.0** weitergegeben und enthält zusätzlich Komponenten unter GPL-3.0, MIT, LGPL-3.0 und OFL-1.1. Die MIT-Datei [LICENSE](LICENSE) ist **keine** pauschale Lizenz für die gesamte integrierte PWA.
+
+Das bereitgestellte Yosemite-Wallpaper besitzt laut [ipad/NOTICE](ipad/NOTICE) noch **keine bestätigte öffentliche Verbreitungslizenz**. Vor einer öffentlichen Freigabe sind die entsprechenden Rechte zu klären oder das Asset inklusive seiner Git-Historie rechtmäßig zu ersetzen. Ein öffentliches Repository veröffentlicht nicht automatisch die Tailscale-gehostete App.
+
 ## Sicherheit, Privatsphäre, Lizenzen
 Keine Spotify-Tokens, Passwörter, Zertifikate oder Gerätedaten in Git speichern. Daten in IndexedDB und auf dem bisher verbundenen iPad bleiben beim Anlegen dieses Repos unverändert. Vor einer späteren Umstellung Sicherungen erstellen und die neue Quelle testen. Siehe [SECURITY.md](SECURITY.md), [MIGRATION.md](MIGRATION.md), [ipad/NOTICE](ipad/NOTICE) und ipad/licenses/ für Open-Source-Pflichten.
 
