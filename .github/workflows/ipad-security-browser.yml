@@ -29,6 +29,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      # The Playwright container runs as root while checkout creates files with
+      # the host runner's UID. Trust only this checkout, never all directories.
+      - name: Trust checked-out repository in the test container
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Fetch pinned public test fixtures into an isolated repository
         run: |
           AIR_PAD_TEST_HISTORY="$RUNNER_TEMP/air-os-test-history"
