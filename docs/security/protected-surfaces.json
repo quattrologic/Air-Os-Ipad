@@ -5,7 +5,6 @@
     "ipad/README.md": "504b1df88f9a0f8d928e41c63495c673ca620c608f36e2cd961e61209914c77c",
     "ipad/air-logo.png": "e9050251e60ea495808cf4a4721b3b36904bcfd0219fec5a966ec9dd639a8627",
     "ipad/air-os-official.png": "381aed7af688220f32301ba420baf7696db39b143001f9fef53b0bda358a7399",
-    "ipad/apps.js": "0398dd15753ed593c781b5b79df1bd31c73ffa993e65986148d51977a55b978e",
     "ipad/assets/fonts/OpenRunde-Regular.otf": "8398c8adfc2b41a21cd1c0e00dbbd81c2ce3877cc5c9843bebd3e0b7b43cfbcc",
     "ipad/assets/fonts/OpenRunde-Semibold.otf": "39d6c706cfbb9cad2a7ea2bfdbe12c4384185d8625a21208a39cbdfe1ea1790c",
     "ipad/assets/forest-path.jpg": "7477457d7f17b736259f1b021864778ad4ba802cf3214e6728181ff29126bba8",
@@ -23,10 +22,8 @@
     "ipad/core/playback-history.js": "1676999537e9d66517fe3e224c90f652f3193f47016f314269268ab077f78640",
     "ipad/core/transfers.js": "9535e012f90307fd9d7ca8d5c922ab6465c8ddfede51c972f903d83be07091e9",
     "ipad/core/visual-icons.js": "a09adc1662142c17a4cee54db2fe1f64aaf78acb2fc93e3c4e338c443d9d9b57",
-    "ipad/core/visual-motion.js": "ad890ebf143dbf51b363e6f9b46d50230b376008fe1ffb8b8a7d7fada0df000e",
     "ipad/core/window-model.js": "43abbe1f6ca2664dfb755b2a59d6534415a90d79ddcb7ffb2202c49437cba3d9",
     "ipad/desktop.css": "76ae7eb73b9f22bb0118632cc0a6f23363a06ccf738591a3e33b0cb7443d3ffb",
-    "ipad/desktop.js": "1693348a1157e4c933bad5b9c2259d50ea99bc9810ef70fad7b6784aec1ff9e3",
     "ipad/dock-material.js": "09c32428e9f60a24578f62abbb41b835adc76cd078a598575bdfd7dbdc223b40",
     "ipad/enable-updates-windows.ps1": "4cce33bc6184b98b23c7097c49442f9751757d6750de45d18d7e1ca91b0375ad",
     "ipad/icon.svg": "16743d199f1d483f73ba95979c2ab6f567a1006a228ce125c5f2aa19de982394",
@@ -104,12 +101,10 @@
     "ipad/licenses/MacTahoe-GTK-MIT.txt": "47508b7d79f238a7e7225c21d2c9234b860c6d1931d8f9f2d545a2db0e26a25f",
     "ipad/licenses/OpenRunde-OFL-1.1.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
     "ipad/liquid-maclock.css": "7c3c8087e35c8f485cac76d1ff0ca60ee8349da86ca8d7ec1643a4f32cf8f6c3",
-    "ipad/maclock.js": "41e6052f4527eb9a9a2820fdf7a75d1137ab4d1c4898d9a9e55607caf1cc74f2",
     "ipad/manifest.webmanifest": "36e7df945d3475a1f961a1579dc9f99c7b6b7d516c149227475c3e6d30d422c6",
     "ipad/notch/model.js": "82e7b1f42d4925837d340f668bed81377ed2cf0b72b76ff2151c48dbc3a62581",
     "ipad/notch/motion-data.js": "f29d87fcf2ec8f443c8c92923214daf28036a182e407da86efae9c645dbd57f4",
     "ipad/notch/pro-notch.css": "6a2b72ebd6ec11a39bdd1cb7638fb0a91d47c8deef80ab2d44d6c7932ba08ef3",
-    "ipad/notch/pro-notch.js": "30f0fa2f726a41251a29881eef4df9d98a7d15e0d72c9c261ff7665b073f390c",
     "ipad/playback-history.js": "d45f76e7718ec8cf87b64e39fd6e18a55d040d226aafd09616bc9d83df0c8363",
     "ipad/premium4.css": "76958938902f732a12515bfd38687694948df8b0d2c738a8b19798a12b03ded0",
     "ipad/provenance.json": "132850ab59c84e0eb6fc9880444bcdc9e98883d2aa1a11bf5895bc20506c97a3",
@@ -137,12 +132,22 @@
     "ipad/vendor/macshell/shell7.js": "a0af3611bacd9e0573d885b85fa5ff386c32bf5bce0514bfc358ad5bd6b4d54b",
     "ipad/vendor/premium4-provenance.json": "2f2eb774fa588222ec5aa4b74c1a1323d40864331c3f339d2074fcf0a0c3cb76",
     "ipad/vendor/premium4-source-excerpts.txt": "eeb9c597be473d19ed6f68765abb6015ab5755db6bf123b47825f6dd4a08bfb1",
-    "ipad/vendor/system3-provenance.json": "10c411d754d2c9bd807dbf215cdf2b061ae172f77b7f1504ee7a5b82d31a01aa",
-    "ipad/widgets.js": "90259d116b73ef0c67758874ff65458a8320675a04676d93ff45be477f816e4d"
+    "ipad/vendor/system3-provenance.json": "10c411d754d2c9bd807dbf215cdf2b061ae172f77b7f1504ee7a5b82d31a01aa"
   },
   "unchangedSections": [
     "ipad/index.html: entire body",
     "ipad/app.js: all code preceding safeReload (music/timer owners)"
   ],
-  "noDatabaseMigration": true
+  "noDatabaseMigration": true,
+  "airFlowChanges": {
+    "reason": "User-authorized AIR FLOW presentation update; original baseline hashes retained for provenance. Storage, backup, security, deployment and original third-party assets remain pinned.",
+    "baselineFiles": {
+      "ipad/core/visual-motion.js": "ad890ebf143dbf51b363e6f9b46d50230b376008fe1ffb8b8a7d7fada0df000e",
+      "ipad/desktop.js": "1693348a1157e4c933bad5b9c2259d50ea99bc9810ef70fad7b6784aec1ff9e3",
+      "ipad/maclock.js": "41e6052f4527eb9a9a2820fdf7a75d1137ab4d1c4898d9a9e55607caf1cc74f2",
+      "ipad/notch/pro-notch.js": "30f0fa2f726a41251a29881eef4df9d98a7d15e0d72c9c261ff7665b073f390c",
+      "ipad/widgets.js": "90259d116b73ef0c67758874ff65458a8320675a04676d93ff45be477f816e4d",
+      "ipad/apps.js": "0398dd15753ed593c781b5b79df1bd31c73ffa993e65986148d51977a55b978e"
+    }
+  }
 }

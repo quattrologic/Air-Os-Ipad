@@ -1,0 +1,57 @@
+/* AIR FLOW: small, shared refinements over the existing Air-OS materials. */
+:root{--air-fast:160ms;--air-flow:280ms;--air-spring:cubic-bezier(.22,1.12,.36,1);--air-ease:cubic-bezier(.22,1,.36,1);--air-glass-edge:#ffffff30;--air-glass-shadow:0 8px 24px #00000024;--lock-clock-size:clamp(58px,8dvh,100px);--lock-date-size:clamp(15px,2.3dvh,23px)}
+/* Stable stacking contexts. Clock transforms can never lift it above the cover. */
+#lockscreen{z-index:3100;--lock-overlap:14px}
+#lockscreen .lg-lock-wallpaper{z-index:0;pointer-events:none}
+#lockscreen .lg-lock-art-bg{z-index:1}
+#lockscreen .lock-clock{z-index:2;top:7.2dvh;margin:0;pointer-events:none}
+#lockscreen .lock-clock time{font-size:var(--lock-clock-size);font-variant-numeric:tabular-nums;min-width:5ch;text-align:center}
+#lockscreen .lock-clock div{font-size:var(--lock-date-size)}
+#lockscreen .lock-music{z-index:3;isolation:isolate}
+#lockscreen.lg-has-media .lock-music{top:calc(7.2dvh + var(--lock-date-size)*1.25 + var(--lock-clock-size)*1.05 - var(--lock-overlap))}
+#lockscreen .big-art{z-index:1}
+#lockscreen .lock-player{z-index:2}
+#lockscreen .lock-bottom,#lockscreen .lg-lock-notices{z-index:4}
+#lockscreen .lock-bottom{bottom:max(4.7dvh,calc(env(safe-area-inset-bottom) + 12px))}
+#lockscreen #unlock{width:154px;height:48px;min-height:44px;border-radius:22px;border:1px solid var(--air-glass-edge);background:linear-gradient(145deg,#ffffff1f,#ffffff09);box-shadow:inset 0 1px #ffffff2a,0 4px 16px #00000016;backdrop-filter:blur(10px) saturate(1.15);-webkit-backdrop-filter:blur(10px) saturate(1.15);overflow:hidden;transition:scale var(--air-fast) var(--air-spring),background-color var(--air-fast) var(--air-ease)}
+#lockscreen #unlock:active{scale:.96;opacity:1;background-color:#ffffff14}
+.air-touch-light{display:block;position:absolute;inset:0;z-index:20;border-radius:inherit;pointer-events:none;background:radial-gradient(120px circle at var(--touch-x,50%) var(--touch-y,50%),#ffffff2b,#ffffff0a 45%,transparent 75%);overflow:hidden}
+.air-artwork{position:absolute;inset:0;width:100%;height:100%;display:grid;place-items:center;background:center/cover no-repeat;border-radius:inherit;object-fit:cover;pointer-events:none}
+.widget-art{position:relative;overflow:hidden}.pad-widget,.s3-settings-main>section{position:relative}
+:is(.pad-dock-app,.pad-launch-grid button,.s3-category-tile button,.app-tile){transition:scale var(--air-fast) var(--air-spring)}
+:is(.pad-dock-app,.pad-launch-grid button,.s3-category-tile button,.app-tile):active{scale:1.07}
+:is(.pad-widget button,.pad-window-content button,.pad-popover button):active{scale:.97}
+.pad-widget{transition:border-color var(--air-flow) var(--air-ease);border-color:var(--air-glass-edge)}
+.pad-widget:focus-within{border-color:#ffffff70}
+/* Native checkboxes retain semantics and keyboard handling. */
+.s3-settings input[type=checkbox],.lg-media-settings input[type=checkbox]{appearance:none;-webkit-appearance:none;width:46px;height:28px;min-height:28px;flex-shrink:0;border:1px solid #00000012;border-radius:18px;background:#c8cbd0;position:relative;cursor:pointer;transition:background-color var(--air-fast) var(--air-ease)}
+.s3-settings input[type=checkbox]:before,.lg-media-settings input[type=checkbox]:before{content:'';position:absolute;left:2px;top:2px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px #0003;transition:transform var(--air-flow) var(--air-spring)}
+.s3-settings input[type=checkbox]:checked,.lg-media-settings input[type=checkbox]:checked{background:#32a675}
+.s3-settings input[type=checkbox]:checked:before,.lg-media-settings input[type=checkbox]:checked:before{transform:translateX(18px)}
+.s3-app-sidebar button,.p4-notes-rail button{min-height:44px;transition:background-color var(--air-fast) var(--air-ease),color var(--air-fast) var(--air-ease);border-radius:10px}
+.s3-settings-main>section{border:1px solid #0000000c;border-radius:18px;padding:18px;margin:12px;box-shadow:0 2px 8px #00000004;scroll-margin-top:12px}
+.s3-settings-main>section:focus-within{border-color:#497fb34a}
+.s3-settings label{min-height:44px;align-items:center}.pad-file-row:focus-within{background:#5a91c91c;border-radius:10px}
+.pad-breadcrumb button{min-height:44px!important}.pad-month .p4-calendar-day{transition:background-color var(--air-fast) var(--air-ease),scale var(--air-fast) var(--air-spring)}
+.pad-photo-open{padding:0!important;border:0!important;background:transparent!important;display:block;width:100%;border-radius:12px;overflow:hidden}
+.pad-photo-open img{display:block;width:100%;height:100%;object-fit:cover}
+.air-photo-viewer{border:1px solid #ffffff35;border-radius:24px;background:#18212bea;color:#fff;width:min(900px,92vw);max-height:90dvh;padding:16px;box-shadow:0 24px 80px #0007}
+.air-photo-viewer::backdrop{background:#0008}.air-photo-viewer header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}.air-photo-viewer button{min-width:44px;min-height:44px}.air-photo-viewer img{display:block;max-width:100%;max-height:70dvh;margin:auto;object-fit:contain;border-radius:12px}
+@media(max-height:680px){#lockscreen{--lock-clock-size:58px;--lock-date-size:15px}#lockscreen .lock-clock{top:4dvh}#lockscreen.lg-has-media .lock-music{top:calc(4dvh + var(--lock-date-size)*1.25 + var(--lock-clock-size)*1.05 - var(--lock-overlap))}}
+html[data-air-motion=economy] #unlock{backdrop-filter:none;-webkit-backdrop-filter:none}
+@media(prefers-reduced-transparency:reduce){#lockscreen #unlock{background:#26313de8;backdrop-filter:none;-webkit-backdrop-filter:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important}.air-touch-light{display:none}#unlock,.pad-widget,.pad-dock-app,.pad-window-content button,.s3-app-sidebar button,.s3-settings input[type=checkbox],.s3-settings input[type=checkbox]:before{transition:none!important}}
+.pad-widget-column{max-height:calc(100% - 90px);overflow:auto;overscroll-behavior:contain;padding:4px;scrollbar-width:thin;align-content:start}
+.air-widget-edit{grid-column:1/-1;justify-self:end;background:#ffffff14;color:#fff;border:1px solid #ffffff20;border-radius:14px;min-height:44px;padding:0 12px;font-size:11px}
+.air-widget-tools{display:none;position:relative;z-index:3;grid-column:1/-1;gap:0;min-height:44px;margin:-4px 0 8px}
+.air-widget-tools button{width:44px;min-width:44px;min-height:44px;padding:0;border:0;border-radius:10px;background:#ffffff12;color:inherit}
+.air-widget-handle{touch-action:none;cursor:grab}.air-widget-dragging{z-index:5;box-shadow:0 16px 36px #0005}
+.air-widgets-editing .air-widget-tools{display:flex}.air-widgets-editing .pad-widget{height:auto;min-height:180px;grid-column:1/-1}.air-widgets-editing .clock-dial{visibility:hidden}
+.air-widget-open{position:absolute;right:4px;top:1px;min-width:44px;min-height:44px;background:transparent;border:0;color:inherit;z-index:2}
+.air-widgets-editing .air-widget-open{top:50px}.widget-agenda label{display:flex;align-items:center;gap:8px;min-height:44px;font-size:12px}.widget-agenda input{width:22px;height:22px;min-height:22px;accent-color:#7fb5d7}.widget-agenda small{display:block;line-height:1.4}
+.player-widget{grid-template-rows:auto;min-height:180px!important}.player-widget .widget-transport{grid-column:1/-1;display:flex;justify-content:center;gap:10px}.widget-transport button{width:44px;min-height:44px;background:#ffffff10;border:0;border-radius:50%;color:#fff}.player-widget .widget-art{height:58px}.player-widget:not(.wide){display:flex;flex-direction:column;height:auto;min-height:240px!important}.player-widget:not(.wide) .widget-art{width:58px;flex-shrink:0}.player-widget:not(.wide) .widget-spotify-actions{flex-wrap:wrap}
+.air-widget-notes{display:flex;flex-direction:column;gap:6px}.air-widget-notes button{display:flex;flex-direction:column;text-align:left;min-height:44px;padding:6px 0;border:0;background:transparent;color:inherit;gap:4px}.air-widget-notes strong{font-size:12px}.air-widget-notes span{font-size:11px;opacity:.75;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.notes-widget,.weather-widget{height:auto!important;min-height:var(--widget-size)}
+.weather-widget{display:flex;flex-direction:column;gap:8px}.weather-widget strong{font-size:12px}.weather-widget p{font-size:11px;opacity:.75}.air-weather-icon{width:30px;height:30px}.air-weather-icon .pad-glyph{width:30px;height:30px}
+/* Prepare the sharp desktop underneath the outgoing lock, so the final hide
+   does not suddenly remove the desktop wallpaper's legacy locked-state blur. */
+html.lg-session-open body:has(#lockscreen:not([hidden])) .wallpaper{filter:none;transform:none}

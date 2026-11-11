@@ -129,6 +129,8 @@ jobs:
           AIR_VISUAL_DPR: '2'
           AIR_VISUAL_OUTPUT: dist/parity-evidence/after-dpr2-${{ matrix.engine }}
         run: node scripts/test-ipad-system3.cjs
+      - name: AIR FLOW touch, stacking, widgets, windows and reduced motion
+        run: npm run test:air-flow
       - name: Actual black Notch states, sampled motion, interruption and data owners
         env:
           AIR_NOTCH_OUTPUT: dist/parity-evidence/notch-${{ matrix.engine }}
@@ -147,5 +149,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ipad-security-reports-${{ matrix.engine }}
-          path: dist/parity-evidence/**/*.json
+          path: |
+            dist/parity-evidence/**/*.json
+            dist/air-flow-*/report.json
           retention-days: 7

@@ -1,0 +1,305 @@
+{
+  "engine": "chromium",
+  "physicalIPad": false,
+  "synthetic": true,
+  "checks": [
+    "widgets have no active clock/database timer behind the lock",
+    "1180x820: cover overlaps clock, paints in front, player/unlock fit",
+    "820x1180: cover overlaps clock, paints in front, player/unlock fit",
+    "1024x768: cover overlaps clock, paints in front, player/unlock fit",
+    "768x1024: cover overlaps clock, paints in front, player/unlock fit",
+    "1366x1024: cover overlaps clock, paints in front, player/unlock fit",
+    "missing artwork uses a real placeholder without a broken image",
+    "unlock changes session immediately while the outgoing lock still animates",
+    "widgets show stored notes, tasks, appointments and explicit weather availability",
+    "widget completion writes the original reminder record",
+    "note preview opens its saved note in the original editor",
+    "calendar month navigation preserves its event form",
+    "window launch records the original dock geometry",
+    "focusing during minimize cancels removal and restores interactivity",
+    "minimize keeps its exit animation when another window receives focus",
+    "minimize ends hidden in the same window owner",
+    "snap commits bounded geometry",
+    "window drag uses transform translation before committing geometry",
+    "drag release commits geometry and clears transient translation",
+    "widget reorder changes the existing column",
+    "widget resize updates persisted layout",
+    "photo opens in an actual accessible modal",
+    "photo close releases its modal",
+    "Finder navigation still reveals the original stored file content",
+    "stored reduced motion cancels active presentation effects",
+    "notch expands from its top attachment with stored last-song metadata",
+    "interrupted notch close/open settles without a competing timeline",
+    "music widget controls the existing local audio transport",
+    "OS reduced-motion preference commits windows and notch without animations",
+    "relock stops widget timers and maintains cover foreground",
+    "notes, reminder state and widget size survive reload in original schema",
+    "no unexpected browser errors: []"
+  ],
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1180,
+      "height": 820,
+      "clock": {
+        "x": 0,
+        "y": 59.03125,
+        "width": 1180,
+        "height": 92.421875,
+        "top": 59.03125,
+        "right": 1180,
+        "bottom": 151.453125,
+        "left": 0
+      },
+      "cover": {
+        "x": 460.4453125,
+        "y": 137.484375,
+        "width": 259.109375,
+        "height": 259.109375,
+        "top": 137.484375,
+        "right": 719.5546875,
+        "bottom": 396.59375,
+        "left": 460.4453125
+      },
+      "player": {
+        "x": 460.4453125,
+        "y": 413.8125,
+        "width": 259.109375,
+        "height": 100,
+        "top": 413.8125,
+        "right": 719.5546875,
+        "bottom": 513.8125,
+        "left": 460.4453125
+      },
+      "unlock": {
+        "x": 513,
+        "y": 733.46875,
+        "width": 154,
+        "height": 48,
+        "top": 733.46875,
+        "right": 667,
+        "bottom": 781.46875,
+        "left": 513
+      },
+      "hit": "lock-cover",
+      "layers": {
+        "clock": "2",
+        "cover": "1",
+        "player": "2",
+        "unlock": "auto"
+      }
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "clock": {
+        "x": 0,
+        "y": 84.953125,
+        "width": 820,
+        "height": 127.875,
+        "top": 84.953125,
+        "right": 820,
+        "bottom": 212.828125,
+        "left": 0
+      },
+      "cover": {
+        "x": 235,
+        "y": 198.828125,
+        "width": 350,
+        "height": 350,
+        "top": 198.828125,
+        "right": 585,
+        "bottom": 548.828125,
+        "left": 235
+      },
+      "player": {
+        "x": 235,
+        "y": 573.59375,
+        "width": 350,
+        "height": 120,
+        "top": 573.59375,
+        "right": 585,
+        "bottom": 693.59375,
+        "left": 235
+      },
+      "unlock": {
+        "x": 333,
+        "y": 1076.546875,
+        "width": 154,
+        "height": 48,
+        "top": 1076.546875,
+        "right": 487,
+        "bottom": 1124.546875,
+        "left": 333
+      },
+      "hit": "lock-cover",
+      "layers": {
+        "clock": "2",
+        "cover": "1",
+        "player": "2",
+        "unlock": "auto"
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "clock": {
+        "x": 0,
+        "y": 55.28125,
+        "width": 1024,
+        "height": 86.5625,
+        "top": 55.28125,
+        "right": 1024,
+        "bottom": 141.84375,
+        "left": 0
+      },
+      "cover": {
+        "x": 390.65625,
+        "y": 127.875,
+        "width": 242.6875,
+        "height": 242.6875,
+        "top": 127.875,
+        "right": 633.34375,
+        "bottom": 370.5625,
+        "left": 390.65625
+      },
+      "player": {
+        "x": 390.65625,
+        "y": 386.6875,
+        "width": 242.6875,
+        "height": 100,
+        "top": 386.6875,
+        "right": 633.34375,
+        "bottom": 486.6875,
+        "left": 390.65625
+      },
+      "unlock": {
+        "x": 435,
+        "y": 683.90625,
+        "width": 154,
+        "height": 48,
+        "top": 683.90625,
+        "right": 589,
+        "bottom": 731.90625,
+        "left": 435
+      },
+      "hit": "lock-cover",
+      "layers": {
+        "clock": "2",
+        "cover": "1",
+        "player": "2",
+        "unlock": "auto"
+      }
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "clock": {
+        "x": 0,
+        "y": 73.71875,
+        "width": 768,
+        "height": 114.765625,
+        "top": 73.71875,
+        "right": 768,
+        "bottom": 188.484375,
+        "left": 0
+      },
+      "cover": {
+        "x": 222.2109375,
+        "y": 174.484375,
+        "width": 323.578125,
+        "height": 323.578125,
+        "top": 174.484375,
+        "right": 545.7890625,
+        "bottom": 498.0625,
+        "left": 222.2109375
+      },
+      "player": {
+        "x": 222.2109375,
+        "y": 519.5625,
+        "width": 323.578125,
+        "height": 118.78125,
+        "top": 519.5625,
+        "right": 545.7890625,
+        "bottom": 638.34375,
+        "left": 222.2109375
+      },
+      "unlock": {
+        "x": 307,
+        "y": 671.875,
+        "width": 154,
+        "height": 48,
+        "top": 671.875,
+        "right": 461,
+        "bottom": 719.875,
+        "left": 307
+      },
+      "hit": "lock-cover",
+      "layers": {
+        "clock": "2",
+        "cover": "1",
+        "player": "2",
+        "unlock": "auto"
+      }
+    },
+    {
+      "width": 1366,
+      "height": 1024,
+      "clock": {
+        "x": 0,
+        "y": 73.71875,
+        "width": 1366,
+        "height": 114.765625,
+        "top": 73.71875,
+        "right": 1366,
+        "bottom": 188.484375,
+        "left": 0
+      },
+      "cover": {
+        "x": 521.2109375,
+        "y": 174.484375,
+        "width": 323.578125,
+        "height": 323.578125,
+        "top": 174.484375,
+        "right": 844.7890625,
+        "bottom": 498.0625,
+        "left": 521.2109375
+      },
+      "player": {
+        "x": 521.2109375,
+        "y": 519.5625,
+        "width": 323.578125,
+        "height": 118.78125,
+        "top": 519.5625,
+        "right": 844.7890625,
+        "bottom": 638.34375,
+        "left": 521.2109375
+      },
+      "unlock": {
+        "x": 606,
+        "y": 671.875,
+        "width": 154,
+        "height": 48,
+        "top": 671.875,
+        "right": 760,
+        "bottom": 719.875,
+        "left": 606
+      },
+      "hit": "lock-cover",
+      "layers": {
+        "clock": "2",
+        "cover": "1",
+        "player": "2",
+        "unlock": "auto"
+      }
+    }
+  ],
+  "performance": {},
+  "screens": [
+    "lock-1180x820.png",
+    "lock-820x1180.png",
+    "desktop-landscape.png",
+    "desktop-portrait.png"
+  ],
+  "status": "passed"
+}

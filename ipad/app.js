@@ -302,11 +302,11 @@
   }
   function wire() {
     $('#unlock').addEventListener('click',()=>{
-      state.unlocked=true;$('#lockscreen').hidden=true;$('#desktop').hidden=false;document.dispatchEvent(new CustomEvent('air-ipad-session',{detail:true}));
+      if(state.unlocked)return;state.unlocked=true;$('#desktop').hidden=false;$('#lockscreen').inert=true;document.dispatchEvent(new CustomEvent('air-ipad-session',{detail:true}));
       renderMedia();
     });
     $('#lock-again').addEventListener('click',()=>{
-      $('#toast').hidden=true;clearTimeout(toastTimeout);state.unlocked=false;document.dispatchEvent(new CustomEvent('air-ipad-session',{detail:false}));$('#desktop').hidden=true;$('#lockscreen').hidden=false;
+      $('#toast').hidden=true;clearTimeout(toastTimeout);state.unlocked=false;document.dispatchEvent(new CustomEvent('air-ipad-session',{detail:false}));$('#desktop').hidden=true;$('#lockscreen').inert=false;$('#lockscreen').hidden=false;
       window.airProNotch?.close(true);renderMedia();
     });
     $$('.app-tile').forEach(button=>button.addEventListener('click',()=>openPanel(button.dataset.panel)));
