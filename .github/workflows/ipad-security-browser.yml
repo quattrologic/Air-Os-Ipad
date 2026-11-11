@@ -129,6 +129,8 @@ jobs:
           AIR_VISUAL_DPR: '2'
           AIR_VISUAL_OUTPUT: dist/parity-evidence/after-dpr2-${{ matrix.engine }}
         run: node scripts/test-ipad-system3.cjs
+      - name: Classic Genie geometry, real content, reversal and resource lifecycle
+        run: npm run test:genie
       - name: AIR FLOW touch, stacking, widgets, windows and reduced motion
         run: npm run test:air-flow
       - name: Actual black Notch states, sampled motion, interruption and data owners
@@ -152,4 +154,5 @@ jobs:
           path: |
             dist/parity-evidence/**/*.json
             dist/air-flow-*/report.json
+            dist/genie-*/report.json
           retention-days: 7

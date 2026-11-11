@@ -91,3 +91,33 @@ rim are browser approximations; no screen/window capture. Additional source hash
 docs/source-ports/maclock-adaptive/provenance.json (included in source offer).
 
 MacLock Glass Parity: the existing fallback maps in vendor/glass/geometry.js adapt the same MIT MacShell SDF, convex normal, Snell refraction, inner absorption, directional rim, meniscus and grain. The fallback uses cached bilinear channel samples; the WebGL path retains the original24-tap fragment. Full-frame noise coordinate adaptation is in the ES generator. Qt/PySide6 and Xvfb are test tools only and are not bundled in this PWA.
+
+
+CLASSIC GENIE ROW GEOMETRY (AIR-OS WEB ADAPTATION)
+Behavior and row-wave formula adapted from Windows Animations, Windhawk mod:
+https://github.com/ramensoftware/windhawk-mods/blob/b54d0b4fdde083aa1d4e4e708a17153288a2e114/mods/windows-animations.wh.cpp
+Author: ReDrag (https://github.com/redrag2105)
+Classic Genie credit in upstream: Abdullah Masood
+Copyright (c) ReDrag. License: MIT (upstream @license MIT).
+Only the row-wave geometry/timing is adapted; no native binaries, Windows hooks,
+GPU shader implementation or Apple proprietary source is included.
+
+MIT License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

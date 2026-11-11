@@ -28,7 +28,8 @@
  // Analytic damped spring, sampled once per transition (no JS frame loop).
  function springProgress(offset){const {stiffness:k,damping:c,mass:m}=tokens.spring,w=Math.sqrt(k/m),z=c/(2*Math.sqrt(k*m)),wd=w*Math.sqrt(1-z*z),t=offset*tokens.duration.window/1000;return offset===1?1:1-Math.exp(-z*w*t)*(Math.cos(wd*t)+z*w/wd*Math.sin(wd*t));}
  function springFrames(from){return Array.from({length:33},(_,i)=>{const offset=i/32,p=springProgress(offset),q=1-p;return{offset,opacity:Math.min(1,.12+p*.88),transform:`translate(${from.x*q}px,${from.y*q}px) scale(${1+(from.sx-1)*q},${1+(from.sy-1)*q})`};});}
- function cancelTree(node,keepExit=false){for(const [target,item]of [...active])if((target===node||node?.contains(target))&&(!keepExit||item.kind!=='close'))cancel(target);}
+ function adopt(node,animation,kind){cancel(node);return new Promise(resolve=>{const item={animation,resolve,kind};active.set(node,item);animation.finished.then(()=>{if(active.get(node)!==item)return;active.delete(node);completed++;resolve(true);},()=>{if(active.get(node)===item){active.delete(node);resolve(false);}});});}
+ function cancelTree(node,keepExit=false){for(const [target,item]of [...active])if((target===node||node?.contains(target))&&(!keepExit||!['close','genie'].includes(item.kind)))cancel(target);}
  function show(node,kind='panel',origin=null){
   const r=box(node);if(!r)return Promise.resolve(true);let frames;
   if(kind==='session')frames=[{opacity:0,translate:'0 18px',scale:'.985'},{opacity:1,translate:'0 0',scale:'1'}];
@@ -84,5 +85,5 @@
  document.addEventListener('visibilitychange',()=>{if(document.hidden){clear();stopTouch();}},{signal});
  document.addEventListener('air-ipad-session',e=>{clear();if(!e.detail)return;void show(document.querySelector('#desktop'),'session');},{signal});
  window.addEventListener('pagehide',e=>{clear();stopTouch();if(!e.persisted){observer.disconnect();events.abort();}});
- window.airVisualMotion=Object.freeze({tokens,duration,reduced,quality,animate,show,depart,flip,content,artwork,cancel,cancelTree,springProgress,box,snapshot:()=>({active:active.size,reduced:reduced(),quality:quality(),completed,last})});
+ window.airVisualMotion=Object.freeze({adopt,tokens,duration,reduced,quality,animate,show,depart,flip,content,artwork,cancel,cancelTree,springProgress,box,snapshot:()=>({active:active.size,reduced:reduced(),quality:quality(),completed,last})});
 })();

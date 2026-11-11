@@ -1,7 +1,7 @@
 {
   "baseline": "0cc6f31d5f810d72cf695c5579b40eca7ec5e717",
   "unchangedFiles": {
-    "ipad/NOTICE": "8a1026c7b59ef78d2a338d45f1ca08a87ec8220913cd80d5dfabc32c674172d1",
+    "ipad/NOTICE": "921e5f6d161137005636c738e5e56b7421b1bcc59f8129aab9fa5c326c2a05dd",
     "ipad/README.md": "504b1df88f9a0f8d928e41c63495c673ca620c608f36e2cd961e61209914c77c",
     "ipad/air-logo.png": "e9050251e60ea495808cf4a4721b3b36904bcfd0219fec5a966ec9dd639a8627",
     "ipad/air-os-official.png": "381aed7af688220f32301ba420baf7696db39b143001f9fef53b0bda358a7399",
@@ -149,5 +149,10 @@
       "ipad/widgets.js": "90259d116b73ef0c67758874ff65458a8320675a04676d93ff45be477f816e4d",
       "ipad/apps.js": "0398dd15753ed593c781b5b79df1bd31c73ffa993e65986148d51977a55b978e"
     }
+  },
+  "genieNoticeAddition": {
+    "file": "ipad/NOTICE",
+    "previousSha256": "8a1026c7b59ef78d2a338d45f1ca08a87ec8220913cd80d5dfabc32c674172d1",
+    "reason": "Append upstream MIT attribution/license for the explicitly requested Genie formula adaptation; all existing notice bytes retained."
   }
 }

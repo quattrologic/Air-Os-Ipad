@@ -1,0 +1,52 @@
+{
+  "windhawk": {
+    "repository": "ramensoftware/windhawk-mods",
+    "commit": "b54d0b4fdde083aa1d4e4e708a17153288a2e114",
+    "file": "mods/windows-animations.wh.cpp",
+    "sha256": "21815bc117f364da38c64ab051da50b6bda91524399dbfce2d2ce5c02d289075",
+    "license": "MIT",
+    "author": "ReDrag",
+    "classicGenieCredit": "Abdullah Masood",
+    "durationMs": 360,
+    "rowDelaySpread": 0.65,
+    "easing": "cubic Hermite smoothstep"
+  },
+  "gifs": [
+    {
+      "url": "https://raw.githubusercontent.com/Potassiumuncher/MacOS-Animation-for-windows/main/Desktop2026.07.02-19.32.49.05-ezgif.com-video-to-gif-converter.gif",
+      "sha256": "f337568a0d3c40b35cb93e03cbb8011eb5859f18dd7ca041fd2025c3cea27006",
+      "dimensions": [
+        1280,
+        720
+      ],
+      "frames": 292,
+      "durationSeconds": 10.81,
+      "observation": "Curved funnel and delayed upper edge, multiple transitions."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/Potassiumuncher/MacOS-Animation-for-windows/main/Desktop2026.08.16-18.17.43.03-ezgif.com-video-to-gif-converter.gif",
+      "sha256": "774e255878f39bd75ab62598f6d6ed60515fbc00fbcca21ff0f0ce98618348a0",
+      "dimensions": [
+        800,
+        450
+      ],
+      "frames": 297,
+      "durationSeconds": 11,
+      "observation": "Also shows other distortions; not treated as a canonical Genie-only trace."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/redrag2105/windhawk-windows-animations-preview/a7e46c466c7b88552d5d92cad113b652fbd3f10e/genie_preview.gif",
+      "sha256": "bf6294232f1c2828764321e0977335ecefaa6820098efb52f60cbd23d95b5991",
+      "dimensions": [
+        1918,
+        1198
+      ],
+      "frames": 181,
+      "durationSeconds": 6.03,
+      "observation": "Explicit Genie preview linked by the Windhawk mod."
+    }
+  ],
+  "copiedNativeCode": false,
+  "redistributedGifAssets": false,
+  "comparison": "Analytic edge curves plus actual synthetic browser raster edge checks; no Apple pixel-parity claim."
+}

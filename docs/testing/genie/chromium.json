@@ -1,0 +1,156 @@
+{
+  "engine": "chromium",
+  "physicalIPad": false,
+  "synthetic": true,
+  "checks": [
+    "left: geometric backend captures real content",
+    "left: exactly one original app window, inert copies with no duplicate IDs",
+    "left: main effect remains in the AIR FLOW owner",
+    "left: rendered window pixels follow the curved edge",
+    "left: Dock icon is not deformed",
+    "left: minimize ends at the actual icon and keeps the original hidden",
+    "left: minimize frees every temporary surface",
+    "left: restore begins at the same Dock icon",
+    "left: restored editor has exactly its original draft and geometry",
+    "left: restore frees every temporary surface",
+    "right: geometric backend captures real content",
+    "right: exactly one original app window, inert copies with no duplicate IDs",
+    "right: main effect remains in the AIR FLOW owner",
+    "right: rendered window pixels follow the curved edge",
+    "right: Dock icon is not deformed",
+    "right: minimize ends at the actual icon and keeps the original hidden",
+    "right: minimize frees every temporary surface",
+    "right: restore begins at the same Dock icon",
+    "right: restored editor has exactly its original draft and geometry",
+    "right: restore frees every temporary surface",
+    "portrait: geometric backend captures real content",
+    "portrait: exactly one original app window, inert copies with no duplicate IDs",
+    "portrait: main effect remains in the AIR FLOW owner",
+    "portrait: rendered window pixels follow the curved edge",
+    "portrait: Dock icon is not deformed",
+    "portrait: minimize ends at the actual icon and keeps the original hidden",
+    "portrait: minimize frees every temporary surface",
+    "portrait: restore begins at the same Dock icon",
+    "portrait: restored editor has exactly its original draft and geometry",
+    "portrait: restore frees every temporary surface",
+    "restore reverses the current surface without rebuilding or jumping",
+    "repeated input reverses the same geometry again",
+    "rapid reversals leave no copies or pending owner",
+    "Dock retargeting preserves the current progress and does not replace the surface",
+    "changed Dock geometry ends inside the updated icon",
+    "another application receives input while Genie is active",
+    "other app calculates during the transition",
+    "concurrent windows stay within the two-surface resource budget",
+    "batch minimize releases every geometry surface",
+    "opening a non-minimized app on another workspace keeps its original AIR FLOW transition",
+    "a closed legacy app reopens through AIR FLOW rather than a stale Genie restore",
+    "missing Dock target uses an explicitly diagnosed fallback",
+    "limited CPU budget uses a documented fallback",
+    "uncapturable GPU canvases are diagnosed instead of showing blank content",
+    "OS reduced motion skips deformation and temporary resources",
+    "changing reduced-motion preference midflight cleans up and commits the requested state",
+    "workspace changes cancel temporary resources",
+    "orientation changes cancel resources without losing the window",
+    "speed changes duration while retaining actual deformation",
+    "existing saved note and unsaved draft both survive all transitions",
+    "locking the PWA cancels active deformation",
+    "real pagehide releases all transition resources",
+    "navigation retains explicitly saved app data",
+    "no uncaught browser errors: []"
+  ],
+  "geometry": [
+    {
+      "label": "left",
+      "progress": 0.4444444444444444,
+      "end": 1,
+      "rows": 16,
+      "source": {
+        "x": 20,
+        "y": 94,
+        "width": 660,
+        "height": 540
+      },
+      "target": {
+        "x": 375.71875,
+        "y": 754.21875,
+        "width": 43.546875,
+        "height": 43.546875
+      },
+      "reversals": 0
+    },
+    {
+      "label": "right",
+      "progress": 0.4444444444444444,
+      "end": 1,
+      "rows": 16,
+      "source": {
+        "x": 470,
+        "y": 84,
+        "width": 670,
+        "height": 590
+      },
+      "target": {
+        "x": 375.71875,
+        "y": 754.21875,
+        "width": 43.546875,
+        "height": 43.546875
+      },
+      "reversals": 0
+    },
+    {
+      "label": "portrait",
+      "progress": 0.4444444444444444,
+      "end": 1,
+      "rows": 16,
+      "source": {
+        "x": 65,
+        "y": 114,
+        "width": 670,
+        "height": 800
+      },
+      "target": {
+        "x": 195.71875,
+        "y": 1114.21875,
+        "width": 43.546875,
+        "height": 43.546875
+      },
+      "reversals": 0
+    }
+  ],
+  "screens": [
+    "genie-left-middle.png",
+    "genie-left-restore.png",
+    "genie-right-middle.png",
+    "genie-right-restore.png",
+    "genie-portrait-middle.png",
+    "genie-portrait-restore.png"
+  ],
+  "errors": [],
+  "measurements": [
+    {
+      "label": "left",
+      "pixelEdgeError": [
+        1.2682327866748722,
+        1.215736901779536,
+        0.4880849344447711
+      ]
+    },
+    {
+      "label": "right",
+      "pixelEdgeError": [
+        0.5807913161684155,
+        0.5172091580797087,
+        0.5036239052225255
+      ]
+    },
+    {
+      "label": "portrait",
+      "pixelEdgeError": [
+        0.9413918512433099,
+        0.8960134285061514,
+        0.03900929137159892
+      ]
+    }
+  ],
+  "status": "passed"
+}
