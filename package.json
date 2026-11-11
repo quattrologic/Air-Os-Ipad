@@ -8,7 +8,9 @@
     "build": "node scripts/package-ipad-security.cjs",
     "check": "node scripts/check-ipad-parity-package.cjs",
     "test:browser": "node scripts/test-ipad-security.cjs",
-    "audit:public": "node tools/audit-public-release.cjs"
+    "audit:public": "node tools/audit-public-release.cjs",
+    "test:air-flow": "node scripts/test-ipad-air-flow.cjs",
+    "measure:air-flow": "node scripts/measure-ipad-air-flow.cjs"
   },
   "engines": {
     "node": ">=20"

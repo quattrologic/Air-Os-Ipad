@@ -8,6 +8,11 @@ permissions:
 jobs:
   browser:
     runs-on: ubuntu-24.04
+    # Pinned to the Playwright version in build/ipad-parity-tests/package-lock.json.
+    # Contains Chromium, WebKit and their Ubuntu dependencies, so transient
+    # apt mirror/DNS failures cannot block the browser regression suite.
+    container:
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
     timeout-minutes: 30
     strategy:
       fail-fast: false
@@ -24,6 +29,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      # The Playwright container runs as root while checkout creates files with
+      # the host runner's UID. Trust only this checkout, never all directories.
+      - name: Trust checked-out repository in the test container
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Fetch pinned public test fixtures into an isolated repository
         run: |
           AIR_PAD_TEST_HISTORY="$RUNNER_TEMP/air-os-test-history"
@@ -41,11 +50,19 @@ jobs:
           git -C "$AIR_PAD_TEST_HISTORY" archive 7de1635c0207b8604c5409ef62c466585b4d5f04 ipad > /dev/null
           git -C "$AIR_PAD_TEST_HISTORY" archive a228d895939861bf5379917d6d69849aaadc2f84 \
             ipad/app.js ipad/storage.js ipad/backup.js ipad/apps.js ipad/core/music-metadata.js > /dev/null
-      - name: Install locked browser test tools and engine
+      - name: Verify locked browser test tools and preinstalled engine
         run: |
           npm ci --prefix build/ipad-parity-tests --ignore-scripts --no-audit --no-fund
           npm audit --prefix build/ipad-parity-tests --audit-level=high
-          node build/ipad-parity-tests/node_modules/playwright/cli.js install --with-deps "$AIR_PAD_ENGINE"
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const { chromium, webkit } = require('./build/ipad-parity-tests/node_modules/playwright');
+          const engine = process.env.AIR_PAD_ENGINE;
+          if (!['chromium', 'webkit'].includes(engine)) throw Error('Unsupported AIR_PAD_ENGINE: ' + engine);
+          const executable = { chromium, webkit }[engine].executablePath();
+          fs.accessSync(executable, fs.constants.X_OK);
+          console.log('Preinstalled Playwright browser verified:', engine);
+          NODE
       - name: Build and verify the test package
         run: |
           npm run build
@@ -129,6 +146,8 @@ jobs:
           AIR_VISUAL_DPR: '2'
           AIR_VISUAL_OUTPUT: dist/parity-evidence/after-dpr2-${{ matrix.engine }}
         run: node scripts/test-ipad-system3.cjs
+      - name: AIR FLOW touch, stacking, widgets, windows and reduced motion
+        run: npm run test:air-flow
       - name: Actual black Notch states, sampled motion, interruption and data owners
         env:
           AIR_NOTCH_OUTPUT: dist/parity-evidence/notch-${{ matrix.engine }}
@@ -147,5 +166,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ipad-security-reports-${{ matrix.engine }}
-          path: dist/parity-evidence/**/*.json
+          path: |
+            dist/parity-evidence/**/*.json
+            dist/air-flow-*/report.json
           retention-days: 7
