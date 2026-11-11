@@ -141,7 +141,9 @@
     "vendor/premium4-source-excerpts.txt",
     "vendor/system3-provenance.json",
     "widgets.js",
-    "air-flow.css"
+    "air-flow.css",
+    "core/genie-model.js",
+    "core/genie-transition.js"
   ],
   "sourceReferences": [
     "docs/reference/pro-notch/contours/calendar.png",

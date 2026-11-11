@@ -1,0 +1,21 @@
+'use strict';
+// Real-time measurements: no mocked clock or hardware, synthetic content only.
+const fs=require('node:fs'),path=require('node:path');
+const pw=require(process.env.AIR_PAD_PLAYWRIGHT||'../build/ipad-parity-tests/node_modules/playwright'),{create}=require('./serve-ipad-secure.cjs');
+(async()=>{
+ const out=path.resolve(process.env.AIR_GENIE_PERF_OUTPUT||'dist/genie-performance'),server=create({directory:path.resolve('dist/ipad-parity')}),report={engine:'chromium',physicalIPad:false,synthetic:true,clock:'real',viewport:[1180,820],samples:[]};fs.mkdirSync(out,{recursive:true});await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser;
+ try{browser=await pw.chromium.launch({headless:true,executablePath:process.env.AIR_PAD_CHROMIUM||undefined});report.browser=browser.version();const context=await browser.newContext({viewport:{width:1180,height:820},deviceScaleFactor:1,hasTouch:true,serviceWorkers:'block'}),page=await context.newPage();await page.goto('http://127.0.0.1:'+server.address().port+'/');await page.waitForFunction(()=>window.airDesktop?.snapshot().ready&&window.airGenie);await page.click('#unlock');await page.waitForFunction(()=>airDesktop.snapshot().restored&&document.querySelector('#lockscreen').hidden);await page.mouse.move(4,200);await page.waitForFunction(()=>!airDesktop.dockMaterial.snapshot().pending&&airVisualMotion.snapshot().active===0);
+ const cdp=await context.newCDPSession(page);await cdp.send('Performance.enable');const metrics=async()=>Object.fromEntries((await cdp.send('Performance.getMetrics')).metrics.map(m=>[m.name,m.value]));
+ for(const app of ['notes','settings']){
+  await page.evaluate(app=>airDesktop.open(app),app);if(app==='notes'){await page.locator('#notes-panel textarea').fill('Synthetic content for a real editor animation.\n'.repeat(24));}
+  await page.evaluate(()=>{window.__genieLongTasks=[];window.__geniePerfObserver=new PerformanceObserver(rows=>__genieLongTasks.push(...rows.getEntries().map(r=>r.duration)));__geniePerfObserver.observe({type:'longtask',buffered:false});});
+  for(let repetition=0;repetition<3;repetition++)for(const restoring of [false,true]){
+   await page.evaluate(()=>{window.__genieFrameIntervals=[];window.__genieFrameActive=true;let previous=performance.now();const step=now=>{__genieFrameIntervals.push(now-previous);previous=now;if(__genieFrameActive)requestAnimationFrame(step);};requestAnimationFrame(step);});const begin=Date.now();await page.evaluate(({app,restoring})=>{window.__genieMeasured=restoring?airDesktop.open(app):airDesktop.minimize(app);},{app,restoring});const before=await metrics();await page.evaluate(()=>__genieMeasured);const after=await metrics(),last=await page.evaluate(()=>airGenie.snapshot().last),frames=(await page.evaluate(()=>{__genieFrameActive=false;return __genieFrameIntervals;})).filter(v=>v>0).sort((a,b)=>a-b),quantile=q=>Math.round((frames[Math.min(frames.length-1,Math.floor(frames.length*q))]||0)*10)/10;
+   report.samples.push({app,repetition,direction:restoring?'restore':'minimize',wallMs:Date.now()-begin,backend:last.backend,captureMs:Math.round(last.captureMs||0),buildMs:Math.round(last.buildMs||0),frameCount:frames.length,keyframes:last.keyframes||0,frameIntervalMedianMs:quantile(.5),frameIntervalP95Ms:quantile(.95),layoutsAfterPreparation:after.LayoutCount-before.LayoutCount,layoutMsAfterPreparation:Math.round((after.LayoutDuration-before.LayoutDuration)*10000)/10,remainingStrips:await page.locator('.air-genie-strip').count()});
+  }
+  await page.waitForTimeout(60);report.samples.filter(s=>s.app===app).at(-1).appLongTasks=await page.evaluate(()=>__genieLongTasks.map(n=>Math.round(n)));await page.evaluate(()=>__geniePerfObserver.disconnect());await page.evaluate(async app=>{const w=airDesktop.windows.get(app);w.dataset.dirty='false';await airDesktop.close(app);},app);
+ }
+ report.cleanup=await page.evaluate(()=>({genie:airGenie.snapshot().active,strips:document.querySelectorAll('.air-genie-strip').length,owners:airVisualMotion.snapshot().active}));await context.close();report.status='measured';
+ }finally{fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');await browser?.close();server.closeAllConnections?.();await new Promise(r=>server.close(r));}
+ console.log(JSON.stringify(report));
+})().catch(e=>{console.error(e);process.exitCode=1;});
