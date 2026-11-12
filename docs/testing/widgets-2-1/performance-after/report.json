@@ -1,0 +1,141 @@
+{
+  "engine": "chromium",
+  "physicalIPad": false,
+  "synthetic": true,
+  "baselineComparison": false,
+  "sampleDurationMs": 1800,
+  "results": [
+    {
+      "width": 1180,
+      "height": 820,
+      "quality": "Standard",
+      "reduced": false,
+      "idle": {
+        "actions": 0,
+        "durationMs": 1809,
+        "frameSamples": 108,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.8,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 0,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 196
+      },
+      "resize": {
+        "actions": 4,
+        "durationMs": 1804,
+        "frameSamples": 108,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.7,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 23,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 197,
+        "settledRunningAnimations": 0
+      }
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "quality": "Standard",
+      "reduced": false,
+      "idle": {
+        "actions": 0,
+        "durationMs": 1801,
+        "frameSamples": 108,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.8,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 0,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 197
+      },
+      "resize": {
+        "actions": 4,
+        "durationMs": 1813,
+        "frameSamples": 107,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.8,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 18,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 197,
+        "settledRunningAnimations": 0
+      }
+    },
+    {
+      "width": 1180,
+      "height": 820,
+      "quality": "Reduzierte Transparenz",
+      "reduced": false,
+      "idle": {
+        "actions": 0,
+        "durationMs": 1806,
+        "frameSamples": 107,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.8,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 0,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 196
+      },
+      "resize": {
+        "actions": 4,
+        "durationMs": 1810,
+        "frameSamples": 108,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.8,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 23,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 197,
+        "settledRunningAnimations": 0
+      }
+    },
+    {
+      "width": 1180,
+      "height": 820,
+      "quality": "Standard",
+      "reduced": true,
+      "idle": {
+        "actions": 0,
+        "durationMs": 1815,
+        "frameSamples": 109,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.8,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 0,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 196
+      },
+      "resize": {
+        "actions": 4,
+        "durationMs": 1813,
+        "frameSamples": 108,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.7,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 23,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 197,
+        "settledRunningAnimations": 0
+      }
+    }
+  ]
+}

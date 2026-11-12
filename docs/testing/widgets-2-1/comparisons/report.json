@@ -1,0 +1,43 @@
+{
+  "method": "Normalized 650 px panels; geometry from actual DOM; pixel differences include independent typography, resampling and extracted test-photo background. No claim of pixel identity.",
+  "iterations": {
+    "iteration-1": {
+      "music": {
+        "meanAbsoluteRGBDifference": 9.376,
+        "rmsRGBDifference": 22.672
+      },
+      "clock": {
+        "meanAbsoluteRGBDifference": 20.834,
+        "rmsRGBDifference": 33.014
+      }
+    },
+    "final": {
+      "music": {
+        "meanAbsoluteRGBDifference": 7.902,
+        "rmsRGBDifference": 16.84
+      },
+      "clock": {
+        "meanAbsoluteRGBDifference": 17.288,
+        "rmsRGBDifference": 34.113,
+        "visibleLiveTypeInkBoundsNormalized": [
+          0.1032,
+          0.0451,
+          0.811,
+          0.4273
+        ]
+      },
+      "geometryErrorAt650Px": {
+        "coverX": 0.005,
+        "coverY": 0.011,
+        "coverWidth": 0.014,
+        "progressX": 0.024,
+        "progressY": 0.003,
+        "progressWidth": 0.04,
+        "titleX": 0.024,
+        "artistY": 0.135
+      },
+      "largestGeometryErrorPx": 0.135,
+      "compactAreaRatioToPr8": 0.437
+    }
+  }
+}

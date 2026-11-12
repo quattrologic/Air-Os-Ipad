@@ -152,6 +152,10 @@ jobs:
         run: npm run test:wallpaper
       - name: Widget 2 sizes, transport, touch, data, portrait and offline lifecycle
         run: npm run test:widgets
+      - name: Real reference media, transparent photo depth and live clock
+        env:
+          WIDGETS21_OUTPUT: dist/widgets-2-reference-${{ matrix.engine }}
+        run: node scripts/capture-ipad-widgets-21.cjs
       - name: AIR FLOW touch, stacking, widgets, windows and reduced motion
         run: npm run test:air-flow
       - name: Actual black Notch states, sampled motion, interruption and data owners

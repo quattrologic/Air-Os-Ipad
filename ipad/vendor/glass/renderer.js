@@ -1,7 +1,7 @@
 'use strict';
 // One shared WebGL2 owner: licensed wallpaper or the owned, authorized MacLock cover scene. Never captures windows.
 (() => {
- const selectors='.lg-lock-notice,.pad-widget,.pad-popover:not(.s3-launcher),.lock-player,.s3-connectivity,.s3-control-connect>button,.s3-control-center .pad-control-player,.s3-control-center .pad-control-volume,.s3-control-center .pad-control-tile';
+ const selectors='.lg-lock-notice,.pad-widget:not([data-widget-surface]),.pad-popover:not(.s3-launcher),.lock-player,.s3-connectivity,.s3-control-connect>button,.s3-control-center .pad-control-player,.s3-control-center .pad-control-volume,.s3-control-center .pad-control-tile';
  const readAirSettings=()=>({reduceGlass:document.documentElement.dataset.quality==='Reduzierte Transparenz',reduceMotion:document.documentElement.classList.contains('pad-reduced-motion'),glassFamily:'macshell',pwaQuality:document.documentElement.dataset.quality==='Hochwertig'&&!document.documentElement.classList.contains('s3-launcher-open')?'high':'standard'});
  // CSS fallback follows MacShell's wallpaper-backed material, without capture or another GL owner.
  const cssHosts=new Set(),lockRims=new Map();let lightKey='',lightCanvas=null,lockSources=new WeakMap(),fallbackBakes=0,fallbackSourceBuilds=0,fallbackMapBuilds=0,fallbackBakeMs=0;const lockSlabs=new Map();

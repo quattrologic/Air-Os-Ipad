@@ -1,7 +1,7 @@
 {
   "baseline": "0cc6f31d5f810d72cf695c5579b40eca7ec5e717",
   "unchangedFiles": {
-    "ipad/NOTICE": "921e5f6d161137005636c738e5e56b7421b1bcc59f8129aab9fa5c326c2a05dd",
+    "ipad/NOTICE": "34e8a4fb32ea1e989aee5d15bf9ce4e7bd22b08ccceb67830561308d7ebfa77b",
     "ipad/README.md": "504b1df88f9a0f8d928e41c63495c673ca620c608f36e2cd961e61209914c77c",
     "ipad/air-logo.png": "e9050251e60ea495808cf4a4721b3b36904bcfd0219fec5a966ec9dd639a8627",
     "ipad/air-os-official.png": "381aed7af688220f32301ba420baf7696db39b143001f9fef53b0bda358a7399",
@@ -122,7 +122,7 @@
     "ipad/vendor/glass/geometry.js": "435105d2978be17459e9d822991663a9ffa5f0e8b842f72a86de18e8563bdc0c",
     "ipad/vendor/glass/maclock-original.frag": "2d271780c560d4eab742b4906f503d524d2a00c7f4f2570d0c1e2b96a7888f35",
     "ipad/vendor/glass/provenance.json": "27e9c40abb6ec85483dca07a79106a0df6951cf5e031b18c8c2f2859bef8ec86",
-    "ipad/vendor/glass/renderer.js": "3f58dd2df83f104286d500bad02df3546ee5412c16fe50b82303f8bec4ee6ef7",
+    "ipad/vendor/glass/renderer.js": "43bf5de6d32e09f8bfbabfe9990404a6f2f953e9f9b24268e29dd313ba950db1",
     "ipad/vendor/glass/shaders.js": "bee695447ec74b817e2839eaa4b13e9c5458389375a73ee4b155cdc1d1c3724b",
     "ipad/vendor/infinityos/launcher-model.js": "068f413f8bd20003425f97736752cb777d5a0a4ca8b6ccb51547ed60e91fcf84",
     "ipad/vendor/infinityos/linux-excerpts.txt": "c47fafe5309972a531568656fc71a528d77de80c83a7ee3b4ddcca0a3f7923a1",
@@ -154,5 +154,15 @@
     "file": "ipad/NOTICE",
     "previousSha256": "8a1026c7b59ef78d2a338d45f1ca08a87ec8220913cd80d5dfabc32c674172d1",
     "reason": "Append upstream MIT attribution/license for the explicitly requested Genie formula adaptation; all existing notice bytes retained."
+  },
+  "widgetDisplayMaterialChange": {
+    "file": "ipad/vendor/glass/renderer.js",
+    "previousSha256": "3f58dd2df83f104286d500bad02df3546ee5412c16fe50b82303f8bec4ee6ef7",
+    "reason": "Widget 2.1 explicitly owned display materials opt out of wallpaper reprojection; all other shared materials and security boundaries remain unchanged."
+  },
+  "widgetClockFontNoticeAddition": {
+    "file": "ipad/NOTICE",
+    "previousSha256": "921e5f6d161137005636c738e5e56b7421b1bcc59f8129aab9fa5c326c2a05dd",
+    "reason": "Append complete license reference for the openly licensed clock typeface; retain all prior notice bytes."
   }
 }

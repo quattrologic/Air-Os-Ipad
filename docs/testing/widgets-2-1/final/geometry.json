@@ -1,0 +1,80 @@
+{
+  "engine": "chromium",
+  "deviceScaleFactor": 2,
+  "syntheticAudio": true,
+  "userSuppliedReferenceMedia": true,
+  "errors": [],
+  "musicBox": {
+    "x": 24,
+    "y": 96,
+    "width": 344,
+    "height": 344,
+    "top": 96,
+    "right": 368,
+    "bottom": 440,
+    "left": 24
+  },
+  "clockBox": {
+    "x": 380,
+    "y": 96,
+    "width": 344,
+    "height": 344,
+    "top": 96,
+    "right": 724,
+    "bottom": 440,
+    "left": 380
+  },
+  "music": {
+    ".widget-art": {
+      "x": 0.18459302325581395,
+      "y": 0.1861827761627907,
+      "width": 0.6291787790697675,
+      "height": 0.6291787790697675
+    },
+    ".widget-track strong": {
+      "x": 0.08766351744186046,
+      "y": 0.5899800145348837,
+      "width": 0.7072202105854832,
+      "height": 0.06549781976744186
+    },
+    ".widget-track small": {
+      "x": 0.08766351744186046,
+      "y": 0.6612917877906976,
+      "width": 0.7523619186046512,
+      "height": 0.0461936773255814
+    },
+    ".widget-progress-track": {
+      "x": 0.08766351744186046,
+      "y": 0.7445948401162791,
+      "width": 0.8215388808139535,
+      "height": 0.010764898255813954
+    },
+    "[data-widget-control=toggle]": {
+      "x": 0.436046511627907,
+      "y": 0.8180414244186046,
+      "width": 0.12790697674418605,
+      "height": 0.12790697674418605
+    },
+    "[data-widget-control=prev]": {
+      "x": 0.2220203488372093,
+      "y": 0.8180414244186046,
+      "width": 0.12790697674418605,
+      "height": 0.12790697674418605
+    },
+    "[data-widget-control=next]": {
+      "x": 0.6500272529069767,
+      "y": 0.8180414244186046,
+      "width": 0.12790697674418605,
+      "height": 0.12790697674418605
+    }
+  },
+  "clockTime": {
+    "x": -0.01998546511627907,
+    "y": -0.03497456395348837,
+    "width": 1,
+    "height": 0.5151707848837209
+  },
+  "clockDepth": "true",
+  "liveTime": "10:09",
+  "sourceDuration": 153
+}
