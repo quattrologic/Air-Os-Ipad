@@ -1,0 +1,16 @@
+# Byte-pinned Air-OS iPad web files must retain LF line endings on Windows.
+# This repository-root file is not included in the protected PWA runtime.
+# Git attributes without a slash match file basenames in all subdirectories.
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.webmanifest text eol=lf
+*.svg text eol=lf
+*.txt text eol=lf
+*.md text eol=lf
+*.frag text eol=lf
+*.ps1 text eol=lf
+NOTICE text eol=lf
+COPYING text eol=lf
+AUTHORS text eol=lf
