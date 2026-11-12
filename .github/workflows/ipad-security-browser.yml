@@ -67,8 +67,6 @@ jobs:
         run: |
           npm run build
           npm run check
-      - name: Ocean wallpaper playback and offline ranges
-        run: npm run test:wallpaper
       - name: Widget 2 sizes, transport, touch, data, portrait and offline lifecycle
         run: npm run test:widgets
       - name: Real reference media, transparent photo depth and live clock
@@ -77,6 +75,8 @@ jobs:
         run: node scripts/capture-ipad-widgets-21.cjs
       - name: Classic Genie geometry, real content, reversal and resource lifecycle
         run: npm run test:genie
+      - name: Ocean wallpaper playback and offline ranges
+        run: npm run test:wallpaper
       - name: Original v4 to v5, protected multitab activation and compatible recovery
         env:
           AIR_PAD_OUTPUT: dist/parity-evidence/update-${{ matrix.engine }}

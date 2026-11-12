@@ -31,7 +31,7 @@ const {create}=require('./serve-ipad-secure.cjs');
   await page.waitForFunction(()=>navigator.serviceWorker.controller);
   const ranges=async()=>page.evaluate(async()=>{const get=async range=>{const r=await fetch('./assets/ocean-blue.mp4',{headers:{Range:range}});return [r.status,(await r.arrayBuffer()).byteLength,r.headers.get('content-range')];};return [await get('bytes=0-1'),await get('bytes=-32'),await get('bytes=999999999-')];});
   let rows=await ranges();assert.deepEqual(rows.map(r=>r.slice(0,2)),[[206,2],[206,32],[416,0]]);
-  await context.setOffline(true);rows=await ranges();assert.deepEqual(rows.map(r=>r.slice(0,2)),[[206,2],[206,32],[416,0]]);
+  server.closeAllConnections?.();await new Promise(r=>server.close(r));rows=await ranges();assert.deepEqual(rows.map(r=>r.slice(0,2)),[[206,2],[206,32],[416,0]]);
   await page.reload();await ready();await page.waitForFunction(()=>document.querySelector('video.air-wallpaper-video').readyState>=2);
   assert.equal(await page.evaluate(()=>airWallpaper.current()),'ocean');
   await page.screenshot({path:'dist/ocean-lockscreen.png'});
