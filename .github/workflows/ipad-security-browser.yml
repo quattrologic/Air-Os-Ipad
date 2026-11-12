@@ -74,7 +74,14 @@ jobs:
           air_widget_checks=0
           npm run test:widgets || air_widget_checks=1
           node scripts/capture-ipad-widgets-21.cjs || air_widget_checks=1
-          npm run test:genie || air_widget_checks=1
+          # WPE headless flattens projective matrices in the software painter.
+          # GTK/Xvfb exercises the actual composited WebKit path with the same
+          # strict pixel/geometry assertions; no app GPU guard is changed.
+          if [ "$AIR_PAD_ENGINE" = webkit ]; then
+            xvfb-run -a env AIR_GENIE_HEADED=1 npm run test:genie || air_widget_checks=1
+          else
+            npm run test:genie || air_widget_checks=1
+          fi
           npm run test:wallpaper || air_widget_checks=1
           exit "$air_widget_checks"
       - name: Original v4 to v5, protected multitab activation and compatible recovery

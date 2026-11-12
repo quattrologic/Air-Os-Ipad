@@ -3,7 +3,7 @@
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const pw=require(process.env.AIR_PAD_PLAYWRIGHT||'../build/ipad-parity-tests/node_modules/playwright'),{create}=require('./serve-ipad-secure.cjs'),png=require('./lib/notch-png.cjs');
 (async()=>{
- const engine=process.env.AIR_PAD_ENGINE||'chromium',out=path.resolve(process.env.AIR_GENIE_OUTPUT||'dist/genie-'+engine),server=create({directory:path.resolve('dist/ipad-parity')}),report={engine,physicalIPad:false,synthetic:true,checks:[],geometry:[],screens:[],errors:[],measurements:[]};
+ const engine=process.env.AIR_PAD_ENGINE||'chromium',out=path.resolve(process.env.AIR_GENIE_OUTPUT||'dist/genie-'+engine),server=create({directory:path.resolve('dist/ipad-parity')}),report={engine,physicalIPad:false,synthetic:true,checks:[],geometry:[],screens:[],errors:[],measurements:[],browserPort:engine==='webkit'?(process.env.AIR_GENIE_HEADED==='1'?'GTK composited under Xvfb':'WPE headless'):'Chromium'};
  fs.mkdirSync(out,{recursive:true});await new Promise(r=>server.listen(0,'127.0.0.1',r));let browser,context,page;
  const check=(name,value)=>{assert.ok(value,name);report.checks.push(name);console.log('PASS',name);};
  const shot=async name=>{const bytes=await page.screenshot({path:path.join(out,name+'.png')});report.screens.push(name+'.png');return png.read(bytes);};
@@ -13,7 +13,7 @@ const pw=require(process.env.AIR_PAD_PLAYWRIGHT||'../build/ipad-parity-tests/nod
  const start=async restore=>{await page.evaluate(async restore=>{window.__genieJob=restore?airDesktop.open('notes'):airDesktop.minimize('notes');await Promise.resolve();await Promise.resolve();for(const a of document.querySelector('.air-genie-layer')?.getAnimations({subtree:true})||[])a.pause();},restore);};
  const state=()=>page.evaluate(()=>airGenie.snapshot());
  const clean=async name=>check(name,await page.evaluate(()=>airGenie.snapshot().active===0&&airGenie.snapshot().temporaryStrips===0&&!document.querySelector('.air-genie-layer')&&!document.querySelector('[data-genie-active]')));
- const options={headless:true,...(engine==='chromium'&&process.env.AIR_PAD_CHROMIUM?{executablePath:process.env.AIR_PAD_CHROMIUM}:{})};
+ const options={headless:process.env.AIR_GENIE_HEADED!=='1',...(engine==='chromium'&&process.env.AIR_PAD_CHROMIUM?{executablePath:process.env.AIR_PAD_CHROMIUM}:{})};
  try{
   browser=await pw[engine].launch(options);context=await browser.newContext({hasTouch:true,viewport:{width:1180,height:820},deviceScaleFactor:1,serviceWorkers:'block'});page=await context.newPage();page.on('pageerror',e=>report.errors.push(e.message));
   await page.goto('http://127.0.0.1:'+server.address().port+'/');await page.waitForFunction(()=>window.airDesktop?.snapshot().ready&&window.airGenie);await page.locator('#unlock').tap();await page.waitForFunction(()=>airDesktop.snapshot().restored&&document.querySelector('#lockscreen').hidden);
