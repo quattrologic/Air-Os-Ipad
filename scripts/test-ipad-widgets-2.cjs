@@ -1,5 +1,6 @@
 'use strict';
 // Real packaged PWA and real transport; isolated synthetic data, loopback only.
+const {widgetBrowser}=require('./lib/widget-browser.cjs');
 const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
 const pw=require(process.env.AIR_PAD_PLAYWRIGHT||'../build/ipad-parity-tests/node_modules/playwright'),{create}=require('./serve-ipad-secure.cjs'),{seed}=require('./lib/widget-fixture.cjs');
 (async()=>{
@@ -12,7 +13,7 @@ const pw=require(process.env.AIR_PAD_PLAYWRIGHT||'../build/ipad-parity-tests/nod
  const unlock=async()=>{await page.locator('#unlock').tap();await page.waitForFunction(()=>document.querySelector('#lockscreen').hidden);await quiet();};
  const shot=async(name,selector)=>{await quiet();await page.mouse.move(5,220);await quiet();const target=selector?page.locator(selector):page;await target.screenshot({path:path.join(screens,name+'.png')});report.screens.push(name+'.png');};
  try{
-  const options={headless:true,...(engine==='chromium'&&process.env.AIR_PAD_CHROMIUM?{executablePath:process.env.AIR_PAD_CHROMIUM}:{})};browser=await pw[engine].launch(options);context=await browser.newContext({viewport:{width:1366,height:1024},hasTouch:true,serviceWorkers:'allow',locale:'de-DE'});
+  const options={headless:true,...(engine==='chromium'&&process.env.AIR_PAD_CHROMIUM?{executablePath:process.env.AIR_PAD_CHROMIUM}:{})};browser=widgetBrowser(pw[engine],options);context=await browser.newContext({viewport:{width:1366,height:1024},hasTouch:true,serviceWorkers:'allow',locale:'de-DE'});
   // Screenshots intentionally exercise unavailable API, never a headless machine's fake-looking 100% battery.
   await context.addInitScript(()=>Object.defineProperty(navigator,'getBattery',{value:undefined,configurable:true}));
   page=await context.newPage();page.on('pageerror',e=>report.errors.push(e.message));await page.clock.setFixedTime(new Date('2026-11-12T10:09:00Z'));
