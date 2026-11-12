@@ -12,7 +12,8 @@
     "test:air-flow": "node scripts/test-ipad-air-flow.cjs",
     "measure:air-flow": "node scripts/measure-ipad-air-flow.cjs",
     "test:genie": "node scripts/test-ipad-genie.cjs",
-    "measure:genie": "node scripts/measure-ipad-genie.cjs"
+    "measure:genie": "node scripts/measure-ipad-genie.cjs",
+    "test:wallpaper": "node scripts/test-ipad-wallpaper.cjs"
   },
   "engines": {
     "node": ">=20"

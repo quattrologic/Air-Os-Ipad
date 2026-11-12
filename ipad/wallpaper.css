@@ -1,0 +1,8 @@
+:root{--system-wallpaper:url('./assets/ocean-blue.jpg')}
+.air-wallpaper-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+html[data-wallpaper=ocean] .wallpaper{inset:0;background-position:center;background-size:cover;filter:none!important;transform:none!important}
+html[data-wallpaper=ocean] .wallpaper:after{background:none}
+html[data-wallpaper=ocean] #lockscreen .lg-lock-wallpaper{filter:blur(18px);background-position:center;background-size:cover}
+html[data-wallpaper=ocean] #lockscreen .lg-lock-art-bg{display:none}
+@media(prefers-reduced-transparency:reduce){html[data-wallpaper=ocean] #lockscreen .lg-lock-wallpaper{filter:none}}
+html[data-wallpaper=ocean][data-quality="Reduzierte Transparenz"] #lockscreen .lg-lock-wallpaper{filter:none}
