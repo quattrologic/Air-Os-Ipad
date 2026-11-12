@@ -4,7 +4,7 @@
 .pad-widget-column>.air-widget-edit{grid-column:1/-1;grid-row:1;position:sticky;top:0;z-index:8;justify-self:end;align-self:start;min-height:44px;height:44px;padding:0 14px;border:1px solid #ffffff26;border-radius:18px;background:#263b49e8;color:#fff;font-size:11px}
 .pad-widget-column>.pad-widget{container-type:inline-size;position:relative;isolation:isolate;contain:layout style;box-sizing:border-box;grid-column:span 1;grid-row:span 1;min-width:0;min-height:0!important;height:auto!important;padding:14px;border:1px solid #ffffff25;border-radius:25px;background:linear-gradient(150deg,#3c5766ee,#23343af2);box-shadow:inset 0 1px #ffffff18,0 5px 16px #00142129;color:#f7fbff;overflow:hidden;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 .pad-widget-column>.pad-widget[data-size=medium]{grid-column:span 2;grid-row:span 1}.pad-widget-column>.pad-widget[data-size=large]{grid-column:span 2;grid-row:span 2}
-.pad-widget-column>.pad-widget:after,.pad-widget-column>.pad-widget>.deep-glass-tile{display:none!important}
+.pad-widget-column>.pad-widget:after,.pad-widget-column>.pad-widget>.deep-glass-tile:not(.air-touch-light){display:none!important}
 .pad-widget-column .pad-widget h3{font-size:10px;font-weight:600;letter-spacing:.06em;margin:0 0 8px;color:#e1edf4b8}.pad-widget-column .pad-widget p{font-size:11px;line-height:1.4}.pad-widget-column .widget-caption{font-size:9px;color:#ccdde2a3;letter-spacing:.04em}
 .pad-widget-column .air-widget-open{top:0;right:0;width:44px;min-width:44px;height:44px;min-height:44px;color:#e8f5ffb0;font-size:18px;background:none;border:0}
 /* Music: all positions are fractions of the reference's 650×650 content square. */
