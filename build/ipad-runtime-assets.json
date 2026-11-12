@@ -143,7 +143,11 @@
     "widgets.js",
     "air-flow.css",
     "core/genie-model.js",
-    "core/genie-transition.js"
+    "core/genie-transition.js",
+    "core/wallpaper.js",
+    "wallpaper.css",
+    "assets/ocean-blue.jpg",
+    "assets/ocean-blue.mp4"
   ],
   "sourceReferences": [
     "docs/reference/pro-notch/contours/calendar.png",
@@ -175,6 +179,9 @@
     "docs/reference/pro-notch/contours/timer.png",
     "docs/reference/pro-notch/keyframes.json",
     "docs/reference/pro-notch/measurements.json",
-    "docs/reference/pro-notch/timer-detail-measurements.json"
+    "docs/reference/pro-notch/timer-detail-measurements.json",
+    "docs/OCEAN-WALLPAPER.md",
+    "scripts/test-ipad-wallpaper.cjs",
+    "tests/ipad-wallpaper.test.cjs"
   ]
 }
