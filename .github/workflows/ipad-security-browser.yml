@@ -150,6 +150,8 @@ jobs:
         run: npm run test:genie
       - name: Ocean wallpaper playback and offline ranges
         run: npm run test:wallpaper
+      - name: Widget 2 sizes, transport, touch, data, portrait and offline lifecycle
+        run: npm run test:widgets
       - name: AIR FLOW touch, stacking, widgets, windows and reduced motion
         run: npm run test:air-flow
       - name: Actual black Notch states, sampled motion, interruption and data owners
@@ -174,4 +176,5 @@ jobs:
             dist/parity-evidence/**/*.json
             dist/air-flow-*/report.json
             dist/genie-*/report.json
+            dist/widgets-2-*/*
           retention-days: 7

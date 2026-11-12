@@ -1,0 +1,67 @@
+{
+  "synthetic": true,
+  "physicalIPad": false,
+  "base": "fa79027f3aa436619bbeed8efcc0ca1345481e4d",
+  "node": {
+    "passed": 66,
+    "failed": 0
+  },
+  "browser": {
+    "widgets": {
+      "status": "passed",
+      "checks": 35,
+      "engine": "chromium"
+    },
+    "airFlow": {
+      "status": "passed",
+      "checks": 32,
+      "engine": "chromium"
+    },
+    "genie": {
+      "status": "passed",
+      "checks": 54,
+      "engine": "chromium"
+    },
+    "dockDpr2": {
+      "status": "passed",
+      "checks": 55,
+      "engine": "chromium"
+    },
+    "notch": {
+      "status": "passed",
+      "checks": 71,
+      "engine": "chromium"
+    },
+    "security": {
+      "status": "passed",
+      "checks": 50,
+      "engine": "chromium"
+    }
+  },
+  "wallpaper": "passed: playback, blur, selection, persistence, reduced motion, offline ranges and reload",
+  "build": {
+    "passed": true,
+    "runtimeAssets": 151
+  },
+  "npmAudit": {
+    "totalVulnerabilities": 0
+  },
+  "webkit": {
+    "status": "unavailable-locally",
+    "reason": "Playwright webkit-2336/pw_run.sh is not installed; suite is in the Chromium/WebKit CI matrix"
+  },
+  "screenshots": {
+    "01-homescreen-landscape.png": "f96cb1de1e739a053810c307e857b253f632080426dbcfb3f606fb750cb353fc",
+    "02-large-music.png": "29e7cdbd72e2e589331e067bfed03791462e80327775b60c5d0324801ef00f2e",
+    "03-clock-calendar-weather.png": "de027bb100e8d801c540cd5d44c5685620289bd2b2a159273f0fde7b9ee06367",
+    "04-ipad-portrait.png": "b7d408b6188c3eb809a5c1fcc40b89d6f31deeae46c0283a5f11d39d5f19d6f0",
+    "05-ipad-landscape.png": "944577f6cf04ce128b726543cf7c2010a6039183693ec61e9f568142b91c82bc",
+    "06-widget-editor.png": "6e70927a18f8a0ecefe320f42fcdf18487f540e3d8db18753bba33cd8485e142",
+    "07-notes-reminders-photos.png": "e03eb4d4014394f32c64b83185e710d2f3c887355cebea4ff188f5d40a1f3713"
+  },
+  "runtimeSources": {
+    "widgets.js": "a1cab1ca95a5a6b5e3aa5dbfc46d8b9abb1b71d9c06714d05b3c7e48fdb5e7d1",
+    "widgets-2.css": "6bbb328f9e4531ca38174f286b401d5538ff3b35482ecca75e33c5703ae08e51",
+    "core/widget-layout.js": "7f91378341d40bad267ecbc50c3dba3a1dc2a1624bbff45f10eedb4edf7c0ca7"
+  }
+}

@@ -147,7 +147,9 @@
     "core/wallpaper.js",
     "wallpaper.css",
     "assets/ocean-blue.jpg",
-    "assets/ocean-blue.mp4"
+    "assets/ocean-blue.mp4",
+    "core/widget-layout.js",
+    "widgets-2.css"
   ],
   "sourceReferences": [
     "docs/reference/pro-notch/contours/calendar.png",
