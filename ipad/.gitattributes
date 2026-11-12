@@ -1,0 +1,17 @@
+# Files in this PWA are byte-pinned by Subresource Integrity and the
+# offline/service-worker integrity manifest. Git for Windows must check
+# text assets out as LF even when core.autocrlf is globally enabled.
+# Apply only to text formats; images, videos, fonts and archives remain binary.
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.webmanifest text eol=lf
+*.svg text eol=lf
+*.txt text eol=lf
+*.md text eol=lf
+*.frag text eol=lf
+*.ps1 text eol=lf
+NOTICE text eol=lf
+COPYING text eol=lf
+AUTHORS text eol=lf
