@@ -1,0 +1,160 @@
+{
+  "engine": "chromium",
+  "physicalIPad": false,
+  "synthetic": true,
+  "checks": [
+    "locked widget lifecycle has no timer or photo resources",
+    "eight widgets use default large music and honest empty states",
+    "large music cover is square and transport fits within its card",
+    "unavailable weather and battery never invent readings",
+    "play starts the original audio element",
+    "pause controls original audio",
+    "seek uses actual audio duration and updates both time labels",
+    "next changes real track, cover and metadata without stale layers",
+    "favorite updates the real music record",
+    "reminder checkbox persists with the original revision owner",
+    "note shortcut opens exact stored note",
+    "photos cycle real stored image blobs with finite crossfade",
+    "reorder is persisted through UI controls",
+    "resize does not animate unchanged visible cards",
+    "resize keeps existing widget nodes attached",
+    "medium to large size persists without editing app content",
+    "drag starts with pointer capture and compositor translation",
+    "drag release clears transient state and saves order",
+    "real touchscreen drag captures pointer and applies translation",
+    "touch cancellation clears drag without persisting a partial move",
+    "sizes/order, note and reminder survive reload without schema migration",
+    "1180x820 fits horizontally with touch-friendly transport",
+    "820x1180 fits horizontally with touch-friendly transport",
+    "1024x768 fits horizontally with touch-friendly transport",
+    "768x1024 fits horizontally with touch-friendly transport",
+    "1366x1024 fits horizontally with touch-friendly transport",
+    "large calendar displays actual local event and marks its day",
+    "reduced motion commits widget resize without active AIR FLOW effects",
+    "relock stops minute timer and releases photo resources",
+    "lock cover remains in front of clock",
+    "v1 preferences migrate in memory without overwriting v1",
+    "offline shell includes new scripts, styles and saved widget data",
+    "available Battery API projects supplied level and charging state",
+    "battery event updates without polling or invented estimates",
+    "no unexpected page errors: []"
+  ],
+  "errors": [],
+  "screens": [
+    "01-homescreen-landscape.png",
+    "02-large-music.png",
+    "07-notes-reminders-photos.png",
+    "06-widget-editor.png",
+    "05-ipad-landscape.png",
+    "04-ipad-portrait.png",
+    "03-clock-calendar-weather.png"
+  ],
+  "viewports": [
+    {
+      "width": 1180,
+      "height": 820,
+      "right": 1044,
+      "left": 20,
+      "overflow": 0,
+      "transport": [
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 58,
+          "height": 52
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "right": 804,
+      "left": 16,
+      "overflow": 0,
+      "transport": [
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 58,
+          "height": 52
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "right": 1004,
+      "left": 20,
+      "overflow": 0,
+      "transport": [
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 58,
+          "height": 52
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "right": 752,
+      "left": 16,
+      "overflow": 0,
+      "transport": [
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 58,
+          "height": 52
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 1024,
+      "right": 748,
+      "left": 20,
+      "overflow": 0,
+      "transport": [
+        {
+          "width": 44,
+          "height": 44
+        },
+        {
+          "width": 58,
+          "height": 52
+        },
+        {
+          "width": 44,
+          "height": 44
+        }
+      ]
+    }
+  ],
+  "status": "passed"
+}
