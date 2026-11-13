@@ -161,11 +161,15 @@
     if (!record) return;
     if (state.currentId !== id || !audio.src) {
       audio.pause();
-      if (state.objectUrl) URL.revokeObjectURL(state.objectUrl);
+      const previousURL = state.objectUrl;
       state.objectUrl = URL.createObjectURL(record.blob);
       state.currentId = id;
       audio.src = state.objectUrl;
       const progress=safeJSON(KEYS.progress,{});if(progress.id===id)audio.addEventListener('loadedmetadata',()=>{if(state.currentId===id&&Number.isFinite(audio.duration))audio.currentTime=Math.min(Math.max(0,Number(progress.position)||0),Math.max(0,audio.duration-.1));},{once:true});
+      // Reset the existing decoder before retiring its previous Blob resource.
+      // WebKit can otherwise retain the old seek pipeline on a source switch.
+      audio.load();
+      if (previousURL) URL.revokeObjectURL(previousURL);
       renderLibrary();
     }
     try { await audio.play(); }

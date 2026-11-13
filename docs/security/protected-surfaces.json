@@ -136,7 +136,7 @@
   },
   "unchangedSections": [
     "ipad/index.html: entire body",
-    "ipad/app.js: all code preceding safeReload (music/timer owners)"
+    "ipad/app.js: all code preceding safeReload except the exact declared musicSourceReset delta (music/timer owners)"
   ],
   "noDatabaseMigration": true,
   "airFlowChanges": {
@@ -164,5 +164,11 @@
     "file": "ipad/NOTICE",
     "previousSha256": "921e5f6d161137005636c738e5e56b7421b1bcc59f8129aab9fa5c326c2a05dd",
     "reason": "Append complete license reference for the openly licensed clock typeface; retain all prior notice bytes."
+  },
+  "musicSourceReset": {
+    "file": "ipad/app.js",
+    "previousPrefixSHA256": "c296303f9471df123d5f0b2898e5d7b9ab6ec87d7a0d11b3ff489b48a4d63df0",
+    "approvedPrefixSHA256": "444f0dfa40be612778d915069fb7c7e3d166b22569c6c7beec057e0bc6f6bd30",
+    "reason": "Existing audio owner explicitly loads the new source before revoking its previous Blob URL. WPE reported error4 on next after seek while an independent decoder read the same stored Blob as 180 seconds. The regression gate compares the entire original music/timer prefix with only this exact delta."
   }
 }
