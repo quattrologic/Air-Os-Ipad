@@ -5,7 +5,7 @@ function worker(response=()=>new Response(body,{headers:{'Content-Type':'applica
  const calls=[],integrity=Object.fromEntries(['./source/source.zip','./app.js'].map(p=>[p,{bytes:body.length,sha256:crypto.createHash('sha256').update(body).digest('hex')}]));
  const source=fs.readFileSync(path.join(__dirname,'../scripts/templates/ipad-service-worker.js'),'utf8').replaceAll('__VERSION__','fixture').replace('__SHELL__',JSON.stringify(Object.keys(integrity))).replace('__INTEGRITY__',JSON.stringify(integrity));
  const context=vm.createContext({self:{registration:{scope:'https://fixture.invalid/private/'},addEventListener(){}},URL,Response,Headers,AbortController,crypto:crypto.webcrypto,setTimeout,clearTimeout,fetch:async(url,options)=>{calls.push({url,options});return response();}});
- vm.runInContext(source+';globalThis.probe={fetchChecked,checkedResponse,verified};',context);
+ vm.runInContext(source+';globalThis.probe={fetchChecked,checkedResponse,verified,cached};',context);
  return{...context.probe,calls};
 }
 test('offline staging and publication retain exactly the approved source bytes without another network read',async()=>{
@@ -25,4 +25,15 @@ test('both cache-write phases reject corruption, oversized bodies, wrong script 
 test('decoded cache responses declare their verified length rather than stale wire encoding',async()=>{
  const w=worker(()=>new Response(body,{headers:{'Content-Type':'application/zip','Content-Encoding':'gzip','Content-Length':'3'}})),response=await w.fetchChecked('./source/source.zip');
  assert.equal(response.headers.get('Content-Encoding'),null);assert.equal(response.headers.get('Content-Length'),String(body.length));assert.deepEqual(Buffer.from(await response.arrayBuffer()),body);
+});
+
+test('cached delivery owns the checked bytes and an unreadable cache permits verified network repair',async()=>{
+ const w=worker(),stored=new Response(body,{headers:{'Content-Type':'application/zip'}}),deleted=[];
+ const valid=await w.cached({match:async()=>stored,delete:async url=>deleted.push(url)},'./source/source.zip');
+ for(const unreadable of [()=>{throw Error('Cache lookup I/O');},()=>new Response(new ReadableStream({start(c){c.error(Error('Cache body I/O'));}}),{headers:{'Content-Type':'application/zip'}})]){
+  const cache={match:async()=>unreadable(),delete:async url=>deleted.push(url)};assert.equal(await w.cached(cache,'./source/source.zip'),null);
+ }
+ assert.notEqual(valid,stored,'delivery must use the verified bytes, not the original cache pipe');assert.deepEqual(Buffer.from(await valid.arrayBuffer()),body);assert.equal(w.calls.length,0);
+ assert.equal(deleted.length,2);assert.ok(deleted.every(url=>url==='https://fixture.invalid/private/source/source.zip'));
+ const repaired=await w.fetchChecked('./source/source.zip');assert.deepEqual(Buffer.from(await repaired.arrayBuffer()),body);assert.equal(w.calls.length,1);
 });

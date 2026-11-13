@@ -428,107 +428,98 @@
     {
       "method": "POST",
       "url": "https://accounts.spotify.com/api/token",
-      "time": 1794560942752
+      "time": 1794560942488
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player",
-      "time": 1794560942777
+      "time": 1794560942497
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player",
-      "time": 1794560959562
+      "time": 1794560960199
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player",
-      "time": 1794560979608
+      "time": 1794560980252
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player",
-      "time": 1794560994948
+      "time": 1794560995657
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player",
-      "time": 1794561024990
+      "time": 1794561025689
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player/currently-playing",
-      "time": 1794561025000
+      "time": 1794561025696
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player/recently-played?limit=1",
-      "time": 1794561025007
+      "time": 1794561025703
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player",
-      "time": 1794561055037
+      "time": 1794561055735
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player",
-      "time": 1794561115081
+      "time": 1794561115772
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player",
-      "time": 1794561146117
+      "time": 1794561146805
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player",
-      "time": 1794561176160
+      "time": 1794561176847
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player",
-      "time": 1794561206199
+      "time": 1794561206875
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player",
-      "time": 1794561251254
+      "time": 1794561251916
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player",
-      "time": 1794561266288
+      "time": 1794561266949
     },
     {
       "method": "POST",
       "url": "https://accounts.spotify.com/api/token",
-      "time": 1794561283898
+      "time": 1794561284874
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player",
-      "time": 1794561283922
+      "time": 1794561284897
     },
     {
       "method": "GET",
       "url": "https://api.spotify.com/v1/me/player",
-      "time": 1794561314020
+      "time": 1794561314957
     }
   ],
-  "runtimeSHA256": {
-    "ipad/widgets.js": "4b1f9af65e688af4dcf4bb8a36428c556d8f5dc778dfc5455e1ebb483ecd6b82",
-    "ipad/widgets-2.css": "7ff634011c9dc61a727cb77315fe2ca2805f07ce419b3f667067bd553d8dac7a",
-    "ipad/spotify.js": "1a14e122f15482997a44a63a0de1e3cb79e6b896d20be5c137f6ae011dcf9ffb",
-    "ipad/playback-history.js": "2169db63b22d0b7ec97c6d0c35288ff2f9ab992fa6ebee905c789f7ad89f7446",
-    "scripts/templates/ipad-service-worker.js": "520c4fef927bbf1dde82f009b57ee9cedde0cd0c65da9e0aca1cd0cdbf47c775",
-    "ipad/app.js": "98f41abd772260e92af83fd7d35838a1f256412b000315b6b34a0f74135602c6",
-    "ipad/backup.js": "1db606a598f40170ddfd3acd9866144ce5134af86f5d62017dfe50a7d463d229"
-  },
   "captureNotes": "Real PWA screenshots at DPR 2; synthetic authorized API and native WAV fixtures; user-provided reference images; controlled Europe/Berlin test clock. clock-system-local uses capture-time system Date.",
   "localValidation": {
     "node": {
-      "passed": 79,
+      "passed": 80,
       "failed": 0
     },
     "widgets21": {
@@ -566,6 +557,18 @@
     },
     "macLockArt": {
       "passed": 32
+    },
+    "macLockParity": {
+      "passed": 15
     }
+  },
+  "runtimeSHA256": {
+    "ipad/widgets.js": "4b1f9af65e688af4dcf4bb8a36428c556d8f5dc778dfc5455e1ebb483ecd6b82",
+    "ipad/widgets-2.css": "7ff634011c9dc61a727cb77315fe2ca2805f07ce419b3f667067bd553d8dac7a",
+    "ipad/spotify.js": "1a14e122f15482997a44a63a0de1e3cb79e6b896d20be5c137f6ae011dcf9ffb",
+    "ipad/playback-history.js": "2169db63b22d0b7ec97c6d0c35288ff2f9ab992fa6ebee905c789f7ad89f7446",
+    "scripts/templates/ipad-service-worker.js": "de7f263614f11e6390170fa1c93926c89ef0b86605c087609b7845365e56b228",
+    "ipad/app.js": "98f41abd772260e92af83fd7d35838a1f256412b000315b6b34a0f74135602c6",
+    "ipad/backup.js": "1db606a598f40170ddfd3acd9866144ce5134af86f5d62017dfe50a7d463d229"
   }
 }

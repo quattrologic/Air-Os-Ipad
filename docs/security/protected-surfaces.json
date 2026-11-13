@@ -134,7 +134,7 @@
     "ipad/vendor/premium4-source-excerpts.txt": "eeb9c597be473d19ed6f68765abb6015ab5755db6bf123b47825f6dd4a08bfb1",
     "ipad/vendor/system3-provenance.json": "10c411d754d2c9bd807dbf215cdf2b061ae172f77b7f1504ee7a5b82d31a01aa",
     "ipad/spotify.js": "1a14e122f15482997a44a63a0de1e3cb79e6b896d20be5c137f6ae011dcf9ffb",
-    "scripts/templates/ipad-service-worker.js": "520c4fef927bbf1dde82f009b57ee9cedde0cd0c65da9e0aca1cd0cdbf47c775"
+    "scripts/templates/ipad-service-worker.js": "de7f263614f11e6390170fa1c93926c89ef0b86605c087609b7845365e56b228"
   },
   "unchangedSections": [
     "ipad/index.html: entire body",
@@ -201,5 +201,11 @@
     "previousPrefixSHA256": "4a06344cfa0343997eb6b25557496542050bede670c7b07220460c80ad0b4cec",
     "approvedPrefixSHA256": "dfbe941d52c07f6605937ed1035570ec3aa928f7d9bbbfa5cef12a672f917bdd",
     "reason": "Widget reference capture on WebKit reported native error4 and readyState0 for a verified imported WAV. Existing source load/reset stays in place. A genuine error4 retries exactly once from the same stored bytes in an independent memory Blob, bounded to the existing 64MiB import limit. A changed source cancels the asynchronous recovery; unsupported formats still fail normally. No stored media or schema changes. The native error event participates in the play promise race because the failed WebKit promise remained pending; listeners are removed on every path. A pause during the bounded byte read also cancels recovery so it cannot override user input."
+  },
+  "verifiedCachedReadRecovery": {
+    "file": "scripts/templates/ipad-service-worker.js",
+    "previousSha256": "520c4fef927bbf1dde82f009b57ee9cedde0cd0c65da9e0aca1cd0cdbf47c775",
+    "approvedSha256": "de7f263614f11e6390170fa1c93926c89ef0b86605c087609b7845365e56b228",
+    "reason": "A reproducible cache lookup/body read I/O error bypassed checked network repair and rejected a resource fetch. Cached responses now own the same bounded hash-verified bytes used for staging. Unreadable/corrupt entries become misses and use the existing SHA256/MIME/redirect-checked network repair; an unavailable or invalid network still fails closed. No unchecked response or relaxed integrity rule."
   }
 }

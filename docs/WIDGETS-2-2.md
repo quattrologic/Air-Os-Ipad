@@ -105,7 +105,7 @@ geprüft. Länge und Encoding-Header werden an die bereits dekodierten Bytes
 angepasst. MIME-, Status-, Redirect-, Größen- und Hash-Prüfungen bleiben aktiv.
 Ein fehlgeschlagener Download führt weiterhin zum Abbruch der Generation.
 
-Lokal bestanden: 79 Node-, 46 bestehende Widget-, 44 Widget-2.2-, 20 Spotify-,
+Lokal bestanden: 80 Node-, 46 bestehende Widget-, 44 Widget-2.2-, 20 Spotify-,
 32 AIR-FLOW-, 54 Genie- sowie 61 Dock-Prüfungen jeweils bei DPR 1 und 2. Build und Integrität
 prüfen 153 Runtime-Dateien. Echte Browser-Screenshots und Referenzvergleiche liegen
 unter `docs/testing/widgets-2-2/`. Die vollständige CI und gegebenenfalls zusätzliche
@@ -122,3 +122,11 @@ Die vollständigen nativen WebKit-Prüfungen bleiben als CI-Gate aktiv.
 Der native Fehler wird auch dann verarbeitet, wenn WebKit das ursprüngliche
 `play()`-Promise offen lässt. Der pro Versuch gesetzte Fehler-Listener wird
 anschließend entfernt; es gibt keinen Wiederholungs-Timer.
+
+Ein weiterer Regressionstest reproduziert einen Cache-Lesefehler: Der alte
+Lesepfad ließ die Exception aus dem Ressourcen-Fetch entweichen. Der Cache-Leser
+behandelt defekte oder unlesbare Einträge jetzt wie einen Hashfehler und lässt
+die vorhandene, vollständig geprüfte Netzwerkwiederherstellung zu. Gültige
+Cache-Antworten verwenden unmittelbar die begrenzt gelesenen, geprüften Bytes.
+Ein ungültiges oder fehlendes Netz bleibt ein Fehler (503). Die zusätzlichen
+Ressourcen-/Konsolenprotokolle des MacLock-Tests bleiben für die Diagnose erhalten.
