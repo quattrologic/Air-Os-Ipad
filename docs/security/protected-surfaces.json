@@ -105,7 +105,7 @@
     "ipad/notch/model.js": "82e7b1f42d4925837d340f668bed81377ed2cf0b72b76ff2151c48dbc3a62581",
     "ipad/notch/motion-data.js": "f29d87fcf2ec8f443c8c92923214daf28036a182e407da86efae9c645dbd57f4",
     "ipad/notch/pro-notch.css": "6a2b72ebd6ec11a39bdd1cb7638fb0a91d47c8deef80ab2d44d6c7932ba08ef3",
-    "ipad/playback-history.js": "d45f76e7718ec8cf87b64e39fd6e18a55d040d226aafd09616bc9d83df0c8363",
+    "ipad/playback-history.js": "2169db63b22d0b7ec97c6d0c35288ff2f9ab992fa6ebee905c789f7ad89f7446",
     "ipad/premium4.css": "76958938902f732a12515bfd38687694948df8b0d2c738a8b19798a12b03ded0",
     "ipad/provenance.json": "132850ab59c84e0eb6fc9880444bcdc9e98883d2aa1a11bf5895bc20506c97a3",
     "ipad/registry.js": "5fe67ba73c2b1a8e48fdc4adad7feaef7b38cb8e4bcb85fc483a90e938148fcc",
@@ -132,7 +132,9 @@
     "ipad/vendor/macshell/shell7.js": "a0af3611bacd9e0573d885b85fa5ff386c32bf5bce0514bfc358ad5bd6b4d54b",
     "ipad/vendor/premium4-provenance.json": "2f2eb774fa588222ec5aa4b74c1a1323d40864331c3f339d2074fcf0a0c3cb76",
     "ipad/vendor/premium4-source-excerpts.txt": "eeb9c597be473d19ed6f68765abb6015ab5755db6bf123b47825f6dd4a08bfb1",
-    "ipad/vendor/system3-provenance.json": "10c411d754d2c9bd807dbf215cdf2b061ae172f77b7f1504ee7a5b82d31a01aa"
+    "ipad/vendor/system3-provenance.json": "10c411d754d2c9bd807dbf215cdf2b061ae172f77b7f1504ee7a5b82d31a01aa",
+    "ipad/spotify.js": "1a14e122f15482997a44a63a0de1e3cb79e6b896d20be5c137f6ae011dcf9ffb",
+    "scripts/templates/ipad-service-worker.js": "520c4fef927bbf1dde82f009b57ee9cedde0cd0c65da9e0aca1cd0cdbf47c775"
   },
   "unchangedSections": [
     "ipad/index.html: entire body",
@@ -170,5 +172,22 @@
     "previousPrefixSHA256": "c296303f9471df123d5f0b2898e5d7b9ab6ec87d7a0d11b3ff489b48a4d63df0",
     "approvedPrefixSHA256": "4a06344cfa0343997eb6b25557496542050bede670c7b07220460c80ad0b4cec",
     "reason": "Existing audio owner explicitly loads the new source before revoking its previous Blob URL. WPE reported error4 on next after seek while an independent decoder read the same stored Blob as 180 seconds. The regression gate compares the entire original music/timer prefix with only this exact delta. The decoder receives a separate full Blob slice rather than borrowing the IndexedDB File handle; stored bytes and metadata remain unchanged."
+  },
+  "widget22SourceChanges": {
+    "ipad/playback-history.js": {
+      "previousSha256": "d45f76e7718ec8cf87b64e39fd6e18a55d040d226aafd09616bc9d83df0c8363",
+      "approvedSha256": "2169db63b22d0b7ec97c6d0c35288ff2f9ab992fa6ebee905c789f7ad89f7446"
+    },
+    "ipad/spotify.js": {
+      "previousSha256": "15005a6dee84a1b447422532c41f5babc710da6d7b3508b767afc37cbc425f01",
+      "approvedSha256": "1a14e122f15482997a44a63a0de1e3cb79e6b896d20be5c137f6ae011dcf9ffb"
+    },
+    "reason": "Explicit Widget 2.2 request: opt-in history loading, source-specific local transport, one bounded read-only Spotify polling owner and resume synchronization. OAuth scopes, authorized endpoints, token memory-only lifetime, CSP and data schema remain unchanged. Active native local playback retains global Lock/Notch transport priority while the widget independently selects Spotify; local audio errors never project as playing."
+  },
+  "verifiedSourceCacheResponse": {
+    "file": "scripts/templates/ipad-service-worker.js",
+    "previousSha256": "3b3df2fcb83d34b98f1c4b304ff33e71a1f5b7a52987b3785d2e762f8bd47461",
+    "approvedSha256": "520c4fef927bbf1dde82f009b57ee9cedde0cd0c65da9e0aca1cd0cdbf47c775",
+    "reason": "Reproducible Chromium 154 Cache.put network error on the checked 15MB source offer. Both staging and publication now receive fresh responses made from the same bounded SHA256-verified bytes. MIME, length, redirect, response and hash checks remain; stage publication is reverified. No unchecked cache fallback. Decoded response headers are normalized to the verified byte length and no Content-Encoding."
   }
 }

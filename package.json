@@ -15,7 +15,8 @@
     "measure:genie": "node scripts/measure-ipad-genie.cjs",
     "test:wallpaper": "node scripts/test-ipad-wallpaper.cjs",
     "test:widgets": "node scripts/test-ipad-widgets-2.cjs",
-    "measure:widgets": "node scripts/measure-ipad-widgets-2.cjs"
+    "measure:widgets": "node scripts/measure-ipad-widgets-2.cjs",
+    "test:widgets-22": "node scripts/test-ipad-widgets-22.cjs"
   },
   "engines": {
     "node": ">=20"

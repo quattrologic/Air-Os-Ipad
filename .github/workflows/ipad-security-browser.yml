@@ -81,7 +81,16 @@ jobs:
           else
             npm run test:widgets
           fi
-      - name: Real reference captures, both orientations and 220px geometry
+      - name: Widget 2.2 Spotify preference, source privacy and live local clock
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
+        timeout-minutes: 5
+        run: |
+          if [ "$AIR_PAD_ENGINE" = webkit ]; then
+            xvfb-run -a env AIR_WIDGETS_HEADED=1 npm run test:widgets-22
+          else
+            npm run test:widgets-22
+          fi
+      - name: Real reference captures, both orientations and 200px geometry
         if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         timeout-minutes: 5
         env:
@@ -233,6 +242,7 @@ jobs:
             dist/genie-*/*.json
             dist/genie-*/*.png
             dist/widgets-2-*/*
+            dist/widgets-22-*/*
             dist/ocean-report.json
             dist/ocean-failure.png
           retention-days: 7

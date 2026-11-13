@@ -1,7 +1,10 @@
 @font-face{font-family:AirClockDisplay;src:url('./assets/fonts/barlow-clock.woff2') format('woff2');font-style:normal;font-weight:300;font-display:swap}
 /* Widget 2.1 · measured display coordinates; independent of device housings. */
-.pad-widget-column{--widget-unit:106px;left:20px;top:12px;width:min(456px,calc(100% - 40px),calc(100vw - 40px));max-width:none;max-height:calc(100% - 102px);padding:4px 4px 16px;box-sizing:border-box;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:44px;grid-auto-rows:var(--widget-unit);gap:8px;scrollbar-width:thin;scroll-padding:12px;align-content:start;overflow:auto}
-.pad-widget-column>.air-widget-edit{grid-column:1/-1;grid-row:1;position:sticky;top:0;z-index:8;justify-self:end;align-self:start;min-height:44px;height:44px;padding:0 14px;border:1px solid #ffffff26;border-radius:18px;background:#263b49e8;color:#fff;font-size:11px}
+.pad-widget-column{--widget-unit:96px;left:20px;top:12px;width:min(416px,calc(100% - 40px),calc(100vw - 40px));max-width:none;max-height:calc(100% - 102px);padding:4px 4px 16px;box-sizing:border-box;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:44px;grid-auto-rows:var(--widget-unit);gap:8px;scrollbar-width:thin;scroll-padding:12px;align-content:start;overflow:auto}
+.pad-widget-column>.air-widget-edit{grid-column:1/-1;grid-row:1;position:sticky;top:0;z-index:8;justify-self:end;align-self:start;min-width:44px;min-height:44px;height:44px;padding:0 10px;border:0;border-radius:0;background:transparent!important;background-image:none!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;color:#fff;font-size:11px;text-shadow:none;font-weight:500}
+.pad-widget-column>.air-widget-edit:is(:hover,:active){color:#e1f2ff;text-decoration:underline;text-underline-offset:3px}
+.pad-widget-column>.air-widget-edit:focus-visible{outline:none;text-decoration:underline;text-underline-offset:3px}
+.pad-widget-column>.air-widget-edit::before,.pad-widget-column>.air-widget-edit::after,.air-widget-edit>.deep-glass-tile,.air-widget-edit>.air-touch-light{display:none!important}
 .pad-widget-column>.pad-widget{container-type:inline-size;position:relative;isolation:isolate;contain:layout style;box-sizing:border-box;grid-column:span 1;grid-row:span 1;min-width:0;min-height:0!important;height:auto!important;padding:10px;border:1px solid #ffffff25;border-radius:17px;background:linear-gradient(150deg,#3c5766ee,#23343af2);box-shadow:inset 0 1px #ffffff18,0 5px 16px #00142129;color:#f7fbff;overflow:hidden;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
 .pad-widget-column>.pad-widget[data-size=medium]{grid-column:span 2;grid-row:span 1}.pad-widget-column>.pad-widget[data-size=large]{grid-column:span 2;grid-row:span 2}
 .pad-widget-column>.pad-widget:after,.pad-widget-column>.pad-widget>.deep-glass-tile:not(.air-touch-light){display:none!important}
@@ -51,7 +54,7 @@
 .pad-widget-column .notes-widget{background:linear-gradient(150deg,#57523eee,#34372cf2)}.pad-widget-column .air-widget-notes{display:flex;flex-direction:column;gap:6px}.pad-widget-column .air-widget-notes button{display:flex;flex-direction:column;text-align:left;min-height:44px;gap:4px;padding:2px 0;background:none;border:0;color:inherit}.pad-widget-column .air-widget-notes strong{font-size:12px;font-weight:500}.pad-widget-column .air-widget-notes span{font-size:10px;line-height:1.4;opacity:.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.notes-widget:not([data-size=large]) .air-widget-notes button:nth-child(n+2){display:none}
 .pad-widget-column>.photo-widget{padding:0;background:#315568}.widget-photo-art{position:absolute;inset:0;overflow:hidden;border-radius:inherit}.widget-photo-name{position:absolute;bottom:0;left:0;right:0;padding:25px 14px 14px;background:linear-gradient(transparent,#071b36b3);font-size:11px;pointer-events:none}.widget-photo-next{position:absolute;right:6px;bottom:4px;width:44px;height:44px;min-height:44px;border:0;border-radius:50%;background:#233d5750;color:#fff;font-size:26px}
 .pad-widget-column .air-widget-tools{display:none;position:absolute;left:4px;right:4px;top:4px;margin:0;gap:0;min-height:44px;background:#183447f5;border-radius:16px;z-index:7;align-items:center;overflow:auto;padding:2px;scrollbar-width:none}.pad-widget-column.air-widgets-editing .air-widget-tools{display:flex}.pad-widget-column .air-widget-tools button{width:44px;min-width:44px;height:44px;min-height:44px;flex:0 0 44px;border:0;background:none;color:inherit;padding:0;font-size:18px}.widget-size-label{font-size:9px;margin-left:auto;margin-right:8px;white-space:nowrap;color:#c2dced}.pad-widget-column.air-widgets-editing>.pad-widget{outline:1px dashed #effaff80;outline-offset:-4px}.air-widget-handle{touch-action:none}.air-widget-dragging{z-index:9;opacity:.85}
-@media(max-width:500px){.pad-widget-column{width:min(228px,calc(100% - 24px),calc(100vw - 24px));left:12px;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.widget-size-label{display:none}}
+@media(max-width:500px){.pad-widget-column{width:min(208px,calc(100% - 24px),calc(100vw - 24px));left:12px;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.widget-size-label{display:none}}
 /* A wide card keeps real transport and a readable square cover. */
 .pad-widget-column .player-widget[data-size=medium] .widget-art{left:5%;top:10%;width:38.5%;border-radius:3cqw}.player-widget[data-size=medium] .widget-art:after{display:none}.pad-widget-column .player-widget[data-size=medium] .widget-track{left:49%;right:6%;top:15%}.pad-widget-column .player-widget[data-size=medium] .widget-track strong{font-size:4.4cqw}.pad-widget-column .player-widget[data-size=medium] .widget-track small{font-size:3cqw}.player-widget[data-size=medium] .widget-music-head,.player-widget[data-size=medium] .widget-music-more{display:none}.player-widget[data-size=medium] .widget-music-head>*{display:none!important}.player-widget[data-size=medium] .widget-timeline{left:49%;right:6%;top:53%}.player-widget[data-size=medium] .widget-times{font-size:2.6cqw}.pad-widget-column .player-widget[data-size=medium] .widget-transport button{top:calc(85% - 22px)}.pad-widget-column .player-widget[data-size=medium] [data-widget-control=prev]{left:calc(53% - 22px)}.pad-widget-column .player-widget[data-size=medium] [data-widget-control=toggle]{left:calc(72% - 22px)}.pad-widget-column .player-widget[data-size=medium] [data-widget-control=next]{left:calc(90% - 22px)}.player-widget[data-size=medium] .widget-transport>button:first-child,.player-widget[data-size=medium] .widget-transport>button:last-child{display:none}
 /* Small retains full title access and three true touch controls; secondary details are omitted. */
@@ -67,14 +70,14 @@ html.pad-reduced-motion .widget-progress-track i{transition:none}@media(prefers-
 
 .pad-widget-column .player-widget .widget-track{padding:0;border:0;background:none;color:inherit;min-height:44px;cursor:pointer}
 
-/* Compact 220px display cards. Visual landmarks scale; hit targets do not.
+/* Compact 200px display cards. Visual landmarks scale; hit targets do not.
    The cover/title shortcut occupies the upper cover, with its text painted at
    the original reference coordinates. Seek and transport have disjoint bands. */
-.pad-widget-column .player-widget[data-size=large] .widget-track{top:48px;right:22%;height:calc(74.46cqw - 86px);display:block;overflow:visible}
-.pad-widget-column .player-widget[data-size=large] .widget-track strong{position:absolute;left:0;top:calc(59cqw - 48px);width:100%;font-size:max(13px,5.85cqw);pointer-events:none}
-.pad-widget-column .player-widget[data-size=large] .widget-track small{position:absolute;left:0;top:calc(66.15cqw - 48px);width:100%;font-size:max(10px,3.85cqw);pointer-events:none}
-.pad-widget-column .player-widget[data-size=large][data-long-title=true] .widget-track{top:48px}
-.pad-widget-column .player-widget[data-size=large][data-long-title=true] .widget-track strong{top:calc(53cqw - 48px);font-size:11px}
+.pad-widget-column .player-widget[data-size=large] .widget-track{top:44px;right:22%;height:calc(74.46cqw - 86px);display:block;overflow:visible}
+.pad-widget-column .player-widget[data-size=large] .widget-track strong{position:absolute;left:0;top:calc(59cqw - 44px);width:100%;font-size:max(12px,5.85cqw);pointer-events:none}
+.pad-widget-column .player-widget[data-size=large] .widget-track small{position:absolute;left:0;top:calc(66.15cqw - 44px);width:100%;font-size:max(10px,3.85cqw);pointer-events:none}
+.pad-widget-column .player-widget[data-size=large][data-long-title=true] .widget-track{top:44px}
+.pad-widget-column .player-widget[data-size=large][data-long-title=true] .widget-track strong{top:calc(53cqw - 44px);font-size:11px}
 .player-widget[data-size=large] .widget-timeline>input{top:-38px}
 .player-widget[data-size=large] .widget-music-more{left:calc(50% - 22px);top:calc(10.3% - 22px);font-size:8px}
 .pad-widget-column .player-widget[data-size=large] .widget-transport>button:first-child{left:0}
@@ -90,9 +93,9 @@ html.pad-reduced-motion .widget-progress-track i{transition:none}@media(prefers-
 /* Wide cards retain the cover and two rows of full-sized controls. The line
    still shows real progress; interactive seeking stays in the large card. */
 .pad-widget-column .player-widget[data-size=medium] .widget-art{width:32%;top:16%}
-.pad-widget-column .player-widget[data-size=medium] .widget-track{left:40%;right:4%;top:4px}
-.pad-widget-column .player-widget[data-size=medium] .widget-track strong{font-size:13px;max-height:1.12em}
-.pad-widget-column .player-widget[data-size=medium] .widget-track small{font-size:10px}
+.pad-widget-column .player-widget[data-size=medium] .widget-track{left:40%;right:4%;top:2px}
+.pad-widget-column .player-widget[data-size=medium] .widget-track strong{font-size:12px;max-height:1.12em}
+.pad-widget-column .player-widget[data-size=medium] .widget-track small{font-size:9px}
 .player-widget[data-size=medium] .widget-timeline{left:40%;right:4%;top:53%}
 .player-widget[data-size=medium] .widget-timeline>input,.player-widget[data-size=medium] .widget-times{display:none}
 .pad-widget-column .player-widget[data-size=medium] .widget-transport button{top:auto;bottom:0}
@@ -101,17 +104,17 @@ html.pad-reduced-motion .widget-progress-track i{transition:none}@media(prefers-
 .pad-widget-column .player-widget[data-size=medium] [data-widget-control=next]{left:calc(100% - 48px)}
 /* Small: cover shortcut, title, play and the same full transport menu. */
 .pad-widget-column .player-widget[data-size=small] .widget-track{top:0;left:8%;right:8%;height:calc(100% - 44px);display:block;overflow:visible}
-.pad-widget-column .player-widget[data-size=small] .widget-track strong{position:absolute;top:44px;left:0;width:100%;font-size:12px;pointer-events:none}
+.pad-widget-column .player-widget[data-size=small] .widget-track strong{position:absolute;top:36px;left:0;width:100%;font-size:11px;pointer-events:none}
 .pad-widget-column .player-widget[data-size=small] .widget-track small,.player-widget[data-size=small] [data-widget-control=prev],.player-widget[data-size=small] [data-widget-control=next]{display:none!important}
 .pad-widget-column .player-widget[data-size=small] .widget-music-more:not([hidden]){display:grid!important;place-items:center;top:auto;bottom:0;left:calc(50% - 44px);font-size:8px}
 .player-widget[data-size=small] .widget-music-more:before{inset:16px}
 .pad-widget-column .player-widget[data-size=small] [data-widget-control=toggle]{left:50%}
 /* Dense information, original materials. Lists scroll instead of clipping. */
 .pad-widget-column .calendar-widget{padding:6px}
-.pad-widget-column .calendar-widget h3{font-size:9px;margin-bottom:3px;line-height:11px;max-width:calc(100% - 30px)}
-.pad-widget-column .widget-month{font-size:8px;line-height:9px}
-.pad-widget-column .widget-month small{font-size:7px;line-height:9px;margin-bottom:1px}
-.pad-widget-column .widget-month>span{width:11px;height:9px}
+.pad-widget-column .calendar-widget h3{font-size:8px;margin-bottom:2px;line-height:10px;max-width:calc(100% - 30px)}
+.pad-widget-column .widget-month{font-size:8px;line-height:8px}
+.pad-widget-column .widget-month small{font-size:7px;line-height:8px;margin-bottom:1px}
+.pad-widget-column .widget-month>span{width:10px;height:8px}
 .calendar-widget[data-size=medium]{gap:0 8px}
 .calendar-widget[data-size=medium] .widget-events{padding-top:4px}
 .pad-widget-column .calendar-widget[data-size=large]{display:flex;flex-direction:column;padding:10px}
@@ -147,3 +150,33 @@ html.pad-reduced-motion .widget-progress-track i{transition:none}@media(prefers-
 .player-widget[data-source=disconnected] .widget-spotify-actions [role=status]{display:none}
 .player-widget[data-size=medium] .widget-spotify-actions{left:40%;right:4%;bottom:0}
 .player-widget[data-size=medium] .widget-spotify-actions small{display:none}
+
+/* 200px keeps three 44px transport targets; lyrics/library remain in the menu. */
+.player-widget[data-size=large] .widget-music-head>button{top:0;left:0}
+.player-widget[data-size=large] .widget-music-head>.widget-audio-options{left:auto}
+.player-widget[data-size=large] .widget-music-more{top:0}
+.pad-widget-column .player-widget[data-size=large] .widget-transport button{top:auto;bottom:0}
+.pad-widget-column .player-widget[data-size=large] .widget-transport>button:first-child,.pad-widget-column .player-widget[data-size=large] .widget-transport>button:last-child{display:none}
+.player-widget .widget-track:disabled{opacity:1;cursor:default}
+/* Read-only Spotify uses real link/connect actions, never local transport. */
+.player-widget:not([data-source=air-os]) .widget-spotify-actions{display:contents!important}
+.player-widget:not([data-source=air-os]) .widget-spotify-actions [role=status]{display:block;position:absolute;top:8px;left:12px;right:50px;font-size:9px;line-height:1.25;color:#dce8eee0;pointer-events:none}
+.player-widget:not([data-source=air-os]) .widget-music-more{display:grid!important;place-items:center;left:auto;right:0;top:0;bottom:auto}
+.player-widget:not([data-source=air-os]) .widget-spotify-actions :is(a,button){position:absolute;bottom:0;min-width:44px;height:44px;min-height:44px;box-sizing:border-box;padding:0 4px;display:grid;place-items:center;text-align:center;font-size:10px;background:none}
+.player-widget .widget-spotify-actions a{right:4px;width:92px}
+.player-widget .widget-spotify-actions button{left:4px;width:96px}
+.player-widget[data-connected=true] .widget-spotify-actions a,.player-widget[data-source=disconnected] .widget-spotify-actions button{left:calc(50% - 60px);right:auto;width:120px}
+.player-widget:not([data-source=air-os])[data-size=medium] .widget-spotify-actions [role=status]{left:40%;right:8px;top:32px;font-size:8px}
+.player-widget:not([data-source=air-os])[data-size=medium] .widget-music-more{left:4px;right:auto;top:auto;bottom:0}
+.player-widget:not([data-source=air-os])[data-size=medium] .widget-spotify-actions button{left:52px;width:44px;font-size:8px}
+.player-widget:not([data-source=air-os])[data-size=medium][data-source=disconnected] .widget-spotify-actions button{left:auto;right:4px;width:112px}
+.player-widget:not([data-source=air-os])[data-size=small] .widget-spotify-actions [role=status]{top:3px;left:4px;right:4px;font-size:8px;line-height:1.1}
+.player-widget:not([data-source=air-os])[data-size=small] .widget-music-more{left:4px;right:auto;top:auto;bottom:0}
+.player-widget:not([data-source=air-os])[data-size=small] .widget-spotify-actions a,.player-widget:not([data-source=air-os])[data-size=small] .widget-spotify-actions button{left:auto;right:4px;width:44px;font-size:8px}
+.player-widget[data-source=spotify][data-size=small] .widget-spotify-actions button{display:none}
+.pad-widget-column .weather-widget{padding:6px;gap:2px}
+.pad-widget-column .weather-widget .widget-caption{display:none}
+.pad-widget-column .air-weather-icon,.pad-widget-column .air-weather-icon .pad-glyph{width:20px;height:20px}
+.pad-widget-column .battery-widget{padding:6px}
+
+.player-widget:not([data-source=air-os])[data-size=medium][data-connected=true] .widget-spotify-actions a{left:auto;right:4px;width:140px}

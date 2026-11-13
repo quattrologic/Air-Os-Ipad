@@ -1,0 +1,23 @@
+{
+  "method": "Unchanged user crops and actual screenshots, normalized to 650px only for comparison. Raw screenshots remain unchanged.",
+  "cssSize": [
+    200,
+    200
+  ],
+  "reductionFrom220Area": 0.1736,
+  "music": {
+    "meanAbsoluteRGBDifference": 11.363
+  },
+  "clock": {
+    "meanAbsoluteRGBDifference": 20.508
+  },
+  "preservedLandmarksAt650px": {
+    "coverX": 0.045,
+    "coverY": 0.018,
+    "coverWidth": 0.039,
+    "titleX": 0.028,
+    "artistY": 0.01,
+    "progressY": 0.045
+  },
+  "touchAdaptation": "Three 44px local transport actions. Lyrics/library remain in the existing menu/header. Read-only Spotify has actual link/connect/refresh actions."
+}
