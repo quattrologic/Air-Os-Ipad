@@ -80,7 +80,11 @@ jobs:
           else
             npm run test:widgets || air_widget_checks=1
           fi
-          node scripts/capture-ipad-widgets-21.cjs || air_widget_checks=1
+          if [ "$AIR_PAD_ENGINE" = webkit ]; then
+            xvfb-run -a env AIR_WIDGETS_HEADED=1 node scripts/capture-ipad-widgets-21.cjs || air_widget_checks=1
+          else
+            node scripts/capture-ipad-widgets-21.cjs || air_widget_checks=1
+          fi
           # Use GTK/Xvfb for native touch/timeline sampling. The normal economy
           # projection is recorded explicitly; both curve edges keep the same
           # strict pixel assertions. No GPU guard or security check is changed.
