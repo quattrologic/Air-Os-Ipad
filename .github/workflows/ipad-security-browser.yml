@@ -70,35 +70,43 @@ jobs:
           npm run check
       # Run independent suites after a regression as well; failed steps still
       # fail the matrix job. Never suppress assertions or test exit codes.
-      - name: Widgets, real reference captures, Genie and Ocean (all must pass)
+      - name: Widgets, actual touch and native media
         if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
+        timeout-minutes: 5
+        run: |
+          # GTK retains real media/seek assertions. Long PCM replay failures
+          # remain failures in both ports; no audio mock or retry is used.
+          if [ "$AIR_PAD_ENGINE" = webkit ]; then
+            xvfb-run -a env AIR_WIDGETS_HEADED=1 npm run test:widgets
+          else
+            npm run test:widgets
+          fi
+      - name: Real reference captures, both orientations and 220px geometry
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
+        timeout-minutes: 5
         env:
           WIDGETS21_OUTPUT: dist/widgets-2-reference-${{ matrix.engine }}
         run: |
-          air_widget_checks=0
-          # Native WebKit touch/media tests use GTK, as the Genie gate does.
-          # WPE intermittently fails long PCM Blob decoding on source reuse;
-          # all original playback, seek and pixel assertions still must pass.
           if [ "$AIR_PAD_ENGINE" = webkit ]; then
-            xvfb-run -a env AIR_WIDGETS_HEADED=1 npm run test:widgets || air_widget_checks=1
+            xvfb-run -a env AIR_WIDGETS_HEADED=1 node scripts/capture-ipad-widgets-21.cjs
           else
-            npm run test:widgets || air_widget_checks=1
+            node scripts/capture-ipad-widgets-21.cjs
           fi
+      - name: Classic Genie, real captured content and both contour edges
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
+        timeout-minutes: 10
+        run: |
+          # Native GTK/Xvfb timeline sampling; economy projection is explicit.
+          # Both contour edges retain the same strict pixel assertions.
           if [ "$AIR_PAD_ENGINE" = webkit ]; then
-            xvfb-run -a env AIR_WIDGETS_HEADED=1 node scripts/capture-ipad-widgets-21.cjs || air_widget_checks=1
+            xvfb-run -a env AIR_GENIE_HEADED=1 npm run test:genie
           else
-            node scripts/capture-ipad-widgets-21.cjs || air_widget_checks=1
+            npm run test:genie
           fi
-          # Use GTK/Xvfb for native touch/timeline sampling. The normal economy
-          # projection is recorded explicitly; both curve edges keep the same
-          # strict pixel assertions. No GPU guard or security check is changed.
-          if [ "$AIR_PAD_ENGINE" = webkit ]; then
-            xvfb-run -a env AIR_GENIE_HEADED=1 npm run test:genie || air_widget_checks=1
-          else
-            npm run test:genie || air_widget_checks=1
-          fi
-          npm run test:wallpaper || air_widget_checks=1
-          exit "$air_widget_checks"
+      - name: Ocean playback, offline byte ranges and reduced motion
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
+        timeout-minutes: 3
+        run: npm run test:wallpaper
       - name: Original v4 to v5, protected multitab activation and compatible recovery
         if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
