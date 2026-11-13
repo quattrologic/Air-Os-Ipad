@@ -65,3 +65,16 @@ Styles der Textaktion und SHA-256-Werte der zugehörigen Widget-Dateien.
 Der vollständige CI-Endstatus wird in PR #9 verlinkt. Linux-Browserprüfungen mit
 simulierten autorisierten Endpunkten ersetzen keinen Kontotest und keinen Test
 auf einem physischen iPad. Es gibt keine 60-FPS-Garantie.
+
+## Größenwechsel: aktuelle Labormessung
+
+[Unveränderter Rohbericht der vier Samples](performance/report.json): Chromium
+154, 200/96-Pixel-Widgets, Quer-/Hochformat, reduzierte Transparenz und reduzierte
+Animation. Pro Sample vier bestehende Größenaktionen über etwa 1,8 Sekunden.
+Das 95. Perzentil der Frame-Abstände beim Größenwechsel betrug in diesen Samples
+16,7 ms. Es wurden keine Long Tasks und keine nach dem Settling weiterlaufenden
+Animationen erfasst. Die Messung ist kurz, lokal und ohne Hardwarevergleich; sie
+ist keine Aussage über reale iPad-FPS oder eine Verbesserung gegenüber PR #8.
+
+Reproduktion: `npm run measure:widgets`, Ausgabe über `WIDGETS_MEASURE_OUTPUT`.
+Der Messablauf wählt Air Music ausdrücklich über das vorhandene Quellenmenü.
