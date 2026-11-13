@@ -16,7 +16,15 @@ const {create}=require('./serve-ipad-secure.cjs'),{widgetBrowser}=require('./lib
  const unlock=async()=>{await page.locator('#unlock').tap();await page.waitForFunction(()=>airWidgets.snapshot().active);await quiet();};
  const shot=async(name,selector)=>{await quiet();await page.mouse.move(5,220);await(selector?page.locator(selector):page).screenshot({path:path.join(out,name+'.png')});report.screens.push(name+'.png');};
  const connect=async()=>{const auth=new URL(await page.evaluate(()=>airSpotify.begin(true)));await page.evaluate(async state=>{const u=new URL(location.href);u.search=new URLSearchParams({code:'SYNTHETIC_CODE',state});history.replaceState(null,'',u);await airSpotify.callback();},auth.searchParams.get('state'));await page.waitForFunction(()=>!airSpotify.snapshot().busy);};
- const nextPoll=async()=>{const n=calls.length;await page.clock.fastForward(30001);await page.waitForFunction(()=>!airSpotify.snapshot().busy);assert.ok(calls.length>n,'the existing poller performs a real API read');};
+ // The route callback also crosses the browser/Node boundary. Wait for its
+ // actual request before testing idle: otherwise an idle sample can precede
+ // dispatch of the newly due timer on the official CI browsers.
+ const readAfter=async n=>{const deadline=Date.now()+15000;while(calls.length<=n&&Date.now()<deadline)await page.waitForTimeout(20);assert.ok(calls.length>n,'the existing poller performs a real API read');await page.waitForFunction(()=>!airSpotify.snapshot().busy);};
+ // Do not advance across a new request's real 12s timeout while its mocked
+ // network body is still crossing the protocol bridge. Timers remain real;
+ // yield after each <=5s step until the one shared reader has completed.
+ const advance=async ms=>{await page.waitForFunction(()=>!airSpotify.snapshot().busy);while(ms>0){const step=Math.min(ms,5000);await page.clock.fastForward(step);await page.waitForFunction(()=>!airSpotify.snapshot().busy);ms-=step;}};
+ const nextPoll=async()=>{const n=calls.length;await advance(30001);await readAfter(n);};
  const auditSizes=async label=>{
   await page.locator('.air-widget-edit').tap();
   for(const size of ['small','medium','large']){
@@ -40,7 +48,7 @@ const {create}=require('./serve-ipad-secure.cjs'),{widgetBrowser}=require('./lib
   await context.route('https://i.scdn.co/image/widget22',r=>r.fulfill({headers:{'Access-Control-Allow-Origin':'*'},contentType:'image/jpeg',body:fs.readFileSync('docs/testing/widgets-2-1/media/reference-cover.jpg')}));
   await context.route(/https:\/\/(api|accounts)\.spotify\.com\//,async route=>{
    const req=route.request(),stamp=await page.evaluate(()=>Date.now());calls.push({method:req.method(),url:req.url(),time:stamp});
-   const headers={'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'*','Content-Type':'application/json'};
+   const headers={'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'*','Access-Control-Expose-Headers':'Retry-After','Content-Type':'application/json'};
    if(req.method()==='OPTIONS')return route.fulfill({status:204,headers});
    if(req.url().includes('/api/token'))return route.fulfill({headers,body:JSON.stringify({token_type:'Bearer',access_token:'SYNTHETIC_WIDGET22_ACCESS',refresh_token:'SYNTHETIC_WIDGET22_REFRESH',expires_in:3600})});
    if(mode==='forbidden')return route.fulfill({status:403,headers,body:'{}'});
@@ -75,9 +83,9 @@ const {create}=require('./serve-ipad-secure.cjs'),{widgetBrowser}=require('./lib
   const count=calls.length;await page.evaluate(()=>Promise.all(Array.from({length:8},()=>airSpotify.refresh())));check('repeated refresh actions share the 15-second read gate',calls.length===count);
   second=true;mode='paused';await nextPoll();await page.evaluate(()=>airPlaybackMetadata.flush());check('paused Spotify keeps real last title without claiming live playback',await page.evaluate(()=>document.querySelector('.player-widget strong').textContent==='NIGHT SWIM'&&document.querySelector('.player-widget').dataset.playing==='false'&&airSpotify.snapshot().pending));
   mode='recent';await nextPoll();check('idle API fallback reads the authorized recent endpoint and keeps polling',calls.some(c=>c.url.endsWith('/recently-played?limit=1'))&&await page.evaluate(()=>!airPlaybackMetadata.snapshot('spotify').playing&&airSpotify.snapshot().pending));
-  mode='rate';await nextPoll();const limited=calls.length;await page.evaluate(()=>airSpotify.refresh());await page.clock.fastForward(30000);check('Retry-After blocks manual and timer requests before its deadline',calls.length===limited);mode='playing';await page.clock.fastForward(31000);await page.waitForFunction(()=>!airSpotify.snapshot().busy);check('the shared reader resumes after Retry-After',calls.length>limited&&await page.evaluate(()=>airPlaybackMetadata.snapshot('spotify').playing));
+  mode='rate';await nextPoll();const limited=calls.length,rateAt=calls.at(-1).time;await page.evaluate(()=>airSpotify.refresh());await advance(30000);check('Retry-After blocks manual and timer requests before its deadline',calls.length===limited);mode='playing';await advance(31000);await readAfter(limited);check('the shared reader resumes after Retry-After',calls.length>limited&&calls.slice(limited).every(c=>c.time>=rateAt+60000)&&await page.evaluate(()=>airPlaybackMetadata.snapshot('spotify').playing));
   mode='unsupported';await nextPoll();check('an unsupported current payload cannot keep an older song falsely live',await page.evaluate(()=>document.querySelector('.player-widget strong').textContent==='NIGHT SWIM'&&document.querySelector('.player-widget').dataset.playing==='false'));mode='playing';await nextPoll();
-  mode='forbidden';await nextPoll();check('API permission errors are visible beside retained data without false live status',await page.evaluate(()=>document.querySelector('.player-widget [role=status]').textContent.includes('API-Zugriff')&&document.querySelector('.player-widget [role=status]').getAttribute('aria-label').includes('keinen Zugriff')&&document.querySelector('.player-widget').dataset.playing==='false'&&!airSpotify.snapshot().pending));const denied=calls.length;await page.clock.fastForward(30001);check('a permission failure stops automatic API retries',calls.length===denied);mode='playing';await page.evaluate(()=>airSpotify.refresh());
+  mode='forbidden';await nextPoll();check('API permission errors are visible beside retained data without false live status',await page.evaluate(()=>document.querySelector('.player-widget [role=status]').textContent.includes('API-Zugriff')&&document.querySelector('.player-widget [role=status]').getAttribute('aria-label').includes('keinen Zugriff')&&document.querySelector('.player-widget').dataset.playing==='false'&&!airSpotify.snapshot().pending));const denied=calls.length;await advance(30001);check('a permission failure stops automatic API retries',calls.length===denied);mode='playing';await page.evaluate(()=>airSpotify.refresh());
   await context.setOffline(true);await page.waitForFunction(()=>!navigator.onLine);check('offline retains the known Spotify song and suspends its reader',await page.evaluate(()=>document.querySelector('.player-widget strong').textContent==='NIGHT SWIM'&&document.querySelector('.player-widget [role=status]').textContent.includes('Offline')&&document.querySelector('.player-widget').dataset.playing==='false'&&!airSpotify.snapshot().pending));await context.setOffline(false);await nextPoll();
   check('only supported read endpoints and the PKCE grant were called',calls.every(c=>c.method==='GET'||c.method==='OPTIONS'||c.method==='POST'&&c.url.endsWith('/api/token')));
   await page.evaluate(()=>airPlaybackMetadata.flush());await page.evaluate(()=>airSpotify.disconnect());
@@ -102,6 +110,6 @@ const {create}=require('./serve-ipad-secure.cjs'),{widgetBrowser}=require('./lib
   await page.clock.setSystemTime(new Date());await page.evaluate(()=>window.dispatchEvent(new Event('focus')));await shot('clock-system-local','.clock-widget');
   check('no uncaught page errors',report.errors.length===0);report.status='passed';
  }catch(e){report.status='failed';report.error=e.stack;try{report.failure=await page.evaluate(()=>({widget:airWidgets.snapshot(),spotify:airSpotify.snapshot(),metadata:airPlaybackMetadata.snapshot(),local:airPlaybackMetadata.snapshot('air-os'),source:document.querySelector('.player-widget').dataset.source,title:document.querySelector('.player-widget strong').textContent,clock:document.querySelector('.clock-widget time').textContent}));await page.screenshot({path:path.join(out,'failure.png')});}catch{}throw e;}
- finally{fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');await browser?.close();server.closeAllConnections?.();await new Promise(r=>server.close(r));}
+ finally{report.apiRequests=calls;fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');await browser?.close();server.closeAllConnections?.();await new Promise(r=>server.close(r));}
  console.log(JSON.stringify({engine,status:report.status,checks:report.checks.length}));
 })().catch(e=>{console.error(e.stack);process.exitCode=1;});

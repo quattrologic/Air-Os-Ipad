@@ -13,7 +13,7 @@
     "ipad/assets/lake-evening.metadata.json": "46bd2df6dd329e11866401875df18404fe8efd0a4ef56b7a949dad3b7bf256ff",
     "ipad/assets/yosemite-morning.metadata.json": "5148af9becedddadd55d2156af0e75b2098781fb1d66f758cb576546a3867599",
     "ipad/assets/yosemite-morning.png": "d1d1a71c8080696bf45b1ff0a664df592e59ac27a0710853f76d938a10a9ac06",
-    "ipad/backup.js": "c12b1f82a86c87f355aaf08c1542eb4c7a048387be5566ace493ca30248d2620",
+    "ipad/backup.js": "1db606a598f40170ddfd3acd9866144ce5134af86f5d62017dfe50a7d463d229",
     "ipad/core/desktop-sessions.js": "157a33c5d9afa04694cb6472cb625167df146e0e3f8a2fe3a2d2a513332c7ffa",
     "ipad/core/infinity-dock.js": "ea26f2e15bea74bb75659cbb2ad78a80079f5938a3be709250ea3ec062890876",
     "ipad/core/infinity-notification.js": "019990f28226d63af315285a1b64452d309cbd24c5770dd4c1516a212e17225f",
@@ -138,7 +138,7 @@
   },
   "unchangedSections": [
     "ipad/index.html: entire body",
-    "ipad/app.js: all code preceding safeReload except the exact declared musicSourceReset delta (music/timer owners)"
+    "ipad/app.js: all code preceding safeReload except the exact declared musicSourceReset and nativeBlobRecovery deltas (music/timer owners)"
   ],
   "noDatabaseMigration": true,
   "airFlowChanges": {
@@ -189,5 +189,17 @@
     "previousSha256": "3b3df2fcb83d34b98f1c4b304ff33e71a1f5b7a52987b3785d2e762f8bd47461",
     "approvedSha256": "520c4fef927bbf1dde82f009b57ee9cedde0cd0c65da9e0aca1cd0cdbf47c775",
     "reason": "Reproducible Chromium 154 Cache.put network error on the checked 15MB source offer. Both staging and publication now receive fresh responses made from the same bounded SHA256-verified bytes. MIME, length, redirect, response and hash checks remain; stage publication is reverified. No unchecked cache fallback. Decoded response headers are normalized to the verified byte length and no Content-Encoding."
+  },
+  "widget22SourcePreferenceBackup": {
+    "file": "ipad/backup.js",
+    "previousSha256": "c12b1f82a86c87f355aaf08c1542eb4c7a048387be5566ace493ca30248d2620",
+    "approvedSha256": "1db606a598f40170ddfd3acd9866144ce5134af86f5d62017dfe50a7d463d229",
+    "reason": "The new origin-local widget source preference is excluded from portable exports alongside playback history and Spotify config. Otherwise an app-generated backup is rejected by the unchanged strict restore allowlist. Restore never imports this preference, credentials or origin-bound playback state and retains the existing target-origin source selection."
+  },
+  "nativeBlobRecovery": {
+    "file": "ipad/app.js",
+    "previousPrefixSHA256": "4a06344cfa0343997eb6b25557496542050bede670c7b07220460c80ad0b4cec",
+    "approvedPrefixSHA256": "dfbe941d52c07f6605937ed1035570ec3aa928f7d9bbbfa5cef12a672f917bdd",
+    "reason": "Widget reference capture on WebKit reported native error4 and readyState0 for a verified imported WAV. Existing source load/reset stays in place. A genuine error4 retries exactly once from the same stored bytes in an independent memory Blob, bounded to the existing 64MiB import limit. A changed source cancels the asynchronous recovery; unsupported formats still fail normally. No stored media or schema changes. The native error event participates in the play promise race because the failed WebKit promise remained pending; listeners are removed on every path. A pause during the bounded byte read also cancels recovery so it cannot override user input."
   }
 }

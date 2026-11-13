@@ -159,7 +159,7 @@
       "height": 96,
       "rows": [
         {
-          "label": "Titel in Spotify \u00f6ffnen",
+          "label": "Titel in Spotify öffnen",
           "x": 31.671875,
           "y": 92,
           "w": 80.65625,
@@ -179,7 +179,7 @@
           "hit": true
         },
         {
-          "label": "In Spotify \u00f6ffnen",
+          "label": "In Spotify öffnen",
           "x": 72,
           "y": 144,
           "w": 44,
@@ -199,7 +199,7 @@
       "height": 96,
       "rows": [
         {
-          "label": "Titel in Spotify \u00f6ffnen",
+          "label": "Titel in Spotify öffnen",
           "x": 104,
           "y": 94,
           "w": 112,
@@ -219,7 +219,7 @@
           "hit": true
         },
         {
-          "label": "In Spotify \u00f6ffnen",
+          "label": "In Spotify öffnen",
           "x": 80,
           "y": 144,
           "w": 140,
@@ -239,7 +239,7 @@
       "height": 200,
       "rows": [
         {
-          "label": "Titel in Spotify \u00f6ffnen",
+          "label": "Titel in Spotify öffnen",
           "x": 41.53125,
           "y": 136,
           "w": 138.46875,
@@ -259,7 +259,7 @@
           "hit": true
         },
         {
-          "label": "In Spotify \u00f6ffnen",
+          "label": "In Spotify öffnen",
           "x": 64,
           "y": 248,
           "w": 120,
@@ -279,7 +279,7 @@
       "height": 96,
       "rows": [
         {
-          "label": "Titel in Spotify \u00f6ffnen",
+          "label": "Titel in Spotify öffnen",
           "x": 31.671875,
           "y": 92,
           "w": 80.65625,
@@ -299,7 +299,7 @@
           "hit": true
         },
         {
-          "label": "In Spotify \u00f6ffnen",
+          "label": "In Spotify öffnen",
           "x": 72,
           "y": 144,
           "w": 44,
@@ -319,7 +319,7 @@
       "height": 96,
       "rows": [
         {
-          "label": "Titel in Spotify \u00f6ffnen",
+          "label": "Titel in Spotify öffnen",
           "x": 104,
           "y": 94,
           "w": 112,
@@ -339,7 +339,7 @@
           "hit": true
         },
         {
-          "label": "In Spotify \u00f6ffnen",
+          "label": "In Spotify öffnen",
           "x": 128,
           "y": 144,
           "w": 92,
@@ -369,7 +369,7 @@
       "height": 200,
       "rows": [
         {
-          "label": "Titel in Spotify \u00f6ffnen",
+          "label": "Titel in Spotify öffnen",
           "x": 41.53125,
           "y": 136,
           "w": 138.46875,
@@ -389,7 +389,7 @@
           "hit": true
         },
         {
-          "label": "In Spotify \u00f6ffnen",
+          "label": "In Spotify öffnen",
           "x": 128,
           "y": 248,
           "w": 92,
@@ -424,17 +424,111 @@
     "height": 44
   },
   "status": "passed",
+  "apiRequests": [
+    {
+      "method": "POST",
+      "url": "https://accounts.spotify.com/api/token",
+      "time": 1794560942752
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794560942777
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794560959562
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794560979608
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794560994948
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561024990
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player/currently-playing",
+      "time": 1794561025000
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player/recently-played?limit=1",
+      "time": 1794561025007
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561055037
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561115081
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561146117
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561176160
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561206199
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561251254
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561266288
+    },
+    {
+      "method": "POST",
+      "url": "https://accounts.spotify.com/api/token",
+      "time": 1794561283898
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561283922
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561314020
+    }
+  ],
   "runtimeSHA256": {
     "ipad/widgets.js": "4b1f9af65e688af4dcf4bb8a36428c556d8f5dc778dfc5455e1ebb483ecd6b82",
     "ipad/widgets-2.css": "7ff634011c9dc61a727cb77315fe2ca2805f07ce419b3f667067bd553d8dac7a",
     "ipad/spotify.js": "1a14e122f15482997a44a63a0de1e3cb79e6b896d20be5c137f6ae011dcf9ffb",
     "ipad/playback-history.js": "2169db63b22d0b7ec97c6d0c35288ff2f9ab992fa6ebee905c789f7ad89f7446",
-    "scripts/templates/ipad-service-worker.js": "520c4fef927bbf1dde82f009b57ee9cedde0cd0c65da9e0aca1cd0cdbf47c775"
+    "scripts/templates/ipad-service-worker.js": "520c4fef927bbf1dde82f009b57ee9cedde0cd0c65da9e0aca1cd0cdbf47c775",
+    "ipad/app.js": "98f41abd772260e92af83fd7d35838a1f256412b000315b6b34a0f74135602c6",
+    "ipad/backup.js": "1db606a598f40170ddfd3acd9866144ce5134af86f5d62017dfe50a7d463d229"
   },
   "captureNotes": "Real PWA screenshots at DPR 2; synthetic authorized API and native WAV fixtures; user-provided reference images; controlled Europe/Berlin test clock. clock-system-local uses capture-time system Date.",
   "localValidation": {
     "node": {
-      "passed": 72,
+      "passed": 79,
       "failed": 0
     },
     "widgets21": {
@@ -461,6 +555,17 @@
     "realSpotifyAccount": false,
     "classicGenie": {
       "passed": 54
+    },
+    "macLock": {
+      "dpr1": 40,
+      "dpr2": 40
+    },
+    "security": {
+      "root": 50,
+      "subpath": 50
+    },
+    "macLockArt": {
+      "passed": 32
     }
   }
 }

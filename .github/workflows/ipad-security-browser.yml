@@ -90,6 +90,15 @@ jobs:
           else
             npm run test:widgets-22
           fi
+      - name: Preserve early widget diagnostics from either engine
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ipad-widget-diagnostics-${{ matrix.engine }}
+          path: |
+            dist/widgets-2-*/report.json
+            dist/widgets-22-*/report.json
+          retention-days: 7
       - name: Real reference captures, both orientations and 200px geometry
         if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         timeout-minutes: 5

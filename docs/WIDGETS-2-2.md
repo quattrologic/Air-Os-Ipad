@@ -28,7 +28,10 @@ verwendet weiterhin seine vorhandenen Steuerelemente.
 ## Musikquelle und Datenschutz
 
 Das Widget bevorzugt standardmäßig Spotify. Seine Auswahl wird im bestehenden
-Setting-Store unter `widget-music-source-v1` gespeichert. Das Menü bietet
+Setting-Store unter `widget-music-source-v1` gespeichert. Die ursprungsgebundene
+Quellenauswahl bleibt wie Spotify-Konfiguration und Verlauf außerhalb portabler
+Backups. Ein Export lässt sich damit weiterhin durch die unverändert strenge
+Wiederherstellungsprüfung einlesen; die lokale Zielauswahl bleibt erhalten. Das Menü bietet
 „Air Music anzeigen“ beziehungsweise „Spotify bevorzugen“. Die globale
 Metadaten-Auswahl für Lockscreen und Notch behält aktives lokales Audio als direkt steuerbare Quelle; sonst bleibt die chronologische Auswahl erhalten.
 Der Widget-Transport adressiert den lokalen Besitzer gezielt; eine neue lokale
@@ -102,8 +105,20 @@ geprüft. Länge und Encoding-Header werden an die bereits dekodierten Bytes
 angepasst. MIME-, Status-, Redirect-, Größen- und Hash-Prüfungen bleiben aktiv.
 Ein fehlgeschlagener Download führt weiterhin zum Abbruch der Generation.
 
-Lokal bestanden: 72 Node-, 46 bestehende Widget-, 44 Widget-2.2-, 20 Spotify-,
+Lokal bestanden: 79 Node-, 46 bestehende Widget-, 44 Widget-2.2-, 20 Spotify-,
 32 AIR-FLOW-, 54 Genie- sowie 61 Dock-Prüfungen jeweils bei DPR 1 und 2. Build und Integrität
 prüfen 153 Runtime-Dateien. Echte Browser-Screenshots und Referenzvergleiche liegen
 unter `docs/testing/widgets-2-2/`. Die vollständige CI und gegebenenfalls zusätzliche
 Ergebnisse werden nach Abschluss im bestehenden PR #9 verlinkt.
+
+Die WebKit-Referenzprüfung meldete außerdem `error4`/`readyState0` für eine
+importierte WAV-Datei. Der vorhandene Audio-Besitzer versucht nur bei diesem
+nativen Fehler einmalig dieselben gespeicherten Bytes als unabhängigen Speicher-
+Blob (maximal die bestehende Importgrenze von 64 MiB). Ein zwischenzeitlicher
+Quellenwechsel verwirft das Ergebnis. Unlesbare oder nicht unterstützte Formate
+bleiben Fehler; gespeicherte Audiodateien werden nicht geändert. Sechs Node-
+Regressionen prüfen Bytegleichheit, die Grenze, den Abbruch und echte Fehler.
+Die vollständigen nativen WebKit-Prüfungen bleiben als CI-Gate aktiv.
+Der native Fehler wird auch dann verarbeitet, wenn WebKit das ursprüngliche
+`play()`-Promise offen lässt. Der pro Versuch gesetzte Fehler-Listener wird
+anschließend entfernt; es gibt keinen Wiederholungs-Timer.
