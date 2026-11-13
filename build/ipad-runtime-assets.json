@@ -149,7 +149,9 @@
     "assets/ocean-blue.jpg",
     "assets/ocean-blue.mp4",
     "core/widget-layout.js",
-    "widgets-2.css"
+    "widgets-2.css",
+    "assets/fonts/barlow-clock.woff2",
+    "assets/fonts/Barlow-OFL.txt"
   ],
   "sourceReferences": [
     "docs/reference/pro-notch/contours/calendar.png",
@@ -184,6 +186,12 @@
     "docs/reference/pro-notch/timer-detail-measurements.json",
     "docs/OCEAN-WALLPAPER.md",
     "scripts/test-ipad-wallpaper.cjs",
-    "tests/ipad-wallpaper.test.cjs"
+    "tests/ipad-wallpaper.test.cjs",
+    "docs/testing/widgets-2-1/media/reference-cover.jpg",
+    "docs/testing/widgets-2-1/media/reference-clock-subject.png",
+    "docs/testing/widgets-2-1/media/reference-clock-background.jpg",
+    "docs/testing/widgets-2-1/reference/music.png",
+    "docs/testing/widgets-2-1/reference/clock.png",
+    "docs/testing/widgets-2-1/reference/measurements.json"
   ]
 }

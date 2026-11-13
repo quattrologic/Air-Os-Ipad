@@ -1,0 +1,132 @@
+{
+  "engine": "chromium",
+  "deviceScaleFactor": 2,
+  "syntheticAudio": true,
+  "userSuppliedReferenceMedia": true,
+  "errors": [],
+  "musicBox": {
+    "x": 24,
+    "y": 92,
+    "width": 220,
+    "height": 220,
+    "top": 92,
+    "right": 244,
+    "bottom": 312,
+    "left": 24
+  },
+  "clockBox": {
+    "x": 252,
+    "y": 92,
+    "width": 220,
+    "height": 220,
+    "top": 92,
+    "right": 472,
+    "bottom": 312,
+    "left": 252
+  },
+  "columnBox": {
+    "x": 20,
+    "y": 36,
+    "width": 456,
+    "height": 634,
+    "top": 36,
+    "right": 476,
+    "bottom": 670,
+    "left": 20
+  },
+  "gridSizes": {
+    "music": {
+      "size": "large",
+      "width": 220,
+      "height": 220
+    },
+    "clock": {
+      "size": "large",
+      "width": 220,
+      "height": 220
+    },
+    "calendar": {
+      "size": "small",
+      "width": 106,
+      "height": 106
+    },
+    "weather": {
+      "size": "small",
+      "width": 106,
+      "height": 106
+    },
+    "battery": {
+      "size": "small",
+      "width": 106,
+      "height": 106
+    },
+    "reminders": {
+      "size": "medium",
+      "width": 220,
+      "height": 106
+    },
+    "notes": {
+      "size": "medium",
+      "width": 220,
+      "height": 106
+    },
+    "photos": {
+      "size": "medium",
+      "width": 220,
+      "height": 106
+    }
+  },
+  "music": {
+    ".widget-art": {
+      "x": 0.1845880681818182,
+      "y": 0.1861505681818182,
+      "width": 0.6291903409090909,
+      "height": 0.6291903409090909
+    },
+    ".widget-track strong": {
+      "x": 0.08764204545454546,
+      "y": 0.5899857954545454,
+      "width": 0.6508565035733309,
+      "height": 0.06612215909090909
+    },
+    ".widget-track small": {
+      "x": 0.08764204545454546,
+      "y": 0.661434659090909,
+      "width": 0.6924005681818182,
+      "height": 0.05454545454545454
+    },
+    ".widget-progress-track": {
+      "x": 0.08764204545454546,
+      "y": 0.74453125,
+      "width": 0.821590909090909,
+      "height": 0.013636363636363636
+    },
+    "[data-widget-control=toggle]": {
+      "x": 0.4,
+      "y": 0.7819602272727273,
+      "width": 0.2,
+      "height": 0.2
+    },
+    "[data-widget-control=prev]": {
+      "x": 0.2,
+      "y": 0.7819602272727273,
+      "width": 0.2,
+      "height": 0.2
+    },
+    "[data-widget-control=next]": {
+      "x": 0.6,
+      "y": 0.7819602272727273,
+      "width": 0.2,
+      "height": 0.2
+    }
+  },
+  "clockTime": {
+    "x": -0.019957386363636365,
+    "y": -0.03494318181818182,
+    "width": 1,
+    "height": 0.5151988636363637
+  },
+  "clockDepth": "true",
+  "liveTime": "10:09",
+  "sourceDuration": 153
+}

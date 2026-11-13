@@ -1,0 +1,133 @@
+{
+  "engine": "chromium",
+  "browserPort": "Chromium",
+  "deviceScaleFactor": 2,
+  "syntheticAudio": true,
+  "userSuppliedReferenceMedia": true,
+  "errors": [],
+  "musicBox": {
+    "x": 24,
+    "y": 92,
+    "width": 200,
+    "height": 200,
+    "top": 92,
+    "right": 224,
+    "bottom": 292,
+    "left": 24
+  },
+  "clockBox": {
+    "x": 232,
+    "y": 92,
+    "width": 200,
+    "height": 200,
+    "top": 92,
+    "right": 432,
+    "bottom": 292,
+    "left": 232
+  },
+  "columnBox": {
+    "x": 20,
+    "y": 36,
+    "width": 416,
+    "height": 584,
+    "top": 36,
+    "right": 436,
+    "bottom": 620,
+    "left": 20
+  },
+  "gridSizes": {
+    "music": {
+      "size": "large",
+      "width": 200,
+      "height": 200
+    },
+    "clock": {
+      "size": "large",
+      "width": 200,
+      "height": 200
+    },
+    "calendar": {
+      "size": "small",
+      "width": 96,
+      "height": 96
+    },
+    "weather": {
+      "size": "small",
+      "width": 96,
+      "height": 96
+    },
+    "battery": {
+      "size": "small",
+      "width": 96,
+      "height": 96
+    },
+    "reminders": {
+      "size": "medium",
+      "width": 200,
+      "height": 96
+    },
+    "notes": {
+      "size": "medium",
+      "width": 200,
+      "height": 96
+    },
+    "photos": {
+      "size": "medium",
+      "width": 200,
+      "height": 96
+    }
+  },
+  "music": {
+    ".widget-art": {
+      "x": 0.18453125,
+      "y": 0.186171875,
+      "width": 0.629140625,
+      "height": 0.629140625
+    },
+    ".widget-track strong": {
+      "x": 0.08765625,
+      "y": 0.59,
+      "width": 0.6508031463623047,
+      "height": 0.0671875
+    },
+    ".widget-track small": {
+      "x": 0.08765625,
+      "y": 0.661484375,
+      "width": 0.69234375,
+      "height": 0.06
+    },
+    ".widget-progress-track": {
+      "x": 0.08765625,
+      "y": 0.74453125,
+      "width": 0.8215625,
+      "height": 0.015
+    },
+    "[data-widget-control=toggle]": {
+      "x": 0.39,
+      "y": 0.78,
+      "width": 0.22,
+      "height": 0.22
+    },
+    "[data-widget-control=prev]": {
+      "x": 0.17,
+      "y": 0.78,
+      "width": 0.22,
+      "height": 0.22
+    },
+    "[data-widget-control=next]": {
+      "x": 0.61,
+      "y": 0.78,
+      "width": 0.22,
+      "height": 0.22
+    }
+  },
+  "clockTime": {
+    "x": -0.02,
+    "y": -0.035,
+    "width": 1,
+    "height": 0.51515625
+  },
+  "clockDepth": "true",
+  "liveTime": "10:09",
+  "sourceDuration": 153
+}

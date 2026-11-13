@@ -1,7 +1,7 @@
 {
   "baseline": "0cc6f31d5f810d72cf695c5579b40eca7ec5e717",
   "unchangedFiles": {
-    "ipad/NOTICE": "921e5f6d161137005636c738e5e56b7421b1bcc59f8129aab9fa5c326c2a05dd",
+    "ipad/NOTICE": "34e8a4fb32ea1e989aee5d15bf9ce4e7bd22b08ccceb67830561308d7ebfa77b",
     "ipad/README.md": "504b1df88f9a0f8d928e41c63495c673ca620c608f36e2cd961e61209914c77c",
     "ipad/air-logo.png": "e9050251e60ea495808cf4a4721b3b36904bcfd0219fec5a966ec9dd639a8627",
     "ipad/air-os-official.png": "381aed7af688220f32301ba420baf7696db39b143001f9fef53b0bda358a7399",
@@ -13,7 +13,7 @@
     "ipad/assets/lake-evening.metadata.json": "46bd2df6dd329e11866401875df18404fe8efd0a4ef56b7a949dad3b7bf256ff",
     "ipad/assets/yosemite-morning.metadata.json": "5148af9becedddadd55d2156af0e75b2098781fb1d66f758cb576546a3867599",
     "ipad/assets/yosemite-morning.png": "d1d1a71c8080696bf45b1ff0a664df592e59ac27a0710853f76d938a10a9ac06",
-    "ipad/backup.js": "c12b1f82a86c87f355aaf08c1542eb4c7a048387be5566ace493ca30248d2620",
+    "ipad/backup.js": "1db606a598f40170ddfd3acd9866144ce5134af86f5d62017dfe50a7d463d229",
     "ipad/core/desktop-sessions.js": "157a33c5d9afa04694cb6472cb625167df146e0e3f8a2fe3a2d2a513332c7ffa",
     "ipad/core/infinity-dock.js": "ea26f2e15bea74bb75659cbb2ad78a80079f5938a3be709250ea3ec062890876",
     "ipad/core/infinity-notification.js": "019990f28226d63af315285a1b64452d309cbd24c5770dd4c1516a212e17225f",
@@ -105,7 +105,7 @@
     "ipad/notch/model.js": "82e7b1f42d4925837d340f668bed81377ed2cf0b72b76ff2151c48dbc3a62581",
     "ipad/notch/motion-data.js": "f29d87fcf2ec8f443c8c92923214daf28036a182e407da86efae9c645dbd57f4",
     "ipad/notch/pro-notch.css": "6a2b72ebd6ec11a39bdd1cb7638fb0a91d47c8deef80ab2d44d6c7932ba08ef3",
-    "ipad/playback-history.js": "d45f76e7718ec8cf87b64e39fd6e18a55d040d226aafd09616bc9d83df0c8363",
+    "ipad/playback-history.js": "2169db63b22d0b7ec97c6d0c35288ff2f9ab992fa6ebee905c789f7ad89f7446",
     "ipad/premium4.css": "76958938902f732a12515bfd38687694948df8b0d2c738a8b19798a12b03ded0",
     "ipad/provenance.json": "132850ab59c84e0eb6fc9880444bcdc9e98883d2aa1a11bf5895bc20506c97a3",
     "ipad/registry.js": "5fe67ba73c2b1a8e48fdc4adad7feaef7b38cb8e4bcb85fc483a90e938148fcc",
@@ -122,7 +122,7 @@
     "ipad/vendor/glass/geometry.js": "435105d2978be17459e9d822991663a9ffa5f0e8b842f72a86de18e8563bdc0c",
     "ipad/vendor/glass/maclock-original.frag": "2d271780c560d4eab742b4906f503d524d2a00c7f4f2570d0c1e2b96a7888f35",
     "ipad/vendor/glass/provenance.json": "27e9c40abb6ec85483dca07a79106a0df6951cf5e031b18c8c2f2859bef8ec86",
-    "ipad/vendor/glass/renderer.js": "3f58dd2df83f104286d500bad02df3546ee5412c16fe50b82303f8bec4ee6ef7",
+    "ipad/vendor/glass/renderer.js": "43bf5de6d32e09f8bfbabfe9990404a6f2f953e9f9b24268e29dd313ba950db1",
     "ipad/vendor/glass/shaders.js": "bee695447ec74b817e2839eaa4b13e9c5458389375a73ee4b155cdc1d1c3724b",
     "ipad/vendor/infinityos/launcher-model.js": "068f413f8bd20003425f97736752cb777d5a0a4ca8b6ccb51547ed60e91fcf84",
     "ipad/vendor/infinityos/linux-excerpts.txt": "c47fafe5309972a531568656fc71a528d77de80c83a7ee3b4ddcca0a3f7923a1",
@@ -132,11 +132,13 @@
     "ipad/vendor/macshell/shell7.js": "a0af3611bacd9e0573d885b85fa5ff386c32bf5bce0514bfc358ad5bd6b4d54b",
     "ipad/vendor/premium4-provenance.json": "2f2eb774fa588222ec5aa4b74c1a1323d40864331c3f339d2074fcf0a0c3cb76",
     "ipad/vendor/premium4-source-excerpts.txt": "eeb9c597be473d19ed6f68765abb6015ab5755db6bf123b47825f6dd4a08bfb1",
-    "ipad/vendor/system3-provenance.json": "10c411d754d2c9bd807dbf215cdf2b061ae172f77b7f1504ee7a5b82d31a01aa"
+    "ipad/vendor/system3-provenance.json": "10c411d754d2c9bd807dbf215cdf2b061ae172f77b7f1504ee7a5b82d31a01aa",
+    "ipad/spotify.js": "1a14e122f15482997a44a63a0de1e3cb79e6b896d20be5c137f6ae011dcf9ffb",
+    "scripts/templates/ipad-service-worker.js": "de7f263614f11e6390170fa1c93926c89ef0b86605c087609b7845365e56b228"
   },
   "unchangedSections": [
     "ipad/index.html: entire body",
-    "ipad/app.js: all code preceding safeReload (music/timer owners)"
+    "ipad/app.js: all code preceding safeReload except the exact declared musicSourceReset and nativeBlobRecovery deltas (music/timer owners)"
   ],
   "noDatabaseMigration": true,
   "airFlowChanges": {
@@ -154,5 +156,56 @@
     "file": "ipad/NOTICE",
     "previousSha256": "8a1026c7b59ef78d2a338d45f1ca08a87ec8220913cd80d5dfabc32c674172d1",
     "reason": "Append upstream MIT attribution/license for the explicitly requested Genie formula adaptation; all existing notice bytes retained."
+  },
+  "widgetDisplayMaterialChange": {
+    "file": "ipad/vendor/glass/renderer.js",
+    "previousSha256": "3f58dd2df83f104286d500bad02df3546ee5412c16fe50b82303f8bec4ee6ef7",
+    "reason": "Widget 2.1 explicitly owned display materials opt out of wallpaper reprojection; all other shared materials and security boundaries remain unchanged."
+  },
+  "widgetClockFontNoticeAddition": {
+    "file": "ipad/NOTICE",
+    "previousSha256": "921e5f6d161137005636c738e5e56b7421b1bcc59f8129aab9fa5c326c2a05dd",
+    "reason": "Append complete license reference for the openly licensed clock typeface; retain all prior notice bytes."
+  },
+  "musicSourceReset": {
+    "file": "ipad/app.js",
+    "previousPrefixSHA256": "c296303f9471df123d5f0b2898e5d7b9ab6ec87d7a0d11b3ff489b48a4d63df0",
+    "approvedPrefixSHA256": "4a06344cfa0343997eb6b25557496542050bede670c7b07220460c80ad0b4cec",
+    "reason": "Existing audio owner explicitly loads the new source before revoking its previous Blob URL. WPE reported error4 on next after seek while an independent decoder read the same stored Blob as 180 seconds. The regression gate compares the entire original music/timer prefix with only this exact delta. The decoder receives a separate full Blob slice rather than borrowing the IndexedDB File handle; stored bytes and metadata remain unchanged."
+  },
+  "widget22SourceChanges": {
+    "ipad/playback-history.js": {
+      "previousSha256": "d45f76e7718ec8cf87b64e39fd6e18a55d040d226aafd09616bc9d83df0c8363",
+      "approvedSha256": "2169db63b22d0b7ec97c6d0c35288ff2f9ab992fa6ebee905c789f7ad89f7446"
+    },
+    "ipad/spotify.js": {
+      "previousSha256": "15005a6dee84a1b447422532c41f5babc710da6d7b3508b767afc37cbc425f01",
+      "approvedSha256": "1a14e122f15482997a44a63a0de1e3cb79e6b896d20be5c137f6ae011dcf9ffb"
+    },
+    "reason": "Explicit Widget 2.2 request: opt-in history loading, source-specific local transport, one bounded read-only Spotify polling owner and resume synchronization. OAuth scopes, authorized endpoints, token memory-only lifetime, CSP and data schema remain unchanged. Active native local playback retains global Lock/Notch transport priority while the widget independently selects Spotify; local audio errors never project as playing."
+  },
+  "verifiedSourceCacheResponse": {
+    "file": "scripts/templates/ipad-service-worker.js",
+    "previousSha256": "3b3df2fcb83d34b98f1c4b304ff33e71a1f5b7a52987b3785d2e762f8bd47461",
+    "approvedSha256": "520c4fef927bbf1dde82f009b57ee9cedde0cd0c65da9e0aca1cd0cdbf47c775",
+    "reason": "Reproducible Chromium 154 Cache.put network error on the checked 15MB source offer. Both staging and publication now receive fresh responses made from the same bounded SHA256-verified bytes. MIME, length, redirect, response and hash checks remain; stage publication is reverified. No unchecked cache fallback. Decoded response headers are normalized to the verified byte length and no Content-Encoding."
+  },
+  "widget22SourcePreferenceBackup": {
+    "file": "ipad/backup.js",
+    "previousSha256": "c12b1f82a86c87f355aaf08c1542eb4c7a048387be5566ace493ca30248d2620",
+    "approvedSha256": "1db606a598f40170ddfd3acd9866144ce5134af86f5d62017dfe50a7d463d229",
+    "reason": "The new origin-local widget source preference is excluded from portable exports alongside playback history and Spotify config. Otherwise an app-generated backup is rejected by the unchanged strict restore allowlist. Restore never imports this preference, credentials or origin-bound playback state and retains the existing target-origin source selection."
+  },
+  "nativeBlobRecovery": {
+    "file": "ipad/app.js",
+    "previousPrefixSHA256": "4a06344cfa0343997eb6b25557496542050bede670c7b07220460c80ad0b4cec",
+    "approvedPrefixSHA256": "dfbe941d52c07f6605937ed1035570ec3aa928f7d9bbbfa5cef12a672f917bdd",
+    "reason": "Widget reference capture on WebKit reported native error4 and readyState0 for a verified imported WAV. Existing source load/reset stays in place. A genuine error4 retries exactly once from the same stored bytes in an independent memory Blob, bounded to the existing 64MiB import limit. A changed source cancels the asynchronous recovery; unsupported formats still fail normally. No stored media or schema changes. The native error event participates in the play promise race because the failed WebKit promise remained pending; listeners are removed on every path. A pause during the bounded byte read also cancels recovery so it cannot override user input."
+  },
+  "verifiedCachedReadRecovery": {
+    "file": "scripts/templates/ipad-service-worker.js",
+    "previousSha256": "520c4fef927bbf1dde82f009b57ee9cedde0cd0c65da9e0aca1cd0cdbf47c775",
+    "approvedSha256": "de7f263614f11e6390170fa1c93926c89ef0b86605c087609b7845365e56b228",
+    "reason": "A reproducible cache lookup/body read I/O error bypassed checked network repair and rejected a resource fetch. Cached responses now own the same bounded hash-verified bytes used for staging. Unreadable/corrupt entries become misses and use the existing SHA256/MIME/redirect-checked network repair; an unavailable or invalid network still fails closed. No unchecked response or relaxed integrity rule."
   }
 }

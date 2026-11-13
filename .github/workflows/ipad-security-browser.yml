@@ -13,7 +13,7 @@ jobs:
     # apt mirror/DNS failures cannot block the browser regression suite.
     container:
       image: mcr.microsoft.com/playwright:v1.62.1-noble
-    timeout-minutes: 30
+    timeout-minutes: 45
     strategy:
       fail-fast: false
       matrix:
@@ -64,106 +64,179 @@ jobs:
           console.log('Preinstalled Playwright browser verified:', engine);
           NODE
       - name: Build and verify the test package
+        id: verified-package
         run: |
           npm run build
           npm run check
+      # Run independent suites after a regression as well; failed steps still
+      # fail the matrix job. Never suppress assertions or test exit codes.
+      - name: Widgets, actual touch and native media
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
+        timeout-minutes: 5
+        run: |
+          # GTK retains real media/seek assertions. Long PCM replay failures
+          # remain failures in both ports; no audio mock or retry is used.
+          if [ "$AIR_PAD_ENGINE" = webkit ]; then
+            xvfb-run -a env AIR_WIDGETS_HEADED=1 npm run test:widgets
+          else
+            npm run test:widgets
+          fi
+      - name: Widget 2.2 Spotify preference, source privacy and live local clock
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
+        timeout-minutes: 5
+        run: |
+          if [ "$AIR_PAD_ENGINE" = webkit ]; then
+            xvfb-run -a env AIR_WIDGETS_HEADED=1 npm run test:widgets-22
+          else
+            npm run test:widgets-22
+          fi
+      - name: Preserve early widget diagnostics from either engine
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ipad-widget-diagnostics-${{ matrix.engine }}
+          path: |
+            dist/widgets-2-*/report.json
+            dist/widgets-22-*/report.json
+          retention-days: 7
+      - name: Real reference captures, both orientations and 200px geometry
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
+        timeout-minutes: 5
+        env:
+          WIDGETS21_OUTPUT: dist/widgets-2-reference-${{ matrix.engine }}
+        run: |
+          if [ "$AIR_PAD_ENGINE" = webkit ]; then
+            xvfb-run -a env AIR_WIDGETS_HEADED=1 node scripts/capture-ipad-widgets-21.cjs
+          else
+            node scripts/capture-ipad-widgets-21.cjs
+          fi
+      - name: Classic Genie, real captured content and both contour edges
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
+        timeout-minutes: 10
+        run: |
+          # Native GTK/Xvfb timeline sampling; economy projection is explicit.
+          # Both contour edges retain the same strict pixel assertions.
+          if [ "$AIR_PAD_ENGINE" = webkit ]; then
+            xvfb-run -a env AIR_GENIE_HEADED=1 npm run test:genie
+          else
+            npm run test:genie
+          fi
+      - name: Ocean playback, offline byte ranges and reduced motion
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
+        timeout-minutes: 3
+        run: npm run test:wallpaper
       - name: Original v4 to v5, protected multitab activation and compatible recovery
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_PAD_OUTPUT: dist/parity-evidence/update-${{ matrix.engine }}
         run: node scripts/test-ipad-updates.cjs
       - name: Same original Legacy handoff, data, backup and recovery at private subpath
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_PAD_PREFIX: /Air-OS/
           AIR_PAD_OUTPUT: dist/parity-evidence/update-subpath-${{ matrix.engine }}
         run: node scripts/test-ipad-updates.cjs
       - name: Security attacks, actual OAuth navigation, exact UI, upgrade, rollback and cold offline restart
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_SECURITY_OUTPUT: dist/parity-evidence/security-${{ matrix.engine }}
         run: node scripts/test-ipad-security.cjs
       - name: Same security boundaries at private Serve-like subpath
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_SECURITY_PREFIX: /Air-OS/
           AIR_SECURITY_OUTPUT: dist/parity-evidence/security-subpath-${{ matrix.engine }}
         run: node scripts/test-ipad-security.cjs
       - name: Spotify widget, live Dock compositing, workarea and input regression
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_DOCK_DPR: '1'
           AIR_DOCK_OUTPUT: dist/parity-evidence/desktop-dock-${{ matrix.engine }}-dpr1
         run: node scripts/test-ipad-desktop-dock.cjs
       - name: Retina, portrait, Safe Area and same live material pixel checks
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_DOCK_DPR: '2'
           AIR_DOCK_OUTPUT: dist/parity-evidence/desktop-dock-${{ matrix.engine }}-dpr2
         run: node scripts/test-ipad-desktop-dock.cjs
       - name: Actual browser GUI, legacy library, touch and offline data
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_PAD_OUTPUT: dist/parity-evidence/${{ matrix.engine }}
         run: node scripts/test-ipad-parity.cjs
       - name: Same browser under private Serve-like subpath
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_PAD_PREFIX: /Air-OS/
           AIR_PAD_OUTPUT: dist/parity-evidence/subpath-${{ matrix.engine }}
         run: node scripts/test-ipad-parity.cjs
       - name: Pinned compact baseline, full viewport only
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_LG_OUTPUT: dist/parity-evidence/before-liquid-${{ matrix.engine }}
         run: node scripts/capture-ipad-liquid-baseline.cjs
       - name: MacLock, coupled Dock, offline metadata and responsive scenes
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_LG_OUTPUT: dist/parity-evidence/liquid-${{ matrix.engine }}
         run: node scripts/test-ipad-liquid-maclock.cjs
       - name: Retina DPR2 and same touch and offline checks
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_LG_DPR: '2'
           AIR_LG_TOUCH: '0'
           AIR_LG_OUTPUT: dist/parity-evidence/liquid-dpr2-${{ matrix.engine }}
         run: node scripts/test-ipad-liquid-maclock.cjs
       - name: Mocked Spotify PKCE, permissions and source lifecycle (no account)
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_SPOTIFY_OUTPUT: dist/parity-evidence/spotify-${{ matrix.engine }}
         run: node scripts/test-ipad-spotify.cjs
       - name: Original MacLock material, adaptive covers and offline lifecycle
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_ART_OUTPUT: dist/parity-evidence/art-${{ matrix.engine }}
         run: node scripts/test-ipad-maclock-art.cjs
       - name: Controlled MacLock SDF, native-comparison inputs and full-frame scenes
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_PARITY_OUTPUT: dist/parity-evidence/parity-${{ matrix.engine }}-dpr1
         run: node scripts/test-ipad-maclock-parity.cjs
       - name: Same material and foreground geometry at DPR2
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_PARITY_DPR: '2'
           AIR_PARITY_OUTPUT: dist/parity-evidence/parity-${{ matrix.engine }}-dpr2
         run: node scripts/test-ipad-maclock-parity.cjs
       - name: Actual visual product, controls, accessibility and six viewports
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_VISUAL_AFTER: '1'
           AIR_VISUAL_OUTPUT: dist/parity-evidence/after-${{ matrix.engine }}
         run: node scripts/test-ipad-system3.cjs
       - name: DPR2 real touch scenes and layout invariants
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_VISUAL_AFTER: '1'
           AIR_VISUAL_DPR: '2'
           AIR_VISUAL_OUTPUT: dist/parity-evidence/after-dpr2-${{ matrix.engine }}
         run: node scripts/test-ipad-system3.cjs
-      - name: Classic Genie geometry, real content, reversal and resource lifecycle
-        run: npm run test:genie
-      - name: Ocean wallpaper playback and offline ranges
-        run: npm run test:wallpaper
-      - name: Widget 2 sizes, transport, touch, data, portrait and offline lifecycle
-        run: npm run test:widgets
       - name: AIR FLOW touch, stacking, widgets, windows and reduced motion
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         run: npm run test:air-flow
       - name: Actual black Notch states, sampled motion, interruption and data owners
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_NOTCH_OUTPUT: dist/parity-evidence/notch-${{ matrix.engine }}
         run: node scripts/test-ipad-pro-notch.cjs
       - name: Retina Notch, real viewports and the same resource checks
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_NOTCH_DPR: '2'
           AIR_NOTCH_OUTPUT: dist/parity-evidence/notch-dpr2-${{ matrix.engine }}
         run: node scripts/test-ipad-pro-notch.cjs
       - name: Normal product GPU guards and isolated original shader pixel/cost/lifecycle evidence
+        if: ${{ !cancelled() && steps.verified-package.conclusion == 'success' }}
         env:
           AIR_MATERIAL_OUTPUT: dist/parity-evidence/material-${{ matrix.engine }}
         run: node scripts/test-ipad-system3-material.cjs
@@ -175,6 +248,10 @@ jobs:
           path: |
             dist/parity-evidence/**/*.json
             dist/air-flow-*/report.json
-            dist/genie-*/report.json
+            dist/genie-*/*.json
+            dist/genie-*/*.png
             dist/widgets-2-*/*
+            dist/widgets-22-*/*
+            dist/ocean-report.json
+            dist/ocean-failure.png
           retention-days: 7

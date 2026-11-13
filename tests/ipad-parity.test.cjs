@@ -9,3 +9,16 @@ test('all PWA code parses and has no Electron, native shell or remote script run
 test('offline version includes new runtime and separate complete icon licenses',()=>{const sw=read('ipad/sw.js');for(const f of ['./desktop.js','./storage.js','./apps.js','./backup.js','./core/music-metadata.js','./vendor/airwrite.js','./icons/COPYING','./icons/NOTICE'])a.ok(sw.includes(f));a.match(sw,/air-os-ipad-v5-/);a.match(sw,/withoutRedirect\(saved\)/);a.match(sw,/REQUEST_SAFE_UPDATE/);a.doesNotMatch(sw,/install[^\n]*skipWaiting/);});
 test('existing private update scripts have not been silently retargeted or made public',()=>{const update=read('ipad/update-windows.ps1'),setup=read('ipad/setup-windows.ps1');a.match(update,/pull --ff-only origin/);a.doesNotMatch(update,/checkout|reset|force/);a.match(setup,/serve --bg/);a.doesNotMatch(setup,/funnel --/);});
 test('restore schemas reject malformed app state before a database transaction',()=>{const window={addEventListener(){}};vm.runInNewContext(read('ipad/storage.js'),{window,Blob});const v=window.airStore.validate;v('note',{id:'n',title:'Notiz',text:'Lokal'});v('trackmeta',{id:'song',favorite:true,lastPlayedAt:1});v('setting',{id:'windows',value:{notes:{x:0,y:0,width:600,height:400,mode:'normal'}}});for(const[k,d]of [['note',{text:42}],['playlist',{tracks:['../private']}],['event',{date:'oops',time:'99:99'}],['file',{name:'../bad',type:'file',parent:'',trashed:false,blob:new Blob()}],['setting',{id:'dock-pins',value:'corrupt'}],['setting',{id:'windows',value:{x:{mode:'oops'}}}]])a.throws(()=>v(k,d));});
+test('portable backups omit origin-bound widget source and reject its injected restore before opening IDB',async()=>{
+ const setting=(id,value)=>({kind:'setting',id,key:'setting:'+id,value,revision:1}),note={kind:'note',id:'n',key:'note:n',title:'Synthetic note',text:'Preserved',revision:1};
+ const rows=[setting('quality','Standard'),note,setting('widget-music-source-v1','air-os'),setting('last-played-metadata-v1',{records:{spotify:{title:'Synthetic history'}}}),setting('spotify-public-config',{clientId:'a'.repeat(32)})];let opens=0;
+ const airStore={open:async()=>{opens++;return{transaction(names,mode){a.equal(mode,'readonly');let count=0;const tx={objectStore(name){return{getAll(){const r={result:name==='records'?rows:[]};queueMicrotask(()=>{r.onsuccess();if(++count===names.length)tx.oncomplete();});return r;}};}};return tx;}};},validate(){throw Error('An origin-bound setting must be rejected before general validation');}};
+ const window={airDesktop:{dirty:()=>false}},airIPad={music:{snapshot:()=>({paused:true})}},localStorage={getItem:()=>null};
+ vm.runInNewContext(read('ipad/backup.js'),{window,airStore,airIPad,localStorage,Blob,btoa});
+ const data=JSON.parse(await(await window.airBackup.export()).text());a.deepEqual(data.data.records,[rows[0],note]);a.equal(opens,1);
+ for(const id of ['widget-music-source-v1','last-played-metadata-v1','spotify-public-config']){
+  const injected={...data,data:{tracks:[],records:[rows.find(r=>r.id===id)]}};
+  await a.rejects(window.airBackup.restore(new Blob([JSON.stringify(injected)]),true),/Nicht übertragbare Laufzeiteinstellung/);
+ }
+ a.equal(opens,1,'rejected backups never open a write transaction');
+});

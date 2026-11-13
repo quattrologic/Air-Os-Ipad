@@ -161,15 +161,56 @@
     if (!record) return;
     if (state.currentId !== id || !audio.src) {
       audio.pause();
-      if (state.objectUrl) URL.revokeObjectURL(state.objectUrl);
-      state.objectUrl = URL.createObjectURL(record.blob);
+      const previousURL = state.objectUrl;
+      state.objectUrl = URL.createObjectURL(record.blob.slice(0,record.blob.size,record.blob.type));
       state.currentId = id;
       audio.src = state.objectUrl;
       const progress=safeJSON(KEYS.progress,{});if(progress.id===id)audio.addEventListener('loadedmetadata',()=>{if(state.currentId===id&&Number.isFinite(audio.duration))audio.currentTime=Math.min(Math.max(0,Number(progress.position)||0),Math.max(0,audio.duration-.1));},{once:true});
+      // Reset the existing decoder before retiring its previous Blob resource.
+      // WebKit can otherwise retain the old seek pipeline on a source switch.
+      audio.load();
+      if (previousURL) URL.revokeObjectURL(previousURL);
       renderLibrary();
     }
-    try { await audio.play(); }
-    catch (error) { toast('Titel kann nicht abgespielt werden. Prüfe das Audioformat.'); }
+    // WebKit may report a native error without settling the play() promise.
+    // Listen before starting the decoder and release the listener on every path.
+    const startAudio = async () => {
+      let onError;
+      const failed = new Promise((resolve, reject) => {
+        onError = () => reject(Error('Native audio decoding failed.'));
+        audio.addEventListener('error', onError, { once: true });
+      });
+      try { await Promise.race([audio.play(), failed]); }
+      finally { audio.removeEventListener('error', onError); }
+    };
+    const attemptedURL = state.objectUrl;
+    try { await startAudio(); }
+    catch (error) {
+      // A WebKit decoder can reject an IndexedDB File-backed URL even when
+      // the stored bytes are valid. Retry once from an independent memory Blob.
+      // Real unsupported formats still fail; never replace the stored record.
+      if (audio.error?.code === 4 && record.blob.size <= 64 * 1024 * 1024 &&
+          state.currentId === id && state.objectUrl === attemptedURL) {
+        try {
+          let cancelled = false, bytes;
+          const paused = () => { cancelled = true; };
+          audio.addEventListener('pause', paused, { once: true });
+          try { bytes = await record.blob.arrayBuffer(); }
+          finally { audio.removeEventListener('pause', paused); }
+          if (cancelled || state.currentId !== id || state.objectUrl !== attemptedURL) return;
+          const retryURL = URL.createObjectURL(new Blob([bytes], { type: record.blob.type }));
+          state.objectUrl = retryURL;
+          audio.src = retryURL;
+          audio.load();
+          URL.revokeObjectURL(attemptedURL);
+          await startAudio();
+        } catch (retryError) {
+          if (state.currentId === id) toast('Titel kann nicht abgespielt werden. Prüfe das Audioformat.');
+        }
+      } else if (state.currentId === id) {
+        toast('Titel kann nicht abgespielt werden. Prüfe das Audioformat.');
+      }
+    }
     renderMedia();
   }
   function next(delta) {

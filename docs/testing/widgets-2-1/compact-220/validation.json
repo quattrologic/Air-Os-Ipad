@@ -1,0 +1,712 @@
+{
+  "scope": "Widget 2.1 size correction, continuing PR #9",
+  "previousCommit": "6e2a68db529fc695cda3fbf5a246ecf91e3c3787",
+  "cssSizes": {
+    "small": [
+      106,
+      106
+    ],
+    "medium": [
+      220,
+      106
+    ],
+    "large": [
+      220,
+      220
+    ]
+  },
+  "gridGapCSS": 8,
+  "areaRatioTo344": 0.409,
+  "nodeTests": 69,
+  "chromium": {
+    "status": "passed",
+    "checks": 46,
+    "errors": [],
+    "checksPassed": [
+      "locked widget lifecycle has no timer or photo resources",
+      "eight widgets use default large music and honest empty states",
+      "large music cover is square and transport fits within its card",
+      "unavailable weather and battery never invent readings",
+      "compact month, weather and battery content fits without clipping",
+      "display material preserves the shared AIR FLOW touch light without intercepting input",
+      "cover shortcut opens the original Air Music window",
+      "play starts the original audio element",
+      "pause controls original audio",
+      "seek uses actual audio duration and updates both time labels",
+      "next changes real track, cover and metadata without stale layers",
+      "favorite updates the real music record",
+      "reminder checkbox persists with the original revision owner",
+      "note shortcut opens exact stored note",
+      "photos cycle real stored image blobs with finite crossfade",
+      "photo clock changes the actual local image while keeping live time",
+      "music small preserves true touch targets inside the compact card",
+      "music small keeps every visible action reachable without overlapping touch targets",
+      "small music menu retains real next, previous and lyrics actions",
+      "music medium preserves true touch targets inside the compact card",
+      "music medium keeps every visible action reachable without overlapping touch targets",
+      "music large preserves true touch targets inside the compact card",
+      "music large keeps every visible action reachable without overlapping touch targets",
+      "reorder is persisted through UI controls",
+      "resize does not animate unchanged visible cards",
+      "resize keeps existing widget nodes attached",
+      "medium to large size persists without editing app content",
+      "drag starts with pointer capture and compositor translation",
+      "drag release clears transient state and saves order",
+      "real touchscreen drag captures pointer and applies translation",
+      "touch cancellation clears drag without persisting a partial move",
+      "sizes/order, note and reminder survive reload without schema migration",
+      "1180x820 fits horizontally with touch-friendly transport",
+      "820x1180 fits horizontally with touch-friendly transport",
+      "1024x768 fits horizontally with touch-friendly transport",
+      "768x1024 fits horizontally with touch-friendly transport",
+      "1366x1024 fits horizontally with touch-friendly transport",
+      "large calendar displays actual local event and marks its day",
+      "reduced motion commits widget resize without active AIR FLOW effects",
+      "relock stops minute timer and releases photo resources",
+      "lock cover remains in front of clock",
+      "v1 preferences migrate in memory without overwriting v1",
+      "offline shell includes new scripts, styles and saved widget data",
+      "available Battery API projects supplied level and charging state",
+      "battery event updates without polling or invented estimates",
+      "no unexpected page errors: []"
+    ],
+    "touchTargets": [
+      {
+        "size": "small",
+        "rows": [
+          {
+            "label": "Titel in Air Music öffnen",
+            "width": 89.0625,
+            "height": 62,
+            "left": 32.46875,
+            "right": 121.53125,
+            "top": 92,
+            "bottom": 154,
+            "hit": true
+          },
+          {
+            "label": "Musikoptionen",
+            "width": 44,
+            "height": 44,
+            "left": 33,
+            "right": 77,
+            "top": 154,
+            "bottom": 198,
+            "hit": true
+          },
+          {
+            "label": "Wiedergabe / Pause",
+            "width": 44,
+            "height": 44,
+            "left": 77,
+            "right": 121,
+            "top": 154,
+            "bottom": 198,
+            "hit": true
+          }
+        ],
+        "overlaps": 0,
+        "inside": true
+      },
+      {
+        "size": "medium",
+        "rows": [
+          {
+            "label": "Titel in Air Music öffnen",
+            "width": 123.203125,
+            "height": 44,
+            "left": 112,
+            "right": 235.203125,
+            "top": 96,
+            "bottom": 140,
+            "hit": true
+          },
+          {
+            "label": "Vorheriger Titel",
+            "width": 44,
+            "height": 44,
+            "left": 108,
+            "right": 152,
+            "top": 154,
+            "bottom": 198,
+            "hit": true
+          },
+          {
+            "label": "Wiedergabe / Pause",
+            "width": 44,
+            "height": 44,
+            "left": 152,
+            "right": 196,
+            "top": 154,
+            "bottom": 198,
+            "hit": true
+          },
+          {
+            "label": "Nächster Titel",
+            "width": 44,
+            "height": 44,
+            "left": 196,
+            "right": 240,
+            "top": 154,
+            "bottom": 198,
+            "hit": true
+          }
+        ],
+        "overlaps": 0,
+        "inside": true
+      },
+      {
+        "size": "large",
+        "rows": [
+          {
+            "label": "Air Music öffnen",
+            "width": 44,
+            "height": 44,
+            "left": 24.65625,
+            "right": 68.65625,
+            "top": 92.65625,
+            "bottom": 136.65625,
+            "hit": true
+          },
+          {
+            "label": "Lautstärke einstellen",
+            "width": 64,
+            "height": 44,
+            "left": 167.25,
+            "right": 231.25,
+            "top": 92.65625,
+            "bottom": 136.65625,
+            "hit": true
+          },
+          {
+            "label": "Titel in Air Music öffnen",
+            "width": 152.328125,
+            "height": 77.796875,
+            "left": 43.28125,
+            "right": 195.609375,
+            "top": 140,
+            "bottom": 217.796875,
+            "hit": true
+          },
+          {
+            "label": "Musikoptionen",
+            "width": 44,
+            "height": 44,
+            "left": 112,
+            "right": 156,
+            "top": 92.65625,
+            "bottom": 136.65625,
+            "hit": true
+          },
+          {
+            "label": "Wiedergabeposition",
+            "width": 180.75,
+            "height": 44,
+            "left": 43.28125,
+            "right": 224.03125,
+            "top": 217.796875,
+            "bottom": 261.796875,
+            "hit": true
+          },
+          {
+            "label": "Songtext öffnen",
+            "width": 44,
+            "height": 44,
+            "left": 24,
+            "right": 68,
+            "top": 264.03125,
+            "bottom": 308.03125,
+            "hit": true
+          },
+          {
+            "label": "Vorheriger Titel",
+            "width": 44,
+            "height": 44,
+            "left": 68,
+            "right": 112,
+            "top": 264.03125,
+            "bottom": 308.03125,
+            "hit": true
+          },
+          {
+            "label": "Wiedergabe / Pause",
+            "width": 44,
+            "height": 44,
+            "left": 112,
+            "right": 156,
+            "top": 264.03125,
+            "bottom": 308.03125,
+            "hit": true
+          },
+          {
+            "label": "Nächster Titel",
+            "width": 44,
+            "height": 44,
+            "left": 156,
+            "right": 200,
+            "top": 264.03125,
+            "bottom": 308.03125,
+            "hit": true
+          },
+          {
+            "label": "Musikbibliothek öffnen",
+            "width": 44,
+            "height": 44,
+            "left": 200,
+            "right": 244,
+            "top": 264.03125,
+            "bottom": 308.03125,
+            "hit": true
+          }
+        ],
+        "overlaps": 0,
+        "inside": true
+      }
+    ],
+    "compactInfo": [
+      {
+        "widget": "calendar",
+        "text": "M",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "D",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "M",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "D",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "F",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "S",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "S",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "1",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "2",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "3",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "4",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "5",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "6",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "7",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "8",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "9",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "10",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "11",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "12",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "13",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "14",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "15",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "16",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "17",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "18",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "19",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "20",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "21",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "22",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "23",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "24",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "25",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "26",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "27",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "28",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "29",
+        "inside": true
+      },
+      {
+        "widget": "calendar",
+        "text": "30",
+        "inside": true
+      },
+      {
+        "widget": "weather",
+        "text": "WETTER",
+        "inside": true
+      },
+      {
+        "widget": "weather",
+        "text": "",
+        "inside": true
+      },
+      {
+        "widget": "weather",
+        "text": "Keine Wetterquelle",
+        "inside": true
+      },
+      {
+        "widget": "weather",
+        "text": "Live-Wetter ist nicht verbunden.",
+        "inside": true
+      },
+      {
+        "widget": "weather",
+        "text": "Keine Live-Daten",
+        "inside": true
+      },
+      {
+        "widget": "battery",
+        "text": "BATTERIE",
+        "inside": true
+      },
+      {
+        "widget": "battery",
+        "text": "—",
+        "inside": true
+      },
+      {
+        "widget": "battery",
+        "text": "Browser liefert keine Akkudaten.",
+        "inside": true
+      }
+    ]
+  },
+  "capture": {
+    "engine": "chromium",
+    "deviceScaleFactor": 2,
+    "syntheticAudio": true,
+    "userSuppliedReferenceMedia": true,
+    "errors": [],
+    "musicBox": {
+      "x": 24,
+      "y": 92,
+      "width": 220,
+      "height": 220,
+      "top": 92,
+      "right": 244,
+      "bottom": 312,
+      "left": 24
+    },
+    "clockBox": {
+      "x": 252,
+      "y": 92,
+      "width": 220,
+      "height": 220,
+      "top": 92,
+      "right": 472,
+      "bottom": 312,
+      "left": 252
+    },
+    "columnBox": {
+      "x": 20,
+      "y": 36,
+      "width": 456,
+      "height": 634,
+      "top": 36,
+      "right": 476,
+      "bottom": 670,
+      "left": 20
+    },
+    "gridSizes": {
+      "music": {
+        "size": "large",
+        "width": 220,
+        "height": 220
+      },
+      "clock": {
+        "size": "large",
+        "width": 220,
+        "height": 220
+      },
+      "calendar": {
+        "size": "small",
+        "width": 106,
+        "height": 106
+      },
+      "weather": {
+        "size": "small",
+        "width": 106,
+        "height": 106
+      },
+      "battery": {
+        "size": "small",
+        "width": 106,
+        "height": 106
+      },
+      "reminders": {
+        "size": "medium",
+        "width": 220,
+        "height": 106
+      },
+      "notes": {
+        "size": "medium",
+        "width": 220,
+        "height": 106
+      },
+      "photos": {
+        "size": "medium",
+        "width": 220,
+        "height": 106
+      }
+    },
+    "music": {
+      ".widget-art": {
+        "x": 0.1845880681818182,
+        "y": 0.1861505681818182,
+        "width": 0.6291903409090909,
+        "height": 0.6291903409090909
+      },
+      ".widget-track strong": {
+        "x": 0.08764204545454546,
+        "y": 0.5899857954545454,
+        "width": 0.6508565035733309,
+        "height": 0.06612215909090909
+      },
+      ".widget-track small": {
+        "x": 0.08764204545454546,
+        "y": 0.661434659090909,
+        "width": 0.6924005681818182,
+        "height": 0.05454545454545454
+      },
+      ".widget-progress-track": {
+        "x": 0.08764204545454546,
+        "y": 0.74453125,
+        "width": 0.821590909090909,
+        "height": 0.013636363636363636
+      },
+      "[data-widget-control=toggle]": {
+        "x": 0.4,
+        "y": 0.7819602272727273,
+        "width": 0.2,
+        "height": 0.2
+      },
+      "[data-widget-control=prev]": {
+        "x": 0.2,
+        "y": 0.7819602272727273,
+        "width": 0.2,
+        "height": 0.2
+      },
+      "[data-widget-control=next]": {
+        "x": 0.6,
+        "y": 0.7819602272727273,
+        "width": 0.2,
+        "height": 0.2
+      }
+    },
+    "clockTime": {
+      "x": -0.019957386363636365,
+      "y": -0.03494318181818182,
+      "width": 1,
+      "height": 0.5151988636363637
+    },
+    "clockDepth": "true",
+    "liveTime": "10:09",
+    "sourceDuration": 153
+  },
+  "comparison": {
+    "music": {
+      "meanAbsoluteRGBDifference": 9.828,
+      "rmsRGBDifference": 22.886
+    },
+    "clock": {
+      "meanAbsoluteRGBDifference": 17.528,
+      "rmsRGBDifference": 34.339
+    },
+    "musicSizeCSS": [
+      220,
+      220
+    ],
+    "clockSizeCSS": [
+      220,
+      220
+    ],
+    "areaRatioTo344": 0.409,
+    "preservedReferenceLandmarks": {
+      "coverX": 0.008,
+      "coverY": 0.032,
+      "coverWidth": 0.006,
+      "titleX": 0.038,
+      "artistY": 0.042,
+      "progressY": 0.045
+    },
+    "touchAdaptation": "44px hit regions remain unscaled and disjoint. More moves to the header; large retains five transport targets. Small secondary actions stay in the existing menu. Medium shows real progress; interactive seeking remains in large and Air Music."
+  },
+  "runtimeSHA256": {
+    "ipad/widgets-2.css": "3871684016a7eb9cb7c175cd381d19d6a58ed0abcfe5da905e071a90336722a2",
+    "ipad/widgets.js": "e143ec4fcaab43de3e0394c0c84cd96b860ce1483cc96f8e767e75395d3172a4"
+  },
+  "physicalIPad": false,
+  "ciStatus": "The final complete Chromium/WebKit matrix is recorded on PR #9. This file records local evidence.",
+  "notes": [
+    "Original 344px screenshots retained under final/.",
+    "Cover, title, artist, progress and clock retain relative reference positions.",
+    "44px target bands stay unscaled; secondary actions use the existing music menu.",
+    "No schema, saved order, size IDs, AIR FLOW owner or media owner changed."
+  ],
+  "dock": {
+    "1": {
+      "status": "passed",
+      "checks": 61,
+      "errors": [],
+      "minimumCalendarInset": 10,
+      "readOnlyAllSizes": true
+    },
+    "2": {
+      "status": "passed",
+      "checks": 61,
+      "errors": [],
+      "minimumCalendarInset": 10,
+      "readOnlyAllSizes": true
+    }
+  }
+}

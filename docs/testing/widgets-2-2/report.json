@@ -1,0 +1,574 @@
+{
+  "engine": "chromium",
+  "physicalIPad": false,
+  "synthetic": true,
+  "timezone": "Europe/Berlin",
+  "checks": [
+    "Spotify is the fresh-profile preference without an implicit network request",
+    "Widgets anpassen is transparent text with a real touch target",
+    "keyboard focus retains a visible text indicator without a filled box",
+    "Disconnected Spotify small: exact dimensions and disjoint reachable 44px actions",
+    "Disconnected Spotify medium: exact dimensions and disjoint reachable 44px actions",
+    "Disconnected Spotify large: exact dimensions and disjoint reachable 44px actions",
+    "authorized API supplies real title, artist, cached cover and playing status",
+    "Connected Spotify small: exact dimensions and disjoint reachable 44px actions",
+    "Connected Spotify medium: exact dimensions and disjoint reachable 44px actions",
+    "Connected Spotify large: exact dimensions and disjoint reachable 44px actions",
+    "photo clock is exactly 200 by 200 CSS pixels",
+    "a newly playing Air Music title cannot replace Spotify in the widget",
+    "the existing Spotify poller continues while local audio plays",
+    "Air Music remains explicitly selectable",
+    "repeated refresh actions share the 15-second read gate",
+    "paused Spotify keeps real last title without claiming live playback",
+    "idle API fallback reads the authorized recent endpoint and keeps polling",
+    "Retry-After blocks manual and timer requests before its deadline",
+    "the shared reader resumes after Retry-After",
+    "an unsupported current payload cannot keep an older song falsely live",
+    "API permission errors are visible beside retained data without false live status",
+    "a permission failure stops automatic API retries",
+    "offline retains the known Spotify song and suspends its reader",
+    "only supported read endpoints and the PKCE grant were called",
+    "disconnect shows retained authorized history with an honest connection state",
+    "Retained disconnected Spotify small: exact dimensions and disjoint reachable 44px actions",
+    "Retained disconnected Spotify medium: exact dimensions and disjoint reachable 44px actions",
+    "Retained disconnected Spotify large: exact dimensions and disjoint reachable 44px actions",
+    "Spotify preference and permitted history survive reload without tokens",
+    "history opt-out permits current in-memory data and persists no song",
+    "neither Spotify credential is stored in browser storage",
+    "opted-out Spotify history stays absent after reload",
+    "an empty offline widget never claims a previous song",
+    "clock reads the actual browser-local timezone",
+    "minute boundary updates without a manual refresh",
+    "focus immediately synchronizes browser-local time",
+    "real app focus immediately synchronizes the clock",
+    "return from an app immediately synchronizes the clock",
+    "unlock immediately synchronizes time",
+    "simulated background suspends widget timers",
+    "visibility return synchronizes immediately",
+    "pageshow immediately synchronizes time",
+    "transparent type and real photo depth survive the lifecycle",
+    "no uncaught page errors"
+  ],
+  "errors": [],
+  "screens": [
+    "edit-action-focus.png",
+    "edit-action.png",
+    "spotify-music.png",
+    "clock.png",
+    "home-landscape.png",
+    "home-portrait.png",
+    "editor.png",
+    "spotify-disconnected-history.png",
+    "clock-system-local.png"
+  ],
+  "sizes": [
+    {
+      "label": "Disconnected Spotify",
+      "size": "small",
+      "width": 96,
+      "height": 96,
+      "rows": [
+        {
+          "label": "Musikoptionen",
+          "x": 28,
+          "y": 144,
+          "w": 44,
+          "h": 44,
+          "right": 72,
+          "bottom": 188,
+          "hit": true
+        },
+        {
+          "label": "Spotify verbinden",
+          "x": 72,
+          "y": 144,
+          "w": 44,
+          "h": 44,
+          "right": 116,
+          "bottom": 188,
+          "hit": true
+        }
+      ],
+      "overlaps": 0,
+      "inside": true
+    },
+    {
+      "label": "Disconnected Spotify",
+      "size": "medium",
+      "width": 200,
+      "height": 96,
+      "rows": [
+        {
+          "label": "Musikoptionen",
+          "x": 28,
+          "y": 144,
+          "w": 44,
+          "h": 44,
+          "right": 72,
+          "bottom": 188,
+          "hit": true
+        },
+        {
+          "label": "Spotify verbinden",
+          "x": 108,
+          "y": 144,
+          "w": 112,
+          "h": 44,
+          "right": 220,
+          "bottom": 188,
+          "hit": true
+        }
+      ],
+      "overlaps": 0,
+      "inside": true
+    },
+    {
+      "label": "Disconnected Spotify",
+      "size": "large",
+      "width": 200,
+      "height": 200,
+      "rows": [
+        {
+          "label": "Musikoptionen",
+          "x": 180,
+          "y": 92,
+          "w": 44,
+          "h": 44,
+          "right": 224,
+          "bottom": 136,
+          "hit": true
+        },
+        {
+          "label": "Spotify verbinden",
+          "x": 64,
+          "y": 248,
+          "w": 120,
+          "h": 44,
+          "right": 184,
+          "bottom": 292,
+          "hit": true
+        }
+      ],
+      "overlaps": 0,
+      "inside": true
+    },
+    {
+      "label": "Connected Spotify",
+      "size": "small",
+      "width": 96,
+      "height": 96,
+      "rows": [
+        {
+          "label": "Titel in Spotify öffnen",
+          "x": 31.671875,
+          "y": 92,
+          "w": 80.65625,
+          "h": 52,
+          "right": 112.328125,
+          "bottom": 144,
+          "hit": true
+        },
+        {
+          "label": "Musikoptionen",
+          "x": 28,
+          "y": 144,
+          "w": 44,
+          "h": 44,
+          "right": 72,
+          "bottom": 188,
+          "hit": true
+        },
+        {
+          "label": "In Spotify öffnen",
+          "x": 72,
+          "y": 144,
+          "w": 44,
+          "h": 44,
+          "right": 116,
+          "bottom": 188,
+          "hit": true
+        }
+      ],
+      "overlaps": 0,
+      "inside": true
+    },
+    {
+      "label": "Connected Spotify",
+      "size": "medium",
+      "width": 200,
+      "height": 96,
+      "rows": [
+        {
+          "label": "Titel in Spotify öffnen",
+          "x": 104,
+          "y": 94,
+          "w": 112,
+          "h": 44,
+          "right": 216,
+          "bottom": 138,
+          "hit": true
+        },
+        {
+          "label": "Musikoptionen",
+          "x": 28,
+          "y": 144,
+          "w": 44,
+          "h": 44,
+          "right": 72,
+          "bottom": 188,
+          "hit": true
+        },
+        {
+          "label": "In Spotify öffnen",
+          "x": 80,
+          "y": 144,
+          "w": 140,
+          "h": 44,
+          "right": 220,
+          "bottom": 188,
+          "hit": true
+        }
+      ],
+      "overlaps": 0,
+      "inside": true
+    },
+    {
+      "label": "Connected Spotify",
+      "size": "large",
+      "width": 200,
+      "height": 200,
+      "rows": [
+        {
+          "label": "Titel in Spotify öffnen",
+          "x": 41.53125,
+          "y": 136,
+          "w": 138.46875,
+          "h": 62.90625,
+          "right": 180,
+          "bottom": 198.90625,
+          "hit": true
+        },
+        {
+          "label": "Musikoptionen",
+          "x": 180,
+          "y": 92,
+          "w": 44,
+          "h": 44,
+          "right": 224,
+          "bottom": 136,
+          "hit": true
+        },
+        {
+          "label": "In Spotify öffnen",
+          "x": 64,
+          "y": 248,
+          "w": 120,
+          "h": 44,
+          "right": 184,
+          "bottom": 292,
+          "hit": true
+        }
+      ],
+      "overlaps": 0,
+      "inside": true
+    },
+    {
+      "label": "Retained disconnected Spotify",
+      "size": "small",
+      "width": 96,
+      "height": 96,
+      "rows": [
+        {
+          "label": "Titel in Spotify öffnen",
+          "x": 31.671875,
+          "y": 92,
+          "w": 80.65625,
+          "h": 52,
+          "right": 112.328125,
+          "bottom": 144,
+          "hit": true
+        },
+        {
+          "label": "Musikoptionen",
+          "x": 28,
+          "y": 144,
+          "w": 44,
+          "h": 44,
+          "right": 72,
+          "bottom": 188,
+          "hit": true
+        },
+        {
+          "label": "In Spotify öffnen",
+          "x": 72,
+          "y": 144,
+          "w": 44,
+          "h": 44,
+          "right": 116,
+          "bottom": 188,
+          "hit": true
+        }
+      ],
+      "overlaps": 0,
+      "inside": true
+    },
+    {
+      "label": "Retained disconnected Spotify",
+      "size": "medium",
+      "width": 200,
+      "height": 96,
+      "rows": [
+        {
+          "label": "Titel in Spotify öffnen",
+          "x": 104,
+          "y": 94,
+          "w": 112,
+          "h": 44,
+          "right": 216,
+          "bottom": 138,
+          "hit": true
+        },
+        {
+          "label": "Musikoptionen",
+          "x": 28,
+          "y": 144,
+          "w": 44,
+          "h": 44,
+          "right": 72,
+          "bottom": 188,
+          "hit": true
+        },
+        {
+          "label": "In Spotify öffnen",
+          "x": 128,
+          "y": 144,
+          "w": 92,
+          "h": 44,
+          "right": 220,
+          "bottom": 188,
+          "hit": true
+        },
+        {
+          "label": "Spotify verbinden",
+          "x": 76,
+          "y": 144,
+          "w": 44,
+          "h": 44,
+          "right": 120,
+          "bottom": 188,
+          "hit": true
+        }
+      ],
+      "overlaps": 0,
+      "inside": true
+    },
+    {
+      "label": "Retained disconnected Spotify",
+      "size": "large",
+      "width": 200,
+      "height": 200,
+      "rows": [
+        {
+          "label": "Titel in Spotify öffnen",
+          "x": 41.53125,
+          "y": 136,
+          "w": 138.46875,
+          "h": 62.90625,
+          "right": 180,
+          "bottom": 198.90625,
+          "hit": true
+        },
+        {
+          "label": "Musikoptionen",
+          "x": 180,
+          "y": 92,
+          "w": 44,
+          "h": 44,
+          "right": 224,
+          "bottom": 136,
+          "hit": true
+        },
+        {
+          "label": "In Spotify öffnen",
+          "x": 128,
+          "y": 248,
+          "w": 92,
+          "h": 44,
+          "right": 220,
+          "bottom": 292,
+          "hit": true
+        },
+        {
+          "label": "Spotify verbinden",
+          "x": 28,
+          "y": 248,
+          "w": 96,
+          "h": 44,
+          "right": 124,
+          "bottom": 292,
+          "hit": true
+        }
+      ],
+      "overlaps": 0,
+      "inside": true
+    }
+  ],
+  "editStyle": {
+    "background": "rgba(0, 0, 0, 0)",
+    "image": "none",
+    "shadow": "none",
+    "textShadow": "none",
+    "filter": "none",
+    "border": "0px",
+    "width": 115.609375,
+    "height": 44
+  },
+  "status": "passed",
+  "apiRequests": [
+    {
+      "method": "POST",
+      "url": "https://accounts.spotify.com/api/token",
+      "time": 1794560942488
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794560942497
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794560960199
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794560980252
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794560995657
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561025689
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player/currently-playing",
+      "time": 1794561025696
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player/recently-played?limit=1",
+      "time": 1794561025703
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561055735
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561115772
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561146805
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561176847
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561206875
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561251916
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561266949
+    },
+    {
+      "method": "POST",
+      "url": "https://accounts.spotify.com/api/token",
+      "time": 1794561284874
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561284897
+    },
+    {
+      "method": "GET",
+      "url": "https://api.spotify.com/v1/me/player",
+      "time": 1794561314957
+    }
+  ],
+  "captureNotes": "Real PWA screenshots at DPR 2; synthetic authorized API and native WAV fixtures; user-provided reference images; controlled Europe/Berlin test clock. clock-system-local uses capture-time system Date.",
+  "localValidation": {
+    "node": {
+      "passed": 80,
+      "failed": 0
+    },
+    "widgets21": {
+      "passed": 46
+    },
+    "widgets22": {
+      "passed": 44
+    },
+    "spotify": {
+      "passed": 20
+    },
+    "dock": {
+      "dpr1": 61,
+      "dpr2": 61
+    },
+    "airFlow": {
+      "passed": 32
+    },
+    "buildIntegrity": {
+      "passed": true,
+      "runtimeFiles": 153
+    },
+    "physicalIPad": false,
+    "realSpotifyAccount": false,
+    "classicGenie": {
+      "passed": 54
+    },
+    "macLock": {
+      "dpr1": 40,
+      "dpr2": 40
+    },
+    "security": {
+      "root": 50,
+      "subpath": 50
+    },
+    "macLockArt": {
+      "passed": 32
+    },
+    "macLockParity": {
+      "passed": 15
+    }
+  },
+  "runtimeSHA256": {
+    "ipad/widgets.js": "4b1f9af65e688af4dcf4bb8a36428c556d8f5dc778dfc5455e1ebb483ecd6b82",
+    "ipad/widgets-2.css": "7ff634011c9dc61a727cb77315fe2ca2805f07ce419b3f667067bd553d8dac7a",
+    "ipad/spotify.js": "1a14e122f15482997a44a63a0de1e3cb79e6b896d20be5c137f6ae011dcf9ffb",
+    "ipad/playback-history.js": "2169db63b22d0b7ec97c6d0c35288ff2f9ab992fa6ebee905c789f7ad89f7446",
+    "scripts/templates/ipad-service-worker.js": "de7f263614f11e6390170fa1c93926c89ef0b86605c087609b7845365e56b228",
+    "ipad/app.js": "98f41abd772260e92af83fd7d35838a1f256412b000315b6b34a0f74135602c6",
+    "ipad/backup.js": "1db606a598f40170ddfd3acd9866144ce5134af86f5d62017dfe50a7d463d229"
+  }
+}

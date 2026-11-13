@@ -1,0 +1,54 @@
+{
+  "source": "User-provided reference images, not runtime assets",
+  "musicContentCrop": [
+    305,
+    260,
+    955,
+    910
+  ],
+  "clockContentCrop": [
+    423,
+    28,
+    684,
+    289
+  ],
+  "musicLandmarks": {
+    "cover": [
+      0.1846,
+      0.1862,
+      0.6292,
+      0.6292
+    ],
+    "title": [
+      0.0877,
+      0.5954
+    ],
+    "artist": [
+      0.0877,
+      0.6615
+    ],
+    "progress": [
+      0.0877,
+      0.7446,
+      0.8216,
+      0.0108
+    ],
+    "playCenter": [
+      0.5,
+      0.87
+    ]
+  },
+  "clockLandmarks": {
+    "timeInkBoundsApprox": [
+      0.095,
+      0.055,
+      0.8,
+      0.4
+    ]
+  },
+  "mediaPreparation": "Reference text is removed from the cover crop using adjacent unlabelled blurred pixels; clock photo is a manually selected transparent subject silhouette. Comparison reference crops themselves are unmodified. Application captures are generated separately by Playwright.",
+  "originalSHA256": {
+    "1-Foto-1.jpg": "1bba6db3b45c013b67bbcebd810e2fc227d3072b03488d4671b18061d90be598",
+    "2-Foto-2.jpg": "ae195c6f8dad929005a6d347d17c77ca7cb5317494373bdd929e5ce2248e031f"
+  }
+}

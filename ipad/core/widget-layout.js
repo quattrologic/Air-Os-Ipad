@@ -1,7 +1,7 @@
 'use strict';
 // Layout projections only. Notes, events, media and legacy preferences stay owned by their apps.
 (function(root){
- const defaults={music:'large',clock:'small',calendar:'small',weather:'small',battery:'small',reminders:'medium',notes:'medium',photos:'medium'};
+ const defaults={music:'large',clock:'large',calendar:'small',weather:'small',battery:'small',reminders:'medium',notes:'medium',photos:'medium'};
  const ids=Object.keys(defaults),sizes=['small','medium','large'];
  function normalize(value,legacy){
   const source=value?.version===2?value:legacy||{},order=[];

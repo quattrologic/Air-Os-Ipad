@@ -40,7 +40,7 @@
   clearTimeout(effect.retargetJob);for(const animation of effect.animations||[])animation.cancel();effect.animations=[];effect.observer?.disconnect();effect.layer.remove();effect.strips.length=0;effect.copy=null;live.delete(effect.node);restoreVisibility(effect);
  }
  function finish(effect,aborted=false){
-  if(!live.has(effect.node))return;last={direction:effect.end===1?'minimize':'restore',backend:'projective-dom-strips',source:effect.source,target:effect.target,rows:effect.count,keyframes:effect.keyframeCount,captureMs:effect.captureMs,buildMs:effect.buildMs,timelineDuration:effect.duration,reversals:effect.reversals,aborted};
+  if(!live.has(effect.node))return;last={direction:effect.end===1?'minimize':'restore',backend:effect.projection==='affine-clipped'?'affine-clipped-dom-strips':'projective-dom-strips',projection:effect.projection,source:effect.source,target:effect.target,rows:effect.count,keyframes:effect.keyframeCount,captureMs:effect.captureMs,buildMs:effect.buildMs,timelineDuration:effect.duration,reversals:effect.reversals,aborted};
   release(effect);if(aborted){cancelled++;effect.reject(Error('Genie cancelled'));}else effect.resolve();
  }
  function progress(effect){return Math.max(0,Math.min(1,Number(effect.master?.currentTime??effect.p*effect.duration)/effect.duration));}
@@ -48,7 +48,7 @@
  function timeline(effect,p){
   const from=progress(effect);if(p===undefined)p=from;
   const offsets=[...new Set([0,1,p,...Array.from({length:33},(_,i)=>i/32)])].sort((a,b)=>a-b),tracks=Array.from({length:effect.count},()=>[]),height=effect.source.height/effect.count;
-  for(const offset of offsets){const points=model.rows(effect.source,targetAt(effect,offset),offset,effect.count);for(let i=0;i<effect.count;i++)tracks[i].push({offset,transform:'matrix3d('+model.matrix(points[i],points[i+1],effect.source.width,height).join(',')+')'});}
+  for(const offset of offsets){const points=model.rows(effect.source,targetAt(effect,offset),offset,effect.count);for(let i=0;i<effect.count;i++)tracks[i].push({offset,...(effect.projection==='affine-clipped'?model.clippedRow(points[i],points[i+1],effect.source.width,height):{transform:model.cssTransform(points[i],points[i+1],effect.source.width,height)})});}
   for(const a of effect.animations||[])a.cancel();effect.animations=[];
   const master=effect.layer.animate([{offset:0,opacity:1},{offset:.8,opacity:1},{offset:1,opacity:0}],{duration:effect.duration,easing:'linear',fill:'both'});effect.master=master;effect.animations.push(master);
   for(let i=0;i<effect.count;i++)effect.animations.push(effect.strips[i].animate(tracks[i],{duration:effect.duration,easing:'linear',fill:'both'}));
@@ -61,7 +61,7 @@
  function create(node,targetNode,source,target,restore){
   const began=performance.now(),snapshot=freeze(node),count=caps(),layer=document.createElement('div');layer.className='air-genie-layer deep-glass-tile';layer.setAttribute('aria-hidden','true');layer.inert=true;
   Object.assign(layer.style,{position:'fixed',inset:'0',pointerEvents:'none',zIndex:'1900',overflow:'visible',contain:'layout style'});
-  const effect={node,targetNode,source,target:{...target},goal:null,count,strips:[],copy:snapshot.copy,layer,p:restore?1:0,end:restore?0:1,duration:duration(),animations:[],master:null,timelineLease:0,keyframeCount:0,anchor:null,reversals:0,retargetJob:null,visibility:node.style.getPropertyValue('visibility'),visibilityPriority:node.style.getPropertyPriority('visibility'),captureMs:performance.now()-began};
+  const effect={node,targetNode,source,target:{...target},goal:null,count,projection:motion.quality()==='economy'?'affine-clipped':'projective',strips:[],copy:snapshot.copy,layer,p:restore?1:0,end:restore?0:1,duration:duration(),animations:[],master:null,timelineLease:0,keyframeCount:0,anchor:null,reversals:0,retargetJob:null,visibility:node.style.getPropertyValue('visibility'),visibilityPriority:node.style.getPropertyPriority('visibility'),captureMs:performance.now()-began};
   effect.finished=new Promise((resolve,reject)=>{effect.resolve=resolve;effect.reject=reject;});effect.cancel=()=>finish(effect,true);
   for(let i=0;i<count;i++){
    const strip=document.createElement('div');strip.className='air-genie-strip';const clone=snapshot.copy.cloneNode(true);
@@ -79,7 +79,7 @@
   const current=live.get(node);
   if(current){const next=restore?0:1;if(current.end!==next){current.end=next;current.reversals++;for(const animation of current.animations)animation.reverse();}return current.owned;}
   const source=rect(node),target=rect(targetNode);
-  let reason='';if(disposed||!source)reason='unavailable';else if(motion.reduced()||document.hidden)reason='reduced-or-hidden';else if(!target||target.width<1||target.y>=innerHeight||target.x>=innerWidth||target.x+target.width<=0)reason='no-visible-dock-icon';else if(!CSS.supports('transform','matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1)'))reason='unsupported-projective-transform';else if(live.size>=2||navigator.hardwareConcurrency>0&&navigator.hardwareConcurrency<=2||source.width*source.height>2400000)reason='resource-budget';
+  let reason='';if(disposed||!source)reason='unavailable';else if(motion.reduced()||document.hidden)reason='reduced-or-hidden';else if(!target||target.width<1||target.y>=innerHeight||target.x>=innerWidth||target.x+target.width<=0)reason='no-visible-dock-icon';else if(!(motion.quality()==='economy'?CSS.supports('clip-path','polygon(0 0,100% 0,100% 100%,0 100%)'):CSS.supports('transform','perspective(1000px) rotateX(.1rad) scaleY(1)')))reason='unsupported-projective-transform';else if(live.size>=2||navigator.hardwareConcurrency>0&&navigator.hardwareConcurrency<=2||source.width*source.height>2400000)reason='resource-budget';
   if(!reason){try{return await create(node,targetNode,source,target,restore);}catch(error){reason='capture-'+(error.name==='SecurityError'?'protected-content':['complex-content','embedded-content','gpu-canvas','video-not-ready','large-canvas','image-not-ready'].includes(error.message)?error.message:'unavailable');const effect=live.get(node);if(effect)finish(effect,true);}}
   fallbacks++;last={backend:'fallback',reason,direction:restore?'restore':'minimize'};
   if(reason==='reduced-or-hidden'||reason==='unavailable')return true;
@@ -91,5 +91,5 @@
  window.addEventListener('resize',clear,{signal});window.visualViewport?.addEventListener('resize',clear,{signal});
  window.addEventListener('pagehide',e=>{clear();if(!e.persisted){disposed=true;events.abort();}},{signal});
  const ready=()=>window.airDesktop?.ready.then(async()=>{const saved=await airStore.setting('genie-speed','normal');if(['normal','fast','slow'].includes(saved))speed=saved;}).catch(()=>{speed='normal';});document.addEventListener('DOMContentLoaded',ready,{once:true,signal});
- window.airGenie=Object.freeze({transition,retarget,has:node=>live.has(node),clear,setSpeed:async value=>{if(!['normal','fast','slow'].includes(value))throw Error('Unknown Genie speed');speed=value;await airStore.setSetting('genie-speed',value);},snapshot:()=>({active:live.size,temporaryStrips:[...live.values()].reduce((n,e)=>n+e.strips.length,0),total,cancelled,fallbacks,speed,last,running:[...live.values()].map(e=>({progress:progress(e),end:e.end,rows:e.count,source:e.source,target:targetAt(e,progress(e)),reversals:e.reversals}))})});
+ window.airGenie=Object.freeze({transition,retarget,has:node=>live.has(node),clear,setSpeed:async value=>{if(!['normal','fast','slow'].includes(value))throw Error('Unknown Genie speed');speed=value;await airStore.setSetting('genie-speed',value);},snapshot:()=>({active:live.size,temporaryStrips:[...live.values()].reduce((n,e)=>n+e.strips.length,0),total,cancelled,fallbacks,speed,last,running:[...live.values()].map(e=>({progress:progress(e),end:e.end,rows:e.count,projection:e.projection,source:e.source,target:targetAt(e,progress(e)),reversals:e.reversals}))})});
 })();

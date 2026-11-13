@@ -1,0 +1,145 @@
+{
+  "engine": "chromium",
+  "physicalIPad": false,
+  "synthetic": true,
+  "baselineComparison": false,
+  "sampleDurationMs": 1800,
+  "results": [
+    {
+      "width": 1180,
+      "height": 820,
+      "quality": "Standard",
+      "reduced": false,
+      "idle": {
+        "actions": 0,
+        "durationMs": 1809,
+        "frameSamples": 108,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.7,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 0,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 197
+      },
+      "resize": {
+        "actions": 4,
+        "durationMs": 1812,
+        "frameSamples": 108,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.7,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 18,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 197,
+        "settledRunningAnimations": 0
+      }
+    },
+    {
+      "width": 820,
+      "height": 1180,
+      "quality": "Standard",
+      "reduced": false,
+      "idle": {
+        "actions": 0,
+        "durationMs": 1808,
+        "frameSamples": 108,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.7,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 0,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 197
+      },
+      "resize": {
+        "actions": 4,
+        "durationMs": 1804,
+        "frameSamples": 108,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.7,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 18,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 197,
+        "settledRunningAnimations": 0
+      }
+    },
+    {
+      "width": 1180,
+      "height": 820,
+      "quality": "Reduzierte Transparenz",
+      "reduced": false,
+      "idle": {
+        "actions": 0,
+        "durationMs": 1803,
+        "frameSamples": 108,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.8,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 0,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 197
+      },
+      "resize": {
+        "actions": 4,
+        "durationMs": 1814,
+        "frameSamples": 108,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.7,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 18,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 197,
+        "settledRunningAnimations": 0
+      }
+    },
+    {
+      "width": 1180,
+      "height": 820,
+      "quality": "Standard",
+      "reduced": true,
+      "idle": {
+        "actions": 0,
+        "durationMs": 1806,
+        "frameSamples": 108,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.7,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 0,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 197
+      },
+      "resize": {
+        "actions": 4,
+        "durationMs": 1812,
+        "frameSamples": 108,
+        "frameIntervalMedianMs": 16.7,
+        "frameIntervalP95Ms": 16.7,
+        "longTasks": 0,
+        "longTaskTotalMs": 0,
+        "widgetMutations": 38,
+        "remainingAnimations": 0,
+        "widgetTimer": true,
+        "domNodes": 197,
+        "settledRunningAnimations": 0
+      }
+    }
+  ],
+  "productCommit": "ab55a83c1dc5bf41603e154aa6aaae136445cd5f",
+  "browserVersion": "Chromium 154.0.8037.57 built on Debian GNU/Linux 13 (trixie)",
+  "measurementScriptSHA256": "5d2f177f952d96db4b29aea7c1c43b8a23a709d52e9319871abbb70870694bec",
+  "notes": "Current 200/96px product; existing real resize actions after explicit Air Music selection. Four 1800ms samples. No physical iPad, GPU benchmark or baseline comparison."
+}
