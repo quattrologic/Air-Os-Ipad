@@ -24,7 +24,7 @@ Die Fotos, Referenzen und Messdateien sind Test-/Dokumentationsmaterial und werd
 
 ## Prüfung
 
-67 Node-Tests und die lokalen Chromium-Suiten werden im [Validierungsbericht](validation-summary.json) mit ihren tatsächlichen Ergebnissen aufgeführt. Die neue Referenzaufnahme gehört ebenfalls zur Chromium-/WebKit-CI-Matrix. Lokal fehlt das passende WebKit-Browserpaket; der Versuch, den offiziellen Playwright-Container zu beziehen, scheiterte mit `Forbidden`. Das wird getrennt von den GitHub-Ergebnissen ausgewiesen.
+69 Node-Tests und die lokalen Chromium-Suiten werden im [Validierungsbericht](validation-summary.json) mit ihren tatsächlichen Ergebnissen aufgeführt. Die neue Referenzaufnahme gehört ebenfalls zur Chromium-/WebKit-CI-Matrix. Lokal fehlt das passende WebKit-Browserpaket; der Versuch, den offiziellen Playwright-Container zu beziehen, scheiterte mit `Forbidden`. Das wird getrennt von den GitHub-Ergebnissen ausgewiesen.
 
 ## Performance
 
@@ -32,9 +32,15 @@ Verglichen wurden das separat aufbewahrte **PR-8-Paket** und Widget 2.1 mit dems
 
 | Szenario | Resize-P95 PR #8 → Widget 2.1 | DOM-Mutationen PR #8 → Widget 2.1 |
 | --- | --- | --- |
-| 1180×820, Standard | 150 → 16.7 ms | 228 → 23 |
-| 820×1180, Standard | 99.9 → 16.8 ms | 188 → 18 |
-| 1180×820, Reduzierte Transparenz | 16.7 → 16.8 ms | 23 → 23 |
-| 1180×820, reduzierte Bewegung | 33.3 → 16.7 ms | 111 → 23 |
+| 1180×820, Standard | 133.3 → 16.7 ms | 277 → 23 |
+| 820×1180, Standard | 83.4 → 16.8 ms | 163 → 18 |
+| 1180×820, Reduzierte Transparenz | 16.8 → 16.7 ms | 23 → 23 |
+| 1180×820, reduzierte Bewegung | 16.8 → 16.7 ms | 111 → 23 |
 
-Im abschließenden nacheinander ausgeführten Vergleich sank der Standard-P95 von 150 auf 16,7 ms im Querformat und von 99,9 auf 16,8 ms im Hochformat. Alle vier Größenaktionen wurden in jedem Szenario ausgeführt; nach dem Settlen blieben keine laufenden Widget-Effekte zurück. Die Display-Karten benötigen keine Wallpaper-Reprojektion mehr. Ein zusätzlicher Lauf unter paralleler Testlast erreichte 66,6 bzw. 99,9 ms: die Streuung ist erheblich. Kurze Headless-Stichproben sind keine statistische Geräteabnahme und keine Garantie für stabile 60 FPS; eine echte iPad-/Safari-Abnahme bleibt erforderlich.
+Die Wiederholungsmessung mit isolierten persistenten Profilen und echten Dateiimporten bestätigt die Verbesserung: Standard-P95 133,3 → 16,7 ms im Querformat und 83,4 → 16,8 ms im Hochformat. Die [vorherige Messung](performance-prior/before.json) und ihr [Ergebnis](performance-prior/after.json) bleiben erhalten. Alle vier Größenaktionen wurden in jedem Szenario ausgeführt; nach dem Settlen blieben keine laufenden Widget-Effekte zurück. Die Display-Karten benötigen keine Wallpaper-Reprojektion mehr. Ein Lauf unter paralleler Testlast erreichte 66,6 bzw. 99,9 ms: die Streuung ist erheblich. Kurze Headless-Stichproben sind keine Geräteabnahme und keine Garantie für stabile 60 FPS; eine echte iPad-/Safari-Abnahme bleibt erforderlich.
+
+## Genie und Browsergrenzen
+
+Die tatsächliche Fensterverformung wird in Chromium und in WebKit/GTK unter Xvfb erfasst. Die bestehende Economy-Stufe verwendet eine ausdrücklich ausgewiesene affine, beschnittene Streifenprojektion. Ihre Kontur folgt derselben Kurvenformel; die Textur ist innerhalb jedes Streifens eine günstigere Näherung. Der volle Modus bleibt projektiv. Beide Modi verwenden denselben AIR-FLOW-Besitzer, dieselben Ressourcenlimits und echte Fensterinhalte. Geprüft werden beide Konturkanten mit unveränderter 9-Pixel-Grenze, Umkehr, Dock-Ziel und Bereinigung. Die Tests halten native Effekte beim Start an, damit die Abtastung nicht vom Tempo der Touch-Auslieferung abhängt. Die Produktion pausiert diese Animationen nicht.
+
+Der letzte CI-Status ist im bestehenden [PR #9](https://github.com/quattrologic/Air-Os-Ipad/pull/9) verlinkt; der lokale Bericht ersetzt keine erfolgreiche GitHub-Matrix.

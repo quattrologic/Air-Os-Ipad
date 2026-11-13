@@ -13,8 +13,8 @@
     },
     "final": {
       "music": {
-        "meanAbsoluteRGBDifference": 7.902,
-        "rmsRGBDifference": 16.84
+        "meanAbsoluteRGBDifference": 7.907,
+        "rmsRGBDifference": 16.85
       },
       "clock": {
         "meanAbsoluteRGBDifference": 17.288,

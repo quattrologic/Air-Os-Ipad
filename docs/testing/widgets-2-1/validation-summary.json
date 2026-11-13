@@ -3,7 +3,7 @@
   "baseCommit": "0c9e2594b231cb063e0559ce6d450499b78b2c6c",
   "branch": "feat/widgets-2-1-reference",
   "node": {
-    "passed": 67,
+    "passed": 69,
     "failed": 0
   },
   "build": {
@@ -23,13 +23,13 @@
   "chromium": {
     "widgets": {
       "status": "passed",
-      "checks": 39,
-      "screens": 7,
+      "checks": 40,
       "checksPassed": [
         "locked widget lifecycle has no timer or photo resources",
         "eight widgets use default large music and honest empty states",
         "large music cover is square and transport fits within its card",
         "unavailable weather and battery never invent readings",
+        "display material preserves the shared AIR FLOW touch light without intercepting input",
         "play starts the original audio element",
         "pause controls original audio",
         "seek uses actual audio duration and updates both time labels",
@@ -66,7 +66,10 @@
         "battery event updates without polling or invented estimates",
         "no unexpected page errors: []"
       ],
-      "uncaughtErrors": []
+      "screens": 7,
+      "uncaughtErrors": [],
+      "measurements": [],
+      "physicalIPad": false
     },
     "fullGui": {
       "status": "passed",
@@ -191,12 +194,11 @@
     "genie": {
       "status": "passed",
       "checks": 54,
-      "screens": 6,
       "checksPassed": [
         "left: geometric backend captures real content",
         "left: exactly one original app window, inert copies with no duplicate IDs",
         "left: main effect remains in the AIR FLOW owner",
-        "left: rendered window pixels follow the curved edge",
+        "left: rendered window pixels follow both curved edges: {\"left\":[1.2682327866748722,1.215736901779536,0.4880849344447711],\"right\":[1.6457959357915115,1.6274208490071942,1.1419316176113625]}",
         "left: Dock icon is not deformed",
         "left: minimize ends at the actual icon and keeps the original hidden",
         "left: minimize frees every temporary surface",
@@ -206,7 +208,7 @@
         "right: geometric backend captures real content",
         "right: exactly one original app window, inert copies with no duplicate IDs",
         "right: main effect remains in the AIR FLOW owner",
-        "right: rendered window pixels follow the curved edge",
+        "right: rendered window pixels follow both curved edges: {\"left\":[0.5807913161684155,0.5172091580797087,0.49637609477747446],\"right\":[2.1501166293655842,2.505390376809828,2.5450292612588328]}",
         "right: Dock icon is not deformed",
         "right: minimize ends at the actual icon and keeps the original hidden",
         "right: minimize frees every temporary surface",
@@ -216,7 +218,7 @@
         "portrait: geometric backend captures real content",
         "portrait: exactly one original app window, inert copies with no duplicate IDs",
         "portrait: main effect remains in the AIR FLOW owner",
-        "portrait: rendered window pixels follow the curved edge",
+        "portrait: rendered window pixels follow both curved edges: {\"left\":[0.9413918512433099,0.8960134285061514,0.03900929137159892],\"right\":[1.789516094290775,1.1265861063833427,2.0096438751097594]}",
         "portrait: Dock icon is not deformed",
         "portrait: minimize ends at the actual icon and keeps the original hidden",
         "portrait: minimize frees every temporary surface",
@@ -248,7 +250,50 @@
         "navigation retains explicitly saved app data",
         "no uncaught browser errors: []"
       ],
-      "uncaughtErrors": []
+      "screens": 6,
+      "uncaughtErrors": [],
+      "measurements": [
+        {
+          "label": "left",
+          "pixelEdgeError": [
+            1.2682327866748722,
+            1.215736901779536,
+            0.4880849344447711
+          ],
+          "rightPixelEdgeError": [
+            1.6457959357915115,
+            1.6274208490071942,
+            1.1419316176113625
+          ]
+        },
+        {
+          "label": "right",
+          "pixelEdgeError": [
+            0.5807913161684155,
+            0.5172091580797087,
+            0.49637609477747446
+          ],
+          "rightPixelEdgeError": [
+            2.1501166293655842,
+            2.505390376809828,
+            2.5450292612588328
+          ]
+        },
+        {
+          "label": "portrait",
+          "pixelEdgeError": [
+            0.9413918512433099,
+            0.8960134285061514,
+            0.03900929137159892
+          ],
+          "rightPixelEdgeError": [
+            1.789516094290775,
+            1.1265861063833427,
+            2.0096438751097594
+          ]
+        }
+      ],
+      "physicalIPad": false
     },
     "security": {
       "status": "passed",
@@ -835,6 +880,135 @@
       "uncaughtErrors": [],
       "renderPath": null,
       "physicalIPad": false
+    },
+    "genieEconomy": {
+      "status": "passed",
+      "checks": 54,
+      "checksPassed": [
+        "left: geometric backend captures real content",
+        "left: exactly one original app window, inert copies with no duplicate IDs",
+        "left: main effect remains in the AIR FLOW owner",
+        "left: rendered window pixels follow both curved edges: {\"left\":[1.2682327866748722,1.215736901779536,0.4880849344447711],\"right\":[1.6457959357915115,1.6274208490071942,1.1419316176113625]}",
+        "left: Dock icon is not deformed",
+        "left: minimize ends at the actual icon and keeps the original hidden",
+        "left: minimize frees every temporary surface",
+        "left: restore begins at the same Dock icon",
+        "left: restored editor has exactly its original draft and geometry",
+        "left: restore frees every temporary surface",
+        "right: geometric backend captures real content",
+        "right: exactly one original app window, inert copies with no duplicate IDs",
+        "right: main effect remains in the AIR FLOW owner",
+        "right: rendered window pixels follow both curved edges: {\"left\":[0.5807913161684155,0.5172091580797087,0.49637609477747446],\"right\":[2.1501166293655842,2.505390376809828,2.5450292612588328]}",
+        "right: Dock icon is not deformed",
+        "right: minimize ends at the actual icon and keeps the original hidden",
+        "right: minimize frees every temporary surface",
+        "right: restore begins at the same Dock icon",
+        "right: restored editor has exactly its original draft and geometry",
+        "right: restore frees every temporary surface",
+        "portrait: geometric backend captures real content",
+        "portrait: exactly one original app window, inert copies with no duplicate IDs",
+        "portrait: main effect remains in the AIR FLOW owner",
+        "portrait: rendered window pixels follow both curved edges: {\"left\":[0.9413918512433099,0.8960134285061514,0.03900929137159892],\"right\":[1.789516094290775,1.1265861063833427,2.0096438751097594]}",
+        "portrait: Dock icon is not deformed",
+        "portrait: minimize ends at the actual icon and keeps the original hidden",
+        "portrait: minimize frees every temporary surface",
+        "portrait: restore begins at the same Dock icon",
+        "portrait: restored editor has exactly its original draft and geometry",
+        "portrait: restore frees every temporary surface",
+        "restore reverses the current surface without rebuilding or jumping",
+        "repeated input reverses the same geometry again",
+        "rapid reversals leave no copies or pending owner",
+        "Dock retargeting preserves the current progress and does not replace the surface",
+        "changed Dock geometry ends inside the updated icon",
+        "another application receives input while Genie is active",
+        "other app calculates during the transition",
+        "concurrent windows stay within the two-surface resource budget",
+        "batch minimize releases every geometry surface",
+        "opening a non-minimized app on another workspace keeps its original AIR FLOW transition",
+        "a closed legacy app reopens through AIR FLOW rather than a stale Genie restore",
+        "missing Dock target uses an explicitly diagnosed fallback",
+        "limited CPU budget uses a documented fallback",
+        "uncapturable GPU canvases are diagnosed instead of showing blank content",
+        "OS reduced motion skips deformation and temporary resources",
+        "changing reduced-motion preference midflight cleans up and commits the requested state",
+        "workspace changes cancel temporary resources",
+        "orientation changes cancel resources without losing the window",
+        "speed changes duration while retaining actual deformation",
+        "existing saved note and unsaved draft both survive all transitions",
+        "locking the PWA cancels active deformation",
+        "real pagehide releases all transition resources",
+        "navigation retains explicitly saved app data",
+        "no uncaught browser errors: []"
+      ],
+      "screens": 6,
+      "uncaughtErrors": [],
+      "measurements": [
+        {
+          "label": "left",
+          "pixelEdgeError": [
+            1.2682327866748722,
+            1.215736901779536,
+            0.4880849344447711
+          ],
+          "rightPixelEdgeError": [
+            1.6457959357915115,
+            1.6274208490071942,
+            1.1419316176113625
+          ]
+        },
+        {
+          "label": "right",
+          "pixelEdgeError": [
+            0.5807913161684155,
+            0.5172091580797087,
+            0.49637609477747446
+          ],
+          "rightPixelEdgeError": [
+            2.1501166293655842,
+            2.505390376809828,
+            2.5450292612588328
+          ]
+        },
+        {
+          "label": "portrait",
+          "pixelEdgeError": [
+            0.9413918512433099,
+            0.8960134285061514,
+            0.03900929137159892
+          ],
+          "rightPixelEdgeError": [
+            1.789516094290775,
+            1.1265861063833427,
+            2.0096438751097594
+          ]
+        }
+      ],
+      "physicalIPad": false
+    },
+    "macLockMaterialParityDpr2": {
+      "status": "passed",
+      "checks": 15,
+      "checksPassed": [
+        "standard uses cached SDF/Snell material without allocating GPU resources",
+        "WebKit-compatible complementary slab blending avoids duplicate translucent shadows",
+        "no flat frame, inset shadow, or decorative conic border remains on the player",
+        "resting CSS material does not rebuild maps or resample sources",
+        "actual track end retains the last cover and metadata without a fabricated event",
+        "all protected foreground geometries remain fixed across materials",
+        "Yosemite fallback preserves actual cover and media state",
+        "new cached fallback and artwork survive actual browser reload",
+        "original shader rendered successfully with software clearly isolated",
+        "pointer hover adds no generic ContourGlow to the original MacLock slab",
+        "context loss restores the actual SDF fallback",
+        "context restore rebuilds the original fragment",
+        "genuinely unavailable WebGL keeps the same owned-scene fallback",
+        "page disposal removes maps and cached CSS material references",
+        "no uncaught browser errors"
+      ],
+      "screens": 5,
+      "uncaughtErrors": [],
+      "measurements": [],
+      "physicalIPad": false
     }
   },
   "wallpaper": {
@@ -848,7 +1022,7 @@
   "ci": {
     "localReportOnly": true,
     "pullRequest": "https://github.com/quattrologic/Air-Os-Ipad/pull/9",
-    "note": "Live CI status is recorded on the PR; this file records local test evidence.",
+    "note": "Local evidence plus linked CI history. Final full-matrix status is recorded on PR #9 to avoid a documentation-only CI rerun cycle.",
     "initialRun": {
       "url": "https://github.com/quattrologic/Air-Os-Ipad/actions/runs/43318320646",
       "commit": "528d1b932552a70cc900be3db7d7a87f7a2114ed",
@@ -947,13 +1121,13 @@
     "sourceDuration": 153
   },
   "evidenceSHA256": {
-    "final/clock-alternate-time.png": "13dae475dcdc2641415ef7324321027324b89568a0c7efb86920faa022707250",
-    "final/clock-without-type-diagnostic.png": "af5d558eda3512f428acbf6fd5a8f130cd34c22240d9da566a14f083ea1ea465",
-    "final/clock.png": "1906e947c56497cac061d512dcc12120eb5164e7e38a0588b6fbe29aee91c79a",
-    "final/editor.png": "c4a5e695d94b509360c48bf89f6b4e5938ef63b0f6f04ec918be404f2755b4b8",
-    "final/home-landscape.png": "a99387da7267a23ca599c632ce9c53ee374fcebdfaca1a100551c7aa5651a856",
-    "final/home-portrait.png": "688023e74e2c101578198e8fd9e101580c9d909ef9feb7131db2a16d733c49b0",
-    "final/music.png": "fe201bd443dd33b52f2986b434a347f59dc23d3a28ee71955a653561925ebbb9",
+    "final/clock-alternate-time.png": "6662c4f6958187eecbb66878a7052697fabfe384de1dfb58ae2742f0f1877030",
+    "final/clock-without-type-diagnostic.png": "0ec90b3d5c856bcc93e9dd5b11fad0ab69c17029bce28e7717b114ed6251e2a8",
+    "final/clock.png": "03a219b1917444808a1d52ea8a1417d318ed8ae8df276556e4f4861468d1502c",
+    "final/editor.png": "0c66b2475ad1495f103728f5fc7564f6bffb4db97585b2eb3646f208e770f525",
+    "final/home-landscape.png": "ddc3ec5d429055357dbb95ec238cf65d6e1b8e36acb34efdf15dc9c6803f8bcb",
+    "final/home-portrait.png": "b708c00b341f3c09b729e8f000a1502605f5717bb855e6dc171545d430a66b17",
+    "final/music.png": "38867e31acadb524350239a9b73cfb589232a8001ff7671558d39b5f36421cc3",
     "reference/clock.png": "504fe79bf182a5455a823f35f655dae6046a190bc940e1c2e1c1f433cac33548",
     "reference/music.png": "87793f75100f2be74010d82256b60d2ccca63744da42f2545f2d3b538d198d5f",
     "media/reference-clock-background.jpg": "69faa183c0c0728e6892a3cdb9500bf9c976b5345dc7ae1dbe9f9ed3bc7de663",
@@ -962,20 +1136,40 @@
   },
   "runtimeSHA256": {
     "ipad/widgets.js": "23ecfed29292323ded320550796771d6e11f6b653e0ad07f4d18a689c3025acb",
-    "ipad/widgets-2.css": "59c53e0acbf31a0c99ea9c47f94370562257d058f6d4711bd29a86279f737dc9",
+    "ipad/widgets-2.css": "1611b2b486401185e973964973b09ea91f6815bd37d2b2255bad6d634a4f4cb0",
     "ipad/core/widget-layout.js": "6153f2d193b4db880c699b8b0fbe2c1a40f4b98a935441f1379e96fec66e076e",
+    "ipad/core/genie-model.js": "4a0dd6b4538c36af3eff88f95df4fbbbf789428a341becf1bf50a998e404d42d",
+    "ipad/core/genie-transition.js": "ee6008bc716c5fca87e66dac9e6393933207afc5e77ac32b6e7c246237008293",
     "ipad/vendor/glass/renderer.js": "43bf5de6d32e09f8bfbabfe9990404a6f2f953e9f9b24268e29dd313ba950db1",
     "ipad/NOTICE": "34e8a4fb32ea1e989aee5d15bf9ce4e7bd22b08ccceb67830561308d7ebfa77b",
     "ipad/assets/fonts/barlow-clock.woff2": "8e0eaa0d5d8912e268261f0efc92dec3efb8811200ee35ac29ec757943d45d04"
   },
   "publicSourceAudit": {
     "status": "passed",
-    "currentTextFiles": 320,
-    "historicalTextBlobs": 402,
-    "findings": 0
+    "currentTextFiles": 321,
+    "historicalTextBlobs": 502,
+    "findings": []
   },
   "lf": {
     "status": "passed",
     "scope": "all changed tracked text files including new source, documentation and font license"
+  },
+  "performanceRepeat": {
+    "before": "performance-before/report.json",
+    "after": "performance-after/report.json",
+    "priorBefore": "performance-prior/before.json",
+    "priorAfter": "performance-prior/after.json",
+    "physicalIPad": false
+  },
+  "genieCompatibility": {
+    "quality": "economy",
+    "projection": "affine-clipped",
+    "fullMode": "projective",
+    "sameCurve": true,
+    "sameMotionOwner": true,
+    "pixelToleranceUnchanged": 9,
+    "textureApproximation": "piecewise affine in economy mode",
+    "physicalIPad": false,
+    "bothEdgesMeasured": true
   }
 }
