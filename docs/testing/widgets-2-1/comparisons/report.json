@@ -38,6 +38,34 @@
       },
       "largestGeometryErrorPx": 0.135,
       "compactAreaRatioToPr8": 0.437
+    },
+    "compact-220": {
+      "music": {
+        "meanAbsoluteRGBDifference": 9.008,
+        "rmsRGBDifference": 19.223
+      },
+      "clock": {
+        "meanAbsoluteRGBDifference": 17.528,
+        "rmsRGBDifference": 34.339
+      },
+      "musicSizeCSS": [
+        220,
+        220
+      ],
+      "clockSizeCSS": [
+        220,
+        220
+      ],
+      "areaRatioTo344": 0.409,
+      "preservedReferenceLandmarks": {
+        "coverX": 0.008,
+        "coverY": 0.032,
+        "coverWidth": 0.006,
+        "titleX": 0.038,
+        "artistY": 0.042,
+        "progressY": 0.045
+      },
+      "touchAdaptation": "44px hit regions remain unscaled and disjoint. More moves to the header; secondary actions stay in its existing menu. Medium shows real progress; interactive seeking remains in large and Air Music."
     }
   }
 }

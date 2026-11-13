@@ -2,6 +2,21 @@
 
 Alle Anwendungsbilder sind echte Playwright-Screenshots der laufenden, paketierten PWA. Die Referenzausschnitte sind aus den ursprünglichen Nutzerbildern erhalten. Keine KI-generierten Oberflächen oder Mockups. Die finalen Aufnahmen verwenden **DPR 2**, die erste Iteration DPR 1. Die Vergleichspanels skalieren nur zur gemeinsamen Darstellung auf 650 Pixel.
 
+## Aktueller kompakter Stand
+
+Musik und Foto-Uhr messen **220 × 220 CSS-Pixel**, kleine Widgets 106 × 106, mittlere 220 × 106 Pixel. Die große Kartenfläche sinkt gegenüber 344 × 344 um rund 59 %. Rasterabstand: 8 Pixel. Vorherige Bilder und Messungen bleiben als historische Belege erhalten. Alle sichtbaren Musikaktionen besitzen weiterhin mindestens 44 × 44 Pixel große, voneinander getrennte Touchziele; Zusatzaktionen liegen im vorhandenen Musikmenü.
+
+| Neue Aufnahme | Datei |
+| --- | --- |
+| Kleines Musik-Widget | [220 Pixel](compact-220/music.png) |
+| Kleine Foto-Uhr | [220 Pixel](compact-220/clock.png) |
+| Gesamter Homescreen | [Querformat](compact-220/home-landscape.png) · [Hochformat](compact-220/home-portrait.png) |
+| Bearbeitungsmodus | [Drei Größen](compact-220/editor.png) |
+| Referenzen | [Musik](comparisons/music-compact-220.png) · [Uhr](comparisons/clock-compact-220.png) |
+| Größenkorrektur | [344 → 220 Pixel](comparisons/size-before-after.png) |
+
+## Vorheriger 344-Pixel-Stand
+
 | Aufnahme | Datei |
 | --- | --- |
 | Musik · Referenz und tatsächliches Ergebnis | [Vergleich](comparisons/music-final.png) · [Originalaufnahme](final/music.png) |
@@ -14,7 +29,7 @@ Alle Anwendungsbilder sind echte Playwright-Screenshots der laufenden, paketiert
 | Erste Vergleichsrunde | [Musik](comparisons/music-iteration-1.png) · [Uhr](comparisons/clock-iteration-1.png) |
 | Vollständige Pixel-Differenzen | [Musik](comparisons/music-difference-diagnostic.png) · [Uhr](comparisons/clock-difference-diagnostic.png) |
 
-In der zweiten Runde wurden Materialfarbe, Titelbreite, Transportgeometrie, Leistenbreite und die Vorbereitung des Uhrfotos nach dem direkten Vergleich korrigiert. Die endgültigen großen Karten messen 344 × 344 CSS-Pixel. Sie belegen nur rund 44 % der bisherigen Musik-Kartenfläche.
+In der zweiten Runde wurden Materialfarbe, Titelbreite, Transportgeometrie, Leistenbreite und die Vorbereitung des Uhrfotos nach dem direkten Vergleich korrigiert. Die vorherigen großen Karten maßen 344 × 344 CSS-Pixel. Sie belegen nur rund 44 % der bisherigen Musik-Kartenfläche.
 
 Die Musik-Landmarken (Cover, Titel, Künstler und Leiste) liegen im finalen DOM auf 650 Pixel normiert bei unter 0,2 Pixel Abweichung. Das ist **kein Nachweis vollständiger Pixelidentität**. Die offenen Schrift- und eigenen Symbolgeometrien, Rasterung und aufbereitete Fotodaten erzeugen Restunterschiede. Die ungeschönten Pixel-Differenzen und Fehlermaße stehen in [comparisons/report.json](comparisons/report.json).
 
