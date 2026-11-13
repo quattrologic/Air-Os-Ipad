@@ -41,8 +41,8 @@
     },
     "compact-220": {
       "music": {
-        "meanAbsoluteRGBDifference": 9.008,
-        "rmsRGBDifference": 19.223
+        "meanAbsoluteRGBDifference": 9.017,
+        "rmsRGBDifference": 19.21
       },
       "clock": {
         "meanAbsoluteRGBDifference": 17.528,

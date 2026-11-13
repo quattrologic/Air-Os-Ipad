@@ -99,15 +99,15 @@ html.pad-reduced-motion .widget-progress-track i{transition:none}@media(prefers-
 .pad-widget-column .player-widget[data-size=small] .widget-track{top:0;left:8%;right:8%;height:calc(100% - 44px);display:block;overflow:visible}
 .pad-widget-column .player-widget[data-size=small] .widget-track strong{position:absolute;top:44px;left:0;width:100%;font-size:12px;pointer-events:none}
 .pad-widget-column .player-widget[data-size=small] .widget-track small,.player-widget[data-size=small] [data-widget-control=prev],.player-widget[data-size=small] [data-widget-control=next]{display:none!important}
-.pad-widget-column .player-widget[data-size=small] .widget-music-more{display:grid!important;place-items:center;top:auto;bottom:0;left:calc(50% - 44px);font-size:8px}
+.pad-widget-column .player-widget[data-size=small] .widget-music-more:not([hidden]){display:grid!important;place-items:center;top:auto;bottom:0;left:calc(50% - 44px);font-size:8px}
 .player-widget[data-size=small] .widget-music-more:before{inset:16px}
 .pad-widget-column .player-widget[data-size=small] [data-widget-control=toggle]{left:50%}
 /* Dense information, original materials. Lists scroll instead of clipping. */
 .pad-widget-column .calendar-widget{padding:6px}
 .pad-widget-column .calendar-widget h3{font-size:9px;margin-bottom:3px;line-height:11px;max-width:calc(100% - 30px)}
-.pad-widget-column .widget-month{font-size:8px;line-height:10px}
-.pad-widget-column .widget-month small{font-size:7px;margin-bottom:1px}
-.pad-widget-column .widget-month>span{width:11px;height:10px}
+.pad-widget-column .widget-month{font-size:8px;line-height:9px}
+.pad-widget-column .widget-month small{font-size:7px;line-height:9px;margin-bottom:1px}
+.pad-widget-column .widget-month>span{width:11px;height:9px}
 .calendar-widget[data-size=medium]{gap:0 8px}
 .calendar-widget[data-size=medium] .widget-events{padding-top:4px}
 .pad-widget-column .calendar-widget[data-size=large]{display:flex;flex-direction:column;padding:10px}
@@ -139,3 +139,7 @@ html.pad-reduced-motion .widget-progress-track i{transition:none}@media(prefers-
 .pad-widget-column .player-widget .widget-art{box-shadow:0 5px 9px #061a2330}
 .player-widget .widget-art:after{backdrop-filter:blur(2.33cqw);-webkit-backdrop-filter:blur(2.33cqw)}
 .pad-widget-column .clock-widget time{-webkit-text-stroke:.19cqw #e9fff390;text-shadow:0 .29cqw #effff444,0 1.16cqw 3.78cqw #0c3d302b}
+
+.player-widget[data-source=disconnected] .widget-spotify-actions [role=status]{display:none}
+.player-widget[data-size=medium] .widget-spotify-actions{left:40%;right:4%;bottom:0}
+.player-widget[data-size=medium] .widget-spotify-actions small{display:none}

@@ -635,8 +635,8 @@
   },
   "comparison": {
     "music": {
-      "meanAbsoluteRGBDifference": 9.008,
-      "rmsRGBDifference": 19.223
+      "meanAbsoluteRGBDifference": 9.017,
+      "rmsRGBDifference": 19.21
     },
     "clock": {
       "meanAbsoluteRGBDifference": 17.528,
@@ -662,7 +662,7 @@
     "touchAdaptation": "44px hit regions remain unscaled and disjoint. More moves to the header; secondary actions stay in its existing menu. Medium shows real progress; interactive seeking remains in large and Air Music."
   },
   "runtimeSHA256": {
-    "ipad/widgets-2.css": "eedda87352791cffd6d1aa8285e70e8af4eb755fcd70c52dc32edbd63ef992cc",
+    "ipad/widgets-2.css": "dfcd4b6ec9c86cb2a98660394eed64f5141a2b8dbee27036b680f45674af2add",
     "ipad/widgets.js": "e143ec4fcaab43de3e0394c0c84cd96b860ce1483cc96f8e767e75395d3172a4"
   },
   "physicalIPad": false,
@@ -672,5 +672,21 @@
     "Cover, title, artist, progress and clock retain relative reference positions.",
     "44px target bands stay unscaled; secondary actions use the existing music menu.",
     "No schema, saved order, size IDs, AIR FLOW owner or media owner changed."
-  ]
+  ],
+  "dock": {
+    "1": {
+      "status": "passed",
+      "checks": 61,
+      "errors": [],
+      "minimumCalendarInset": 10,
+      "readOnlyAllSizes": true
+    },
+    "2": {
+      "status": "passed",
+      "checks": 61,
+      "errors": [],
+      "minimumCalendarInset": 10,
+      "readOnlyAllSizes": true
+    }
+  }
 }
