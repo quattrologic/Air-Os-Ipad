@@ -168,7 +168,7 @@
   "musicSourceReset": {
     "file": "ipad/app.js",
     "previousPrefixSHA256": "c296303f9471df123d5f0b2898e5d7b9ab6ec87d7a0d11b3ff489b48a4d63df0",
-    "approvedPrefixSHA256": "444f0dfa40be612778d915069fb7c7e3d166b22569c6c7beec057e0bc6f6bd30",
-    "reason": "Existing audio owner explicitly loads the new source before revoking its previous Blob URL. WPE reported error4 on next after seek while an independent decoder read the same stored Blob as 180 seconds. The regression gate compares the entire original music/timer prefix with only this exact delta."
+    "approvedPrefixSHA256": "4a06344cfa0343997eb6b25557496542050bede670c7b07220460c80ad0b4cec",
+    "reason": "Existing audio owner explicitly loads the new source before revoking its previous Blob URL. WPE reported error4 on next after seek while an independent decoder read the same stored Blob as 180 seconds. The regression gate compares the entire original music/timer prefix with only this exact delta. The decoder receives a separate full Blob slice rather than borrowing the IndexedDB File handle; stored bytes and metadata remain unchanged."
   }
 }

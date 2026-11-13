@@ -162,7 +162,7 @@
     if (state.currentId !== id || !audio.src) {
       audio.pause();
       const previousURL = state.objectUrl;
-      state.objectUrl = URL.createObjectURL(record.blob);
+      state.objectUrl = URL.createObjectURL(record.blob.slice(0,record.blob.size,record.blob.type));
       state.currentId = id;
       audio.src = state.objectUrl;
       const progress=safeJSON(KEYS.progress,{});if(progress.id===id)audio.addEventListener('loadedmetadata',()=>{if(state.currentId===id&&Number.isFinite(audio.duration))audio.currentTime=Math.min(Math.max(0,Number(progress.position)||0),Math.max(0,audio.duration-.1));},{once:true});
