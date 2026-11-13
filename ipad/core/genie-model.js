@@ -29,5 +29,10 @@
   return[top.width/width,0,0,0,(bottom.x*ratio-top.x)/height,(bottom.y*ratio-top.y)/height,0,(ratio-1)/height,0,0,1,0,top.x,top.y,0,1];
  }
  function project(m,x,y){const d=m[3]*x+m[7]*y+m[15];return{x:(m[0]*x+m[4]*y+m[12])/d,y:(m[1]*x+m[5]*y+m[13])/d};}
- return Object.freeze({speeds,valid,edge,rows,matrix,project,ease});
+ // The same homography as an explicitly tilted CSS plane. WebKit's affine
+ // paint path drops the Y-dependent homogeneous denominator of matrix3d.
+ // A real Z component keeps perspective division in its composited path.
+ function plane(top,bottom,width,height){const m=matrix(top,bottom,width,height),p=m[7],distance=1000,z=p*distance;return{x:m[12],y:m[13],a:m[0],b:m[4]-m[12]*p,c:m[5]-m[13]*p,distance,angle:-Math.atan(z),depthScale:Math.hypot(1,z)};}
+ function cssTransform(top,bottom,width,height){const t=plane(top,bottom,width,height);return`translate(${t.x}px,${t.y}px) matrix(${t.a},0,${t.b},${t.c},0,0) perspective(${t.distance}px) rotateX(${t.angle}rad) scaleY(${t.depthScale})`;}
+ return Object.freeze({speeds,valid,edge,rows,matrix,project,plane,cssTransform,ease});
 });

@@ -48,7 +48,7 @@
  function timeline(effect,p){
   const from=progress(effect);if(p===undefined)p=from;
   const offsets=[...new Set([0,1,p,...Array.from({length:33},(_,i)=>i/32)])].sort((a,b)=>a-b),tracks=Array.from({length:effect.count},()=>[]),height=effect.source.height/effect.count;
-  for(const offset of offsets){const points=model.rows(effect.source,targetAt(effect,offset),offset,effect.count);for(let i=0;i<effect.count;i++)tracks[i].push({offset,transform:'matrix3d('+model.matrix(points[i],points[i+1],effect.source.width,height).join(',')+')'});}
+  for(const offset of offsets){const points=model.rows(effect.source,targetAt(effect,offset),offset,effect.count);for(let i=0;i<effect.count;i++)tracks[i].push({offset,transform:model.cssTransform(points[i],points[i+1],effect.source.width,height)});}
   for(const a of effect.animations||[])a.cancel();effect.animations=[];
   const master=effect.layer.animate([{offset:0,opacity:1},{offset:.8,opacity:1},{offset:1,opacity:0}],{duration:effect.duration,easing:'linear',fill:'both'});effect.master=master;effect.animations.push(master);
   for(let i=0;i<effect.count;i++)effect.animations.push(effect.strips[i].animate(tracks[i],{duration:effect.duration,easing:'linear',fill:'both'}));
@@ -79,7 +79,7 @@
   const current=live.get(node);
   if(current){const next=restore?0:1;if(current.end!==next){current.end=next;current.reversals++;for(const animation of current.animations)animation.reverse();}return current.owned;}
   const source=rect(node),target=rect(targetNode);
-  let reason='';if(disposed||!source)reason='unavailable';else if(motion.reduced()||document.hidden)reason='reduced-or-hidden';else if(!target||target.width<1||target.y>=innerHeight||target.x>=innerWidth||target.x+target.width<=0)reason='no-visible-dock-icon';else if(!CSS.supports('transform','matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1)'))reason='unsupported-projective-transform';else if(live.size>=2||navigator.hardwareConcurrency>0&&navigator.hardwareConcurrency<=2||source.width*source.height>2400000)reason='resource-budget';
+  let reason='';if(disposed||!source)reason='unavailable';else if(motion.reduced()||document.hidden)reason='reduced-or-hidden';else if(!target||target.width<1||target.y>=innerHeight||target.x>=innerWidth||target.x+target.width<=0)reason='no-visible-dock-icon';else if(!CSS.supports('transform','perspective(1000px) rotateX(.1rad) scaleY(1)'))reason='unsupported-projective-transform';else if(live.size>=2||navigator.hardwareConcurrency>0&&navigator.hardwareConcurrency<=2||source.width*source.height>2400000)reason='resource-budget';
   if(!reason){try{return await create(node,targetNode,source,target,restore);}catch(error){reason='capture-'+(error.name==='SecurityError'?'protected-content':['complex-content','embedded-content','gpu-canvas','video-not-ready','large-canvas','image-not-ready'].includes(error.message)?error.message:'unavailable');const effect=live.get(node);if(effect)finish(effect,true);}}
   fallbacks++;last={backend:'fallback',reason,direction:restore?'restore':'minimize'};
   if(reason==='reduced-or-hidden'||reason==='unavailable')return true;
