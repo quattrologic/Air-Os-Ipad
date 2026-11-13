@@ -209,11 +209,21 @@
             "hit": true
           },
           {
+            "label": "Songtext öffnen",
+            "width": 44,
+            "height": 44,
+            "left": 24,
+            "right": 68,
+            "top": 264.03125,
+            "bottom": 308.03125,
+            "hit": true
+          },
+          {
             "label": "Vorheriger Titel",
             "width": 44,
             "height": 44,
-            "left": 64.90625,
-            "right": 108.90625,
+            "left": 68,
+            "right": 112,
             "top": 264.03125,
             "bottom": 308.03125,
             "hit": true
@@ -232,8 +242,18 @@
             "label": "Nächster Titel",
             "width": 44,
             "height": 44,
-            "left": 159.078125,
-            "right": 203.078125,
+            "left": 156,
+            "right": 200,
+            "top": 264.03125,
+            "bottom": 308.03125,
+            "hit": true
+          },
+          {
+            "label": "Musikbibliothek öffnen",
+            "width": 44,
+            "height": 44,
+            "left": 200,
+            "right": 244,
             "top": 264.03125,
             "bottom": 308.03125,
             "hit": true
@@ -611,13 +631,13 @@
         "height": 0.2
       },
       "[data-widget-control=prev]": {
-        "x": 0.1859375,
+        "x": 0.2,
         "y": 0.7819602272727273,
         "width": 0.2,
         "height": 0.2
       },
       "[data-widget-control=next]": {
-        "x": 0.6139914772727273,
+        "x": 0.6,
         "y": 0.7819602272727273,
         "width": 0.2,
         "height": 0.2
@@ -635,8 +655,8 @@
   },
   "comparison": {
     "music": {
-      "meanAbsoluteRGBDifference": 9.017,
-      "rmsRGBDifference": 19.21
+      "meanAbsoluteRGBDifference": 9.828,
+      "rmsRGBDifference": 22.886
     },
     "clock": {
       "meanAbsoluteRGBDifference": 17.528,
@@ -659,10 +679,10 @@
       "artistY": 0.042,
       "progressY": 0.045
     },
-    "touchAdaptation": "44px hit regions remain unscaled and disjoint. More moves to the header; secondary actions stay in its existing menu. Medium shows real progress; interactive seeking remains in large and Air Music."
+    "touchAdaptation": "44px hit regions remain unscaled and disjoint. More moves to the header; large retains five transport targets. Small secondary actions stay in the existing menu. Medium shows real progress; interactive seeking remains in large and Air Music."
   },
   "runtimeSHA256": {
-    "ipad/widgets-2.css": "dfcd4b6ec9c86cb2a98660394eed64f5141a2b8dbee27036b680f45674af2add",
+    "ipad/widgets-2.css": "3871684016a7eb9cb7c175cd381d19d6a58ed0abcfe5da905e071a90336722a2",
     "ipad/widgets.js": "e143ec4fcaab43de3e0394c0c84cd96b860ce1483cc96f8e767e75395d3172a4"
   },
   "physicalIPad": false,

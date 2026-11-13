@@ -77,7 +77,11 @@ html.pad-reduced-motion .widget-progress-track i{transition:none}@media(prefers-
 .pad-widget-column .player-widget[data-size=large][data-long-title=true] .widget-track strong{top:calc(53cqw - 48px);font-size:11px}
 .player-widget[data-size=large] .widget-timeline>input{top:-38px}
 .player-widget[data-size=large] .widget-music-more{left:calc(50% - 22px);top:calc(10.3% - 22px);font-size:8px}
-.player-widget[data-size=large] .widget-transport>button:first-child,.player-widget[data-size=large] .widget-transport>button:last-child{display:none}
+.pad-widget-column .player-widget[data-size=large] .widget-transport>button:first-child{left:0}
+.pad-widget-column .player-widget[data-size=large] .widget-transport>button:last-child{left:auto;right:0}
+.pad-widget-column .player-widget[data-size=large] [data-widget-control=prev]{left:calc(50% - 66px)}
+.pad-widget-column .player-widget[data-size=large] [data-widget-control=next]{left:calc(50% + 22px)}
+.pad-widget-column .player-widget[data-size=large] .widget-transport .pad-glyph:not(.widget-transport-glyph){min-width:10px;min-height:10px}
 .player-widget .widget-music-head .pad-glyph{min-width:10px;min-height:10px}
 .player-widget .widget-audio-options:before{left:calc((64px - 18.6cqw)/2);right:calc((64px - 18.6cqw)/2)}
 .player-widget .widget-audio-options svg{min-width:28px}

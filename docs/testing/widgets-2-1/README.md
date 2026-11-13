@@ -4,7 +4,7 @@ Alle Anwendungsbilder sind echte Playwright-Screenshots der laufenden, paketiert
 
 ## Aktueller kompakter Stand
 
-Musik und Foto-Uhr messen **220 × 220 CSS-Pixel**, kleine Widgets 106 × 106, mittlere 220 × 106 Pixel. Die große Kartenfläche sinkt gegenüber 344 × 344 um rund 59 %. Rasterabstand: 8 Pixel. Vorherige Bilder und Messungen bleiben als historische Belege erhalten. Alle sichtbaren Musikaktionen besitzen weiterhin mindestens 44 × 44 Pixel große, voneinander getrennte Touchziele; Zusatzaktionen liegen im vorhandenen Musikmenü.
+Musik und Foto-Uhr messen **220 × 220 CSS-Pixel**, kleine Widgets 106 × 106, mittlere 220 × 106 Pixel. Die große Kartenfläche sinkt gegenüber 344 × 344 um rund 59 %. Rasterabstand: 8 Pixel. Vorherige Bilder und Messungen bleiben als historische Belege erhalten. Alle sichtbaren Musikaktionen besitzen weiterhin mindestens 44 × 44 Pixel große, voneinander getrennte Touchziele; Die große Karte behält alle fünf unteren Musiksymbole; kleine Karten bieten Zusatzaktionen im vorhandenen Musikmenü.
 
 | Neue Aufnahme | Datei |
 | --- | --- |

@@ -41,8 +41,8 @@
     },
     "compact-220": {
       "music": {
-        "meanAbsoluteRGBDifference": 9.017,
-        "rmsRGBDifference": 19.21
+        "meanAbsoluteRGBDifference": 9.828,
+        "rmsRGBDifference": 22.886
       },
       "clock": {
         "meanAbsoluteRGBDifference": 17.528,
@@ -65,7 +65,7 @@
         "artistY": 0.042,
         "progressY": 0.045
       },
-      "touchAdaptation": "44px hit regions remain unscaled and disjoint. More moves to the header; secondary actions stay in its existing menu. Medium shows real progress; interactive seeking remains in large and Air Music."
+      "touchAdaptation": "44px hit regions remain unscaled and disjoint. More moves to the header; large retains five transport targets. Small secondary actions stay in the existing menu. Medium shows real progress; interactive seeking remains in large and Air Music."
     }
   }
 }
