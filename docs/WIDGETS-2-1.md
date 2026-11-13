@@ -79,3 +79,5 @@ Widget-Suite und Referenzaufnahme verwenden in der Linux-CI WebKit/GTK unter Xvf
 Die aktuelle Sicherheits-/Upgrade-Suite wartet bei der gehärteten Generation zusätzlich auf Notch, Widgets, Hintergrund und Glasrenderer. Ältere Kontrollgenerationen ohne `airSecurity` behalten ihren ursprünglichen Bereitschaftsvertrag. Damit werden nach einem tatsächlichen Reload keine nachfolgenden defer-APIs zu früh aufgerufen; die Upgrade-, Geometrie- und Datenassertions bleiben unverändert.
 
 Vor Referenzaufnahmen wird die echte Wiedergabe pausiert und auf 1:42 gesetzt. Der Test wartet auf den abgeschlossenen Seek samt tatsächlicher Zeitanzeige, startet anschließend den vorhandenen Player wieder und prüft dessen Wiedergabezustand. Die Aufnahme kann währenddessen normal fortschreiten; kein Fortschritt oder Pausensymbol wird künstlich gesetzt.
+
+Die Materialprüfung aktiviert nach Reloads ihre echte Browserseite, bevor sie auf sichtbare, ruhende Materialien wartet. Hintergrundseiten dürfen die produktiven Animationen pausieren; dies wird nicht durch künstliches Fertigstellen von Effekten umgangen. Im Fehlerbericht stehen Sichtbarkeit und Ressourcen-/Motion-Zustände zur Diagnose.
