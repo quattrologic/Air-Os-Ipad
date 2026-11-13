@@ -356,7 +356,6 @@
     "airFlow": {
       "status": "passed",
       "checks": 32,
-      "screens": 4,
       "checksPassed": [
         "widgets have no active clock/database timer behind the lock",
         "1180x820: cover overlaps clock, paints in front, player/unlock fit",
@@ -391,7 +390,9 @@
         "notes, reminder state and widget size survive reload in original schema",
         "no unexpected browser errors: []"
       ],
-      "uncaughtErrors": []
+      "uncaughtErrors": [],
+      "storageMode": "isolated persistent fixture profile",
+      "physicalIPad": false
     },
     "material": {
       "status": "passed",
@@ -1013,7 +1014,9 @@
   },
   "wallpaper": {
     "status": "passed",
-    "coverage": "video, lock blur, settings, persistence, reduced motion, byte ranges and offline reload"
+    "coverage": "video, lock blur, settings, persistence, reduced motion, byte ranges and offline reload",
+    "errors": [],
+    "engine": "chromium"
   },
   "webkitLocal": {
     "status": "unavailable",

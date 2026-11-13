@@ -7,13 +7,16 @@ const pw=require(process.env.AIR_PAD_PLAYWRIGHT||'../build/ipad-parity-tests/nod
  fs.mkdirSync(out,{recursive:true});const report={engine,physicalIPad:false,synthetic:true,checks:[],errors:[],viewports:[],performance:{},screens:[]};
  const site=path.resolve('dist/ipad-parity'),server=create({directory:site});await new Promise(r=>server.listen(0,'127.0.0.1',r));
  const base='http://127.0.0.1:'+server.address().port+'/',options={headless:true,hasTouch:true,viewport:{width:1180,height:820},deviceScaleFactor:1,...(engine==='chromium'&&process.env.AIR_PAD_CHROMIUM?{executablePath:process.env.AIR_PAD_CHROMIUM}:{})};
- let browser,context,page;const check=(name,value)=>{assert.ok(value,name);report.checks.push(name);console.log('PASS',name);};
+ let context,page;const check=(name,value)=>{assert.ok(value,name);report.checks.push(name);console.log('PASS',name);};
  const ready=async()=>{await page.waitForFunction(()=>window.airDesktop?.snapshot().ready&&window.airPlaybackMetadata&&window.airWidgets);await page.evaluate(()=>Promise.all([airPlaybackMetadata.ready,airSpotify.ready]));};
  const quiet=async()=>{await page.waitForFunction(()=>!airVisualMotion.snapshot().active&&!airProNotch.snapshot().active&&!airDesktop.dockMaterial.snapshot().pending);};
  const shot=async name=>{await quiet();await page.screenshot({path:path.join(out,name+'.png')});report.screens.push(name+'.png');};
  const unlock=async()=>{await page.locator('#unlock').tap();await page.waitForFunction(()=>airIPad.sessionOpen()&&airDesktop.snapshot().restored&&document.querySelector('#lockscreen').hidden);await quiet();};
  try{
-  browser=await pw[engine].launch(options);context=await browser.newContext({...options,serviceWorkers:'block'});page=await context.newPage();page.on('pageerror',e=>report.errors.push(e.message));
+  // This test stores real photo/audio Blobs and reloads them. Use the isolated
+  // profile already allocated above, as the existing WebKit storage gates do;
+  // WebKit's ephemeral store cannot persist all Blob backing files.
+  context=await pw[engine].launchPersistentContext(profile,{...options,serviceWorkers:'block'});report.storageMode='isolated persistent fixture profile';page=await context.newPage();page.on('pageerror',e=>report.errors.push(e.message));
   await page.goto(base);await ready();check('widgets have no active clock/database timer behind the lock',await page.evaluate(()=>!airWidgets.snapshot().active&&!airWidgets.snapshot().timer));
   // Real storage contracts; artwork uses the repository's owner-provided image.
   await page.evaluate(async()=>{
@@ -70,6 +73,6 @@ const pw=require(process.env.AIR_PAD_PLAYWRIGHT||'../build/ipad-parity-tests/nod
   check('no unexpected browser errors: '+JSON.stringify(report.errors),report.errors.length===0);
   report.status='passed';
  }catch(e){report.status='failed';report.error=e.stack;try{await page?.screenshot({path:path.join(out,'failure.png')});}catch{}throw e;}
- finally{fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');await context?.close();await browser?.close();server.closeAllConnections?.();await new Promise(r=>server.close(r));fs.rmSync(profile,{recursive:true,force:true});}
+ finally{fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');await context?.close();server.closeAllConnections?.();await new Promise(r=>server.close(r));fs.rmSync(profile,{recursive:true,force:true});}
  console.log(JSON.stringify({engine,status:report.status,checks:report.checks.length,screens:report.screens.length}));
 })().catch(e=>{console.error(e);process.exitCode=1;});

@@ -189,4 +189,6 @@ jobs:
             dist/genie-*/*.json
             dist/genie-*/*.png
             dist/widgets-2-*/*
+            dist/ocean-report.json
+            dist/ocean-failure.png
           retention-days: 7
