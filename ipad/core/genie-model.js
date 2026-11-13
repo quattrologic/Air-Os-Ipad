@@ -34,5 +34,8 @@
  // A real Z component keeps perspective division in its composited path.
  function plane(top,bottom,width,height){const m=matrix(top,bottom,width,height),p=m[7],distance=1000,z=p*distance;return{x:m[12],y:m[13],a:m[0],b:m[4]-m[12]*p,c:m[5]-m[13]*p,distance,angle:-Math.atan(z),depthScale:Math.hypot(1,z)};}
  function cssTransform(top,bottom,width,height){const t=plane(top,bottom,width,height);return`translate(${t.x}px,${t.y}px) matrix(${t.a},0,${t.b},${t.c},0,0) perspective(${t.distance}px) rotateX(${t.angle}rad) scaleY(${t.depthScale})`;}
- return Object.freeze({speeds,valid,edge,rows,matrix,project,plane,cssTransform,ease});
+ // Bounded 2D compatibility projection for the existing economy quality tier.
+ // Its clipped outline has the same corners; the temporary texture is affine.
+ function clippedRow(top,bottom,width,height){const ratio=bottom.width/top.width,overlap=.5,bottomY=height+overlap,bottomX=width*(1+(ratio-1)*bottomY/height);return{transform:`matrix(${top.width/width},0,${(bottom.x-top.x)/height},${(bottom.y-top.y)/height},${top.x},${top.y})`,clipPath:`polygon(0px 0px,${width}px 0px,${bottomX}px ${bottomY}px,0px ${bottomY}px)`};}
+ return Object.freeze({speeds,valid,edge,rows,matrix,project,plane,cssTransform,clippedRow,ease});
 });
