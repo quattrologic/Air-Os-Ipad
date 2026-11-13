@@ -15,6 +15,8 @@ Musik und Foto-Uhr messen **220 × 220 CSS-Pixel**, kleine Widgets 106 × 106, m
 | Referenzen | [Musik](comparisons/music-compact-220.png) · [Uhr](comparisons/clock-compact-220.png) |
 | Größenkorrektur | [344 → 220 Pixel](comparisons/size-before-after.png) |
 
+Die neue Widget-Suite läuft in der offiziellen Linux-CI unter WebKit/GTK mit Xvfb und unveränderten Wiedergabe-Assertions. Der intermittierende WPE-Headless-Decoderfehler beim Wiederverwenden langer PCM-Testdateien ist als Portgrenze dokumentiert; Referenzaufnahme und weitere WebKit-Suiten bleiben headless. Kein physischer iPad-Pass wird behauptet.
+
 ## Vorheriger 344-Pixel-Stand
 
 | Aufnahme | Datei |

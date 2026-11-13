@@ -71,3 +71,7 @@ AIR_PAD_CHROMIUM=/usr/bin/chromium npm run measure:widgets
 ```
 
 `WIDGETS21_OUTPUT` wählt den Aufnahmeordner; `WIDGETS_SITE` ein separates geprüftes Benchmark-Paket, `WIDGETS_MEASURE_OUTPUT` den Messordner. Die bereits vorbereiteten Testmedien liegen in der Galerie. `prepare-widget-reference.py` dokumentiert die optionale Neuvorbereitung aus den zwei ursprünglichen Nutzer-JPEGs.
+
+## Browser-Testport der Größenkorrektur
+
+Die Widget-Suite verwendet in der Linux-CI WebKit/GTK unter Xvfb (wie die Genie-Abtastung). Der WPE-Headless-Port meldete beim Start oder Rückwechsel eines langen synthetischen PCM-WAV-Blobs intermittierend `MEDIA_ERR_SRC_NOT_SUPPORTED`, trotz lesbarer gespeicherter Bytes. Dieser WPE-Fehler bleibt dokumentiert und wird nicht als bestanden ausgegeben. GTK führt dieselben echten Wiedergabe-, Seek-, Touch-, Größen-, Lebenszyklus- und Offline-Assertions aus; Audio wird nicht gemockt. Der Bericht nennt den tatsächlichen Browser-Port. Die Referenzaufnahme und die übrigen WebKit-Sicherheits-/GUI-Suiten bleiben im bisherigen Headless-Port. Das ist keine physische iPad-/Safari-Abnahme.

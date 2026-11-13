@@ -72,7 +72,14 @@ jobs:
           WIDGETS21_OUTPUT: dist/widgets-2-reference-${{ matrix.engine }}
         run: |
           air_widget_checks=0
-          npm run test:widgets || air_widget_checks=1
+          # Native WebKit touch/media tests use GTK, as the Genie gate does.
+          # WPE intermittently fails long PCM Blob decoding on source reuse;
+          # all original playback, seek and pixel assertions still must pass.
+          if [ "$AIR_PAD_ENGINE" = webkit ]; then
+            xvfb-run -a env AIR_WIDGETS_HEADED=1 npm run test:widgets || air_widget_checks=1
+          else
+            npm run test:widgets || air_widget_checks=1
+          fi
           node scripts/capture-ipad-widgets-21.cjs || air_widget_checks=1
           # Use GTK/Xvfb for native touch/timeline sampling. The normal economy
           # projection is recorded explicitly; both curve edges keep the same
