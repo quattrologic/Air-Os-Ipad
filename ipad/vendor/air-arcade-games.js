@@ -2,17 +2,20 @@
    No third-party game code, trademarks, or assets bundled. */
 (() => {
 'use strict';
-const games=[['snake','Snake'],['2048','2048'],['mines','Minesweeper'],['breakout','Breakout'],['blocks','Blockfall'],['maze','Maze Chase'],['hex','Hex Spin']];
+const games=[['snake','Snake'],['2048','2048'],['mines','Minesweeper'],['breakout','Breakout'],['blocks','Blockfall'],['maze','Maze Chase'],['hex','Hex Spin'],['eaglercraft','Eaglercraft ↗']];
 const rand=n=>Math.floor(Math.random()*n);
 const el=(root,sel)=>root.querySelector(sel);
 const colors=['#edf5ff','#a5d8ff','#70baf7','#419fe9','#267ac7','#165ca6','#ffd080','#ff9f70'];
-function body(){return '<div class="arcade-library"><div class="arcade-library-header"><h2>Air Arcade</h2><p>Sieben Spiele · offline · direkt in Air-OS</p></div><div class="arcade-library-tabs" role="group" aria-label="Spiel wählen">'+games.map(([id,name])=>'<button type="button" data-game="'+id+'">'+name+'</button>').join('')+'</div><div class="arcade-library-game" id="arcade-library-game"><p>Spiel auswählen.</p></div><div class="arcade-library-controls"><button type="button" id="arcade-restart">↻ Neustart</button><span id="arcade-hint"></span></div><div class="arcade-touch" aria-label="Spielsteuerung"><button data-move="ArrowLeft">←</button><button data-move="ArrowUp">↑</button><button data-move="ArrowDown">↓</button><button data-move="ArrowRight">→</button><button data-move=" ">Aktion</button></div></div>'}
+function body(){return '<div class="arcade-library"><div class="arcade-library-header"><h2>Air Arcade</h2><p>Sieben Offline-Spiele · Eaglercraft online</p></div><div class="arcade-library-tabs" role="group" aria-label="Spiel wählen">'+games.map(([id,name])=>'<button type="button" data-game="'+id+'">'+name+'</button>').join('')+'</div><div class="arcade-library-game" id="arcade-library-game"><p>Spiel auswählen.</p></div><div class="arcade-library-controls"><button type="button" id="arcade-restart">↻ Neustart</button><span id="arcade-hint"></span></div><div class="arcade-touch" aria-label="Spielsteuerung"><button data-move="ArrowLeft">←</button><button data-move="ArrowUp">↑</button><button data-move="ArrowDown">↓</button><button data-move="ArrowRight">→</button><button data-move=" ">Aktion</button></div></div>'}
 function interval(win,fn,delay){let timer=null,ended=false;const sync=()=>{const visible=!document.hidden&&win.isConnected&&!win.hidden&&win.style.display!=='none'&&win.getClientRects().length>0;if(visible&&timer===null&&!ended)timer=setInterval(fn,delay);else if(!visible&&timer!==null){clearInterval(timer);timer=null;}};const observer=new MutationObserver(sync);observer.observe(document.documentElement,{attributes:true,attributeFilter:['class']});observer.observe(win,{attributes:true,attributeFilter:['hidden','style']});const desktop=document.querySelector('#desktop');if(desktop)observer.observe(desktop,{attributes:true,attributeFilter:['hidden','style']});document.addEventListener('visibilitychange',sync);sync();return()=>{ended=true;clearInterval(timer);timer=null;observer.disconnect();document.removeEventListener('visibilitychange',sync);};}
 function mount(win){
  const root=el(win,'.arcade-library');if(!root||root.dataset.mounted)return;root.dataset.mounted='yes';
- const host=el(root,'#arcade-library-game'),hint=el(root,'#arcade-hint');let cleanup=()=>{},key=()=>{},restart=()=>{};
+ const host=el(root,'#arcade-library-game'),hint=el(root,'#arcade-hint');let cleanup=()=>{},key=()=>{},restart=()=>{},online=false;
  function select(id){
   cleanup();cleanup=()=>{};key=()=>{};host.replaceChildren();
+  online=id==='eaglercraft';
+  el(root,'.arcade-touch').style.display=online?'none':'';
+  el(root,'#arcade-restart').disabled=online;
   root.querySelectorAll('[data-game]').forEach(b=>b.classList.toggle('active',b.dataset.game===id));
   const api={host,hint,win,interval:(fn,delay)=>interval(win,fn,delay),listen(fn){key=fn},dispose(fn){cleanup=fn}};
   if(id==='snake')gridSnake(api);
@@ -22,13 +25,29 @@ function mount(win){
   if(id==='blocks')blocks(api);
   if(id==='maze')maze(api);
   if(id==='hex')hex(api);
+  if(online)eaglercraft(api);
   restart=()=>select(id);
  }
  root.addEventListener('click',e=>{const b=e.target.closest('[data-game]');if(b)select(b.dataset.game);const m=e.target.closest('[data-move]');if(m)key(m.dataset.move);});
  el(root,'#arcade-restart').onclick=()=>restart();
- win.addEventListener('keydown',e=>{if(!win.isConnected||!root.isConnected||e.target.matches('input,textarea,select'))return;if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' ','Enter','a','d','w','s'].includes(e.key)){e.preventDefault();e.stopImmediatePropagation();key(({a:'ArrowLeft',d:'ArrowRight',w:'ArrowUp',s:'ArrowDown',Enter:' '})[e.key]||e.key)}},true);
+ win.addEventListener('keydown',e=>{if(online||!win.isConnected||!root.isConnected||e.target.matches('input,textarea,select'))return;if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' ','Enter','a','d','w','s'].includes(e.key)){e.preventDefault();e.stopImmediatePropagation();key(({a:'ArrowLeft',d:'ArrowRight',w:'ArrowUp',s:'ArrowDown',Enter:' '})[e.key]||e.key)}},true);
  const observer=new MutationObserver(()=>{if(!win.isConnected){cleanup();observer.disconnect()}});observer.observe(document.querySelector('#windows'),{childList:true});
  select('snake');
+}
+function eaglercraft(api){
+ const panel=document.createElement('section');
+ const title=document.createElement('h3');title.textContent='Eaglercraft';
+ const note=document.createElement('p');note.textContent='Originaler Online-Spielclient · öffnet separat im Browser. Internet erforderlich.';
+ panel.append(title,note);
+ const versions=[['Jetzt spielen','https://eaglercraft.com/de/play'],['1.8.8','https://eaglercraft.com/de/play?version=1.8.8-wasm'],['1.12.2','https://eaglercraft.com/de/play?version=1.12.2-wasm']];
+ const actions=document.createElement('div');actions.className='arcade-library-tabs';
+ for(const [label,url] of versions){
+  const link=document.createElement('a');link.href=url;link.target='_blank';link.rel='noopener noreferrer';link.referrerPolicy='no-referrer';link.textContent=label+' ↗';
+  actions.append(link);
+ }
+ const detail=document.createElement('p');detail.textContent='Touch, Tastatur, Welten und Mehrspieler werden vom externen Anbieter verwaltet. Keine Air-OS-Daten werden an das Spiel übergeben.';
+ panel.append(actions,detail);api.host.append(panel);
+ message(api,'Externer Dienst · keine Spielinstallation in Air-OS');
 }
 function canvas(api,w=480,h=360){const c=document.createElement('canvas');c.width=w;c.height=h;c.tabIndex=0;c.className='arcade-game-canvas';api.host.append(c);return [c,c.getContext('2d')]}
 function message(api,s){api.hint.textContent=s}
